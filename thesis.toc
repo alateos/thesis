@@ -6,4 +6,7 @@
 \contentsline {section}{\numberline {4}Work Plan}{18}
 \contentsline {subsection}{\numberline {4.1}Assumptions, Risks and Alternatives}{18}
 \contentsline {subsection}{\numberline {4.2}Preliminary Schedule}{18}
-\contentsline {section}{\numberline {5}Glossary}{20}
+\contentsline {section}{\numberline {5}Implementation}{20}
+\contentsline {subsection}{\numberline {5.1}Capturing Data}{20}
+\contentsline {subsubsection}{\numberline {5.1.1}IP Addresses}{20}
+\contentsline {section}{\numberline {6}Glossary}{22}
