@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.27)  29 MAY 2014 14:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.27)  30 MAY 2014 13:27
 entering extended mode
 **thesis.tex
 (C:\thesis\thesis.tex
@@ -399,23 +399,23 @@ Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
  [19] [20]
-Overfull \hbox (89.39917pt too wide) in paragraph at lines 230--231
+Overfull \hbox (89.39917pt too wide) in paragraph at lines 243--244
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (82.34918pt too wide) in paragraph at lines 240--241
+Overfull \hbox (82.34918pt too wide) in paragraph at lines 253--254
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [21]
-Overfull \hbox (11.45633pt too wide) in paragraph at lines 260--261
+Overfull \hbox (11.45633pt too wide) in paragraph at lines 273--274
 []\OT1/cmr/bx/n/12 JSON (JavaScript Ob-ject No-ta-tion)\OT1/cmr/m/n/12 : A ligh
 tweight data-interchange
  []
 
 [22]
-Overfull \hbox (3.55147pt too wide) in paragraph at lines 266--267
+Overfull \hbox (3.55147pt too wide) in paragraph at lines 279--280
 \OT1/cmr/m/n/12 ics that has sup-port for in-ter-ac-tiv-ity and an-i-ma-tion (s
 ource: Wikipedia). 
  []
@@ -435,7 +435,7 @@ Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ì in font cmr12!
 
-Underfull \hbox (badness 3668) in paragraph at lines 280--281
+Underfull \hbox (badness 3668) in paragraph at lines 293--294
 []\OT1/cmr/m/n/12 A. Cock-burn, A. Karl-son, and B. B. Bed-er-son, \OT1/cmr/m/i
 t/12 A re-view of
  []
@@ -462,13 +462,13 @@ Here is how much of TeX's memory you used:
  5823 multiletter control sequences out of 15000+200000
  8241 words of font info for 29 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,5n,32p,2518b,1393s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,6n,32p,2518b,866s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (25 pages, 3621558 bytes).
+Output written on thesis.pdf (25 pages, 3622063 bytes).
 PDF statistics:
  110 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

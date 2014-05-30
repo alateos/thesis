@@ -218,7 +218,20 @@ I plan to capture the IP addresses of the visitors to the subject news site. In 
 $user_ip = $_SERVER["REMOTE_ADDR"];
 \end{lstlisting}
 
-Here, I would like to shed light on the difference between static and dynamic IP addresses. The former is set by the network administrator and is fixed unless it is changed manually. The latter is assigned by the network router, and is assigned for a temporary period called the DHCP lease time. The average DHCP lease time is 7 days. Since in my visualization I only care for recent and breaking news that span for 1-3 days, I can hold the distinction between static and dynamic IP addresses as constant - as the time span is less than the average renew period of 7 days.   
+Here, I would like to shed light on the difference between static and dynamic IP addresses. The former is set by the network administrator and is fixed unless it is changed manually. The latter is assigned by the network router, and is assigned for a temporary period called the DHCP lease time. In order to find out the average DHCP lease time set by Internet Service Providers (ISPs), I asked a few network engineers and contacted 3 prominent ISPs. Here are the results:
+\vspace{0.3in}
+
+\begin{tabular}{| c | c |}
+  \hline                       
+  Network Engineer 1 & 7 days \\[1ex] \hline
+  Network Engineer 2 & 3 days \\[1ex] \hline
+  Verizon (ISP) & 14 days \\[1ex] \hline
+  Comcast (ISP) & 7 days \\[1ex]
+  \hline  
+\end{tabular}
+\vspace{0.3in}
+
+The average DHCP lease time is between 3 and 7 days. Since in my visualization I only care for recent and breaking news that span for 1-3 days, I can hold the distinction between static and dynamic IP addresses as constant - as the time span is less than the average renew period.   
 
 For the purpose of monitoring the average time spent on an article and other metrics that rely on graduation of time, the IP address is the only means that does not require user authentication and that can ensure user integrity to a high extent. One cannot fully ensure that a physical human is sitting behind an IP address due when bots, web scrapers, and other automated processes may be hitting the IP address of a given news article. Though, my plan is to minimize the inaccuracy when a visitor reaches a news article. My plan to counter this is to only register the visiting IP address when the user has moved his/her mouse, or, when he/she has scrolled at least once when viewing the article at hand. I have tested a stub for this successfully in \textbf{register\_ip.php}. Here, I have a page containing several blocks of repeated Lorem ipsum text. I used JavaScript to listen to the mousemove and scroll events. I used jQuery to shorthand the event bindings. Below is the code:
 \begin{lstlisting}
