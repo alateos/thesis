@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.30)  31 MAY 2014 08:40
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.27)  2 JUN 2014 16:55
 entering extended mode
 **thesis.tex
 (C:\thesis\thesis.tex
@@ -30,7 +30,7 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cite\cite.sty"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 373.
 Package: cite 2010/09/10  v 5.3
@@ -67,13 +67,12 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\setspace\setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.sty
 \lst@mode=\count88
 \lst@gtempboxa=\box26
 \lst@token=\toks15
@@ -87,18 +86,17 @@ Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 \lst@lineno=\count93
 \lst@maxwidth=\dimen108
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
 File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
 \c@lstnumber=\count94
 \lst@skipnumbers=\count95
 \lst@framebox=\box27
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
 File: listings.cfg 2014/03/04 1.5c listings configuration
 ))
 Package: listings 2014/03/04 1.5c (Carsten Heinz)
-
-(C:\thesis\thesis.aux)
+ (C:\thesis\thesis.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
@@ -112,7 +110,7 @@ LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count96
 \scratchdimen=\dimen109
@@ -129,7 +127,8 @@ LaTeX Font Info:    ... okay on input line 8.
 \c@lstlisting=\count102
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] (C:\thesis\thesis.toc
+{C:/Users/akibrahim/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+(C:\thesis\thesis.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -143,7 +142,8 @@ Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
  [1]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 57.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
@@ -399,23 +399,29 @@ Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no  in font cmr12!
  [19] [20]
-Overfull \hbox (89.39917pt too wide) in paragraph at lines 243--244
+Overfull \hbox (89.39917pt too wide) in paragraph at lines 244--245
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (82.34918pt too wide) in paragraph at lines 253--254
+Overfull \hbox (82.34918pt too wide) in paragraph at lines 254--255
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [21]
-Overfull \hbox (11.45633pt too wide) in paragraph at lines 273--274
+Overfull \hbox (0.82715pt too wide) in paragraph at lines 275--276
+[]\OT1/cmr/m/n/12 Get the value of $[]SERVER["HTTP[]X[]FORWARDED[]FOR"] and loo
+k
+ []
+
+[22]
+Overfull \hbox (11.45633pt too wide) in paragraph at lines 291--292
 []\OT1/cmr/bx/n/12 JSON (JavaScript Ob-ject No-ta-tion)\OT1/cmr/m/n/12 : A ligh
 tweight data-interchange
  []
 
-[22]
-Overfull \hbox (3.55147pt too wide) in paragraph at lines 279--280
+[23]
+Overfull \hbox (3.55147pt too wide) in paragraph at lines 297--298
 \OT1/cmr/m/n/12 ics that has sup-port for in-ter-ac-tiv-ity and an-i-ma-tion (s
 ource: Wikipedia). 
  []
@@ -435,7 +441,7 @@ Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
 
-Underfull \hbox (badness 3668) in paragraph at lines 293--294
+Underfull \hbox (badness 3668) in paragraph at lines 311--312
 []\OT1/cmr/m/n/12 A. Cock-burn, A. Karl-son, and B. B. Bed-er-son, \OT1/cmr/m/i
 t/12 A re-view of
  []
@@ -454,10 +460,10 @@ Missing character: There is no ¨ in font cmr12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
-[23] [24] (C:\thesis\thesis.aux) ) 
+[24] [25] (C:\thesis\thesis.aux) ) 
 Here is how much of TeX's memory you used:
  2527 strings out of 493921
- 35753 string characters out of 3144876
+ 35945 string characters out of 3144864
  96960 words of memory out of 3000000
  5823 multiletter control sequences out of 15000+200000
  8241 words of font info for 29 fonts, out of 3000000 for 9000
@@ -468,9 +474,9 @@ Here is how much of TeX's memory you used:
 public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (25 pages, 3622067 bytes).
+Output written on thesis.pdf (26 pages, 3626293 bytes).
 PDF statistics:
- 110 PDF objects out of 1000 (max. 8388607)
+ 113 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

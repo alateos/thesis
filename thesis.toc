@@ -9,4 +9,5 @@
 \contentsline {section}{\numberline {5}Implementation}{20}
 \contentsline {subsection}{\numberline {5.1}Capturing Data}{20}
 \contentsline {subsubsection}{\numberline {5.1.1}IP Addresses}{20}
-\contentsline {section}{\numberline {6}Glossary}{22}
+\contentsline {subsubsection}{\numberline {5.1.2}Geographic origins}{21}
+\contentsline {section}{\numberline {6}Glossary}{23}

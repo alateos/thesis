@@ -225,15 +225,16 @@ Here, I would like to shed light on the difference between static and dynamic IP
   \hline                       
   Network Engineer 1 & 7 days \\[1ex] \hline
   Network Engineer 2 & 3 days \\[1ex] \hline
+  Network Engineer 3 & 3 days \\ [1ex] \hline
   Verizon (ISP) & 14 days \\[1ex] \hline
   Comcast (ISP) & 4-7 days \\[1ex]
   \hline  
 \end{tabular}
 \vspace{0.3in}
 
-The average DHCP lease time is between 3 and 7 days. Since in my visualization I only care for recent and breaking news that span for 1-3 days, I can hold the distinction between static and dynamic IP addresses as constant - as the time span is less than the average renew period.   
+The average DHCP lease time is between 3 and 7 days. Since in my visualization I only care for recent and breaking news that span for 1-3 days, I can hold the distinction between static and dynamic IP addresses as constant - as the time span is less than the average renew period. This is important for monitoring the average time spent on an article and other metrics that rely on graduation of time. The IP address is the only means to track a user and that does not require user authentication. 
 
-For the purpose of monitoring the average time spent on an article and other metrics that rely on graduation of time, the IP address is the only means that does not require user authentication and that can ensure user integrity to a high extent. One cannot fully ensure that a physical human is sitting behind an IP address due when bots, web scrapers, and other automated processes may be hitting the IP address of a given news article. Though, my plan is to minimize the inaccuracy when a visitor reaches a news article. My plan to counter this is to only register the visiting IP address when the user has moved his/her mouse, or, when he/she has scrolled at least once when viewing the article at hand. I have tested a stub for this successfully in \textbf{register\_ip.php}. Here, I have a page containing several blocks of repeated Lorem ipsum text. I used JavaScript to listen to the mousemove and scroll events. I used jQuery to shorthand the event bindings. Below is the code:
+As for user integrity, one cannot fully ensure that a physical human is sitting behind an IP address when bots, web scrapers, and other automated processes may be hitting the IP address of a given news article. Though, my goal is to minimize the inaccuracy when a visitor reaches a news article. My plan to counter this is to only register the visiting IP address when the user has moved his/her mouse, or, when he/she has scrolled at least once when viewing the article at hand. I have tested a stub for this successfully in \textbf{register\_ip.php}. Here, I have a page containing several blocks of repeated Lorem ipsum text. I used JavaScript to listen to the mousemove and scroll events. I used jQuery to shorthand the event bindings. Below is the code:
 \begin{lstlisting}
 mouse_moved = false;
 page_scroll_counter = 0;
@@ -257,6 +258,23 @@ $(document).on("scroll",function(){
 	}
 });
 \end{lstlisting}        
+
+\subsubsection{Geographic origins}
+The world is smaller than it has ever been. One of the metrics I am opting for is the user geographic distribution for a select news article. This requires two steps:
+\begin{enumerate}
+\item Capturing the IP address of the user. This was demonstrated in the previous section
+\item Obtaining the corresponding latitude and longitude coordinates associated with the user's IP address
+\end{enumerate}
+
+Here, it is important to note that many users may be sitting behind HTTP proxy servers. HTTP proxy servers are physical computers/servers that act as proxy points for the client computers. For example, if someone in Russia used a proxy server in the US to visit my news article, the requesting IP address that will be captured will be that of the US - making it appear that the user that visited the article actually came from the US. In PHP, in addition to \textbf{\$\_SERVER["REMOTE\_ADDR"]}, there is another variable called \textbf{\$\_SERVER["HTTP\_X\_FORWARDED\_FOR"]}. While the former gets the IP address of the direct requester, the latter gets the originating IP that is making the request. So for example, if I were to be sitting behind an IP proxy server which had an address of 111.111.111.111, then \$\_SERVER["REMOTE\_ADDR"] would carry that value. \\
+\$\_SERVER["HTTP\_X\_FORWARDED\_FOR"] would then contain the value of my router's outside IP address - which is what I am looking to map geographically.   
+\\ If on the other hand the user was browsing the Internet normally, without the use of a proxy server, then \$\_SERVER["REMOTE\_ADDR"] would carry the value of the user's router's IP address - reflective of the user's geography. 
+It will thus be a challenge to capture the needed IP address to look up geographically. Here is the methodology that I will use to capture the needed IP address for the geographic lookup:
+\begin{enumerate}
+\item Get the value of \$\_SERVER["REMOTE\_ADDR"] and look up its value with a geolocation API. Call this \textbf{X}
+\item Get the value of \$\_SERVER["HTTP\_X\_FORWARDED\_FOR"] and look up its value with a geolocation API. Call this value \textbf{Y}
+\item If X and Y are both available, it means that the user is sitting behind a proxy and that the needed IP address is that of Y. If X is available but Y is not, it means that Y is a private IP address, that of the device behind its router - and thus not behind a proxy server. In this case, X would hold the IP address of the origin.
+\end{enumerate} 
 
 \vfill
 
