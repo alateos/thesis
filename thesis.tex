@@ -282,6 +282,7 @@ It will thus be a challenge to capture the needed IP address to look up geograph
 
 The next step here is to find a service that would map a given IP address to its corresponding geo coordinates, and ideally to its country name. A quick Google search revealed a convenient REST API service that would output the responses in JSON. \textbf{Telize (www.telize.com)} is a REST API that allows one to get the visitor IP address and to query the location information for that IP address. The upside of this service is that at the moment it contains to no rate limits; thus, one could make an indefinite amount of calls to the Telize API. I was able to test the above clause 3 in PHP code with success. Regardless, of whether I was sitting behind a proxy server or not, the output showed the United States as the country of origin. Here is the code:
 \begin{lstlisting}
+<?php
 date_default_timezone_set("America/New_York");
 
 $remote_addr = $_SERVER["REMOTE_ADDR"];
@@ -305,7 +306,7 @@ $country2 = $results2->country;
 $final_country = "";
 
 if(strlen($country1) > 0 && strlen($country2) > 0) {
-	echo "User is most likely not behind a proxy server.<br />"; 
+	echo "User is most likely behind a proxy server.<br />"; 
 	$final_country = $country2;
 } else {
 	echo "User is not behind a proxy server.<br />";
@@ -313,6 +314,7 @@ if(strlen($country1) > 0 && strlen($country2) > 0) {
 }
 
 echo "The user's country of origin is " . $final_country;
+?>
 \end{lstlisting}   
 
 \vfill
