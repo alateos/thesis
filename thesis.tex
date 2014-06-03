@@ -7,6 +7,8 @@
 
 \begin{document}
 
+%Title page
+
 \begin{titlepage}
     \begin{center}
         \vspace*{0.5cm}
@@ -47,6 +49,8 @@
 
 \vfill
 
+%Abstract
+
 \section{Abstract}
 
 Current prominent web traffic analytics systems such as Google Analytics convey traffic per website, given certain filtering criteria. Though, such systems are typically geared to system administrators who use the data to identify patterns and possibly assist management in strategy making. For news sites, this may mean analyzing the traffic on a news article, where most of the readers came from, etc. The end users, however, will at best see metrics such as social likes and shares. But, what if we could provide the end users a near real-time metrics map of the entire news site they are visiting? What if they could navigate more efficiently, as opposed to having to follow the common front page layout dictated by the news editors? This system is what I plan to build – a web-based, interactive visualization that conveys the near real-time metrics of a select news site.
@@ -76,7 +80,7 @@ I will build the relational database using normalization techniques and principl
 \begin{itemize}
 \item MySQL relational database
 \item PHP for server-side scripting
-\item HTML 5, css3, and JavaScript for client-side design and implementation
+\item HTML 5, CSS3, and JavaScript for client-side design and implementation
 \item Third party client-side libraries to ameliorate the final design and to facilitate the visual implementation. I am specifically considering D3.js
 \end{itemize}
 
@@ -275,6 +279,41 @@ It will thus be a challenge to capture the needed IP address to look up geograph
 \item Get the value of \$\_SERVER["HTTP\_X\_FORWARDED\_FOR"] and look up its value with a geolocation API. Call this value \textbf{Y}
 \item If X and Y are both available, it means that the user is sitting behind a proxy and that the needed IP address is that of Y. If X is available but Y is not, it means that Y is a private IP address, that of the device behind its router - and thus not behind a proxy server. In this case, X would hold the IP address of the origin.
 \end{enumerate} 
+
+The next step here is to find a service that would map a given IP address to its corresponding geo coordinates, and ideally to its country name. A quick Google search revealed a convenient REST API service that would output the responses in JSON. \textbf{Telize (www.telize.com)} is a REST API that allows one to get the visitor IP address and to query the location information for that IP address. The upside of this service is that at the moment it contains to no rate limits; thus, one could make an indefinite amount of calls to the Telize API. I was able to test the above clause 3 in PHP code with success. Regardless, of whether I was sitting behind a proxy server or not, the output showed the United States as the country of origin. Here is the code:
+\begin{lstlisting}
+date_default_timezone_set("America/New_York");
+
+$remote_addr = $_SERVER["REMOTE_ADDR"];
+$x_forwarded_for = $_SERVER["HTTP_X_FORWARDED_FOR"];
+
+$url1 = "http://www.telize.com/geoip/" . $remote_addr; 
+$url2 = "http://www.telize.com/geoip/" . $x_forwarded_for; 
+
+// Get the country for the ip behind the first
+// exposed remote address (from www.telize.com)
+$results1 = file_get_contents($url1);
+$results1 = json_decode($results1);
+$country1 = $results1->country;
+
+// Get the country for the ip behind the second
+// exposed remote address (from www.telize.com)
+$results2 = file_get_contents($url2);
+$results2 = json_decode($results2);
+$country2 = $results2->country;
+
+$final_country = "";
+
+if(strlen($country1) > 0 && strlen($country2) > 0) {
+	echo "User is most likely not behind a proxy server.<br />"; 
+	$final_country = $country2;
+} else {
+	echo "User is not behind a proxy server.<br />";
+	$final_country = $country1;
+}
+
+echo "The user's country of origin is " . $final_country;
+\end{lstlisting}   
 
 \vfill
 

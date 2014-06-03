@@ -1,0 +1,30 @@
+\ifglsentryexists{css3}{}%
+{%
+\gls@defglossaryentry{css3}%
+{%
+name={CSS3},%
+sort={CSS3},%
+type={main},%
+first={Cascading Style Sheets Version 3 (CSS3)},%
+firstplural={Cascading Style Sheets Version 3s(CSS3s)},%
+text={CSS3},%
+plural={CSS3s},%
+description={Cascading Style Sheets Version 3},%
+descriptionplural={Cascading Style Sheets Version 3\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Cascading Style Sheets Version 3},%
+longplural={Cascading Style Sheets Version 3s},%
+short={CSS3},%
+shortplural={CSS3s},%
+counter={page},%
+parent={},%
+%
+}%
+}%
