@@ -4,6 +4,7 @@
 \usepackage{setspace}
 \usepackage{indentfirst}
 \usepackage{listings}
+\usepackage{mathpazo}
 
 \begin{document}
 
@@ -208,7 +209,7 @@ Once I have selected my visualization of choice, I will code and implement it. \
 Deliverable --- A fully implemented web visualization which interacts with the server-side database.
 
 \item[] \textbf{Weeks 16-19} (Test with users and apply final touches): \\
-I will attempt to reach a wide and diverse audience for feedback. I will incorporate the meaningful feedback into my refinement iteration. “meaningful” here represents anything significant enough to affect the usability of the visualization.
+I will attempt to reach a wide and diverse audience for feedback. I will incorporate the meaningful feedback into my refinement iteration. "Meaningful" here represents anything significant enough to affect the usability of the visualization.
 
 \end{itemize}
 
@@ -282,7 +283,7 @@ It will thus be a challenge to capture the needed IP address to look up geograph
 
 The next step here is to find a service that would map a given IP address to its corresponding geo coordinates, and ideally to its country name. A quick Google search revealed a convenient REST API service that would output the responses in JSON. \textbf{Telize (www.telize.com)} is a REST API that allows one to get the visitor IP address and to query the location information for that IP address. The upside of this service is that at the moment it contains to no rate limits; thus, one could make an indefinite amount of calls to the Telize API. I was able to test the above clause 3 in PHP code with success. Regardless, of whether I was sitting behind a proxy server or not, the output showed the United States as the country of origin. Here is the code:
 \begin{lstlisting}
-<?php
+
 date_default_timezone_set("America/New_York");
 
 $remote_addr = $_SERVER["REMOTE_ADDR"];
@@ -314,8 +315,19 @@ if(strlen($country1) > 0 && strlen($country2) > 0) {
 }
 
 echo "The user's country of origin is " . $final_country;
-?>
+
 \end{lstlisting}   
+
+\subsubsection{Average Read Time}
+
+One metric that I would be curious to attain is how long the average user spends reading a certain news article. At the moment, a cousin measure called the bounce rate checks to see whether the user continues to browse other pages in the site, or whether the user 'bounces' off to other websites. Naturally, this measure is not indicative of the level of interest the reader has for a given news article. I plan to get this by doing the following:
+\begin{enumerate}
+\item Research the average reading speed of adults that can read English
+\item Count the number of words in a given news article
+\item Based on the average read speed, calculate the time spent on the news article. If the page is kept open indefinitely by the reader, I will simply use the maximum expected read time for that article. While this is in no way 100\% accurate, it will be highly reflective of the level of interest with the visited articles. 
+\end{enumerate}     
+
+\noindent Based on an ophthalmology study that consisted of 50 native English-speaking individuals (average age 30.38$\pm$9.44 years; 16 university students, 18 academics, and 16 non-academics)-- the average reading speed came out to be 201.53$\pm$35.88 words per minute(wpm) for short sentences, and 215.01$\pm$30.37 wpm for long paragraphs\cite{radner}.  
 
 \vfill
 
@@ -358,6 +370,8 @@ echo "The user's country of origin is " . $final_country;
   \bibitem{goralwalla} Goralwalla, I. A., O¨ zsu, M. T., and Szafron, D. (1998). {\em An Object-Oriented Framework for Temporal Data Models. In Etzion, O. et al., editors, Temporal Databases: Research and Practice}, pages 1–35. Springer, Berlin, Germany.
   
   \bibitem{bettini} Bettini, C., Jajodia, S., and Wang, X. S. (2000). {\em Time Granularities in Databases, Data Mining, and Temporal Reasoning}. Springer, Secaucus, NJ, USA, 1st edition.
+
+  \bibitem{radner} Radner, W., Diendorfer, G., (2014). {\em English sentence optotypes for measuring reading acuity and speed --- the English version of the Radner Reading Charts}
 
   \end{thebibliography}
 

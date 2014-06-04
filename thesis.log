@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.27)  3 JUN 2014 17:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.27)  4 JUN 2014 12:38
 entering extended mode
 **thesis.tex
 (C:\thesis\thesis.tex
@@ -96,20 +96,28 @@ File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
 File: listings.cfg 2014/03/04 1.5c listings configuration
 ))
 Package: listings 2014/03/04 1.5c (Carsten Heinz)
- (C:\thesis\thesis.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\mathpazo.sty"
+Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
+\symupright=\mathgroup4
+)
+(C:\thesis\thesis.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 9.
 
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ppl.fd"
+File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
+)
 (C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count96
@@ -125,75 +133,93 @@ LaTeX Font Info:    ... okay on input line 8.
 \everyMPtoPDFconversion=\toks17
 )
 \c@lstlisting=\count102
+\big@size=\dimen111
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 18.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 18.
  [1
 
 {C:/Users/akibrahim/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 (C:\thesis\thesis.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 4.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 4.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 4.
-)
-\tf@toc=\write3
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ì in font cmr12!
- [1]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 61.
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 4.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlzplm.fd"
+File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 61.
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 4.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omszplm.fd"
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+)
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 4.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omxzplm.fd"
+File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+)
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 4.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1zplm.fd"
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+))
+\tf@toc=\write3
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ì in font pplr7t!
+ [1]
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 62.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsppl.fd"
+File: omsppl.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 62.
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
 
 <img/overall_chart.png, id=10, 594.22pt x 475.7775pt>
 File: img/overall_chart.png Graphic file (type png)
 
 <use img/overall_chart.png>
-Package pdftex.def Info: img/overall_chart.png used on input line 68.
+Package pdftex.def Info: img/overall_chart.png used on input line 69.
 (pdftex.def)             Requested size: 356.53474pt x 285.46869pt.
  [2]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
  [3 <C:/thesis/img/overall_chart.png>]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ì in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ì in font pplr7t!
  [4]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
 
 <img/cnn_example.jpg, id=23, 2055.68pt x 1541.76pt>
 File: img/cnn_example.jpg Graphic file (type jpg)
  <use img/cnn_example.jpg>
-Package pdftex.def Info: img/cnn_example.jpg used on input line 111.
+Package pdftex.def Info: img/cnn_example.jpg used on input line 112.
 (pdftex.def)             Requested size: 411.12872pt x 308.34654pt.
-Missing character: There is no ‚ in font cmbx12!
-Missing character: There is no Ä in font cmbx12!
-Missing character: There is no ì in font cmbx12!
+Missing character: There is no ‚ in font pplb7t!
+Missing character: There is no Ä in font pplb7t!
+Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (21.12872pt too wide) in paragraph at lines 111--113
+Overfull \hbox (21.12872pt too wide) in paragraph at lines 112--114
 []
  []
 
@@ -201,19 +227,19 @@ Overfull \hbox (21.12872pt too wide) in paragraph at lines 111--113
 File: img/cnn_categories.jpg Graphic file (type jpg)
 
 <use img/cnn_categories.jpg>
-Package pdftex.def Info: img/cnn_categories.jpg used on input line 114.
+Package pdftex.def Info: img/cnn_categories.jpg used on input line 115.
 (pdftex.def)             Requested size: 411.12872pt x 308.34654pt.
-Missing character: There is no ‚ in font cmbx12!
-Missing character: There is no Ä in font cmbx12!
-Missing character: There is no ì in font cmbx12!
-Missing character: There is no ‚ in font cmbx12!
-Missing character: There is no Ä in font cmbx12!
-Missing character: There is no ô in font cmbx12!
-Missing character: There is no ‚ in font cmbx12!
-Missing character: There is no Ä in font cmbx12!
-Missing character: There is no ô in font cmbx12!
+Missing character: There is no ‚ in font pplb7t!
+Missing character: There is no Ä in font pplb7t!
+Missing character: There is no ì in font pplb7t!
+Missing character: There is no ‚ in font pplb7t!
+Missing character: There is no Ä in font pplb7t!
+Missing character: There is no ô in font pplb7t!
+Missing character: There is no ‚ in font pplb7t!
+Missing character: There is no Ä in font pplb7t!
+Missing character: There is no ô in font pplb7t!
 
-Overfull \hbox (21.12872pt too wide) in paragraph at lines 114--116
+Overfull \hbox (21.12872pt too wide) in paragraph at lines 115--117
 []
  []
 
@@ -221,13 +247,13 @@ Overfull \hbox (21.12872pt too wide) in paragraph at lines 114--116
 <img/overall_viz.jpg, id=32, 2055.68pt x 1541.76pt>
 File: img/overall_viz.jpg Graphic file (type jpg)
  <use img/overall_viz.jpg>
-Package pdftex.def Info: img/overall_viz.jpg used on input line 117.
+Package pdftex.def Info: img/overall_viz.jpg used on input line 118.
 (pdftex.def)             Requested size: 411.12872pt x 308.34654pt.
-Missing character: There is no ‚ in font cmbx12!
-Missing character: There is no Ä in font cmbx12!
-Missing character: There is no ì in font cmbx12!
+Missing character: There is no ‚ in font pplb7t!
+Missing character: There is no Ä in font pplb7t!
+Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (21.12872pt too wide) in paragraph at lines 117--119
+Overfull \hbox (21.12872pt too wide) in paragraph at lines 118--120
 []
  []
 
@@ -235,107 +261,114 @@ Overfull \hbox (21.12872pt too wide) in paragraph at lines 117--119
 <img/table.jpg, id=36, 1362.08875pt x 1472.50125pt>
 File: img/table.jpg Graphic file (type jpg)
  <use img/table.jpg>
-Package pdftex.def Info: img/table.jpg used on input line 120.
+Package pdftex.def Info: img/table.jpg used on input line 121.
 (pdftex.def)             Requested size: 408.62978pt x 441.75378pt.
-Missing character: There is no ‚ in font cmbx12!
-Missing character: There is no Ä in font cmbx12!
-Missing character: There is no ì in font cmbx12!
+Missing character: There is no ‚ in font pplb7t!
+Missing character: There is no Ä in font pplb7t!
+Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (18.62978pt too wide) in paragraph at lines 120--122
+Overfull \hbox (18.62978pt too wide) in paragraph at lines 121--123
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
+Underfull \hbox (badness 10000) in paragraph at lines 121--123
 
  []
 
 [8 <C:/thesis/img/overall_viz.jpg>] [9 <C:/thesis/img/table.jpg>]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ì in font cmr12!
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 136.
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ú in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ù in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ì in font pplr7t!
  [10]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ú in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ù in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ú in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ù in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ú in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ù in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ú in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ù in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ú in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ù in font pplr7t!
  [11]
-Underfull \hbox (badness 10000) in paragraph at lines 141--143
+Underfull \hbox (badness 10000) in paragraph at lines 142--144
 
  []
 
-<img/flow.png, id=49, 962.09438pt x 662.475pt>
+[12] <img/flow.png, id=53, 962.09438pt x 662.475pt>
 File: img/flow.png Graphic file (type png)
  <use img/flow.png>
-Package pdftex.def Info: img/flow.png used on input line 145.
+Package pdftex.def Info: img/flow.png used on input line 146.
 (pdftex.def)             Requested size: 432.93846pt x 298.111pt.
-Missing character: There is no ‚ in font cmbx12!
-Missing character: There is no Ä in font cmbx12!
-Missing character: There is no ì in font cmbx12!
+Missing character: There is no ‚ in font pplb7t!
+Missing character: There is no Ä in font pplb7t!
+Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (42.93846pt too wide) in paragraph at lines 144--147
+Overfull \hbox (5.85312pt too wide) in paragraph at lines 145--148
+\OT1/ppl/b/n/12 Flow (http://www.webresourcesdepot.com/beautiful-free-website-t
+raffic-
+ []
+
+
+Overfull \hbox (42.93846pt too wide) in paragraph at lines 145--148
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--147
+Underfull \hbox (badness 10000) in paragraph at lines 145--148
 
  []
 
-[12]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
- <img/flow1.png, id=54, 398.99063pt x 481.04718pt>
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
+<img/flow1.png, id=54, 398.99063pt x 481.04718pt>
 File: img/flow1.png Graphic file (type png)
  <use img/flow1.png>
-Package pdftex.def Info: img/flow1.png used on input line 149.
+Package pdftex.def Info: img/flow1.png used on input line 150.
 (pdftex.def)             Requested size: 398.98965pt x 481.046pt.
-Missing character: There is no ‚ in font cmbx12!
-Missing character: There is no Ä in font cmbx12!
-Missing character: There is no ì in font cmbx12!
+Missing character: There is no ‚ in font pplb7t!
+Missing character: There is no Ä in font pplb7t!
+Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (8.98965pt too wide) in paragraph at lines 148--151
+Overfull \hbox (8.98965pt too wide) in paragraph at lines 149--152
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--151
+Underfull \hbox (badness 10000) in paragraph at lines 149--152
 
  []
 
@@ -344,27 +377,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 148--151
 File: img/google_analytics.png Graphic file (type png)
 
 <use img/google_analytics.png>
-Package pdftex.def Info: img/google_analytics.png used on input line 153.
+Package pdftex.def Info: img/google_analytics.png used on input line 154.
 (pdftex.def)             Requested size: 416.67787pt x 313.01654pt.
-Missing character: There is no ‚ in font cmbx12!
-Missing character: There is no Ä in font cmbx12!
-Missing character: There is no ì in font cmbx12!
+Missing character: There is no ‚ in font pplb7t!
+Missing character: There is no Ä in font pplb7t!
+Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (26.67787pt too wide) in paragraph at lines 152--155
+Overfull \hbox (26.67787pt too wide) in paragraph at lines 153--156
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--155
+Underfull \hbox (badness 10000) in paragraph at lines 153--156
 
  []
 
 [14 <C:/thesis/img/flow1.png>]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--158
+Underfull \hbox (badness 10000) in paragraph at lines 157--159
 
  []
 
@@ -372,140 +405,150 @@ Underfull \hbox (badness 10000) in paragraph at lines 156--158
 File: img/adobe_analytics.png Graphic file (type png)
 
 <use img/adobe_analytics.png>
-Package pdftex.def Info: img/adobe_analytics.png used on input line 160.
+Package pdftex.def Info: img/adobe_analytics.png used on input line 161.
 (pdftex.def)             Requested size: 415.104pt x 331.54118pt.
-Missing character: There is no ‚ in font cmbx12!
-Missing character: There is no Ä in font cmbx12!
-Missing character: There is no ì in font cmbx12!
+Missing character: There is no ‚ in font pplb7t!
+Missing character: There is no Ä in font pplb7t!
+Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (25.104pt too wide) in paragraph at lines 159--162
+Overfull \hbox (25.104pt too wide) in paragraph at lines 160--163
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--162
+Underfull \hbox (badness 10000) in paragraph at lines 160--163
 
  []
 
 [15 <C:/thesis/img/google_analytics.png>]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ô in font cmr12!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ô in font pplr7t!
  [16 <C:/thesis/img/adobe_analytics.png>] [17] [18]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
- [19] [20]
-Overfull \hbox (89.39917pt too wide) in paragraph at lines 248--249
+Overfull \hbox (1.73528pt too wide) in paragraph at lines 203--206
+[]\OT1/ppl/b/n/12 Weeks 10-13 \OT1/ppl/m/n/12 (Re-search and ex-per-i-ment with
+ dif-fer-ent vi-su-al-iza-tions): 
+ []
+
+[19] [20]
+Overfull \hbox (99.60498pt too wide) in paragraph at lines 249--250
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (82.34918pt too wide) in paragraph at lines 258--259
+Overfull \hbox (92.4049pt too wide) in paragraph at lines 259--260
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [21]
-Overfull \hbox (0.82715pt too wide) in paragraph at lines 279--280
-[]\OT1/cmr/m/n/12 Get the value of $[]SERVER["HTTP[]X[]FORWARDED[]FOR"] and loo
+Overfull \hbox (1.31546pt too wide) in paragraph at lines 279--280
+[]\OT1/ppl/m/n/12 Get the value of $[]SERVER["REMOTE[]ADDR"] and look up its va
+lue
+ []
+
+
+Overfull \hbox (2.07187pt too wide) in paragraph at lines 280--281
+[]\OT1/ppl/m/n/12 Get the value of $[]SERVER["HTTP[]X[]FORWARDED[]FOR"] and loo
 k
  []
 
 [22]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 285.
-
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
-File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 285.
-
-Overfull \hbox (18.89929pt too wide) in paragraph at lines 292--294
+Overfull \hbox (27.60425pt too wide) in paragraph at lines 293--295
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
 
+LaTeX Font Info:    Try loading font information for OML+ppl on input line 299.
 
-Overfull \hbox (61.19922pt too wide) in paragraph at lines 309--310
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlppl.fd"
+File: omlppl.fd 
+)
+LaTeX Font Info:    Font shape `OML/ppl/m/n' in size <12> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 299.
+
+Overfull \hbox (70.80469pt too wide) in paragraph at lines 310--311
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (4.79932pt too wide) in paragraph at lines 312--313
-[][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [23]
-Overfull \hbox (11.8493pt too wide) in paragraph at lines 316--317
+Overfull \hbox (13.2041pt too wide) in paragraph at lines 313--314
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (20.40417pt too wide) in paragraph at lines 317--319
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (11.45633pt too wide) in paragraph at lines 332--333
-[]\OT1/cmr/bx/n/12 JSON (JavaScript Ob-ject No-ta-tion)\OT1/cmr/m/n/12 : A ligh
-tweight data-interchange
+[24]
+Overfull \hbox (7.85423pt too wide) in paragraph at lines 345--346
+[]\OT1/ppl/b/n/12 LAMP\OT1/ppl/m/n/12 : A web de-vel-op-ment en-vi-ron-ment com
+-prised of a Linux server,
  []
 
-[24] [25]
-Overfull \hbox (3.55147pt too wide) in paragraph at lines 338--339
-\OT1/cmr/m/n/12 ics that has sup-port for in-ter-ac-tiv-ity and an-i-ma-tion (s
+[25]
+Overfull \hbox (7.56728pt too wide) in paragraph at lines 350--351
+[]\OT1/ppl/b/n/12 SVG\OT1/ppl/m/n/12 : An XML-based vec-tor im-age for-mat for 
+two-dimensional graph-
+ []
+
+
+Overfull \hbox (13.03844pt too wide) in paragraph at lines 350--351
+\OT1/ppl/m/n/12 ics that has sup-port for in-ter-ac-tiv-ity and an-i-ma-tion (s
 ource: Wikipedia). 
  []
 
-Missing character: There is no ¬ in font cmr12!
-Missing character: There is no ® in font cmr12!
-Missing character: There is no ‚ in font cmti12!
-Missing character: There is no Ä in font cmti12!
-Missing character: There is no ì in font cmti12!
-Missing character: There is no ‚ in font cmti12!
-Missing character: There is no Ä in font cmti12!
-Missing character: There is no ú in font cmti12!
-Missing character: There is no ‚ in font cmti12!
-Missing character: There is no Ä in font cmti12!
-Missing character: There is no ù in font cmti12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ì in font cmr12!
+Missing character: There is no ¬ in font pplr7t!
+Missing character: There is no ® in font pplr7t!
+Missing character: There is no ‚ in font pplri7t!
+Missing character: There is no Ä in font pplri7t!
+Missing character: There is no ì in font pplri7t!
+Missing character: There is no ‚ in font pplri7t!
+Missing character: There is no Ä in font pplri7t!
+Missing character: There is no ú in font pplri7t!
+Missing character: There is no ‚ in font pplri7t!
+Missing character: There is no Ä in font pplri7t!
+Missing character: There is no ù in font pplri7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ì in font pplr7t!
 
-Underfull \hbox (badness 3668) in paragraph at lines 352--353
-[]\OT1/cmr/m/n/12 A. Cock-burn, A. Karl-son, and B. B. Bed-er-son, \OT1/cmr/m/i
+Underfull \hbox (badness 5274) in paragraph at lines 364--365
+[]\OT1/ppl/m/n/12 A. Cock-burn, A. Karl-son, and B. B. Bed-er-son, \OT1/ppl/m/i
 t/12 A re-view of
  []
 
-Missing character: There is no ‚ in font cmti12!
-Missing character: There is no Ä in font cmti12!
-Missing character: There is no ú in font cmti12!
-Missing character: There is no ‚ in font cmti12!
-Missing character: There is no Ä in font cmti12!
-Missing character: There is no ù in font cmti12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ì in font cmr12!
-Missing character: There is no ¬ in font cmr12!
-Missing character: There is no ® in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ì in font cmr12!
+Missing character: There is no ‚ in font pplri7t!
+Missing character: There is no Ä in font pplri7t!
+Missing character: There is no ú in font pplri7t!
+Missing character: There is no ‚ in font pplri7t!
+Missing character: There is no Ä in font pplri7t!
+Missing character: There is no ù in font pplri7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ì in font pplr7t!
+Missing character: There is no ¬ in font pplr7t!
+Missing character: There is no ® in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ì in font pplr7t!
 [26] [27] (C:\thesis\thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 2544 strings out of 493921
- 36242 string characters out of 3144864
- 104960 words of memory out of 3000000
- 5837 multiletter control sequences out of 15000+200000
- 8241 words of font info for 29 fonts, out of 3000000 for 9000
+ 2698 strings out of 493921
+ 38613 string characters out of 3144864
+ 104685 words of memory out of 3000000
+ 5967 multiletter control sequences out of 15000+200000
+ 16282 words of font info for 45 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,6n,32p,2518b,1387s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (28 pages, 3638359 bytes).
+ 27i,6n,32p,2518b,1389s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/
+dvips/fontname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/u
+plb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pf
+b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on thesis.pdf (28 pages, 3641897 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
+ 124 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
