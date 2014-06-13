@@ -200,15 +200,18 @@ Deliverable --- Relational database to house all data pertinent to website traff
 Here, I plan to build PHP classes and functions that will connect to the database to store the web traffic data. In addition, I will write the code that will query the database in order to extract and convey meaningful data. \\
 Deliverable --- Full server-side code base that collects and retrieves web traffic data.
 
-\item[] \textbf{Weeks 10-13} (Research and experiment with different visualizations): \\
+\item[] \textbf{Weeks 10-12} (Implement mock news site): \\
+Here, I plan to build a mini news site that contains several categories. Then, I will create several articles under each of the created categories. I am inclined to building this mock site in Wordpress, as it is commonplace and reflective of the archetype of your common CMS site.
+
+\item[] \textbf{Weeks 13-16} (Research and experiment with different visualizations): \\
 Before I commit to a visualization, I would like to make sure that it is the most fit for my domain at hand. Thus I will test my data inside a few viable options, before fully scoping my visualization. \\
 Deliverable --- An existing or custom designed visualization template to convey near real-time web traffic data.
 
-\item[] \textbf{Weeks 14-16} (Implement final visualization): \\
+\item[] \textbf{Weeks 16-18} (Implement final visualization): \\
 Once I have selected my visualization of choice, I will code and implement it. \\
 Deliverable --- A fully implemented web visualization which interacts with the server-side database.
 
-\item[] \textbf{Weeks 16-19} (Test with users and apply final touches): \\
+\item[] \textbf{Weeks 18-20} (Test with users and apply final touches): \\
 I will attempt to reach a wide and diverse audience for feedback. I will incorporate the meaningful feedback into my refinement iteration. "Meaningful" here represents anything significant enough to affect the usability of the visualization.
 
 \end{itemize}
@@ -327,7 +330,22 @@ One metric that I would be curious to attain is how long the average user spends
 \item Based on the average read speed, calculate the time spent on the news article. If the page is kept open indefinitely by the reader, I will simply use the maximum expected read time for that article. While this is in no way 100\% accurate, it will be highly reflective of the level of interest with the visited articles. 
 \end{enumerate}     
 
-\noindent Based on an ophthalmology study that consisted of 50 native English-speaking individuals (average age 30.38$\pm$9.44 years; 16 university students, 18 academics, and 16 non-academics)-- the average reading speed came out to be 201.53$\pm$35.88 words per minute(wpm) for short sentences, and 215.01$\pm$30.37 wpm for long paragraphs\cite{radner}.  
+\noindent Based on an ophthalmology study that consisted of 50 native English-speaking individuals (average age 30.38$\pm$9.44 years; 16 university students, 18 academics, and 16 non-academics) -- the average reading speed came out to be 201.53$\pm$35.88 words per minute(wpm) for short sentences, and 215.01$\pm$30.37 wpm for long paragraphs\cite{radner}. For the scope of this project, I will use the average of 200 wpm to calculate the maximum average time spent on a news article.  
+
+\vfill
+
+\subsection{Database Design}
+\subsubsection{Data Storage}
+Based on the data that will need to be captured, below are the fields that should be created:
+\begin{itemize}
+\item \textbf{Visitor IP address}: This will basically store the IP address of the visitor reading the news article. In order to avoid capturing page refreshes as new sessions, I will set a threshold of 10 minutes - whereby the server checks if the visitor has visited the article in the past 10 minutes
+\item \textbf{Time Visited}: This should store a timestamp (in GMT) of when the user visited 
+\item \textbf{Timezone}: This will be helpful in determining time differences from GMT
+\item \textbf{Country}: This will store the name of the country where the visitor is from
+\item \textbf{Region}: Region pertains to the area within the country where the visitor is from
+\item \textbf{Read Time}: This will store the time taken for the reader to have finished reading the article. This should be calculated in seconds
+
+\end{itemize}
 
 \vfill
 

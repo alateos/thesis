@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.27)  4 JUN 2014 12:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.27)  13 JUN 2014 11:44
 entering extended mode
 **thesis.tex
 (C:\thesis\thesis.tex
@@ -425,74 +425,74 @@ Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no ™ in font pplr7t!
  [16 <C:/thesis/img/adobe_analytics.png>] [17] [18]
-Overfull \hbox (1.73528pt too wide) in paragraph at lines 203--206
-[]\OT1/ppl/b/n/12 Weeks 10-13 \OT1/ppl/m/n/12 (Re-search and ex-per-i-ment with
+Overfull \hbox (1.73528pt too wide) in paragraph at lines 206--209
+[]\OT1/ppl/b/n/12 Weeks 13-16 \OT1/ppl/m/n/12 (Re-search and ex-per-i-ment with
  dif-fer-ent vi-su-al-iza-tions): 
  []
 
 [19] [20]
-Overfull \hbox (99.60498pt too wide) in paragraph at lines 249--250
+Overfull \hbox (99.60498pt too wide) in paragraph at lines 252--253
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (92.4049pt too wide) in paragraph at lines 259--260
+Overfull \hbox (92.4049pt too wide) in paragraph at lines 262--263
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [21]
-Overfull \hbox (1.31546pt too wide) in paragraph at lines 279--280
+Overfull \hbox (1.31546pt too wide) in paragraph at lines 282--283
 []\OT1/ppl/m/n/12 Get the value of $[]SERVER["REMOTE[]ADDR"] and look up its va
 lue
  []
 
 
-Overfull \hbox (2.07187pt too wide) in paragraph at lines 280--281
+Overfull \hbox (2.07187pt too wide) in paragraph at lines 283--284
 []\OT1/ppl/m/n/12 Get the value of $[]SERVER["HTTP[]X[]FORWARDED[]FOR"] and loo
 k
  []
 
 [22]
-Overfull \hbox (27.60425pt too wide) in paragraph at lines 293--295
+Overfull \hbox (27.60425pt too wide) in paragraph at lines 296--298
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-LaTeX Font Info:    Try loading font information for OML+ppl on input line 299.
+LaTeX Font Info:    Try loading font information for OML+ppl on input line 302.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlppl.fd"
 File: omlppl.fd 
 )
 LaTeX Font Info:    Font shape `OML/ppl/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 299.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 302.
 
-Overfull \hbox (70.80469pt too wide) in paragraph at lines 310--311
+Overfull \hbox (70.80469pt too wide) in paragraph at lines 313--314
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [23]
-Overfull \hbox (13.2041pt too wide) in paragraph at lines 313--314
+Overfull \hbox (13.2041pt too wide) in paragraph at lines 316--317
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (20.40417pt too wide) in paragraph at lines 317--319
+Overfull \hbox (20.40417pt too wide) in paragraph at lines 320--322
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[24]
-Overfull \hbox (7.85423pt too wide) in paragraph at lines 345--346
+[24] [25]
+Overfull \hbox (7.85423pt too wide) in paragraph at lines 363--364
 []\OT1/ppl/b/n/12 LAMP\OT1/ppl/m/n/12 : A web de-vel-op-ment en-vi-ron-ment com
 -prised of a Linux server,
  []
 
-[25]
-Overfull \hbox (7.56728pt too wide) in paragraph at lines 350--351
+[26]
+Overfull \hbox (7.56728pt too wide) in paragraph at lines 368--369
 []\OT1/ppl/b/n/12 SVG\OT1/ppl/m/n/12 : An XML-based vec-tor im-age for-mat for 
 two-dimensional graph-
  []
 
 
-Overfull \hbox (13.03844pt too wide) in paragraph at lines 350--351
+Overfull \hbox (13.03844pt too wide) in paragraph at lines 368--369
 \OT1/ppl/m/n/12 ics that has sup-port for in-ter-ac-tiv-ity and an-i-ma-tion (s
 ource: Wikipedia). 
  []
@@ -512,7 +512,7 @@ Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no “ in font pplr7t!
 
-Underfull \hbox (badness 5274) in paragraph at lines 364--365
+Underfull \hbox (badness 5274) in paragraph at lines 382--383
 []\OT1/ppl/m/n/12 A. Cock-burn, A. Karl-son, and B. B. Bed-er-son, \OT1/ppl/m/i
 t/12 A re-view of
  []
@@ -531,7 +531,7 @@ Missing character: There is no ¨ in font pplr7t!
 Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no “ in font pplr7t!
-[26] [27] (C:\thesis\thesis.aux) ) 
+[27] [28] (C:\thesis\thesis.aux) ) 
 Here is how much of TeX's memory you used:
  2698 strings out of 493921
  38613 string characters out of 3144864
@@ -546,9 +546,9 @@ fonts/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/u
 plb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pf
 b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on thesis.pdf (28 pages, 3641897 bytes).
+Output written on thesis.pdf (29 pages, 3643593 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
+ 127 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
