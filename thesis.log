@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.27)  13 JUN 2014 11:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.27)  16 JUN 2014 12:25
 entering extended mode
 **thesis.tex
 (C:\thesis\thesis.tex
@@ -479,20 +479,55 @@ Overfull \hbox (20.40417pt too wide) in paragraph at lines 320--322
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[24] [25]
-Overfull \hbox (7.85423pt too wide) in paragraph at lines 363--364
+[24]
+Overfull \hbox (7.06247pt too wide) in paragraph at lines 349--350
+[]\OT1/ppl/b/n/12 Article URL\OT1/ppl/m/n/12 : this will be needed to en-able t
+he user to nav-i-gate through
+ []
+
+[25]
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <14.4> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 358.
+
+Overfull \hbox (49.72914pt too wide) in paragraph at lines 357--364
+\OT1/ppl/b/n/14.4 hit ($[]$, time-zone, coun-try, re-gion, read[]time) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 357--364
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 357--364
+
+ []
+
+
+Overfull \hbox (11.80003pt too wide) in paragraph at lines 357--364
+\OT1/ppl/b/n/14.4 article ($[]$, cat-e-gory[]name, ar-ti-cle[]url, ti-tle, sam-
+ple[]text,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 357--364
+
+ []
+
+[26]
+Overfull \hbox (7.85423pt too wide) in paragraph at lines 379--380
 []\OT1/ppl/b/n/12 LAMP\OT1/ppl/m/n/12 : A web de-vel-op-ment en-vi-ron-ment com
 -prised of a Linux server,
  []
 
-[26]
-Overfull \hbox (7.56728pt too wide) in paragraph at lines 368--369
+[27]
+Overfull \hbox (7.56728pt too wide) in paragraph at lines 384--385
 []\OT1/ppl/b/n/12 SVG\OT1/ppl/m/n/12 : An XML-based vec-tor im-age for-mat for 
 two-dimensional graph-
  []
 
 
-Overfull \hbox (13.03844pt too wide) in paragraph at lines 368--369
+Overfull \hbox (13.03844pt too wide) in paragraph at lines 384--385
 \OT1/ppl/m/n/12 ics that has sup-port for in-ter-ac-tiv-ity and an-i-ma-tion (s
 ource: Wikipedia). 
  []
@@ -512,7 +547,7 @@ Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no “ in font pplr7t!
 
-Underfull \hbox (badness 5274) in paragraph at lines 382--383
+Underfull \hbox (badness 5274) in paragraph at lines 398--399
 []\OT1/ppl/m/n/12 A. Cock-burn, A. Karl-son, and B. B. Bed-er-son, \OT1/ppl/m/i
 t/12 A re-view of
  []
@@ -531,24 +566,25 @@ Missing character: There is no ¨ in font pplr7t!
 Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no “ in font pplr7t!
-[27] [28] (C:\thesis\thesis.aux) ) 
+[28] [29] (C:\thesis\thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 2698 strings out of 493921
- 38613 string characters out of 3144864
+ 2716 strings out of 493921
+ 38876 string characters out of 3144864
  104685 words of memory out of 3000000
- 5967 multiletter control sequences out of 15000+200000
- 16282 words of font info for 45 fonts, out of 3000000 for 9000
+ 5983 multiletter control sequences out of 15000+200000
+ 22628 words of font info for 61 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,6n,32p,2518b,1389s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/
 dvips/fontname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/u
-plb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pf
-b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on thesis.pdf (29 pages, 3643593 bytes).
+plb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplbi8a.p
+fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on thesis.pdf (30 pages, 3653848 bytes).
 PDF statistics:
- 127 PDF objects out of 1000 (max. 8388607)
+ 134 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -344,8 +344,24 @@ Based on the data that will need to be captured, below are the fields that shoul
 \item \textbf{Country}: This will store the name of the country where the visitor is from
 \item \textbf{Region}: Region pertains to the area within the country where the visitor is from
 \item \textbf{Read Time}: This will store the time taken for the reader to have finished reading the article. This should be calculated in seconds
+\item \textbf{Article ID}: This will be the unique identifier and should be captured as is from the host's CMS. This way, future references could be made easily without having to go through matching algorithms
+\item \textbf{Category ID}: This will be the unique identifier of the category, also as it appears in the corresponding CMS
+\item \textbf{Article URL}: this will be needed to enable the user to navigate through the visualization to the intended article
+\item \textbf{Article title}: The title of the article as it appears in the CMS or on the news site
+\item \textbf{Sample text}: In the visualization, some of the text from the body will be excerpted upon the user hovering on a select article
+\item \textbf{Sample picture}: In the visualization, the user will need to see a preview pic of the article when applicable 
 
 \end{itemize}
+
+\subsubsection{Database Tables}
+Here, I will adhere to the principles of relational database normalization in order to maximize efficiency and eliminate redundancy. For the scope of this project, all the data pertinent to a web hit can be stored in a single table: \\ 
+{\large\textbf{hit (\underline{ip, time\_visited, \textit{article\_id}}, timezone, country, region, read\_time)}} \\ \\
+The underline signifies the primary key. The primary key is the field(s) that are enough to determine the rest of the information for any row instance. In this case, the IP address, article ID, and time of visit jointly determine the timezone, country, region, and read time. \textit{article\_id} is italicized since it is a foreign key -- that is, it represents a primary key in another table. The time visited will be abstracted to hour:minute. Therefore, seconds will not be accounted for in the visit's time stamp. The read time will default to the maximum read time as calculated by the article's length. This assumes that the user will stay on the article page indefinitely. In the event that the user does leave the page, this value would then register the actual read time.
+\\ \\
+The second table needed will contain all the metadata pertinent to the visited article:\\
+{\large\textbf{article (\underline{article\_id}, category\_name, article\_url, title, sample\_text, sample\_pic)}} \\ \\
+It is important to note here that all of this data will be communicated via the server side script which will be embedded in each loaded article. 
+
 
 \vfill
 

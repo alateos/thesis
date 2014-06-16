@@ -13,4 +13,5 @@
 \contentsline {subsubsection}{\numberline {5.1.3}Average Read Time}{24}
 \contentsline {subsection}{\numberline {5.2}Database Design}{25}
 \contentsline {subsubsection}{\numberline {5.2.1}Data Storage}{25}
-\contentsline {section}{\numberline {6}Glossary}{26}
+\contentsline {subsubsection}{\numberline {5.2.2}Database Tables}{26}
+\contentsline {section}{\numberline {6}Glossary}{27}
