@@ -360,8 +360,33 @@ The underline signifies the primary key. The primary key is the field(s) that ar
 \\ \\
 The second table needed will contain all the metadata pertinent to the visited article:\\
 {\large\textbf{article (\underline{article\_id}, category\_name, article\_url, title, sample\_text, sample\_pic)}} \\ \\
+
+The third table needed will contain metadata pertinent to the category of the visited article:\\
+{\large\textbf{category (\underline{category\_id}, category\_name})}
+\\ \\
+
 It is important to note here that all of this data will be communicated via the server side script which will be embedded in each loaded article. 
 
+\subsubsection{MySQL Database}
+For this project, I will be using MySQL since I have good experience with it and for its being open source. MySQL is a relational database management system. Relational databases are those that adhere to relational database design, which relies on the fundamentals of relational algebra and relational calculus. The main tenet of relational design is to maximize efficiency and eliminate any redundancy in the data being stored.
+
+I created a database called \textbf{alaini\_news\_viz} on my web host. For this, I created two users:\\
+\begin{itemize}
+\item \textbf{alaini5\_newsread}: This account will be solely used to read from the database. Ultimately, it will be used to invoke the visualization by the visitor/end user
+\item \textbf{alaini5\_newsedit}: This account will mainly be used to register the IP hits and read times communicated to the server
+\end{itemize}
+
+I created 3 tables in MySQL using phpMyAdmin, an open source PHP based GUI that facilitates interacting with the MySQL system:
+\begin{enumerate}
+\item{\textbf{article}}\\ \\
+\includegraphics[scale=0.6]{img/article_table}
+\item{\textbf{category}}\\ \\
+\includegraphics[scale=0.6]{img/category_table}
+\item{\textbf{hit}}\\ \\
+\includegraphics[scale=0.6]{img/hit_table}
+\end{enumerate} 
+
+\subsection{PHP server-side code}
 
 \vfill
 
