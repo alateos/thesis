@@ -387,6 +387,14 @@ I created 3 tables in MySQL using phpMyAdmin, an open source PHP based GUI that 
 \end{enumerate} 
 
 \subsection{PHP server-side code}
+\subsubsection{Configuration and database connection}
+Here, I created two files:
+\begin{enumerate}
+\item{\textbf{constants.php:}} Holds all the constants that will be defined across the application, inclusive of those for the database connection
+\item{\textbf{db\_connect.php:}} Performs the PDO database connection based on the given connection parameters
+\end{enumerate}
+Note that both of these files are stored one directory above \textbf{public\_html/} for security reasons. This folder is called \textbf{lib/}. Thus, the two files are not accessible directly to the public and accordingly need to be included in other PHP files
+
 
 \vfill
 
