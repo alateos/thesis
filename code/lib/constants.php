@@ -10,6 +10,6 @@
 	
 	// the amount of time that needs to pass before we categorize the page hit as a new one. 
 	// this value is in seconds and will be set to 10 minutes by default
-	define(VISITED_WITHIN,6000);
+	define(WAIT_LIMIT,600);
 	
 ?>

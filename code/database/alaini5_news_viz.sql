@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 10, 2014 at 03:13 PM
+-- Generation Time: Jul 28, 2014 at 02:22 AM
 -- Server version: 5.6.17-log
 -- PHP Version: 5.4.23
 
@@ -55,15 +55,27 @@ CREATE TABLE IF NOT EXISTS `category` (
 --
 
 CREATE TABLE IF NOT EXISTS `hit` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `ip` varchar(15) NOT NULL,
-  `time_visited` datetime NOT NULL,
+  `time_visited` int(15) NOT NULL,
   `article_id` int(11) NOT NULL,
   `timezone` varchar(30) NOT NULL,
   `country` varchar(80) NOT NULL,
   `region` varchar(80) NOT NULL,
-  `read_time` int(5) NOT NULL,
-  PRIMARY KEY (`ip`,`time_visited`,`article_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `read_time` int(5) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `hit`
+--
+
+INSERT INTO `hit` (`id`, `ip`, `time_visited`, `article_id`, `timezone`, `country`, `region`, `read_time`) VALUES
+(1, '96.255.182.39', 1406525806, 1, 'America/New_York', 'United States', 'Virginia', 0),
+(2, '96.255.182.39', 1406525958, 1, 'America/New_York', 'United States', 'Virginia', 0),
+(3, '96.255.182.39', 1406526025, 1, 'America/New_York', 'United States', 'Virginia', 0),
+(4, '96.255.182.39', 1406526072, 1, 'America/New_York', 'United States', 'Virginia', 0),
+(7, '76.119.208.108', 1406526563, 1, 'America/New_York', 'United States', 'Massachusetts', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
