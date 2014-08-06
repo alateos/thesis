@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.27)  31 JUL 2014 10:57
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.6)  6 AUG 2014 11:19
 entering extended mode
 **thesis.tex
 (C:\thesis\thesis.tex
@@ -425,112 +425,107 @@ Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no ™ in font pplr7t!
  [16 <C:/thesis/img/adobe_analytics.png>] [17] [18]
-Overfull \hbox (1.73528pt too wide) in paragraph at lines 206--209
+Overfull \hbox (1.73528pt too wide) in paragraph at lines 207--210
 []\OT1/ppl/b/n/12 Weeks 13-16 \OT1/ppl/m/n/12 (Re-search and ex-per-i-ment with
  dif-fer-ent vi-su-al-iza-tions): 
  []
 
 [19] [20]
-Overfull \hbox (99.60498pt too wide) in paragraph at lines 252--253
+Overfull \hbox (99.60498pt too wide) in paragraph at lines 253--254
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (92.4049pt too wide) in paragraph at lines 262--263
+Overfull \hbox (92.4049pt too wide) in paragraph at lines 263--264
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [21]
-Overfull \hbox (1.31546pt too wide) in paragraph at lines 282--283
+Overfull \hbox (1.31546pt too wide) in paragraph at lines 283--284
 []\OT1/ppl/m/n/12 Get the value of $[]SERVER["REMOTE[]ADDR"] and look up its va
 lue
  []
 
 
-Overfull \hbox (2.07187pt too wide) in paragraph at lines 283--284
+Overfull \hbox (2.07187pt too wide) in paragraph at lines 284--285
 []\OT1/ppl/m/n/12 Get the value of $[]SERVER["HTTP[]X[]FORWARDED[]FOR"] and loo
 k
  []
 
 [22]
-Overfull \hbox (27.60425pt too wide) in paragraph at lines 296--298
+Overfull \hbox (27.60425pt too wide) in paragraph at lines 297--299
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-LaTeX Font Info:    Try loading font information for OML+ppl on input line 302.
+LaTeX Font Info:    Try loading font information for OML+ppl on input line 303.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlppl.fd"
 File: omlppl.fd 
 )
 LaTeX Font Info:    Font shape `OML/ppl/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 302.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 303.
 
-Overfull \hbox (70.80469pt too wide) in paragraph at lines 313--314
+Overfull \hbox (70.80469pt too wide) in paragraph at lines 314--315
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [23]
-Overfull \hbox (13.2041pt too wide) in paragraph at lines 316--317
+Overfull \hbox (13.2041pt too wide) in paragraph at lines 317--318
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (20.40417pt too wide) in paragraph at lines 320--322
+Overfull \hbox (20.40417pt too wide) in paragraph at lines 321--323
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [24]
-Overfull \hbox (7.06247pt too wide) in paragraph at lines 349--350
+Overfull \hbox (7.06247pt too wide) in paragraph at lines 350--351
 []\OT1/ppl/b/n/12 Article URL\OT1/ppl/m/n/12 : this will be needed to en-able t
 he user to nav-i-gate through
  []
 
 [25]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <14.4> not available
-(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 358.
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 359.
 
-Overfull \hbox (49.72914pt too wide) in paragraph at lines 357--363
-\OT1/ppl/b/n/14.4 hit ($[]$, time-zone, coun-try, re-gion, read[]time) 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 357--363
+Underfull \hbox (badness 10000) in paragraph at lines 358--364
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--363
+Underfull \hbox (badness 10000) in paragraph at lines 358--364
 
  []
 
 
-Overfull \hbox (11.80003pt too wide) in paragraph at lines 357--363
+Overfull \hbox (11.80003pt too wide) in paragraph at lines 358--364
 \OT1/ppl/b/n/14.4 article ($[]$, cat-e-gory[]name, ar-ti-cle[]url, ti-tle, sam-
 ple[]text,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--363
+Underfull \hbox (badness 10000) in paragraph at lines 358--364
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--363
+Underfull \hbox (badness 10000) in paragraph at lines 358--364
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--367
+Underfull \hbox (badness 10000) in paragraph at lines 365--368
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--367
+Underfull \hbox (badness 10000) in paragraph at lines 365--368
 
  []
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 373--374
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
 
  []
 
@@ -538,10 +533,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 373--374
 File: img/article_table.png Graphic file (type png)
 
 <use img/article_table.png>
-Package pdftex.def Info: img/article_table.png used on input line 382.
+Package pdftex.def Info: img/article_table.png used on input line 383.
 (pdftex.def)             Requested size: 268.30444pt x 236.23438pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 381--383
+Underfull \hbox (badness 10000) in paragraph at lines 382--384
 
  []
 
@@ -549,38 +544,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 381--383
 File: img/category_table.png Graphic file (type png)
 
 <use img/category_table.png>
-Package pdftex.def Info: img/category_table.png used on input line 384.
+Package pdftex.def Info: img/category_table.png used on input line 385.
 (pdftex.def)             Requested size: 233.07254pt x 204.61601pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--385
+Underfull \hbox (badness 10000) in paragraph at lines 384--386
 
  []
 
 [27 <C:/thesis/img/article_table.png>]
-<img/hit_table.png, id=109, 386.94562pt x 414.04688pt>
+<img/hit_table.png, id=109, 403.5075pt x 450.18187pt>
 File: img/hit_table.png Graphic file (type png)
  <use img/hit_table.png>
-Package pdftex.def Info: img/hit_table.png used on input line 386.
-(pdftex.def)             Requested size: 232.16916pt x 248.43004pt.
+Package pdftex.def Info: img/hit_table.png used on input line 387.
+(pdftex.def)             Requested size: 242.10637pt x 270.1112pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 385--387
+Underfull \hbox (badness 10000) in paragraph at lines 386--388
 
  []
 
 [28 <C:/thesis/img/category_table.png> <C:/thesis/img/hit_table.png>] [29]
-Overfull \hbox (7.85423pt too wide) in paragraph at lines 411--412
+Overfull \hbox (7.85423pt too wide) in paragraph at lines 412--413
 []\OT1/ppl/b/n/12 LAMP\OT1/ppl/m/n/12 : A web de-vel-op-ment en-vi-ron-ment com
 -prised of a Linux server,
  []
 
 [30]
-Overfull \hbox (7.56728pt too wide) in paragraph at lines 416--417
+Overfull \hbox (7.56728pt too wide) in paragraph at lines 417--418
 []\OT1/ppl/b/n/12 SVG\OT1/ppl/m/n/12 : An XML-based vec-tor im-age for-mat for 
 two-dimensional graph-
  []
 
 
-Overfull \hbox (13.03844pt too wide) in paragraph at lines 416--417
+Overfull \hbox (13.03844pt too wide) in paragraph at lines 417--418
 \OT1/ppl/m/n/12 ics that has sup-port for in-ter-ac-tiv-ity and an-i-ma-tion (s
 ource: Wikipedia). 
  []
@@ -600,7 +595,7 @@ Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no “ in font pplr7t!
 
-Underfull \hbox (badness 5274) in paragraph at lines 430--431
+Underfull \hbox (badness 5274) in paragraph at lines 431--432
 []\OT1/ppl/m/n/12 A. Cock-burn, A. Karl-son, and B. B. Bed-er-son, \OT1/ppl/m/i
 t/12 A re-view of
  []
@@ -622,7 +617,7 @@ Missing character: There is no “ in font pplr7t!
 [31] [32] (C:\thesis\thesis.aux) ) 
 Here is how much of TeX's memory you used:
  2732 strings out of 493921
- 39227 string characters out of 3144864
+ 39227 string characters out of 3144865
  104685 words of memory out of 3000000
  5995 multiletter control sequences out of 15000+200000
  23303 words of font info for 62 fonts, out of 3000000 for 9000
@@ -635,7 +630,7 @@ nts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/u
 plb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplbi8a.p
 fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/P
 rogram Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on thesis.pdf (33 pages, 3750773 bytes).
+Output written on thesis.pdf (33 pages, 3752903 bytes).
 PDF statistics:
  147 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
