@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.27)  14 JUL 2014 12:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.27)  31 JUL 2014 10:57
 entering extended mode
 **thesis.tex
 (C:\thesis\thesis.tex
@@ -568,19 +568,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 385--387
  []
 
 [28 <C:/thesis/img/category_table.png> <C:/thesis/img/hit_table.png>] [29]
-Overfull \hbox (7.85423pt too wide) in paragraph at lines 412--413
+Overfull \hbox (7.85423pt too wide) in paragraph at lines 411--412
 []\OT1/ppl/b/n/12 LAMP\OT1/ppl/m/n/12 : A web de-vel-op-ment en-vi-ron-ment com
 -prised of a Linux server,
  []
 
 [30]
-Overfull \hbox (7.56728pt too wide) in paragraph at lines 417--418
+Overfull \hbox (7.56728pt too wide) in paragraph at lines 416--417
 []\OT1/ppl/b/n/12 SVG\OT1/ppl/m/n/12 : An XML-based vec-tor im-age for-mat for 
 two-dimensional graph-
  []
 
 
-Overfull \hbox (13.03844pt too wide) in paragraph at lines 417--418
+Overfull \hbox (13.03844pt too wide) in paragraph at lines 416--417
 \OT1/ppl/m/n/12 ics that has sup-port for in-ter-ac-tiv-ity and an-i-ma-tion (s
 ource: Wikipedia). 
  []
@@ -600,7 +600,7 @@ Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no “ in font pplr7t!
 
-Underfull \hbox (badness 5274) in paragraph at lines 431--432
+Underfull \hbox (badness 5274) in paragraph at lines 430--431
 []\OT1/ppl/m/n/12 A. Cock-burn, A. Karl-son, and B. B. Bed-er-son, \OT1/ppl/m/i
 t/12 A re-view of
  []

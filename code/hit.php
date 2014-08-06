@@ -1,4 +1,7 @@
 <?php
+	/**
+		This class is responsible for registering the user visits into the database
+	*/
 	class Hit {
 		private $db = "";
 		
@@ -6,7 +9,10 @@
 			$this->db=$db;
 		}
 		
-		public function registerHit($article_id) {
+		/**
+			Records ip, country, region, timezone, time visited, and article id
+		*/
+		public function register($article_id) {
 			$data = $this->getHitData();
 			$country = $data[0];
 			$ip = $data[1];
@@ -14,17 +20,23 @@
 			$timezone = $data[3];
 			$time_visited = $data[4];
 			
+			// get the last time this ip address visited the specified article
 			$last_visit_time = $this->checkLastVisited($ip,$article_id);
 
+			// if the last time this ip visited is greater than our specified wait limit, then record the visit as a new hit
 			if(($time_visited - $last_visit_time) > WAIT_LIMIT) {
 				$sql = sprintf("insert into hit(ip,time_visited,article_id,timezone,country,region,read_time) values('%s','%d','%d','%s','%s','%s','%d')",$ip,$time_visited,$article_id,$timezone,$country,$region,$read_time);
 
 				$this->db->query($sql);	
 			}
 			
+			// return the id of the inserted record to the client page, so that it may be used to track read time
 			return $this->db->lastInsertID();
 		}
 		
+		/**
+			Returns the last visited time, in Unix timestamp
+		*/
 		private function checkLastVisited($ip,$article_id) {
 			$sql = "select * from hit where article_id=$article_id and ip='$ip' order by time_visited desc limit 1";
 			foreach($this->db->query($sql) as $row) {
@@ -33,10 +45,17 @@
 			return $last_visited;
 		}
 		
+		/**
+			Sets timezone
+		*/
 		private function setTimezone($timezone) {
 			date_default_timezone_set($timezone);
 		}
 		
+		/**
+			Returns a data array that includes the country of origin, region, ip address, and timezone of visitor.
+			The 3rd party API used to extract the data is http://www.telize.com
+		*/
 		private function getHitData() {
 			$remote_addr = $_SERVER["REMOTE_ADDR"];
 			$x_forwarded_for = $_SERVER["HTTP_X_FORWARDED_FOR"];
@@ -45,7 +64,7 @@
 			$url1 = "http://www.telize.com/geoip/" . $remote_addr; 
 			$url2 = "http://www.telize.com/geoip/" . $x_forwarded_for; 
 
-			// Get the country for the ip behind the first exposed remote address (from www.telize.com)
+			// get the country for the ip behind the first exposed remote address (from www.telize.com)
 			if($remote_addr) {
 				$results1 = file_get_contents($url1);
 				$results1 = json_decode($results1);
@@ -55,7 +74,7 @@
 				$ip = $remote_addr;
 			}
 			
-			// Get the country for the ip behind the second exposed remote address (from www.telize.com)
+			// get the country for the ip behind the second exposed remote address (from www.telize.com)
 			if($x_forwarded_for) {
 				$results2 = file_get_contents($url2);
 				$results2 = json_decode($results2);
@@ -65,6 +84,7 @@
 				$ip = $x_forwarded_for;
 			}
 			
+			// determines the true country of origin, depending on whether the user is behind a proxy server or not
 			if(strlen($country1) > 0 && strlen($country2) > 0) {
 				$data[0] = $country2;
 				$data[1] = $x_forwarded_for;
@@ -77,10 +97,10 @@
 				$data[3] = $timezone1;
 			}
 			
-			// Get timezone
+			// set timezone
 			$this->setTimezone($data[3]);
 			
-			// Get timestamp of visit
+			// get timestamp of visit
 			$date = new DateTime("NOW");
 			$timestamp = $date->format('U');
 			$data[4] = $timestamp;
