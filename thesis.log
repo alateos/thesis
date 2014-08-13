@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.6)  6 AUG 2014 11:19
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.6)  11 AUG 2014 16:09
 entering extended mode
 **thesis.tex
 (C:\thesis\thesis.tex
@@ -540,7 +540,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 382--384
 
  []
 
-<img/category_table.png, id=105, 388.45125pt x 341.02406pt>
+[27] <img/category_table.png, id=108, 388.45125pt x 341.02406pt>
 File: img/category_table.png Graphic file (type png)
 
 <use img/category_table.png>
@@ -551,7 +551,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 384--386
 
  []
 
-[27 <C:/thesis/img/article_table.png>]
 <img/hit_table.png, id=109, 403.5075pt x 450.18187pt>
 File: img/hit_table.png Graphic file (type png)
  <use img/hit_table.png>
@@ -562,20 +561,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 386--388
 
  []
 
-[28 <C:/thesis/img/category_table.png> <C:/thesis/img/hit_table.png>] [29]
-Overfull \hbox (7.85423pt too wide) in paragraph at lines 412--413
+[28 <C:/thesis/img/article_table.png> <C:/thesis/img/category_table.png>]
+[29 <C:/thesis/img/hit_table.png>]
+Overfull \hbox (7.85423pt too wide) in paragraph at lines 415--416
 []\OT1/ppl/b/n/12 LAMP\OT1/ppl/m/n/12 : A web de-vel-op-ment en-vi-ron-ment com
 -prised of a Linux server,
  []
 
 [30]
-Overfull \hbox (7.56728pt too wide) in paragraph at lines 417--418
+Overfull \hbox (7.56728pt too wide) in paragraph at lines 420--421
 []\OT1/ppl/b/n/12 SVG\OT1/ppl/m/n/12 : An XML-based vec-tor im-age for-mat for 
 two-dimensional graph-
  []
 
 
-Overfull \hbox (13.03844pt too wide) in paragraph at lines 417--418
+Overfull \hbox (13.03844pt too wide) in paragraph at lines 420--421
 \OT1/ppl/m/n/12 ics that has sup-port for in-ter-ac-tiv-ity and an-i-ma-tion (s
 ource: Wikipedia). 
  []
@@ -595,7 +595,7 @@ Missing character: There is no ‚ in font pplr7t!
 Missing character: There is no Ä in font pplr7t!
 Missing character: There is no ì in font pplr7t!
 
-Underfull \hbox (badness 5274) in paragraph at lines 431--432
+Underfull \hbox (badness 5274) in paragraph at lines 434--435
 []\OT1/ppl/m/n/12 A. Cock-burn, A. Karl-son, and B. B. Bed-er-son, \OT1/ppl/m/i
 t/12 A re-view of
  []
@@ -609,12 +609,13 @@ Missing character: There is no ù in font pplri7t!
 Missing character: There is no ‚ in font pplr7t!
 Missing character: There is no Ä in font pplr7t!
 Missing character: There is no ì in font pplr7t!
+[31]
 Missing character: There is no ¬ in font pplr7t!
 Missing character: There is no ® in font pplr7t!
 Missing character: There is no ‚ in font pplr7t!
 Missing character: There is no Ä in font pplr7t!
 Missing character: There is no ì in font pplr7t!
-[31] [32] (C:\thesis\thesis.aux) ) 
+ [32] (C:\thesis\thesis.aux) ) 
 Here is how much of TeX's memory you used:
  2732 strings out of 493921
  39227 string characters out of 3144865
@@ -623,14 +624,14 @@ Here is how much of TeX's memory you used:
  23303 words of font info for 62 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,6n,32p,2518b,1389s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/
-dvips/fontname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/u
-plb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplbi8a.p
-fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on thesis.pdf (33 pages, 3752903 bytes).
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvip
+s/fontname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8
+a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplbi8a.pfb><
+C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on thesis.pdf (33 pages, 3753071 bytes).
 PDF statistics:
  147 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
