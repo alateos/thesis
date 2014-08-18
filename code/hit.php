@@ -10,7 +10,7 @@
 		}
 		
 		/**
-			Records ip, country, region, timezone, time visited, and article id
+			Registers ip, country, region, timezone, time visited, and article id
 		*/
 		public function register($article_id) {
 			$data = $this->getHitData();
@@ -21,7 +21,7 @@
 			$time_visited = $data[4];
 			
 			// get the last time this ip address visited the specified article
-			$last_visit_time = $this->checkLastVisited($ip,$article_id);
+			$last_visit_time = $this->getLastVisited($ip,$article_id);
 
 			// if the last time this ip visited is greater than our specified wait limit, then record the visit as a new hit
 			if(($time_visited - $last_visit_time) > WAIT_LIMIT) {
@@ -37,7 +37,7 @@
 		/**
 			Returns the last visited time, in Unix timestamp
 		*/
-		private function checkLastVisited($ip,$article_id) {
+		private function getLastVisited($ip,$article_id) {
 			$sql = "select * from hit where article_id=$article_id and ip='$ip' order by time_visited desc limit 1";
 			foreach($this->db->query($sql) as $row) {
 				$last_visited = intval($row["time_visited"]);
@@ -96,7 +96,7 @@
 				$data[2] = $region1;
 				$data[3] = $timezone1;
 			}
-			
+
 			// set timezone
 			$this->setTimezone($data[3]);
 			
