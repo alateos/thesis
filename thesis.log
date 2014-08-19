@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.30)  17 AUG 2014 21:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.6)  19 AUG 2014 12:10
 entering extended mode
 **thesis.tex
 (C:\thesis\thesis.tex
@@ -30,7 +30,7 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cite\cite.sty"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 373.
 Package: cite 2010/09/10  v 5.3
@@ -67,13 +67,12 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\setspace\setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.sty
 \lst@mode=\count88
 \lst@gtempboxa=\box26
 \lst@token=\toks15
@@ -87,40 +86,46 @@ Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 \lst@lineno=\count93
 \lst@maxwidth=\dimen108
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
 File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
 \c@lstnumber=\count94
 \lst@skipnumbers=\count95
 \lst@framebox=\box27
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
 File: listings.cfg 2014/03/04 1.5c listings configuration
 ))
 Package: listings 2014/03/04 1.5c (Carsten Heinz)
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\mathpazo.sty"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\mathpazo.sty"
 Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
 \symupright=\mathgroup4
 )
-(C:\thesis\thesis.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 9.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ppl.fd"
-File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.def"
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(C:\thesis\thesis.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 10.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\t1ppl.fd"
+File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count96
 \scratchdimen=\dimen109
@@ -136,14 +141,21 @@ File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
 \c@lstlisting=\count102
 \big@size=\dimen111
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 18.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 18.
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 19.
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <17.28> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 19.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] (C:\thesis\thesis.toc
+{C:/Users/akibrahim/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+(C:\thesis\thesis.toc
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 4.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ppl.fd"
+File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
+)
 LaTeX Font Info:    Try loading font information for OML+zplm on input line 4.
+
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlzplm.fd"
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
@@ -163,63 +175,38 @@ LaTeX Font Info:    Try loading font information for OT1+zplm on input line 4.
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 ))
 \tf@toc=\write3
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ì in font pplr7t!
  [1]
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 62.
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 63.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsppl.fd"
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 62.
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ô in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ô in font pplr7t!
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 63.
+
+Overfull \hbox (2.62291pt too wide) in paragraph at lines 64--65
+[]\T1/ppl/m/n/12 Filter traf-fic based on avail-able data, such as the user‚Äôs
+ ge-o-graphic
+ []
 
 <img/overall_chart.png, id=10, 594.22pt x 475.7775pt>
 File: img/overall_chart.png Graphic file (type png)
 
 <use img/overall_chart.png>
-Package pdftex.def Info: img/overall_chart.png used on input line 69.
+Package pdftex.def Info: img/overall_chart.png used on input line 70.
 (pdftex.def)             Requested size: 356.53474pt x 285.46869pt.
- [2]
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ô in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ô in font pplr7t!
- [3 <C:/thesis/img/overall_chart.png>]
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ì in font pplr7t!
- [4]
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ô in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ô in font pplr7t!
-
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
+ [2] [3 <C:/thesis/img/overall_chart.png>] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
 
  []
 
 <img/cnn_example.jpg, id=23, 2055.68pt x 1541.76pt>
 File: img/cnn_example.jpg Graphic file (type jpg)
  <use img/cnn_example.jpg>
-Package pdftex.def Info: img/cnn_example.jpg used on input line 112.
+Package pdftex.def Info: img/cnn_example.jpg used on input line 113.
 (pdftex.def)             Requested size: 411.12872pt x 308.34654pt.
-Missing character: There is no ‚ in font pplb7t!
-Missing character: There is no Ä in font pplb7t!
-Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (21.12872pt too wide) in paragraph at lines 112--114
+Overfull \hbox (21.12872pt too wide) in paragraph at lines 113--115
 []
  []
 
@@ -227,19 +214,10 @@ Overfull \hbox (21.12872pt too wide) in paragraph at lines 112--114
 File: img/cnn_categories.jpg Graphic file (type jpg)
 
 <use img/cnn_categories.jpg>
-Package pdftex.def Info: img/cnn_categories.jpg used on input line 115.
+Package pdftex.def Info: img/cnn_categories.jpg used on input line 116.
 (pdftex.def)             Requested size: 411.12872pt x 308.34654pt.
-Missing character: There is no ‚ in font pplb7t!
-Missing character: There is no Ä in font pplb7t!
-Missing character: There is no ì in font pplb7t!
-Missing character: There is no ‚ in font pplb7t!
-Missing character: There is no Ä in font pplb7t!
-Missing character: There is no ô in font pplb7t!
-Missing character: There is no ‚ in font pplb7t!
-Missing character: There is no Ä in font pplb7t!
-Missing character: There is no ô in font pplb7t!
 
-Overfull \hbox (21.12872pt too wide) in paragraph at lines 115--117
+Overfull \hbox (21.12872pt too wide) in paragraph at lines 116--118
 []
  []
 
@@ -247,13 +225,10 @@ Overfull \hbox (21.12872pt too wide) in paragraph at lines 115--117
 <img/overall_viz.jpg, id=32, 2055.68pt x 1541.76pt>
 File: img/overall_viz.jpg Graphic file (type jpg)
  <use img/overall_viz.jpg>
-Package pdftex.def Info: img/overall_viz.jpg used on input line 118.
+Package pdftex.def Info: img/overall_viz.jpg used on input line 119.
 (pdftex.def)             Requested size: 411.12872pt x 308.34654pt.
-Missing character: There is no ‚ in font pplb7t!
-Missing character: There is no Ä in font pplb7t!
-Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (21.12872pt too wide) in paragraph at lines 118--120
+Overfull \hbox (21.12872pt too wide) in paragraph at lines 119--121
 []
  []
 
@@ -261,114 +236,65 @@ Overfull \hbox (21.12872pt too wide) in paragraph at lines 118--120
 <img/table.jpg, id=36, 1362.08875pt x 1472.50125pt>
 File: img/table.jpg Graphic file (type jpg)
  <use img/table.jpg>
-Package pdftex.def Info: img/table.jpg used on input line 121.
+Package pdftex.def Info: img/table.jpg used on input line 122.
 (pdftex.def)             Requested size: 408.62978pt x 441.75378pt.
-Missing character: There is no ‚ in font pplb7t!
-Missing character: There is no Ä in font pplb7t!
-Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (18.62978pt too wide) in paragraph at lines 121--123
+Overfull \hbox (18.62978pt too wide) in paragraph at lines 122--124
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--123
+Underfull \hbox (badness 10000) in paragraph at lines 122--124
 
  []
 
 [8 <C:/thesis/img/overall_viz.jpg>] [9 <C:/thesis/img/table.jpg>]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 136.
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ú in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ù in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ì in font pplr7t!
- [10]
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ô in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ú in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ù in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ú in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ù in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ú in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ù in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ú in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ù in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ú in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ù in font pplr7t!
- [11]
-Underfull \hbox (badness 10000) in paragraph at lines 142--144
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 137.
+ [10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 143--145
 
  []
 
 [12] <img/flow.png, id=53, 962.09438pt x 662.475pt>
 File: img/flow.png Graphic file (type png)
  <use img/flow.png>
-Package pdftex.def Info: img/flow.png used on input line 146.
+Package pdftex.def Info: img/flow.png used on input line 147.
 (pdftex.def)             Requested size: 432.93846pt x 298.111pt.
-Missing character: There is no ‚ in font pplb7t!
-Missing character: There is no Ä in font pplb7t!
-Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (5.85312pt too wide) in paragraph at lines 145--148
-\OT1/ppl/b/n/12 Flow (http://www.webresourcesdepot.com/beautiful-free-website-t
-raffic-
+Overfull \hbox (5.85312pt too wide) in paragraph at lines 146--149
+\T1/ppl/b/n/12 Flow (http://www.webresourcesdepot.com/beautiful-free-website-tr
+affic-
  []
 
 
-Overfull \hbox (42.93846pt too wide) in paragraph at lines 145--148
+Overfull \hbox (42.93846pt too wide) in paragraph at lines 146--149
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--148
+Underfull \hbox (badness 10000) in paragraph at lines 146--149
 
  []
 
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ô in font pplr7t!
 <img/flow1.png, id=54, 398.99063pt x 481.04718pt>
 File: img/flow1.png Graphic file (type png)
  <use img/flow1.png>
-Package pdftex.def Info: img/flow1.png used on input line 150.
+Package pdftex.def Info: img/flow1.png used on input line 151.
 (pdftex.def)             Requested size: 398.98965pt x 481.046pt.
-Missing character: There is no ‚ in font pplb7t!
-Missing character: There is no Ä in font pplb7t!
-Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (8.98965pt too wide) in paragraph at lines 149--152
+Overfull \hbox (10.22862pt too wide) in paragraph at lines 150--153
+[]\T1/ppl/m/n/12 While this can be use-ful in pro-vid-ing some feed-back to the
+ news site‚Äôs
+ []
+
+
+Overfull \hbox (8.98965pt too wide) in paragraph at lines 150--153
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--152
+Underfull \hbox (badness 10000) in paragraph at lines 150--153
 
  []
 
@@ -377,27 +303,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 149--152
 File: img/google_analytics.png Graphic file (type png)
 
 <use img/google_analytics.png>
-Package pdftex.def Info: img/google_analytics.png used on input line 154.
+Package pdftex.def Info: img/google_analytics.png used on input line 155.
 (pdftex.def)             Requested size: 416.67787pt x 313.01654pt.
-Missing character: There is no ‚ in font pplb7t!
-Missing character: There is no Ä in font pplb7t!
-Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (26.67787pt too wide) in paragraph at lines 153--156
+Overfull \hbox (26.67787pt too wide) in paragraph at lines 154--157
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--156
+Underfull \hbox (badness 10000) in paragraph at lines 154--157
 
  []
 
 [14 <C:/thesis/img/flow1.png>]
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ô in font pplr7t!
-
-Underfull \hbox (badness 10000) in paragraph at lines 157--159
+Underfull \hbox (badness 10000) in paragraph at lines 158--160
 
  []
 
@@ -405,235 +324,318 @@ Underfull \hbox (badness 10000) in paragraph at lines 157--159
 File: img/adobe_analytics.png Graphic file (type png)
 
 <use img/adobe_analytics.png>
-Package pdftex.def Info: img/adobe_analytics.png used on input line 161.
+Package pdftex.def Info: img/adobe_analytics.png used on input line 162.
 (pdftex.def)             Requested size: 415.104pt x 331.54118pt.
-Missing character: There is no ‚ in font pplb7t!
-Missing character: There is no Ä in font pplb7t!
-Missing character: There is no ì in font pplb7t!
 
-Overfull \hbox (25.104pt too wide) in paragraph at lines 160--163
+Overfull \hbox (25.104pt too wide) in paragraph at lines 161--164
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 160--163
+Underfull \hbox (badness 10000) in paragraph at lines 161--164
 
  []
 
-[15 <C:/thesis/img/google_analytics.png>]
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ô in font pplr7t!
- [16 <C:/thesis/img/adobe_analytics.png>] [17] [18]
-Overfull \hbox (1.73528pt too wide) in paragraph at lines 207--210
-[]\OT1/ppl/b/n/12 Weeks 13-16 \OT1/ppl/m/n/12 (Re-search and ex-per-i-ment with
- dif-fer-ent vi-su-al-iza-tions): 
+[15 <C:/thesis/img/google_analytics.png>] [16 <C:/thesis/img/adobe_analytics.pn
+g>] [17] [18]
+Overfull \hbox (1.73528pt too wide) in paragraph at lines 208--211
+[]\T1/ppl/b/n/12 Weeks 13-16 \T1/ppl/m/n/12 (Re-search and ex-per-i-ment with d
+if-fer-ent vi-su-al-iza-tions): 
  []
 
-[19] [20]
-Overfull \hbox (99.60498pt too wide) in paragraph at lines 253--254
-[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
+[19] [20] [21]
+Overfull \hbox (1.57935pt too wide) in paragraph at lines 284--285
+[]\T1/ppl/m/n/12 Get the value of $_SERVER["REMOTE_ADDR"] and look up its value
 
-
-Overfull \hbox (92.4049pt too wide) in paragraph at lines 263--264
-[][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[21]
-Overfull \hbox (1.31546pt too wide) in paragraph at lines 283--284
-[]\OT1/ppl/m/n/12 Get the value of $[]SERVER["REMOTE[]ADDR"] and look up its va
-lue
  []
 
 
-Overfull \hbox (2.07187pt too wide) in paragraph at lines 284--285
-[]\OT1/ppl/m/n/12 Get the value of $[]SERVER["HTTP[]X[]FORWARDED[]FOR"] and loo
-k
+Overfull \hbox (5.69574pt too wide) in paragraph at lines 285--286
+[]\T1/ppl/m/n/12 Get the value of $_SERVER["HTTP_X_FORWARDED_FOR"] and look
  []
 
-[22]
-Overfull \hbox (27.60425pt too wide) in paragraph at lines 297--299
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-LaTeX Font Info:    Try loading font information for OML+ppl on input line 303.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlppl.fd"
-File: omlppl.fd 
-)
-LaTeX Font Info:    Font shape `OML/ppl/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 303.
-
-Overfull \hbox (70.80469pt too wide) in paragraph at lines 314--315
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[23]
-Overfull \hbox (13.2041pt too wide) in paragraph at lines 317--318
-[][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (20.40417pt too wide) in paragraph at lines 321--323
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[24]
-Overfull \hbox (7.06247pt too wide) in paragraph at lines 350--351
-[]\OT1/ppl/b/n/12 Article URL\OT1/ppl/m/n/12 : this will be needed to en-able t
-he user to nav-i-gate through
+[22] [23] [24]
+Overfull \hbox (7.06247pt too wide) in paragraph at lines 351--352
+[]\T1/ppl/b/n/12 Article URL\T1/ppl/m/n/12 : this will be needed to en-able the
+ user to nav-i-gate through
  []
 
 [25]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <14.4> not available
-(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 359.
+LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <14.4> not available
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 360.
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--364
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 358--364
+Underfull \hbox (badness 10000) in paragraph at lines 359--365
 
  []
 
 
-Overfull \hbox (11.80003pt too wide) in paragraph at lines 358--364
-\OT1/ppl/b/n/14.4 article ($[]$, cat-e-gory[]name, ar-ti-cle[]url, ti-tle, sam-
-ple[]text,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 358--364
+Underfull \hbox (badness 10000) in paragraph at lines 359--365
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--364
+Overfull \hbox (19.86406pt too wide) in paragraph at lines 359--365
+\T1/ppl/b/n/14.4 article ($[]$, cat-e-gory_name, ar-ti-cle_url, ti-tle, sam-ple
+_text,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--365
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--368
+Underfull \hbox (badness 10000) in paragraph at lines 359--365
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--368
+Underfull \hbox (badness 10000) in paragraph at lines 366--369
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 366--369
 
  []
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 374--375
+Underfull \hbox (badness 10000) in paragraph at lines 375--376
 
  []
 
-<img/article_table.png, id=104, 447.17062pt x 393.72093pt>
+<img/article_table.png, id=103, 447.17062pt x 393.72093pt>
 File: img/article_table.png Graphic file (type png)
 
 <use img/article_table.png>
-Package pdftex.def Info: img/article_table.png used on input line 383.
+Package pdftex.def Info: img/article_table.png used on input line 384.
 (pdftex.def)             Requested size: 268.30444pt x 236.23438pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 382--384
+Underfull \hbox (badness 10000) in paragraph at lines 383--385
 
  []
 
-[27] <img/category_table.png, id=108, 388.45125pt x 341.02406pt>
+[27] <img/category_table.png, id=107, 388.45125pt x 341.02406pt>
 File: img/category_table.png Graphic file (type png)
 
 <use img/category_table.png>
-Package pdftex.def Info: img/category_table.png used on input line 385.
+Package pdftex.def Info: img/category_table.png used on input line 386.
 (pdftex.def)             Requested size: 233.07254pt x 204.61601pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--386
+Underfull \hbox (badness 10000) in paragraph at lines 385--387
 
  []
 
-<img/hit_table.png, id=109, 403.5075pt x 450.18187pt>
+<img/hit_table.png, id=108, 403.5075pt x 450.18187pt>
 File: img/hit_table.png Graphic file (type png)
  <use img/hit_table.png>
-Package pdftex.def Info: img/hit_table.png used on input line 387.
+Package pdftex.def Info: img/hit_table.png used on input line 388.
 (pdftex.def)             Requested size: 242.10637pt x 270.1112pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 386--388
+Underfull \hbox (badness 10000) in paragraph at lines 387--389
 
  []
 
 [28 <C:/thesis/img/article_table.png> <C:/thesis/img/category_table.png>]
 [29 <C:/thesis/img/hit_table.png>]
-Overfull \hbox (7.85423pt too wide) in paragraph at lines 415--416
-[]\OT1/ppl/b/n/12 LAMP\OT1/ppl/m/n/12 : A web de-vel-op-ment en-vi-ron-ment com
--prised of a Linux server,
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <6> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 405.
+
+Overfull \hbox (100.17938pt too wide) in paragraph at lines 429--430
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (470.98315pt too wide) in paragraph at lines 431--433
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (60.57898pt too wide) in paragraph at lines 436--437
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][] 
+ []
+
+
+Overfull \hbox (71.37909pt too wide) in paragraph at lines 444--445
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+] 
+ []
+
+
+Overfull \hbox (64.17902pt too wide) in paragraph at lines 459--460
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+] 
  []
 
 [30]
-Overfull \hbox (7.56728pt too wide) in paragraph at lines 420--421
-[]\OT1/ppl/b/n/12 SVG\OT1/ppl/m/n/12 : An XML-based vec-tor im-age for-mat for 
-two-dimensional graph-
+Overfull \hbox (24.57861pt too wide) in paragraph at lines 470--471
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (13.03844pt too wide) in paragraph at lines 420--421
-\OT1/ppl/m/n/12 ics that has sup-port for in-ter-ac-tiv-ity and an-i-ma-tion (s
-ource: Wikipedia). 
+Overfull \hbox (28.17865pt too wide) in paragraph at lines 480--481
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-Missing character: There is no ¬ in font pplr7t!
-Missing character: There is no ® in font pplr7t!
-Missing character: There is no ‚ in font pplri7t!
-Missing character: There is no Ä in font pplri7t!
-Missing character: There is no ì in font pplri7t!
-Missing character: There is no ‚ in font pplri7t!
-Missing character: There is no Ä in font pplri7t!
-Missing character: There is no ú in font pplri7t!
-Missing character: There is no ‚ in font pplri7t!
-Missing character: There is no Ä in font pplri7t!
-Missing character: There is no ù in font pplri7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ì in font pplr7t!
 
-Underfull \hbox (badness 5274) in paragraph at lines 434--435
-[]\OT1/ppl/m/n/12 A. Cock-burn, A. Karl-son, and B. B. Bed-er-son, \OT1/ppl/m/i
-t/12 A re-view of
+Overfull \hbox (67.77905pt too wide) in paragraph at lines 490--491
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][] 
  []
 
-Missing character: There is no ‚ in font pplri7t!
-Missing character: There is no Ä in font pplri7t!
-Missing character: There is no ú in font pplri7t!
-Missing character: There is no ‚ in font pplri7t!
-Missing character: There is no Ä in font pplri7t!
-Missing character: There is no ù in font pplri7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ì in font pplr7t!
 [31]
-Missing character: There is no ¬ in font pplr7t!
-Missing character: There is no ® in font pplr7t!
-Missing character: There is no ‚ in font pplr7t!
-Missing character: There is no Ä in font pplr7t!
-Missing character: There is no ì in font pplr7t!
- [32] (C:\thesis\thesis.aux) ) 
+Overfull \hbox (319.78162pt too wide) in paragraph at lines 545--546
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][] 
+ []
+
+
+Overfull \hbox (31.77869pt too wide) in paragraph at lines 584--585
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[32]
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 598.
+
+Overfull \hbox (56.40454pt too wide) in paragraph at lines 599--600
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.40405pt too wide) in paragraph at lines 605--606
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (18.00415pt too wide) in paragraph at lines 607--608
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[33]
+Overfull \hbox (13.52122pt too wide) in paragraph at lines 618--619
+\T1/ppl/b/n/12 win-dow.onbeforeunload \T1/ppl/m/n/12 or \T1/ppl/b/n/12 win-dow.
+onunload\T1/ppl/m/n/12 , de-pend-ing on the browser's
+ []
+
+
+Overfull \hbox (42.0044pt too wide) in paragraph at lines 622--623
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[34]
+Overfull \hbox (27.60425pt too wide) in paragraph at lines 642--643
+[][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (114.00513pt too wide) in paragraph at lines 675--676
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][] 
+ []
+
+[35] <img/visit1.png, id=136, 261.97874pt x 144.54pt>
+File: img/visit1.png Graphic file (type png)
+ <use img/visit1.png>
+Package pdftex.def Info: img/visit1.png used on input line 724.
+(pdftex.def)             Requested size: 261.9781pt x 144.53963pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 726--727
+
+ []
+
+[36] <img/visit2.png, id=141, 606.76688pt x 217.5628pt>
+File: img/visit2.png Graphic file (type png)
+ <use img/visit2.png>
+Package pdftex.def Info: img/visit2.png used on input line 728.
+(pdftex.def)             Requested size: 364.06293pt x 130.53868pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 730--731
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 730--731
+
+ []
+
+<img/visit3.png, id=142, 899.61093pt x 221.32687pt>
+File: img/visit3.png Graphic file (type png)
+ <use img/visit3.png>
+Package pdftex.def Info: img/visit3.png used on input line 732.
+(pdftex.def)             Requested size: 449.80437pt x 110.66315pt.
+
+Overfull \hbox (59.80437pt too wide) in paragraph at lines 732--733
+[] 
+ []
+
+[37 <C:/thesis/img/visit1.png> <C:/thesis/img/visit2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 734--735
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 734--735
+
+ []
+
+<img/visit4.png, id=146, 293.59688pt x 168.63pt>
+File: img/visit4.png Graphic file (type png)
+ <use img/visit4.png>
+Package pdftex.def Info: img/visit4.png used on input line 736.
+(pdftex.def)             Requested size: 205.5164pt x 118.04018pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--739
+
+ []
+
+[38 <C:/thesis/img/visit3.png> <C:/thesis/img/visit4.png>]
+Overfull \hbox (7.85423pt too wide) in paragraph at lines 763--764
+[]\T1/ppl/b/n/12 LAMP\T1/ppl/m/n/12 : A web de-vel-op-ment en-vi-ron-ment com-p
+rised of a Linux server,
+ []
+
+[39]
+Overfull \hbox (7.56728pt too wide) in paragraph at lines 768--769
+[]\T1/ppl/b/n/12 SVG\T1/ppl/m/n/12 : An XML-based vec-tor im-age for-mat for tw
+o-dimensional graph-
+ []
+
+
+Overfull \hbox (13.03844pt too wide) in paragraph at lines 768--769
+\T1/ppl/m/n/12 ics that has sup-port for in-ter-ac-tiv-ity and an-i-ma-tion (so
+urce: Wikipedia). 
+ []
+
+
+Underfull \hbox (badness 1789) in paragraph at lines 782--783
+[]\T1/ppl/m/n/12 A. Cock-burn, A. Karl-son, and B. B. Bed-er-son, \T1/ppl/m/it/
+12 ‚ÄúA re-view of
+ []
+
+[40] [41] (C:\thesis\thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 2732 strings out of 493921
- 39035 string characters out of 3144876
- 104685 words of memory out of 3000000
- 5995 multiletter control sequences out of 15000+200000
- 23303 words of font info for 62 fonts, out of 3000000 for 9000
+ 2992 strings out of 493921
+ 41434 string characters out of 3144865
+ 128996 words of memory out of 3000000
+ 6237 multiletter control sequences out of 15000+200000
+ 36935 words of font info for 84 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,6n,32p,2518b,1389s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvip
-s/fontname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8
+ 27i,6n,32p,2518b,1508s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/
+dvips/fontname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8
 a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplbi8a.pfb><
 C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Progr
 am Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on thesis.pdf (33 pages, 3753340 bytes).
+Output written on thesis.pdf (42 pages, 3831414 bytes).
 PDF statistics:
- 147 PDF objects out of 1000 (max. 8388607)
+ 185 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -5,6 +5,7 @@
 \usepackage{indentfirst}
 \usepackage{listings}
 \usepackage{mathpazo}
+\usepackage[T1]{fontenc}
 
 \begin{document}
 
@@ -219,7 +220,7 @@ I will attempt to reach a wide and diverse audience for feedback. I will incorpo
 
 \vfill
 
-\section{Implementation}
+\section{Implementation - data capture}
 \subsection{Capturing Data}
 \subsubsection{IP Addresses}
 I plan to capture the IP addresses of the visitors to the subject news site. In PHP, an associative array called \textbf{\$\_SERVER}  contains several variables that pertain to the HTTP connection between the client and the server. The variable that contains the IP address from which the user is viewing a select page is called \textbf{REMOTE\_ADDR}. In code, we register the visiting IP address like so:
@@ -244,7 +245,7 @@ Here, I would like to shed light on the difference between static and dynamic IP
 The average DHCP lease time is between 3 and 7 days. Since in my visualization I only care for recent and breaking news that span for 1-3 days, I can hold the distinction between static and dynamic IP addresses as constant - as the time span is less than the average renew period. This is important for monitoring the average time spent on an article and other metrics that rely on graduation of time. The IP address is the only means to track a user and that does not require user authentication. 
 
 As for user integrity, one cannot fully ensure that a physical human is sitting behind an IP address when bots, web scrapers, and other automated processes may be hitting the IP address of a given news article. Though, my goal is to minimize the inaccuracy when a visitor reaches a news article. My plan to counter this is to only register the visiting IP address when the user has moved his/her mouse, or, when he/she has scrolled at least once when viewing the article at hand. I have tested a stub for this successfully in \textbf{register\_ip.php}. Here, I have a page containing several blocks of repeated Lorem ipsum text. I used JavaScript to listen to the mousemove and scroll events. I used jQuery to shorthand the event bindings. Below is the code:
-\begin{lstlisting}
+\begin{lstlisting}[basicstyle=\scriptsize]
 mouse_moved = false;
 page_scroll_counter = 0;
 
@@ -286,7 +287,7 @@ It will thus be a challenge to capture the needed IP address to look up geograph
 \end{enumerate} 
 
 The next step here is to find a service that would map a given IP address to its corresponding geo coordinates, and ideally to its country name. A quick Google search revealed a convenient REST API service that would output the responses in JSON. \textbf{Telize (www.telize.com)} is a REST API that allows one to get the visitor IP address and to query the location information for that IP address. The upside of this service is that at the moment it contains to no rate limits; thus, one could make an indefinite amount of calls to the Telize API. I was able to test the above clause 3 in PHP code with success. Regardless, of whether I was sitting behind a proxy server or not, the output showed the United States as the country of origin. Here is the code:
-\begin{lstlisting}
+\begin{lstlisting}[basicstyle=\scriptsize]
 
 date_default_timezone_set("America/New_York");
 
@@ -394,10 +395,357 @@ Here, I created two files:
 \item{\textbf{constants.php:}} Holds all the constants that will be defined across the application, inclusive of those for the database connection
 \item{\textbf{db\_connect.php:}} Performs the PDO database connection based on the given connection parameters
 \end{enumerate}
-Note that both of these files are stored one directory above \textbf{public\_html/} for security reasons. This folder is called \textbf{lib/}. Thus, the two files are not accessible directly to the public and accordingly need to be included in other PHP files. It is important that I bring attention to the constant \textbf{WAIT\_LIMIT}, which is the predefined amount of time that the web app should wait before considering the subsequent visit as a new one. This limit is by default set to 60 seconds. 
+Note that both of these files are stored one directory above \textbf{public\_html/} for security reasons. This folder is called \textbf{lib/}. Thus, the two files are not accessible directly to the public and accordingly need to be included in other PHP files.
 
-\subsubsection{Server-side hit capture}
+\subsubsection{Server-side hit, article, and category capture}
+Each table in my database is represented with a PHP class. Hence, the creation of the following 3 classes:
+\begin{enumerate}
+\item{\textbf{Hit.php:}} This class registers all of the metadata pertinent to a user visit. This data includes IP address, country, region, timezone, and time visited. Below is the code:
+\begin{lstlisting}[basicstyle=\tiny]
+/**
+	This class is responsible for registering the user visits into the database
+*/
+class Hit {
+	private $db = "";
+	
+	public function __construct($db) {
+		$this->db=$db;
+	}
+	
+	/**
+		Registers ip, country, region, timezone, time visited, and article id
+	*/
+	public function register($article_id) {
+		$data = $this->getHitData();
+		$country = $data[0];
+		$ip = $data[1];
+		$region = $data[2];
+		$timezone = $data[3];
+		$time_visited = $data[4];
+		
+		// get the last time this ip address visited the specified article
+		$last_visit_time = $this->getLastVisited($ip,$article_id);
 
+		// if the last time this ip visited is greater than our specified wait limit, then record the visit as a new hit
+		if(($time_visited - $last_visit_time) > WAIT_LIMIT) {
+			$sql = sprintf("insert into hit(ip,time_visited,article_id,timezone,country,region,read_time) values('%s','%d','%d','%s','%s','%s','%d')",$ip,$time_visited,$article_id,$timezone,$country,$region,$read_time);
+
+			$this->db->query($sql);	
+		}
+		
+		// return the id of the inserted record to the client page, so that it may be used to track read time
+		return $this->db->lastInsertID();
+	}
+	
+	/**
+		Returns the last visited time, in Unix timestamp
+	*/
+	private function getLastVisited($ip,$article_id) {
+		$sql = "select * from hit where article_id=$article_id and ip='$ip' order by time_visited desc limit 1";
+		foreach($this->db->query($sql) as $row) {
+			$last_visited = intval($row["time_visited"]);
+		}
+		return $last_visited;
+	}
+	
+	/**
+		Sets timezone
+	*/
+	private function setTimezone($timezone) {
+		date_default_timezone_set($timezone);
+	}
+	
+	/**
+		Returns a data array that includes the country of origin, region, ip address, and timezone of visitor.
+		The 3rd party API used to extract the data is http://www.telize.com
+	*/
+	private function getHitData() {
+		$remote_addr = $_SERVER["REMOTE_ADDR"];
+		$x_forwarded_for = $_SERVER["HTTP_X_FORWARDED_FOR"];
+		$data = array();
+		
+		$url1 = "http://www.telize.com/geoip/" . $remote_addr; 
+		$url2 = "http://www.telize.com/geoip/" . $x_forwarded_for; 
+
+		// get the country for the ip behind the first exposed remote address (from www.telize.com)
+		if($remote_addr) {
+			$results1 = file_get_contents($url1);
+			$results1 = json_decode($results1);
+			$country1 = $results1->country;
+			$region1 = $results1->region;
+			$timezone1 = $results1->timezone;
+			$ip = $remote_addr;
+		}
+		
+		// get the country for the ip behind the second exposed remote address (from www.telize.com)
+		if($x_forwarded_for) {
+			$results2 = file_get_contents($url2);
+			$results2 = json_decode($results2);
+			$country2 = $results2->country;
+			$region2 = $results2->region;
+			$timezone2 = $results2->timezone;
+			$ip = $x_forwarded_for;
+		}
+		
+		// determines the true country of origin, depending on whether the user is behind a proxy server or not
+		if(strlen($country1) > 0 && strlen($country2) > 0) {
+			$data[0] = $country2;
+			$data[1] = $x_forwarded_for;
+			$data[2] = $region2;
+			$data[3] = $timezone2;
+		} else {
+			$data[0] = $country1;
+			$data[1] = $remote_addr;
+			$data[2] = $region1;
+			$data[3] = $timezone1;
+		}
+
+		// set timezone
+		$this->setTimezone($data[3]);
+		
+		// get timestamp of visit
+		$date = new DateTime("NOW");
+		$timestamp = $date->format('U');
+		$data[4] = $timestamp;
+		
+		return $data;
+	}
+}
+\end{lstlisting}
+\vfill
+\item{\textbf{Article.php:}} This class captures all of the metadata pertinent to the article being visited. Such includes title, text excerpt, sample picture URL, and article URL. Below is the code:
+\begin{lstlisting}[basicstyle=\tiny]
+/**
+	This class is responsible for registering the metadata pertinent to an article
+*/
+class Article {
+	private $db = "";
+	
+	/**
+		assign database instance in constructor
+	*/
+	public function __construct($db,$metadata = Array()) {
+		$this->db=$db;
+		$this->register($metadata);
+	}
+	
+	/**
+		registers the article's title,category,url,sample text, and a sample image
+	*/
+	private function register($metadata) {
+		// get article id
+		$article_id = $metadata["article_id"];
+		
+		// insert the article metadata into the database
+		$category_id = $metadata["category_id"];
+		$article_url = $metadata["url"];
+		$title = $metadata["title"];
+		$sample_text = $metadata["sample_text"];
+		$sample_pic = $metadata["sample_pic"];
+		$sql = "insert into article(article_id,category_id,article_url,title,sample_text,sample_pic) values (:article_id,:category_id,:article_url,:title,:sample_text,:sample_pic)";
+		$sth = $this->db->prepare($sql);
+		$sth->bindParam(":article_id",$article_id,PDO::PARAM_INT);
+		$sth->bindParam(":category_id",$category_id,PDO::PARAM_INT);
+		$sth->bindParam(":article_url",$article_url,PDO::PARAM_STR);
+		$sth->bindParam(":title",$title,PDO::PARAM_STR);
+		$sth->bindParam(":sample_text",$sample_text,PDO::PARAM_STR);
+		$sth->bindParam(":sample_pic",$sample_pic,PDO::PARAM_STR);
+		$sth->execute();
+	}
+}
+\end{lstlisting} 
+\vfill
+\item{\textbf{Category.php:}} This class captures any metadata pertinent to the parent category of the visited article. At the moment, I am only capturing the name of the category. Below is the code:
+\begin{lstlisting}[basicstyle=\tiny]
+/**
+	This class is responsible for registering the metadata pertinent to a category
+*/
+class Category {
+	private $db = "";
+	
+	/**
+		assign database instance in constructor
+	*/
+	public function __construct($db,$metadata = Array()) {
+		$this->db=$db;
+		$this->register($metadata);
+	}
+	
+	/**
+		registers the category's name
+	*/
+	private function register($metadata) {
+		// get category id
+		$category_id = $metadata["category_id"];
+		// get category name
+		$category_name = $metadata["category_name"];
+		
+		// insert category into database
+		$sql = "insert into category(category_id,category_name) values(:category_id,:category_name)";
+		$sth = $this->db->prepare($sql);
+		$sth->bindParam(":category_id",$category_id,PDO::PARAM_INT);
+		$sth->bindParam(":category_name",$category_name,PDO::PARAM_STR);
+		$sth->execute();
+	}
+}
+\end{lstlisting}
+\end{enumerate}
+\vfill
+
+In addition to the above, I have created a helper file that registers the read time of a given article. By default, the read time is registered as 0 seconds in the database. Once a hit is registered in the database, the id of the newly created hit is then passed to the DOM of the article page. There, the id is used via an AJAX call to store the calculated read time for the visited article in the database. This file is called \textbf{updateReadTime.php}. Below is the code:
+
+\begin{lstlisting}[basicstyle=\scriptsize]
+/**
+	This page is accessed via an AJAX call. It updates the read time given an article id.
+*/
+include("../../../lib/db_connect.php");
+$read_time = $_POST["read_time"];
+$hit_id = $_POST["hit_id"];
+
+// if a read time and hit id are provided then update the read time in the database
+if($read_time > 0 && $hit_id > 0) {
+	$stmt = $db->prepare("update hit set read_time=:read_time where id=:hit_id");
+	$stmt->bindParam(':read_time',$read_time);
+	$stmt->bindParam(':hit_id',$hit_id);
+	$stmt->execute();
+}
+\end{lstlisting} 
+\vfill
+
+\subsection{Client-side read time capture with Javascript}
+As mentioned in the last section, the hit id is passed to the client page in order to keep a way to identify and update the read time for the visited article. Here, I calculate the number of words that are stored in the article. I do this by first getting all of the text found within common article tags - namely <span>, <div>, <article>, <p>, and <section>. I then sum the number of words found within all of the mentioned tags. I ensure that double counting is avoided by using the \textbf{innerText} property; this counts the elements inner text, but not any text that might be included in one of its children nodes. Next, I calculate the number of seconds the article is on average expected to take to read. Based on my earlier research, I will use the average figure of 200 words per minute. This figure is merely used in the event that a user leaves the page open indefinitely. Thus, if an article should take about 5 minutes to read, and the user takes (for whatever reason) 30 minutes to navigate away from or to close the article, then I simply register the 5 minutes. Although I may be compromising some accuracy here, it is much more advantageous than having instances greatly inflate the read time.
+
+Once the article page loads, and the expected read time calculations have been made, a timer is readied. The timer is triggered once a user moves the mouse or when the user scrolls the page. This minimizes storing metadata created by bots and to a high extent ensures that a human is sitting behind the screen. Upon navigating away from or closing the article, the read time is then submitted to \textbf{updateReadTime.php} and eventually recorded in the database. This part of the implementation relies on \textbf{window.onbeforeunload} or \textbf{window.onunload}, depending on the browser's user agent. At the time of this writing, this method only for Firefox and Chrome.
+
+Below is the code pertinent to capturing read time:
+\begin{lstlisting}[basicstyle=\scriptsize]
+// the average number of words per minute the user is expected to spend reading an article
+var AVERAGE_WPM = 200;
+// the maximum amount of time the user is expected to take to read the article
+var maxTimeToSpend = 0;
+
+/**
+	Gets the number of words from the article based on common tags used
+*/
+var getNumberOfWords = function() {
+	var total_words = 0;
+	var tags = ["span","div","article","p","section"];
+	
+	// Go through each one of the designated tags. 
+	// these are the common tags that contain
+	// article content. Then, get the number of 
+	// words under the pertinent tag.
+	tags.forEach(function(d) {
+		try {
+			if(Array.prototype.slice.call($(d),0).length > 1) { 
+				$.each($(d),function(index,value){
+					total_words+=$(value).text().split(' ').length;	
+				});
+			} else {
+				total_words+=$(d).text().split(' ').length;					
+			}
+		} catch(e) {
+
+		}	
+	});		
+	return total_words;
+}
+
+/**
+Creates a Timer prototype that will keep track of time
+*/
+var Timer = function() {
+	var seconds = 0;
+	var timerRef = null;
+	this.countTime = function() {
+		timerRef = setInterval(function(){ 
+			seconds+=1000;
+		},1000);
+	}
+	this.stopCount = function() {
+		clearInterval(timerRef);
+	}
+	this.getCount = function() {
+		return seconds;
+	}
+}
+
+/** 
+	Gets the time spent in front of the article.
+	If it is greater than the expected time, then use the expected time. Else, use the computed time.
+*/
+var getTimeSpent = function() {
+	timer.stopCount();
+	var words = getNumberOfWords();
+	var maxTimeToSpend = (words/AVERAGE_WPM)*60;
+	var calculableTime = timer.getCount()/1000;
+	if(parseInt(calculableTime) > parseInt(maxTimeToSpend)) {
+		return maxTimeToSpend;
+	} else {
+		return calculableTime;
+	}
+}
+
+/**
+	Sends the time spent on the article to the server
+*/
+var sendTime = function() {
+	$.ajax({
+	  url: "updateReadTime.php",
+	  type:"post",
+	  data: {hit_id:<?php echo $hit_id ?>,read_time:getTimeSpent()}
+	}).done(function() {
+
+	});
+}
+
+/**
+	initiate the timer and the bindings on load
+*/
+$( document ).ready(function() {
+	// create a new Timer object
+	timer = new Timer();
+	// begin counting
+	timer.countTime();
+	// have the time sent to the server once the window
+	// closes or if the user navigates to another page
+	if(!!window.chrome) {
+		window.onbeforeunload = sendTime;
+	} else {
+		window.onunload = sendTime;
+	}
+});
+\end{lstlisting}    
+\vfill
+
+\subsection{Tying it all together}
+Now that both the back end and front end code has been implemented, I can move on to testing this system. I have created a miniature lorem ipsum page which acts as an article being visited. 
+
+\noindent\includegraphics[scale=1]{img/visit1}
+
+\noindent\ In my PHP code, I populated mock metadata for the article and category. The hit metadata, however, will be populated based on the visit data. I went ahead and visited the page for 10 seconds and here are the results:\\
+
+\noindent\includegraphics[scale=0.6]{img/visit2}
+
+\noindent\ My ip address, time of visit, article id (at this point a fake one), timezone, country, region, and read time were all stored in the \textbf{hit} table.\\ \\
+
+\noindent\includegraphics[scale=0.5]{img/visit3}
+
+\noindent\ The article id, category id, article URL, article title, article sample text, and the URL to the article's main pic - were all stored in table \textbf{article}. \\ \\
+
+\noindent\includegraphics[scale=0.7]{img/visit4}
+
+\noindent\ Lastly, the category id and name were both stored in the \textbf{category} table. \\
+
+This concludes the part of the system that implements the data capturing. The next step is to connect this library into a working website. For the scope of this thesis, I will implement a hook that ties into a widely used Content Management System - Wordpress. 
+
+\vfill
+
+\section{Implementation - hooking into Wordpress}
+
+\vfill
+
+\section{Implementation - visualization}
 
 \vfill
 
