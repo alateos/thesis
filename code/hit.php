@@ -3,6 +3,7 @@
 		This class is responsible for registering the user visits into the database
 	*/
 	class Hit {
+		// database instance
 		private $db = "";
 		
 		public function __construct($db) {
