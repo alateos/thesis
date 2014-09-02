@@ -21,5 +21,8 @@
 \contentsline {subsection}{\numberline {5.4}Client-side read time capture with Javascript}{34}
 \contentsline {subsection}{\numberline {5.5}Tying it all together}{37}
 \contentsline {section}{\numberline {6}Implementation - hooking into Wordpress}{39}
-\contentsline {section}{\numberline {7}Implementation - visualization}{39}
-\contentsline {section}{\numberline {8}Glossary}{39}
+\contentsline {subsection}{\numberline {6.1}Creating the VizLib folder}{39}
+\contentsline {subsection}{\numberline {6.2}Creating a mock news website}{44}
+\contentsline {subsection}{\numberline {6.3}Testing}{45}
+\contentsline {section}{\numberline {7}Implementation - visualization}{47}
+\contentsline {section}{\numberline {8}Glossary}{47}
