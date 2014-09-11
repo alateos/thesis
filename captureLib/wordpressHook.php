@@ -13,7 +13,8 @@
 		
 		// get the name of the category from Wordpress
 		public function getCategoryName() {
-			$category_name = get_the_category()[0]->cat_name;
+			$category_name = get_the_category();
+			$category_name = $category_name[0]->cat_name;
 			return $category_name;
 		}
 		
