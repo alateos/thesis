@@ -6,6 +6,8 @@
 	$read_time = $_POST["read_time"];
 	$hit_id = $_POST["hit_id"];
 	
+	echo "HI";
+	
 	// if a read time and hit id are provided then update the read time in the database
 	if($read_time > 0 && $hit_id > 0) {
 		$stmt = $db->prepare("update hit set read_time=:read_time where id=:hit_id");

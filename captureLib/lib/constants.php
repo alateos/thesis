@@ -15,4 +15,7 @@
 	// the number of characters that should be excerpted from the article
 	define(EXCERPT_CHARS,500);
 	
+	// deifnes whether we are in test or production mode
+	define(PRODUCTION_ENV,false);
+	
 ?>

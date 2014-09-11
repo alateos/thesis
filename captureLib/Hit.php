@@ -19,14 +19,24 @@
 			$region = $data[2];
 			$timezone = $data[3];
 			$time_visited = $data[4];
-			
+			$read_time = 0;
+
+			// if in test environment, populate fake data for read time and country of origin
+			if(!PRODUCTION_ENV) {
+				// get a random time between 10 seconds and 3 minutes
+				$read_time = rand(10,180);
+				
+				// get the list of all countries of the world, and pick one randomly
+				include("countries.php");
+				$country = $countries[rand(0,count($countries)-1)];
+			}
+
 			// get the last time this ip address visited the specified article
 			$last_visit_time = $this->getLastVisited($ip,$article_id);
 
 			// if the last time this ip visited is greater than our specified wait limit, then record the visit as a new hit
 			if(($time_visited - $last_visit_time) > WAIT_LIMIT) {
 				$sql = sprintf("insert into hit(ip,time_visited,article_id,timezone,country,region,read_time) values('%s','%d','%d','%s','%s','%s','%d')",$ip,$time_visited,$article_id,$timezone,$country,$region,$read_time);
-
 				$this->db->query($sql);	
 			}
 			
