@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!-- This page will reload, making an AJAX call to makeFakeHit.php to cause a fake visit -->
+	<head>
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	</head>
+	<body>
+	
+		<script>
+		(function(){
+			// the amount of time to wait before revisiting the site (in seconds)
+			var REVISIT_INTERVAL = 20;
+		
+			// trigger the fake visit on the server side
+			var makeFakeHit = function() {
+				$.get("makeFakeHit.php");
+			}
+			
+			// set a recurrent loop to seed the data
+			setInterval(function(){makeFakeHit();console.log("hit issued")},(REVISIT_INTERVAL*1000));
+		})()
+		</script>
+	</body>
+</html>

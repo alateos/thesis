@@ -743,10 +743,10 @@ This concludes the part of the system that implements the data capturing. The ne
 
 \section{Implementation - hooking into Wordpress}
 Wordpress calls its articles "posts". The template file for each post is called \textbf{single.php} and is found under the current theme that is being used. One can think of a theme as a set of pre-built PHP, HTML, CSS3, and Javascript templates that structurally and visually dictate how the website will look and behave. Thus, in order to accomplish the task of capturing the data from a said article, I need to include my capture library inside \textbf{single.php}. However, since my library cannot directly communicate with Wordpress, I must create a hook that abstracts some of Wordpress's built-in functions. Lastly, I need to ensure that Wordpress is using jQuery version 2.1.1 or higher. As this is a Javascript library and that I need available as soon as the page loads, I will need to include it in \textbf{header.php} - which basically comprises the <head></head> portion of a given page. Below is a breakdown of how I hook into Wordpress.
-\subsection{Creating the VizLib folder}
-In the interest of portability, I have placed all of my code within a folder called \textbf{VizLib}. If a 3rd party wishes to uses this library in the future, all that would be needed is to simply include \textbf{VizLib} from within \textbf{single.php}. Here is a screenshot of the current directory structure of \textbf{VizLib}. \\
+\subsection{Creating the captureLib folder}
+In the interest of portability, I have placed all of my code within a folder called \textbf{captureLib}. If a 3rd party wishes to uses this library in the future, all that would be needed is to simply include \textbf{captureLib} from within \textbf{single.php}. Here is a screenshot of the current directory structure of \textbf{captureLib}. \\
 
-\noindent\includegraphics[scale=0.8]{img/vizlib}    
+\noindent\includegraphics[scale=0.8]{img/capturelib}    
 
 \noindent Here is a breakdown of the current directory structure of the code that captures hits and read times.
 \begin{enumerate}
@@ -995,6 +995,7 @@ class wordpressHook {
 	}
 }
 \end{lstlisting}
+\item \textbf{countries.php} - contains an array that has all country names. Used for database seeding.
 \end{enumerate}
 \subsection{Creating a mock news website}
 In order to test the library, I needed to create a mock news site in Wordpress. In this setup, I built the following categories: Business, Entertainment, Music, Science, Sports, Tech, and World. I created a few fake articles mainly by using random images off the net, and by using lorem ipsum text. I created the Wordpress install under my personal web hosting account. The URL to it is http://www.alainibrahim.com/fakenewssite. In the interest of time, I used the default theme that came out of the box. \\
@@ -1002,6 +1003,7 @@ In order to test the library, I needed to create a mock news site in Wordpress. 
 \noindent\includegraphics[scale=0.5]{img/fakenewssite_main} 
 
 \subsection{Testing}
+\subsubsection{Proof of concept}
 Below is the result of my having visited 3 different articles, each for a different amount of time:
 
 \noindent\includegraphics[scale=1]{img/results_categories} \\
@@ -1013,7 +1015,72 @@ Below is the result of my having visited 3 different articles, each for a differ
 \noindent\includegraphics[scale=1]{img/results_hits} \\
 \noindent The read times appear to have registered successfully in the \textbf{hit} table. \\
 
-Now that I have established functionality and have my data, I can move forward to the stage of building the interactive visualization interface.
+\subsubsection{Seeding mock data}
+After testing the capture of data successfully, I needed a way to mimic traffic on a real news website. In addition, I needed to make it appear as if each mock article visit came from a random country of origin. Below are the steps I took to accomplish this:
+
+\begin{enumerate}
+\item{Modified \textbf{constants.php} to include a flag that denotes whether the app is in test or production mode:}
+\begin{lstlisting}[basicstyle=\scriptsize]
+...
+
+// defines whether we are in test or production mode
+define(PRODUCTION_ENV,false);
+\end{lstlisting}
+
+\item{Modified class \textbf{Hit.php} to produce a fake read time and fake country of origin if in test mode:}
+\begin{lstlisting}[basicstyle=\scriptsize]
+...
+// if in test environment, populate fake data for read time and country of origin
+if(!PRODUCTION_ENV) {
+	// get a random time between 10 seconds and 3 minutes
+	$read_time = rand(10,180);
+	
+	// get the list of all countries of the world, and pick one randomly
+	include("countries.php");
+	$country = $countries[rand(0,count($countries)-1)];
+}
+...
+\end{lstlisting}
+\item{Created \textbf{makeFakeHit.php} to invoke a visit to a random article on my fake news site:}
+\begin{lstlisting}[basicstyle=\scriptsize]
+/**
+	The sole purpose of this file is to visit a random article on the 
+	fake news site, causing hits to register
+*/
+
+$TESTING_IP = "98.172.153.142";
+
+// 290 is the id of the last fake article that was created
+$article_id = rand(1,290);
+
+// cause a fake visit only if testing ip address is registered here
+if( $_SERVER['REMOTE_ADDR'] == $TESTING_IP) {
+	file_get_contents("http://alainibrahim.com/fakenewssite/?p=" . $article_id);
+}
+\end{lstlisting}
+Note that I have hard coded a testing IP address so that I am the only person who can run this for testing.
+\item{Created \textbf{fakeVisit.html} to run on the client side and to call \textbf{makeFakeHit.php} at a pre-specified time interval(using Javascript):}
+\begin{lstlisting}[basicstyle=\scriptsize]
+(function(){
+	// the amount of time to wait before revisiting the site (in seconds)
+	var REVISIT_INTERVAL = 20;
+
+	// trigger the fake visit on the server side
+	var makeFakeHit = function() {
+		$.get("makeFakeHit.php");
+	}
+	
+	// set a recurrent loop to seed the data
+	setInterval(function(){makeFakeHit();console.log("hit issued")},(REVISIT_INTERVAL*1000));
+})()
+\end{lstlisting}
+\end{enumerate}
+
+\noindent Below is a snapshot of the results of the seeding of the database: \\
+
+\noindent\includegraphics[scale=0.8]{img/seeder_mock_hits} \\
+
+\noindent Note that for each hit, the data that is generated by the seeding process is \textbf{article\_id}, \textbf{country}, and \textbf{read\_time}. The other values were left as is because for the scope of this project, they will not be factored into the final visualization. 
 
 \vfill
 
