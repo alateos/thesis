@@ -55,13 +55,13 @@
 
 \section{Abstract}
 
-Current prominent web traffic analytics systems such as Google Analytics convey traffic per website, given certain filtering criteria. Though, such systems are typically geared to system administrators who use the data to identify patterns and possibly assist management in strategy making. For news sites, this may mean analyzing the traffic on a news article, where most of the readers came from, etc. The end users, however, will at best see metrics such as social likes and shares. But, what if we could provide the end users a near real-time metrics map of the entire news site they are visiting? What if they could navigate more efficiently, as opposed to having to follow the common front page layout dictated by the news editors? This system is what I plan to build – a web-based, interactive visualization that conveys the near real-time metrics of a select news site.
+Current prominent web traffic analytics systems such as Google Analytics convey traffic per website, given certain filtering criteria. Though, such systems are typically geared to system administrators who use the data to identify patterns and possibly assist management in strategy making. For news sites, this may mean analyzing the traffic on a news article, where most of the readers came from, etc. The end users, however, will at best see metrics such as social likes and shares. But, what if we could provide the end users a near real-time metrics map of the entire news site they are visiting? What if they could navigate more efficiently, as opposed to having to follow the common front page layout dictated by the news editors? This system is what I plan to build - a web-based, interactive visualization that conveys the near real-time metrics of a select news site.
 First off, I plan to build a server-side library that can be included into any website or web application. This library would hook into a relational database and would efficiently capture the hits (possibly inclusive of IP addresses, geo locations, etc.) against the given news site.
 My second step involves building the "business logic" of the data and information that I want to capture. This includes algorithms that produce the refined data and metrics to be ultimately communicated to the end user.
 My final step is to build a central interactive visualization that shows near real-time user web traffic in each of the registered articles of the given news site. In the proposed scenario, the user will:
 \begin{itemize}
-\item See an overview map of the news site’s articles.
-\item Filter traffic based on available data, such as the user’s geographic location.
+\item See an overview map of the news site's articles.
+\item Filter traffic based on available data, such as the user's geographic location.
 \item Possibly see the average read time of a select article. The overall goal is to have a more personal browsing experience in the midst of all the "guided" text and hyperlinks.
 \item Navigate to the article of interest by clicking on its visual representation.
 \item Obtain details on demand for a given news article by hovering over its visual representation.
@@ -74,7 +74,7 @@ My final step is to build a central interactive visualization that shows near re
 \vfill
 
 \section{Thesis Project Description}
-On the server side scripting end, I will build php classes that will be included in the top of the news site's file(s). The code will register every visiting IP address. A hit/visit can be potentially defined as a unique IP address hitting the news site near real-time, thereby countering against bots and maximizing the accuracy of the readings. Another way of defining a hit would be to utilize HTML5’s LocalStorage. In this scenario, the server-side PHP script would issue a unique token per client browser. The active tokens would then be managed in a database to keep track of connecting clients. An alternative method to register hits is to utilize HTML5’s WebSocket on the client side, matched with a socket server on the server side.
+On the server side scripting end, I will build php classes that will be included in the top of the news site's file(s). The code will register every visiting IP address. A hit/visit can be potentially defined as a unique IP address hitting the news site near real-time, thereby countering against bots and maximizing the accuracy of the readings. Another way of defining a hit would be to utilize HTML5's LocalStorage. In this scenario, the server-side PHP script would issue a unique token per client browser. The active tokens would then be managed in a database to keep track of connecting clients. An alternative method to register hits is to utilize HTML5's WebSocket on the client side, matched with a socket server on the server side.
 
 I will build the relational database using normalization techniques and principles. I plan to also apply indexes where applicable.
 
@@ -86,7 +86,7 @@ I will build the relational database using normalization techniques and principl
 \item Third party client-side libraries to ameliorate the final design and to facilitate the visual implementation. I am specifically considering D3.js
 \end{itemize}
 
-I plan to capture near real-time web traffic – for this project, this means the last 12 hours of user activity. To facilitate the visualization creation process, I plan to use the D3.js (Data-Driven Documents) Javascript library. On the markup and structural side, I may use <canvas>, <svg>, or just plain HTML. The domain at hand will be that of \textbf{news media online}. As for the resultant visualization, the design will be tailored to enable one primary and one secondary task:
+I plan to capture near real-time web traffic - for this project, this means the last 12 hours of user activity. To facilitate the visualization creation process, I plan to use the D3.js (Data-Driven Documents) Javascript library. On the markup and structural side, I may use <canvas>, <svg>, or just plain HTML. The domain at hand will be that of \textbf{news media online}. As for the resultant visualization, the design will be tailored to enable one primary and one secondary task:
 \begin{itemize}
 \item Primary task - To Navigate a news website based on its traffic metrics
 \item Secondary task - To analyze web traffic metrics in near real-time
@@ -96,8 +96,8 @@ The resulting visualization will be a separate html page that is invoked through
 
 \noindent{In terms of interactivity, the said visualization should include the following:}
 \begin{itemize}
-\item Hovering over article elements in order to see previews of the articles (main image, text description, and some of the body’s text)
-\item Clicking on an article’s visual encoding should direct the user to the actual article page, in a separate browser tab
+\item Hovering over article elements in order to see previews of the articles (main image, text description, and some of the body's text)
+\item Clicking on an article's visual encoding should direct the user to the actual article page, in a separate browser tab
 \item A pane that enables the user to filter the data, and zoom (if needed)
 \end{itemize}
 
@@ -111,16 +111,16 @@ The resulting visualization will be a separate html page that is invoked through
 The final product will be geared towards the conventional news site structure, where categories are enumerated (e.g. sports, health, science, politics, etc.), and where articles are listed under their pertinent categories. The below sketches illustrate part of the user experience of the final visualization.\\
 
 \noindent\includegraphics[scale=0.2]{img/cnn_example}
-\noindent\textbf{Diagram 2 –- On a news site like CNN, for example, there would reside a link to the near real-time visualization.}
+\noindent\textbf{Diagram 2 -- On a news site like CNN, for example, there would reside a link to the near real-time visualization.}
 
 \noindent\includegraphics[scale=0.2]{img/cnn_categories}
-\noindent\textbf{Diagram 3 –- A potential way of visualizing the near real-time traffic. Here, the articles are encoded by lines. Each line’s length signifies how much traffic a select article has. Hovering over said line/article invokes a details-on-demand window - showing the title, a picture snapshot, and perhaps some content from the article’s body.}
+\noindent\textbf{Diagram 3 -- A potential way of visualizing the near real-time traffic. Here, the articles are encoded by lines. Each line's length signifies how much traffic a select article has. Hovering over said line/article invokes a details-on-demand window - showing the title, a picture snapshot, and perhaps some content from the article's body.}
 
 \noindent\includegraphics[scale=0.2]{img/overall_viz}
-\noindent\textbf{Diagram 4 –- A conception of what the final artifact will look like. On the right resides the controls that allow the user to filter by time interval (daily, monthly, etc.), category (sports, business, politics, etc.), and the output criterion to measure (number of visits, average read time per article, facebook likes, etc.). The stream graph supports hover (details on demand) and click (to navigate to select article). Upon hovering over said article, the map should highlight the geographic origins of the visitors.}
+\noindent\textbf{Diagram 4 -- A conception of what the final artifact will look like. On the right resides the controls that allow the user to filter by time interval (daily, monthly, etc.), category (sports, business, politics, etc.), and the output criterion to measure (number of visits, average read time per article, facebook likes, etc.). The stream graph supports hover (details on demand) and click (to navigate to select article). Upon hovering over said article, the map should highlight the geographic origins of the visitors.}
 
 \noindent\includegraphics[scale=0.3]{img/table}
-\noindent\textbf{Diagram 5 –- An alternative to the choropleth map in Diagram 4.} \\
+\noindent\textbf{Diagram 5 -- An alternative to the choropleth map in Diagram 4.} \\
 
 My approach towards building the final product will entail the following, in chronological order:
 \begin{enumerate}
@@ -135,9 +135,9 @@ My approach towards building the final product will entail the following, in chr
 
 \section{Prior Work}
 \subsection{Visualization}
-Prominent researchers in the field of visualization have concocted logical constructs and approaches to designing and implementing visualizations. From a presentation standpoint, there is much emphasis on presenting the end user just enough visual data for the user to achieve the intended task of the visualization. Notions such as expressiveness \cite{schumann}, and increasing the data-to-ink ratio \cite{tufte} allude to the goal of building visualizations that can be efficiently processed by the human brain. Another criterion that is opted for is effectiveness. Enter the concepts of a domain and task \cite{munzner}. In the design phase, the builder needs to identify the domain that he/she is working with. A domain is a world of ideas and concepts that are abstracted under one umbrella. For example, human anatomy, software engineering, car racing, and pretty much any category one can think of is a domain. A domain gives rise to concepts, definitions, and a prebuilt library of shapes and colors by the convention of collective knowledge. For example, red in biology will signify blood whereas in the world of novels it may allude to romance. Knowing the domain aids the designer in introducing artifacts effectively and efficiently. On the other hand, the task refers to the “what” of the visualization. What is/are the goal(s) of the visualization? Is it to explore, analyze, extrapolate, etc.? Clearly identifying the task(s) of the visualization at hand solidifies the direction in which the designer encodes the visual variables (Bertin). Encoding refers to the idea of representing a quantitative or qualitative concept visually. The visual variables include position, size, shape, value, color, orientation, grain, and texture. At this point of the design process, most of the roadmap has been laid out for one to develop design sketches. Perhaps in the pre-Internet days, the implementation would have started here. Though, with the advent of mass computerization and global connectivity, a new ability has been introduced – that of interactivity. Interactivity has been broken down into the following \cite{cockburn}: Overview+Detail, Zooming, Focus+Context, details-on-demand, and cue-based systems.
+Prominent researchers in the field of visualization have concocted logical constructs and approaches to designing and implementing visualizations. From a presentation standpoint, there is much emphasis on presenting the end user just enough visual data for the user to achieve the intended task of the visualization. Notions such as expressiveness \cite{schumann}, and increasing the data-to-ink ratio \cite{tufte} allude to the goal of building visualizations that can be efficiently processed by the human brain. Another criterion that is opted for is effectiveness. Enter the concepts of a domain and task \cite{munzner}. In the design phase, the builder needs to identify the domain that he/she is working with. A domain is a world of ideas and concepts that are abstracted under one umbrella. For example, human anatomy, software engineering, car racing, and pretty much any category one can think of is a domain. A domain gives rise to concepts, definitions, and a prebuilt library of shapes and colors by the convention of collective knowledge. For example, red in biology will signify blood whereas in the world of novels it may allude to romance. Knowing the domain aids the designer in introducing artifacts effectively and efficiently. On the other hand, the task refers to the "what" of the visualization. What is/are the goal(s) of the visualization? Is it to explore, analyze, extrapolate, etc.? Clearly identifying the task(s) of the visualization at hand solidifies the direction in which the designer encodes the visual variables (Bertin). Encoding refers to the idea of representing a quantitative or qualitative concept visually. The visual variables include position, size, shape, value, color, orientation, grain, and texture. At this point of the design process, most of the roadmap has been laid out for one to develop design sketches. Perhaps in the pre-Internet days, the implementation would have started here. Though, with the advent of mass computerization and global connectivity, a new ability has been introduced - that of interactivity. Interactivity has been broken down into the following \cite{cockburn}: Overview+Detail, Zooming, Focus+Context, details-on-demand, and cue-based systems.
 
-Time is an essential component to web analytics, as it gives context to what is being measured. Although graphing change over time was attempted in the early A.D.s, the first known contemporary time series graph was published by William Playfair \cite{playfair}. Playfair was the father of the line graph and bar graph; it is important to note that these visual constructs were introduced in a time when they were not commonplace. Given this, a likely inclination towards visualizing temporal data would be to plot time against a Cartesian coordinates system. However, there is not a single model that accommodates all domains and tasks \cite{frank}. Thus, for the proposed visualization, time must be dealt with in the context of information systems in the news domain. As an employee of a news organization, I would like to take this opportunity to highlight the significant time units pertinent to news. Based on my observations of our news website and other similar entities’ websites, "news" refers to a recent occurrence, notably something that happened today. "Breaking News" typically refers to an event that happened within the current day and whose story under development. "Recent News" pertains to stories created within the last 1-3 days. As time approaches the coming year, decade, century, and millennium, news are then compiled and shown in representations such as "year/decade/century/millennium in review". However, in order to achieve a meaningful representation in our visualization I must turn attention to the average lifetime of an article on a news website. Surely, a news article is only news when it is recent. Later references could be made to the said article when it is its "archives" period, but this would be only a temporal slice that would not be sufficient or useful when the task at hand is to have the user navigate based on article popularity. Thus, the time units (aka time granularities) that will support the task of the proposed visualization should be minutes and hours (for breaking news), and hours and days (for recent news) \cite{bettini}. Since I have interest in the general range of these units (e.g. 20 users looked at our article in the last minute/hour/etc.), I will need to use a discrete time scale \cite{goralwalla}. The output variables connected to time will mainly be number of hits, and may include figures such as the number of Facebook likes, number of Twitter tweets, and the average read time of an article.
+Time is an essential component to web analytics, as it gives context to what is being measured. Although graphing change over time was attempted in the early A.D.s, the first known contemporary time series graph was published by William Playfair \cite{playfair}. Playfair was the father of the line graph and bar graph; it is important to note that these visual constructs were introduced in a time when they were not commonplace. Given this, a likely inclination towards visualizing temporal data would be to plot time against a Cartesian coordinates system. However, there is not a single model that accommodates all domains and tasks \cite{frank}. Thus, for the proposed visualization, time must be dealt with in the context of information systems in the news domain. As an employee of a news organization, I would like to take this opportunity to highlight the significant time units pertinent to news. Based on my observations of our news website and other similar entities' websites, "news" refers to a recent occurrence, notably something that happened today. "Breaking News" typically refers to an event that happened within the current day and whose story under development. "Recent News" pertains to stories created within the last 1-3 days. As time approaches the coming year, decade, century, and millennium, news are then compiled and shown in representations such as "year/decade/century/millennium in review". However, in order to achieve a meaningful representation in our visualization I must turn attention to the average lifetime of an article on a news website. Surely, a news article is only news when it is recent. Later references could be made to the said article when it is its "archives" period, but this would be only a temporal slice that would not be sufficient or useful when the task at hand is to have the user navigate based on article popularity. Thus, the time units (aka time granularities) that will support the task of the proposed visualization should be minutes and hours (for breaking news), and hours and days (for recent news) \cite{bettini}. Since I have interest in the general range of these units (e.g. 20 users looked at our article in the last minute/hour/etc.), I will need to use a discrete time scale \cite{goralwalla}. The output variables connected to time will mainly be number of hits, and may include figures such as the number of Facebook likes, number of Twitter tweets, and the average read time of an article.
 
 \subsection{Existing web metrics systems}
 What I plan to build is novel in that there is no current navigable tool that visualizes near real-time traffic on news sites. It should not only convey near real-time web traffic, but should also allow one to view metadata upon hovering over the selected article's representation, and should allow the user to directly navigate to it by clicking.\\
@@ -145,27 +145,27 @@ Here are a few systems that I found which deal with visualizing web metrics: \\
 
 \noindent\textbf{Flow (http://www.webresourcesdepot.com/beautiful-free-website-traffic-visualization-application-flow/)} \\
 \noindent\includegraphics[scale=0.45]{img/flow}
-\noindent\textbf{Diagram 6 –- Shows a line graph that measures the number of hits on the y axis, and date on the x axis for select categories on a given website.} \\
+\noindent\textbf{Diagram 6 -- Shows a line graph that measures the number of hits on the y axis, and date on the x axis for select categories on a given website.} \\
 
-While this can be useful in providing some feedback to the news site’s administrators, it does not provide detailed insight to the articles in a given news site. The below screenshot demonstrates another visualization part of Flow. \\
+While this can be useful in providing some feedback to the news site's administrators, it does not provide detailed insight to the articles in a given news site. The below screenshot demonstrates another visualization part of Flow. \\
 \noindent\includegraphics[scale=1]{img/flow1}
-\noindent\textbf{Diagram 7 –- A visualization showing near real-time hits in sections of a given website.} \\
+\noindent\textbf{Diagram 7 -- A visualization showing near real-time hits in sections of a given website.} \\
 
 \noindent\textbf{Google Analytics} \\
 \noindent\includegraphics[scale=0.45]{img/google_analytics}
-\noindent\textbf{Diagram 8 –- shows the Real-Time metrics pane in Google Analytics.} \\
+\noindent\textbf{Diagram 8 -- shows the Real-Time metrics pane in Google Analytics.} \\
 
-As one can see, Google Analytics comes in handy in aggregating data and conveying statistical data to the end user. The end user here would navigate here with the intention of running an analysis, like: From what parts of the world is most of this website’s traffic coming from? What links are being most visited?
+As one can see, Google Analytics comes in handy in aggregating data and conveying statistical data to the end user. The end user here would navigate here with the intention of running an analysis, like: From what parts of the world is most of this website's traffic coming from? What links are being most visited?
 While this would be a great tool for management, it is unlikely that the end users will wake up to their coffee looking at this, and then navigating to the actual news website. \\
 
 \noindent\textbf{Adobe Analytics} \\
 \noindent\includegraphics[scale=0.6]{img/adobe_analytics}
-\noindent\textbf{Diagram 9 –- Snapshot of the Adobe Analytics landing page, which enumerates the services that Adobe Analytics encompasses.} \\
+\noindent\textbf{Diagram 9 -- Snapshot of the Adobe Analytics landing page, which enumerates the services that Adobe Analytics encompasses.} \\
 
 Adobe Analytics covers a slew of reporting capabilities:
 
 \begin{itemize}
-\item \textbf{Marketing reports and analytics.} Includes dashboards and reports, conveying key performance indicators, showing marketing strategies’ performance in real-time, and displaying the results of ad campaigns
+\item \textbf{Marketing reports and analytics.} Includes dashboards and reports, conveying key performance indicators, showing marketing strategies' performance in real-time, and displaying the results of ad campaigns
 \item \textbf{Ad hoc analysis.} Includes multidimensional site analysis and advanced reporting
 \item \textbf{Data workbench.} Involves collecting, processing, analyzing, and visualizing Big Data from online and offline customer interactions
 \item \textbf{Predictive analysis.} Pertains to discovering hidden customer behavior
@@ -1083,6 +1083,183 @@ Note that I have hard coded a testing IP address so that I am the only person wh
 \noindent Note that for each hit, the data that is generated by the seeding process is \textbf{article\_id}, \textbf{country}, and \textbf{read\_time}. The other values were left as is because for the scope of this project, they will not be factored into the final visualization. 
 
 \vfill
+
+\section{Implementation - retrieving captured metrics}
+At this point, the database is populated with a good amount of data and we need a way to retrieve it. For this, I created a folder on the server side and called it "vizLib". Herein I have thus far created 3 PHP files that will output results in JSON:
+\begin{enumerate}
+\item{\textbf{getCategories.php} - outputs all the used article categories.}
+\begin{lstlisting}[basicstyle=\scriptsize]
+/**
+	Returns the category ids and names in JSON format
+*/
+
+// the DSN for the database
+define(DSN,'mysql:host=localhost;dbname=alaini5_news_viz');
+
+// the edit username for the database
+define(EDIT_USERNAME, "alaini5_newsread");
+
+// the edit password for the database
+define(EDIT_PASSWORD,"mbn@7600");
+
+// connect to database
+try {
+	// create a new PDO connection to the database
+	$db = new PDO(DSN,EDIT_USERNAME,EDIT_PASSWORD);
+} catch(PDOExecption $e) {
+	print "Error!: " . $e->getMessage() . "<br />";
+	die();
+}
+
+// get all categories
+$sql = "select * from category";
+
+// associative array to store categories
+$categories = array();
+
+// retrieve the id and name of each category and store it in the array
+foreach($db->query($sql) as $row) {
+	$categories[$row["category_id"]] = $row["category_name"];
+}
+
+// close database connection
+$db = null;
+
+// encode the array in json format
+$categories = json_encode($categories);
+
+print $categories;
+\end{lstlisting}
+
+\item{\textbf{getArticlesMetrics.php} - outputs all of the metrics for all the articles given a category ID, beginning visit time, and ending visit time.}
+\begin{lstlisting}[basicstyle=\scriptsize]
+/**
+	Returns the following metadata for all articles for 
+	a given time period from a given category in JSON:
+	- Time visited
+	- Article ID
+	- Article URL
+	- Article title
+	- Article sample text
+	- Article featured image URL
+	- Country of visitor
+	- Read time of article
+*/
+
+// the DSN for the database
+define(DSN,'mysql:host=localhost;dbname=alaini5_news_viz');
+
+// the edit username for the database
+define(EDIT_USERNAME, "alaini5_newsread");
+
+// the edit password for the database
+define(EDIT_PASSWORD,"mbn@7600");
+
+// connect to database
+try {
+	// create a new PDO connection to the database
+	$db = new PDO(DSN,EDIT_USERNAME,EDIT_PASSWORD);
+} catch(PDOExecption $e) {
+	print "Error!: " . $e->getMessage() . "<br />";
+	die();
+}
+
+// associate array to contain all the articles' metadata
+$articles = array();
+
+// get the category id from query string
+$category_id = $_GET["category_id"];
+
+// get the start visit time of the articles for this category in Unix time
+$start_time = $_GET["start_time"];
+
+// get the end visit time of the articles for this category in Unix time
+$end_time = $_GET["end_time"];
+
+// get all relevant metadata for the articles visited 
+// within our specified category and time period
+$sql = sprintf("select hit.id as 'hit_id',time_visited, hit.article_id, 
+		country, read_time, article.article_id, category_id, 
+		article_url, title, sample_text,sample_pic from article,hit 
+		where hit.article_id=article.article_id and 
+		category_id=%d and time_visited >= %d and time_visited <= %d",
+		$category_id,$start_time,$end_time); 
+
+// populate the $aritcle array with all the metadata
+foreach($db->query($sql) as $row) {
+	$articles[$row["hit_id"]]["article_id"] = $row["article_id"];
+	$articles[$row["hit_id"]]["url"] = $row["article_url"];
+	$articles[$row["hit_id"]]["title"] = $row["title"];
+	$articles[$row["hit_id"]]["sample_text"] = $row["sample_text"];
+	$articles[$row["hit_id"]]["pic"] = $row["sample_pic"];
+	$articles[$row["hit_id"]]["country"] = $row["country"];
+	$articles[$row["hit_id"]]["read_time"] = $row["read_time"];
+}
+
+// close database connection
+$db = null;
+
+// encode final results in JSON format
+$articles = json_encode($articles);
+
+print $articles;
+\end{lstlisting}
+
+\item{\textbf{getArticleCountriesMetrics.php} - outputs all of the country metrics for a given article ID.}
+\begin{lstlisting}[basicstyle=\scriptsize]
+/**
+	Returns the number of hits and what country they 
+	came from for a given article id in JSON format
+*/
+
+// the DSN for the database
+define(DSN,'mysql:host=localhost;dbname=alaini5_news_viz');
+
+// the edit username for the database
+define(EDIT_USERNAME, "alaini5_newsread");
+
+// the edit password for the database
+define(EDIT_PASSWORD,"mbn@7600");
+
+// connect to database
+try {
+	// create a new PDO connection to the database
+	$db = new PDO(DSN,EDIT_USERNAME,EDIT_PASSWORD);
+} catch(PDOExecption $e) {
+	print "Error!: " . $e->getMessage() . "<br />";
+	die();
+}
+
+// associative array to store the article hits 
+// and country of origin given an article
+$article_countries = array();
+
+// get the article id from query string
+$article_id = $_GET["article_id"];
+
+// get the sum of hits for a given article given their country of origin
+$sql = sprintf("select distinct country, count(hit.id) 
+	as 'hits' from hit where  hit.article_id=%d 
+	group by country",$article_id);
+
+// retrieve the number of hits and country name
+foreach($db->query($sql) as $row) {
+	$article_countries[$row["country"]]["hits"] = $row["hits"];
+	$article_countries[$row["country"]]["name"] = $row["country"];
+}
+
+// close database connection
+$db = null;
+
+// encode the array in json format
+$article_countries = json_encode($article_countries);
+
+print $article_countries;
+\end{lstlisting}
+
+\end{enumerate}
+
+\noindent I anticipate the \textbf{vizLib} folder to also carry all code pertinent to the visualization which I will build in the final stage. 
 
 \section{Implementation - visualization}
 
