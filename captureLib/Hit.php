@@ -26,9 +26,9 @@
 				// get a random time between 10 seconds and 3 minutes
 				$read_time = rand(10,180);
 				
-				// get the list of all countries of the world, and pick one randomly
-				include("countries.php");
-				$country = $countries[rand(0,count($countries)-1)];
+				// get the list of all the states in the US, and pick one randomly
+				include("states.php");
+				$region = $states[array_rand($states)];
 			}
 
 			// get the last time this ip address visited the specified article
