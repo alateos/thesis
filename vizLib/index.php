@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 	<head>
-		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
 		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
@@ -18,7 +17,7 @@
 			
 			#line_graph, #bar_chart {
 				background-color:lightGray;
-				height:500px;
+				height:800px;
 				width:820px;
 				float:left;
 			}
@@ -36,9 +35,13 @@
 			}
 
 			.x.axis path {
-			  
+
 			}
 
+			.line {
+			  fill: none;
+			  stroke-width: 3px;
+			}
 			
 			#chart_area {
 				width:70%;
@@ -52,9 +55,46 @@
 				height:100%;
 				float:left;
 			}
+			
+			#article_details {
+				position:absolute;
+				width:300px;
+				height:400px;
+				background-color:lightBlue;
+				-webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.35);
+				-moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.35);
+				box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.35);
+				overflow:hidden;
+				display:none;
+			}
+			
+			#article_image {
+				width:100%;
+				height:200px;
+			}
+			
+			#article_title {
+				font-size:22px;
+				font-family:calibri;
+				margin:7px;
+			}
+			
+			#article_excerpt {
+				font-size:12px;
+				font-family:calibri;
+				padding:10px;
+			}
 		</style>
 	</head>
 	<body>
+		<script src="http://d3js.org/d3.v3.js"></script>
+		<div id="article_details">
+			<div id="article_image_area">
+				<img id="article_image" src="" alt="IMAGE NOT AVAILABLE" />
+			</div>
+			<div id="article_title"></div>
+			<div id="article_excerpt"></div>
+		</div>
 		<div id="viz_area">
 			<div id="line_graph">
 
@@ -233,7 +273,7 @@
 				var makeLineGraph = function(lineData) {
 					var margin = {top: 20, right: 80, bottom: 30, left: 50},
 						width = 840 - margin.left - margin.right,
-						height = 500 - margin.top - margin.bottom;
+						height = 800 - margin.top - margin.bottom;
 					
 					var parseDate = d3.time.format("%Y%m%d").parse;
 					
@@ -253,11 +293,13 @@
 						.scale(y)
 						.orient("left");
 							
-					var line = d3.svg.line()
-						.interpolate("basis")
-						.x(function(d){ return x(d.time_visited);})
-						.y(function(d){ return y(d.count);})
-
+					var line_function = d3.svg.line()
+						.interpolate("monotone")
+						.x(function(d) { return x(d.date); })
+						.y(function(d) { return y(d.count); });
+						
+					var ReadiedLineData = new Array();
+						
 					$("#line_graph").html("");
 					
 					var svg = d3.select("#line_graph").append("svg")
@@ -267,27 +309,36 @@
 						.append("g")
 						.attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
-					// format date values into month-day-year
+					// ready data for line creation
 					for(line in lineData) {
 						lineData[line].forEach(function(d,i){
-							//date_object = new Date(d.time_visited);
-							//d.formatted_time = (date_object.getMonth()+1)+"-"+date_object.getDate()+"-"+date_object.getFullYear();
+							date_object = new Date(d.time_visited);
+							found = false;
+							data_index = 0;
+							for(readied_line in ReadiedLineData) {
+								if(ReadiedLineData[readied_line].article_id == d.article_id) {
+									found = true;
+									data_index = readied_line;
+								}
+							}
+							
+							if(found == true) { 
+								ReadiedLineData[data_index].values.push({date:date_object,count:d.count,article_title:d.title,url:d.url,article_excerpt:d.sample_text,article_pic_url:d.pic});
+							} else {
+								i = ReadiedLineData.push({article_id:d.article_id,values:new Array()});
+								ReadiedLineData[i-1].values.push({date:date_object,count:d.count,article_title:d.title,url:d.url,article_excerpt:d.sample_text,article_pic_url:d.pic});
+							}
+
 						});
 					}
 					
+		
 					x.domain(d3.extent(DayStamps,function(d){
 						return new Date(d);
 					}));
 					
-					z = d3.extent(DayStamps, function(d) { 
-					date_object = new Date(d);
-					return date_object; 
-					
-					});
-					console.log(z);
-				
-	
-					max_hits = min_hits = 0;
+					max_hits = 0;
+					min_hits = 0;
 					
 					for(line in lineData) {
 						lineData[line].forEach(function(d,i){
@@ -312,19 +363,33 @@
 					  .style("text-anchor", "end")
 					  .text("Hits");
 
-					/*
 					var article = svg.selectAll(".article")
-					  .data(articles)
-					  .enter().append("g")
-					  .attr("class", "article");					  
-					*/
+						.data(ReadiedLineData)
+						.enter().append("g")
+					    .attr("id",function(d) { return d.article_id })
+						.attr("class", "article")
+						.style("cursor","pointer")
+						.on("mouseover",function(d){
+							article_details_top = d3.event.pageY > 500 ? d3.event.pageY-400: d3.event.pageY;
+							$("#article_title").html(d.values[0].article_title);
+							$("#article_excerpt").html(d.values[0].article_excerpt.substring(0,300)+"...");
+							$("#article_image").attr("src",d.values[0].article_pic_url);
+							$("#article_details").css({left:(d3.event.pageX)+"px",top:(article_details_top)+"px"});
+							$("#article_details").show();
+						})
+						.on("mouseout",function(){$("#article_details").hide()})
+						.on("click",function(d) { window.open(d.values[0].url); });
+					
+					article.append("path")
+					  .attr("class", "line")
+					  .attr("d", function(d) { return line_function(d.values); })
+					  .style("stroke", function(d) { return color(d.article_id); });
 		
-					console.log(lineData);
-					color.domain(d3.keys(lineData));
-				
-					
-					
 
+					
+	  
+					console.log(ReadiedLineData);
+					console.log(lineData);
 				}
 				
 				// gets the article categories, loads them in their corresponding dropdown box, and binds the category options to certain event handlers
