@@ -8,7 +8,7 @@
 		- Article title
 		- Article sample text
 		- Article featured image URL
-		- Country of visitor
+		- Region of visitor
 		- Read time of article
 	*/
 
@@ -44,8 +44,8 @@
 
 	// get all relevant metadata for the articles visited 
 	// within our specified category and time period
-	$sql = sprintf("select hit.id as 'hit_id',time_visited, hit.article_id, 
-			country, read_time, article.article_id, category_id, 
+	$sql = sprintf("select hit.id as 'hit_id', time_visited, hit.article_id, 
+			region, read_time, article.article_id, category_id, 
 			article_url, title, sample_text,sample_pic from article,hit 
 			where hit.article_id=article.article_id and 
 			category_id=%d and time_visited >= %d and time_visited <= %d",
@@ -54,11 +54,12 @@
 	// populate the $aritcle array with all the metadata
 	foreach($db->query($sql) as $row) {
 		$articles[$row["hit_id"]]["article_id"] = $row["article_id"];
+		$articles[$row["hit_id"]]["time_visited"] = $row["time_visited"];
 		$articles[$row["hit_id"]]["url"] = $row["article_url"];
 		$articles[$row["hit_id"]]["title"] = $row["title"];
 		$articles[$row["hit_id"]]["sample_text"] = $row["sample_text"];
 		$articles[$row["hit_id"]]["pic"] = $row["sample_pic"];
-		$articles[$row["hit_id"]]["country"] = $row["country"];
+		$articles[$row["hit_id"]]["region"] = $row["region"];
 		$articles[$row["hit_id"]]["read_time"] = $row["read_time"];
 	}
 

@@ -1,6 +1,6 @@
 <?php
 	/**
-		Returns the number of hits and what country they 
+		Returns the number of hits and what states they 
 		came from for a given article id in JSON format
 	*/
 	

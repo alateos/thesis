@@ -22,14 +22,17 @@
 	}
 	
 	// get all categories
-	$sql = "select * from category";
+	$sql = "select * from category order by category_name ASC";
 
 	// associative array to store categories
 	$categories = array();
 	
 	// retrieve the id and name of each category and store it in the array
+	$counter = 0;
 	foreach($db->query($sql) as $row) {
-		$categories[$row["category_id"]] = $row["category_name"];
+		$categories[$counter]["id"] = $row["category_id"]; 
+		$categories[$counter]["name"] = $row["category_name"];
+		$counter++;
 	}
 	
 	// close database connection
