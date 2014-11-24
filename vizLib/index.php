@@ -11,8 +11,12 @@
 				height:100%;
 			}
 			
-			#line_graph {
+			#line_graph,#categories_bar {
 				width:100%;
+			}
+			
+			#categories_viz_area {
+				display:none;
 			}
 			
 			#line_graph {
@@ -46,8 +50,7 @@
 			}
 
 			.line {
-			  fill: none;
-			  stroke-width: 3px;
+			  stroke-width: 1px;
 			}
 			
 			#chart_area {
@@ -59,18 +62,17 @@
 			#controls_area {
 				background-color:lightGray;
 				width:20%;
-				height:220px;
+				height:240px;
 				left:40px;
 				top:70%;
 				position:absolute;
 				padding:10px;
 				cursor:move;
-				border:1px solid black;
 				opacity:0.8;
 				box-shadow: 5px 5px 2px gray;
 			}
 			
-			#conditional_controls {
+			#articles_conditional_controls,#categories_conditional_controls {
 				display:none;
 			}
 			
@@ -104,11 +106,10 @@
 			}
 			
 			#status {
-				padding:5px;
-				margin-top:10px;
+
 			}
 			
-			#viz_area {
+			#articles_viz_area,#categories_viz_area {
 				float:left;
 			}
 			
@@ -119,6 +120,30 @@
 			
 			th:hover {
 				color:steelBlue;
+			}
+			
+			#articles_controls {
+				position:absolute;
+				left:0px;
+				padding:5px;
+				background-color:lightGray;
+				top:-28px;
+				box-shadow: 5px 0px 2px gray;
+				cursor:pointer;
+			}
+			
+			.categories_controls {
+				display:none;
+			}
+			
+			#categories_controls {
+				position:absolute;
+				left:94px;
+				padding:5px;
+				background-color:#C2D4E0;
+				top:-28px;
+				box-shadow: 5px 0px 2px gray;
+				cursor:pointer;
 			}
 		</style>
 	</head>
@@ -132,26 +157,58 @@
 			<div id="article_excerpt"></div>
 		</div>
 		<div id="controls_area">
-			Category
-			<select id="categories"></select><br /><br />
-			<div id="conditional_controls">
-				Type
-				<select id="types">
-					<option value="hits" selected>Hits</option>
-					<option value="read_time">Read Time</option>
-				</select><br /><br />
-				Show Article Details on Hover <input type="checkbox" id="article_details_checkbox" /><br /><br />
-				Last
-				<div id="days_slider"></div>
-				<div id="days_label"></div>
+			<div id="articles_controls">
+				ARTICLES
 			</div>
-			<div id="status"></div>
+			<div id="categories_controls">
+				CATEGORIES
+			</div>
+			<br />
+			<div class="articles_controls">
+				<div id="category_pick">
+					Category
+					<select id="categories"></select><br /><br />
+				</div>
+				Status: <span id="status"></span><br /><br />
+				<div id="details_on_hover">
+					Show Article Details on Hover <input type="checkbox" id="article_details_checkbox" /><br /><br />
+				</div>
+				<div id="articles_conditional_controls">
+					Type
+					<select class="types">
+						<option value="hits" selected>Hits</option>
+						<option value="read_time">Read Time</option>
+					</select><br /><br />
+					Last
+					<div id="articles_days_slider"></div>
+					<div id="articles_days_label"></div>
+				</div>
+			</div>
+			<div class="categories_controls">
+				Status: <span id="status"></span><br /><br />
+				<div id="categories_conditional_controls">
+					Type
+					<select class="types">
+						<option value="hits" selected>Hits</option>
+						<option value="read_time">Read Time</option>
+					</select><br /><br />
+					Last
+					<div id="categories_days_slider"></div>
+					<div id="categories_days_label"></div>
+				</div>
+			</div>
 		</div>
-		<div id="viz_area">
+		<div id="articles_viz_area">
 			<div id="line_graph">
 
 			</div>
 			<div id="bar_area">
+
+			</div>
+		</div>
+		
+		<div id="categories_viz_area">
+			<div id="categories_bars">
 
 			</div>
 		</div>
@@ -166,9 +223,11 @@
 				// stores the number of hits that came from different states for a given article
 				var ArticleStates = new Array();
 				// the end time for our filtered time range. by default it is set to now's time, as a Unix timestamp
-				var endTime = Math.round(new Date().getTime() / 1000);
+				var  endTime = Math.round(new Date().getTime() / 1000);
 				// the default beginning time for our filtered time range. by default it is set to yesterday's time, as a Unix timestamp
 				var startTime = endTime - (24 * 60 * 60);
+				// the maximum start time that a user can go back to - equal to now
+				var MAX_END_TIME = Math.round(new Date().getTime() / 1000);
 				// the minimum start time that a user can go back to
 				var MIN_START_TIME = endTime - (31 * 24 * 60 * 60);
 				// stores the Unix timestamps of all the days within the filtered date range
@@ -179,16 +238,24 @@
 				var RefinedArticlesHitsCopy = new Array();
 				// article ids that are active in the visualization
 				var ArticlesIDsCounts = new Array();
+				// categories hits and read_time data
+				var CategoriesMetrics = new Array();
 				// number of chosen days to go back to
 				var num_days_back = 1;
+				// contains the number of days difference specified in the articles slider
+				var days_spread = 0;
 				// contains the title of the selected article
 				var selected_article_title = "";
 				// contains the url of the selected article
 				var selected_article_url = "";
-				// measure type - by default set to 'hits'
-				var measure_type = "hits";
+				// articles measure type - by default set to 'hits'
+				var articles_measure_type = "hits";
+				// categories measure type - by default set to 'hits'
+				var categories_measure_type = "hits";
 				// flag to denote whether to show the article details on hover
 				var article_details = 0;
+				// flag to denote whether the categories data was loaded
+				var categories_data_loaded = 0;
 				// pointer to current object
 				viz_object = this;
 				
@@ -208,21 +275,28 @@
 						$("#categories option:selected").each(function(index,el){
 							getHitsData(el.id);
 							$("#9999").remove();
-							$("#status").css({"color":"red","font-weight":"bold"}).html("Loading...");
+							$(".articles_controls #status").css({"color":"red","font-weight":"bold"}).html("Loading...");
 						});
 					});
 				};
 				
 				// private function to bind event handlers to the different types of stats in the dropdown
 				var bindTypesEventHandlers = function() {
-					$("#types").change(function(){
-						$("#types option:selected").each(function(index,el){
+					$("#articles_conditional_controls .types").change(function(){
+						$("#articles_conditional_controls .types option:selected").each(function(index,el){
 							makeLineGraph(RefinedArticlesHits,el.value);
-							measure_type = el.value;
+							articles_measure_type = el.value;
+						});					
+					});
+					
+					$("#categories_conditional_controls .types").change(function(){
+						$("#categories_conditional_controls .types option:selected").each(function(index,el){
+							makeCategoriesBarChart(CategoriesMetrics,el.value);
+							categories_measure_type = el.value;
 						});					
 					});
 				};
-				
+								
 				// given a category id, gets all the pertinent articles and their needed metadata in json
 				// by default, this function asks for 31 days worth of data, so as to not stress the server with big requests
 				var getHitsData = function(category_id) {
@@ -231,25 +305,49 @@
 						data:{category_id:category_id,start_time:MIN_START_TIME,end_time:endTime}
 					}).done(function(data){
 						ArticlesHits = JSON.parse(data);
-						refineArticlesData(1);
-						generateHitsMetrics();
-						viz_object.setTimeRange(num_days_back);
-						$("#status").css({"color":"green","font-weight":"bold"}).html("Loaded");
-						$("#conditional_controls").show();
+						//refineArticlesData(1);
+						//generateHitsMetrics();
+						slider_start = $( "#articles_days_slider" ).slider("values")[0];
+						slider_end = $( "#articles_days_slider" ).slider("values")[1];
+						viz_object.setArticlesTimeRange(slider_start,slider_end);
+						$(".articles_controls #status").css({"color":"green","font-weight":"bold"}).html("Loaded");
+						$("#articles_conditional_controls").show();
+					});
+				}
+				
+				this.loadCategories = function() {
+					if(categories_data_loaded == 0) viz_object.getCategoriesData();
+				}
+				
+				// given a beginning and end time in Unix timestamp fetch the metrics for all categories
+				this.getCategoriesData = function() {
+					$(".categories_controls #status").css({"color":"red","font-weight":"bold"}).html("Loading...");
+					$.ajax({
+						url:"getCategoriesMetrics.php",
+						data:{start_time:startTime,end_time:endTime}
+					}).done(function(data){
+						// categories data has been loaded
+						categories_data_loaded = 1;
+						CategoriesMetrics = JSON.parse(data);
+						console.log(CategoriesMetrics);
+						$("#categories_conditional_controls").show();
+						$(".categories_controls #status").css({"color":"green","font-weight":"bold"}).html("Loaded");
+						makeCategoriesBarChart(CategoriesMetrics,categories_measure_type);
 					});
 				}
 				
 				// populate date stamps for the days that are included in the filtered range
-				var populateDayStamps = function(endTime,days) {
+				var populateDayStamps = function(end_point,days_spread) {
 					DayStamps = new Array();
-					for (i= days>=3?days:(days*24);i>=0;i--) {
-						DayStamps.push(endTime);
-						endTime-= days>=3 ? (24 * 60 * 60) : (60 * 60);
+					if(days_spread == 0) days_spread=1;
+					for (i= days_spread>=0?days_spread:(days_spread*24);i>=0;i--) {
+						DayStamps.push(end_point);
+						end_point-= days_spread>=0 ? (24 * 60 * 60) : (60 * 60);
 					}
 				};
 				
 				// ready the articles metadata to be plotted on the line graph
-				var refineArticlesData = function(days) {
+				var refineArticlesData = function(days_spread) {
 					RefinedArticlesHits = new Array();
 					// populate an array for each day stamp with articles hits metadata for that day
 					for (daystamp in DayStamps) {
@@ -265,11 +363,13 @@
 							daystamp_hour = daystamp_date.getHours();
 							daystamp_month = daystamp_date.getMonth();
 							if(article_day == daystamp_day && article_month == daystamp_month) {
-								if(days >=3 ) {
+								if(days_spread>=0) {
+									ArticlesHits[hit].time_visited = DayStamps[daystamp] /1000;
 									RefinedArticlesHits[DayStamps[daystamp]].push(ArticlesHits[hit]);
 									RefinedArticlesHitsCopy[DayStamps[daystamp]].push(ArticlesHits[hit]);
 								} else {
 									if(article_hour == daystamp_hour) {
+										ArticlesHits[hit].time_visited = DayStamps[daystamp] /1000;
 										RefinedArticlesHits[DayStamps[daystamp]].push(ArticlesHits[hit]);
 										RefinedArticlesHitsCopy[DayStamps[daystamp]].push(ArticlesHits[hit]);
 									}
@@ -359,16 +459,31 @@
 					return statesHits;
 				};
 				
-				// sets the start and end times that define the date range 
-				this.setTimeRange = function(days) {
-					startTime = endTime - (days * 24 * 60 * 60);
-					populateDayStamps(endTime,days);
+				// sets the start and end times that define the date range for articles 
+				this.setArticlesTimeRange = function(days,days1) {
+					days_spread=(days1-days);
+					if(days_spread == 0) {
+						endTime = MAX_END_TIME;
+						startTime = endTime - (24 * 60 * 60);
+					} else {
+						endTime = MAX_END_TIME - ((days-1) * (24 * 60 * 60));
+						startTime = endTime - (days_spread * (24 * 60 * 60));					
+					}
+
+					populateDayStamps(endTime,days_spread);
 					hourfyDayStamps();
-					refineArticlesData(days);
+					refineArticlesData(days_spread);
 					generateHitsMetrics();
-					makeLineGraph(RefinedArticlesHits,measure_type);
+					makeLineGraph(RefinedArticlesHits,articles_measure_type);
 					num_days_back = days;
 				};
+				
+				// sets the start and end times that define the date range for categories
+				this.setCategoriesTimeRange = function(days) {
+					startTime = endTime - (days * 24 * 60 * 60);
+					num_days_back = days;
+					viz_object.getCategoriesData();
+				}
 				
 				this.getRefinedArticlesHits = function() {
 					return RefinedArticlesHits;
@@ -456,6 +571,40 @@
 					});
 				}
 				
+				// creates the categories bar chart 
+				var makeCategoriesBarChart = function(barData,type) {
+					// define margins
+					var margin = {top: 20, right: 20, bottom: 20, left: 50},
+						width = 840 - margin.left - margin.right,
+						height = 600 - margin.top - margin.bottom;
+					
+					var y = d3.scale.linear()
+						.range([height,0]);
+						
+					max_hits = 0;
+					min_hits = 0;
+					
+					max_read_time = 0;
+					min_read_time = 0;
+					
+					for(d in CategoriesMetrics) {
+						if(type == "read_time") {
+							max_read_time = max_read_time >= CategoriesMetrics[d].read_time ? max_read_time : CategoriesMetrics[d].read_time; 						
+						} else {
+							max_hits = max_hits >= CategoriesMetrics[d].hits ? max_hits : CategoriesMetrics[d].hits; 
+						}
+					}
+					
+					console.log("max hits " + max_hits);
+					console.log("max read time " + max_read_time);
+					
+					if(type == "read_time") {
+						y.domain([min_read_time,max_read_time]);							
+					} else {
+						y.domain([min_hits,max_hits]);					
+					}
+				}
+				
 				// creates the line graph
 				var makeLineGraph = function(lineData,type) {
 					var margin = {top: 20, right: 20, bottom: 20, left: 50},
@@ -490,14 +639,26 @@
 								return y(d.count); 							
 							}
 						});
-						
+
+					var area_function = d3.svg.area()
+						.interpolate("basis")
+						.x(function(d) { return x(d.date); })
+						.y0(height)
+						.y1(function(d) { 
+							if(type == "read_time") {
+								return y(d.read_time);
+							} else {
+								return y(d.count); 							
+							}
+						});					
+					
 					var ReadiedLineData = new Array();
 						
 					$("#line_graph").html("");
 					
 					var svg = d3.select("#line_graph").append("svg")
 						.attr("id","svg_line_graph")
-						.attr("width", width + margin.left + margin.right)
+						.attr("width", "100%")
 						.attr("height", height + margin.top + margin.bottom)
 						.append("g")
 						.attr("transform","translate(" + margin.left + "," + margin.top + ")");
@@ -508,7 +669,7 @@
 					for(line in lineData) {
 						lineData[line].forEach(function(d,i){
 							temp_min_date = temp_min_date > parseInt(d.time_visited) ? parseInt(d.time_visited) : temp_min_date;
-							date_object = new Date((d.time_visited*1000));
+							date_object = new Date(d.time_visited*1000);
 							found = false;
 							data_index = 0;
 							for(readied_line in ReadiedLineData) {
@@ -538,7 +699,7 @@
 						});
 					}		
 		
-					x.domain([(temp_min_date*1000),(new Date().getTime())]);
+					x.domain(d3.extent(viz_object.getDayStamps()));
 					
 					max_hits = 0;
 					min_hits = 0;
@@ -583,8 +744,11 @@
 						.enter().append("g")
 					    .attr("id",function(d) { return d.article_id })
 						.attr("class", "article")
+						.attr("opacity","0.6")
 						.style("cursor","pointer")
-						.on("mouseover",function(d){
+						.style("fill","lightGray")
+						.on("mouseenter",function(d){
+							this.style.fill = "steelblue";
 							if(article_details == 1) {
 								article_details_top = d3.event.pageY > 450 ? d3.event.pageY-450: d3.event.pageY+1;
 								$("#article_title").html(d.values[0].article_title);
@@ -594,7 +758,7 @@
 								$("#article_details").show();
 							}
 						})
-						.on("mouseout",function(){$("#article_details").hide()})
+						.on("mouseleave",function(){$("#article_details").hide();this.style.fill = "lightGray";})
 						.on("click",function(d) { makeStatesBars(getArticleStates(d.article_id),d.values[0].article_title,d.values[0].url); 
 							//window.open(d.values[0].url); 
 						});
@@ -603,17 +767,20 @@
 					
 					article.append("path")
 					  .attr("class", "line")
-					  .attr("d", function(d) { return line_function(d.values); })
+					  .attr("d", function(d) { return area_function(d.values); })
 					  .on("mouseover",function(d) { 
 						current_line_color = this.style.stroke;
 						this.style.stroke = "black";
-						this.style.strokeWidth = "6px";
+						this.style.strokeWidth = "2px";
 					  })
-					  .on("mouseout",function() { this.style.stroke = current_line_color; this.style.strokeWidth = "3px"; })
-					  .style("stroke", function(d) { return color(d.article_id); });
+					  .on("mouseout",function() { 
+						this.style.stroke = current_line_color; 
+						this.style.strokeWidth = "1px"; 
+					  })
+					  .style("stroke", function(d) { return "black" });
 		
 
-					//console.log(ReadiedLineData);
+					console.log(ReadiedLineData);
 					console.log(lineData);
 				}
 				
@@ -641,23 +808,60 @@
 			
 			$(function() {
 				// populates the days slider, with a min value of 1 day and a max value of 31 days. 
-				$( "#days_slider" ).slider({
+				$( "#articles_days_slider" ).slider({
+					min: 1,
+					max: 31,
+					range: true,
+					create: function() {
+						// sets the label to a default of "1 day"
+						$("#articles_days_label").html("1 day");
+					},
+					slide: function(e,t) {
+						// clause to be correct grammatically with the usage of day (singular) vs. days (plural)
+						t.value>1?$("#articles_days_label").html(t.value + " days"):$("#articles_days_label").html(t.value + " day");
+						// set the time range according to the values set in the slider
+						viz.setArticlesTimeRange(t.values[0],t.values[1]);
+					}
+				});
+				
+				$( "#categories_days_slider" ).slider({
 					min: 1,
 					max: 31,
 					create: function() {
 						// sets the label to a default of "1 day"
-						$("#days_label").html("1 day");
+						$("#categories_days_label").html("1 day");
 					},
-					slide: function(e,t) {
+					change: function(e,t) {
 						// clause to be correct grammatically with the usage of day (singular) vs. days (plural)
-						t.value>1?$("#days_label").html(t.value + " days"):$("#days_label").html(t.value + " day");
+						t.value>1?$("#categories_days_label").html(t.value + " days"):$("#categories_days_label").html(t.value + " day");
 						// set the time range according to the values set in the slider
-						viz.setTimeRange(t.value);
+						viz.setCategoriesTimeRange(t.value);
 					}
 				});
 				
 				// make controls area draggable
 				$("#controls_area").draggable();
+				
+				$("#articles_controls").click(function(){
+					$("#controls_area").css("background-color","lightGray");
+					$("#details_on_hover").show();
+					$("#category_pick").show();
+					$("#articles_viz_area").show();
+					$(".categories_controls").hide();
+					$(".articles_controls").show();
+					$("#categories_viz_area").hide();
+				});
+				
+				$("#categories_controls").click(function(){
+					$("#controls_area").css("background-color","#C2D4E0");
+					$("#details_on_hover").hide();
+					$("#category_pick").hide();
+					$("#articles_viz_area").hide();
+					$(".articles_controls").hide();
+					$(".categories_controls").show();
+					$("#categories_viz_area").show();
+					viz.loadCategories();
+				});
 			});			
 			
 			
