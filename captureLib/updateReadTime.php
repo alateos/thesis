@@ -2,11 +2,9 @@
 	/**
 		This page is accessed via an AJAX call. It updates the read time given an article id.
 	*/
-	include("../../../lib/db_connect.php");
+	include("wp-content/themes/twentyfourteen/captureLib/lib/db_connect.php");
 	$read_time = $_POST["read_time"];
 	$hit_id = $_POST["hit_id"];
-	
-	echo "HI";
 	
 	// if a read time and hit id are provided then update the read time in the database
 	if($read_time > 0 && $hit_id > 0) {
@@ -15,7 +13,4 @@
 		$stmt->bindParam(':hit_id',$hit_id);
 		$stmt->execute();
 	}
-	
-	// close database connection
-	$db = null;
 ?>

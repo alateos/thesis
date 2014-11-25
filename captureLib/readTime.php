@@ -1,7 +1,7 @@
 <script>
 	/**
-		This is the Javascript library that registers the read time of an article.
-		It is suffixed with a .php extension since the script requires the hit id to be provided by php script.
+		This is the Javascript library that registers the read time and expected read time of an article.
+		It is suffixed with a .php extension since the script requires the hit id and article id are to be provided by php script.
 	*/
 
 	// the average number of words per minute the user is expected to spend reading an article
@@ -113,6 +113,19 @@
 	}
 	
 	/**
+		Sends the expected read time on the article to the server
+	*/
+	var sendExpectedReadTime = function() {
+		$.ajax({
+			url: "updateExpectedReadTime.php",
+			type: "post",
+			data: {article_id:<?php echo $article_id; ?>,expected_read_time:(getNumberOfWords()/AVERAGE_WPM)*60}
+		}).done(function(){
+		
+		});
+	}
+	
+	/**
 		initiate the timer and the bindings on load
 	*/
 	$( document ).ready(function() {
@@ -161,5 +174,7 @@
 		$(window).on("focus",function() {
 			timer.countTime();
 		});
+		
+		sendExpectedReadTime();
 	});
 </script>

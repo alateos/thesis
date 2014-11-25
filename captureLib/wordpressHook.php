@@ -50,5 +50,10 @@
 			}
 			return $sample_pic;
 		}
+		
+		// get the article's publish date
+		public function getPublishDate() {
+			return get_post_time('U',false,$this->aritcle_id);
+		}
 	}
 ?>

@@ -42,6 +42,7 @@
 			$article_metadata["title"] = $wordpressHook->getTitle();
 			$article_metadata["sample_text"] = $wordpressHook->getSampleText();
 			$article_metadata["sample_pic"] = $wordpressHook->getSamplePic();
+			$article_metadata["publish_date"] = $wordpressHook->getPublishDate();
 			
 			// array to be passed to the Category class to populate the database with the category's metadata
 			$category_metadata["category_id"] = $wordpressHook->getCategoryID();
