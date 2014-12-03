@@ -9,7 +9,7 @@
 		- Article sample text
 		- Article featured image URL
 		- Region of visitor
-		- Read time of article
+		- Actual read time of article
 	*/
 
 	// the DSN for the database
@@ -44,13 +44,13 @@
 
 	// get all relevant metadata for the articles visited 
 	// within our specified category and time period
-	$sql = sprintf("select hit.id as 'hit_id', time_visited, hit.article_id, 
+	$sql = sprintf("select hit.id as 'hit_id', expected_read_time,time_visited, hit.article_id, 
 			region, read_time, article.article_id, category_id, 
 			article_url, title, sample_text,sample_pic from article,hit 
 			where hit.article_id=article.article_id and 
 			category_id=%d and time_visited >= %d and time_visited <= %d",
 			$category_id,$start_time,$end_time); 
-
+	
 	// populate the $aritcle array with all the metadata
 	foreach($db->query($sql) as $row) {
 		$articles[$row["hit_id"]]["article_id"] = $row["article_id"];
@@ -61,6 +61,7 @@
 		$articles[$row["hit_id"]]["pic"] = $row["sample_pic"];
 		$articles[$row["hit_id"]]["region"] = $row["region"];
 		$articles[$row["hit_id"]]["read_time"] = $row["read_time"];
+		$articles[$row["hit_id"]]["expected_read_time"] = $row["expected_read_time"];
 	}
 
 	// close database connection

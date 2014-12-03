@@ -9,6 +9,9 @@
 				padding:0px;
 				width:100%;
 				height:100%;
+				-moz-user-select: none;
+				-webkit-user-select: none;
+				-ms-user-select: none;
 			}
 			
 			#line_graph,#categories_bar {
@@ -118,8 +121,17 @@
 				color:steelBlue;
 			}
 			
-			th:hover {
+			a:hover {
+				color:blue;
+			}
+			
+			th {
 				color:steelBlue;
+			}
+
+			th:hover {
+				font-weight:bold;
+				color:blue;
 			}
 			
 			#articles_controls {
@@ -144,6 +156,38 @@
 				top:-28px;
 				box-shadow: 5px 0px 2px gray;
 				cursor:pointer;
+			}
+			
+			#articles_days_label {
+				margin-top:10px;
+			}
+			
+			#bar_popup {
+				width:100px;
+				height:20px;
+				background-color:steelBlue;
+				color:white;
+				opacity:0.9;
+				padding:5px;
+				position:absolute;
+				z-index:100;
+				display:none;
+				text-align:center;
+			}
+			
+			#article_popup {
+				width:500px;
+				height:40px;
+				border:1px solid black;
+				font-size:18px;
+				opacity:0.9;
+				padding:5px;
+				position:absolute;
+				z-index:100;
+				text-align:center;
+				background-color:steelBlue;
+				color:white;
+				display:none;
 			}
 		</style>
 	</head>
@@ -179,7 +223,6 @@
 						<option value="hits" selected>Hits</option>
 						<option value="read_time">Read Time</option>
 					</select><br /><br />
-					Last
 					<div id="articles_days_slider"></div>
 					<div id="articles_days_label"></div>
 				</div>
@@ -192,7 +235,6 @@
 						<option value="hits" selected>Hits</option>
 						<option value="read_time">Read Time</option>
 					</select><br /><br />
-					Last
 					<div id="categories_days_slider"></div>
 					<div id="categories_days_label"></div>
 				</div>
@@ -213,6 +255,8 @@
 			</div>
 		</div>
 		
+		<div id="bar_popup"></div>
+		<div id="article_popup"></div>
 		<script>
 			// create the vizLib prototype
 			var VizLib = function() {
@@ -302,7 +346,7 @@
 				var getHitsData = function(category_id) {
 					$.ajax({
 						url:"getArticlesMetrics.php",
-						data:{category_id:category_id,start_time:MIN_START_TIME,end_time:endTime}
+						data:{category_id:category_id,start_time:MIN_START_TIME,end_time:MAX_END_TIME}
 					}).done(function(data){
 						ArticlesHits = JSON.parse(data);
 						//refineArticlesData(1);
@@ -444,14 +488,15 @@
 					statesHits = {};
 					for (daystamp in RefinedArticlesHitsCopy) {
 						for(hit in RefinedArticlesHitsCopy[daystamp]) {
-							if(article_id == RefinedArticlesHitsCopy[daystamp][hit].article_id) {
+							if(article_id == RefinedArticlesHitsCopy[daystamp][hit].article_id && RefinedArticlesHitsCopy[daystamp][hit].read_time > 0) {
 								region = RefinedArticlesHitsCopy[daystamp][hit].region;
 								if(statesHits.hasOwnProperty(region)) {
 									hits = statesHits[region].hits + 1;
-									statesHits[region] = {hits:hits,name:region};
-									
+									read_time = parseInt(RefinedArticlesHitsCopy[daystamp][hit].read_time) + statesHits[region].read_time;
+									expected_read_time = parseInt(RefinedArticlesHitsCopy[daystamp][hit].expected_read_time);
+									statesHits[region] = {hits:hits,read_time:read_time,expected_read_time:parseInt(RefinedArticlesHitsCopy[daystamp][hit].expected_read_time),name:region};
 								} else {
-									statesHits[region] = {hits:1,name:region};
+									statesHits[region] = {hits:1,read_time:parseInt(RefinedArticlesHitsCopy[daystamp][hit].read_time),expected_read_time:parseInt(RefinedArticlesHitsCopy[daystamp][hit].expected_read_time),name:region};
 								}
 							}
 						}
@@ -495,7 +540,7 @@
 				
 				// gets the time start and end times that are defined in the date range
 				this.getTimeRange = function() {
-					return {startTime:startTime,endTime:endTime};
+					return {startTime:MIN_START_TIME,endTime:MAX_END_TIME};
 				};
 
 				// creates the bar graph based on states metrics
@@ -505,6 +550,8 @@
 					for(datum in barData) {
 						ArticleStates.push(barData[datum]);
 					}
+					
+					console.log(ArticleStates);
 					
 					max_state_hits = d3.max(ArticleStates,function(d){return d.hits});
 					
@@ -518,15 +565,15 @@
 					header_row = states_table.append("tr");
 				
 					table_head.append("th").text("STATE").style("text-align","left").attr("data-sorted",0).style("cursor","n-resize");
-					table_head.append("th").text("");
 					table_head.append("th").text("TOTAL HITS").attr("data-sorted",0).style("cursor","n-resize");
+					table_head.append("th").text("ATTENTION SPAN").attr("data-sorted",0).style("cursor","n-resize");
 					
 					table_body = states_table.append("tbody");
 					
 					states_row = table_body.selectAll("tr")
 								.data(ArticleStates)
 								.enter().append("tr");
-
+								
 					states_row.append("td")
 							  .text(function(d){return d.name});
 					
@@ -536,9 +583,38 @@
 							  .append("rect")
 							  .attr("width",function(d){return (d.hits/max_state_hits) * 100})
 							  .attr("height",10)
-							  .style("fill","steelblue");
+							  .style("fill","gray")
+							  .on("mouseenter",function(d) {
+								$("#bar_popup").show();
+								$("#bar_popup").html(d.hits + " hits");
+								$("#bar_popup").css({"top":(d3.event.pageY-30)+"px","left":(d3.event.pageX-100)+"px"});
+							  })
+							  .on("mouseleave",function(d) {
+								$("#bar_popup").hide();
+							  });
+							  
 					
-					states_row.append("td").style("text-align","center").text(function(d){return d.hits});
+					states_row.append("td").append("svg")
+							  .style("height",10)
+							  .style("width",function(d){
+								average_read_time = (d.read_time/d.hits) <= d.expected_read_time ? (d.read_time/d.hits): d.expected_read_time;
+								return (average_read_time/d.expected_read_time) * 100;
+							  })
+							  .append("rect")
+							  .attr("width",function(d){
+								average_read_time = (d.read_time/d.hits) <= d.expected_read_time ? (d.read_time/d.hits): d.expected_read_time;
+								return (average_read_time/d.expected_read_time) * 100;
+							  })
+							  .attr("height",10)
+							  .style("fill","darkGray")
+							  .on("mouseenter",function(d) {
+								$("#bar_popup").show();
+								$("#bar_popup").html(parseInt(d.read_time/d.hits) + " seconds");
+								$("#bar_popup").css({"top":(d3.event.pageY-30)+"px","left":(d3.event.pageX-100)+"px"});
+							  })
+							  .on("mouseleave",function(d) {
+								$("#bar_popup").hide();
+							  });
 
 					d3.selectAll("tbody tr").sort(function(a,b){
 						return d3.ascending(a.name,b.name);
@@ -564,6 +640,18 @@
 									return parseInt(b.hits)-parseInt(a.hits);
 								} else {
 									return parseInt(a.hits)-parseInt(b.hits);
+								}
+							});		
+							$(this).attr("data-sorted",$(this).attr("data-sorted") == 0 ? 1:0); 
+						}
+						
+						if(this.textContent == "ATTENTION SPAN") { 
+							column = this;
+							d3.selectAll("tbody tr").sort(function(a,b){
+								if(parseInt($(column).attr("data-sorted")) == 0) {
+									return parseInt(b.read_time/b.hits)-parseInt(a.read_time/a.hits);
+								} else {
+									return parseInt(a.read_time/a.hits)-parseInt(b.read_time/b.hits);
 								}
 							});		
 							$(this).attr("data-sorted",$(this).attr("data-sorted") == 0 ? 1:0); 
@@ -613,6 +701,8 @@
 					
 					var parseDate = d3.time.format("%Y%m%d").parse;
 					
+					var formatPercent = d3.format(".0%");
+					
 					var x = d3.time.scale()
 						.range([0,width]);
 					
@@ -642,15 +732,19 @@
 
 					var area_function = d3.svg.area()
 						.interpolate("basis")
-						.x(function(d) { return x(d.date); })
+						.x(function(d) { return x(d.x); })
 						.y0(height)
 						.y1(function(d) { 
-							if(type == "read_time") {
-								return y(d.read_time);
-							} else {
-								return y(d.count); 							
-							}
+							return y(d.y);
 						});					
+					
+					var stack_area = d3.svg.area()
+						.x(function(d) { return x(d.x); })
+						.y0(function(d) { return y(d.y0); })
+						.y1(function(d) { return y(d.y0 + d.y); });
+					
+					var stack = d3.layout.stack()
+						.values(function(d) { return d.values; });
 					
 					var ReadiedLineData = new Array();
 						
@@ -664,7 +758,7 @@
 						.attr("transform","translate(" + margin.left + "," + margin.top + ")");
 						
 					temp_min_date = endTime;
-						
+															
 					// ready data for line creation
 					for(line in lineData) {
 						lineData[line].forEach(function(d,i){
@@ -679,27 +773,34 @@
 								}
 							}
 							
-							if(found == true) { 
+							if(found == true) {
+									ReadiedLineData[data_index].url = d.url;
+									ReadiedLineData[data_index].article_title = d.title;
+									ReadiedLineData[data_index].article_excerpt = d.sample_text;
+									ReadiedLineData[data_index].article_pic_url = d.pic;							
 								if(type == "read_time") {
-									ReadiedLineData[data_index].values.push({date:date_object,read_time:d.read_time,article_title:d.title,url:d.url,article_excerpt:d.sample_text,article_pic_url:d.pic});
-								
+									ReadiedLineData[data_index].values.push({x:date_object,y:d.read_time});
 								} else {
-									ReadiedLineData[data_index].values.push({date:date_object,count:d.count,article_title:d.title,url:d.url,article_excerpt:d.sample_text,article_pic_url:d.pic});
+									ReadiedLineData[data_index].values.push({x:date_object,y:d.count});
 								}
 							} else {
+									i = ReadiedLineData.push({article_id:d.article_id,values:new Array()});
+									ReadiedLineData[data_index].url = d.url;
+									ReadiedLineData[i-1].article_title = d.title;
+									ReadiedLineData[i-1].article_excerpt = d.sample_text;
+									ReadiedLineData[i-1].article_pic_url = d.pic;
 								if(type == "read_time") {
-									i = ReadiedLineData.push({article_id:d.article_id,values:new Array()});
-									ReadiedLineData[i-1].values.push({date:date_object,read_time:d.read_time,article_title:d.title,url:d.url,article_excerpt:d.sample_text,article_pic_url:d.pic});																
+									ReadiedLineData[i-1].values.push({x:date_object,y:d.read_time});																
 								} else {
-									i = ReadiedLineData.push({article_id:d.article_id,values:new Array()});
-									ReadiedLineData[i-1].values.push({date:date_object,count:d.count,article_title:d.title,url:d.url,article_excerpt:d.sample_text,article_pic_url:d.pic});								
+									ReadiedLineData[i-1].values.push({x:date_object,y:d.count});								
 								}
 							}
 
 						});
-					}		
+					}	
 		
 					x.domain(d3.extent(viz_object.getDayStamps()));
+					color.domain(ReadiedLineData.map(function(d){return d.article_id}));
 					
 					max_hits = 0;
 					min_hits = 0;
@@ -707,6 +808,7 @@
 					max_read_time = 0;
 					min_read_time = 0;
 					
+					/**
 					for(line in lineData) {
 						lineData[line].forEach(function(d,i){
 							if(type == "read_time") {
@@ -717,12 +819,46 @@
 						});
 					}
 					
+					max_hits = 200;
+					
 					if(type == "read_time") {
 						y.domain([min_read_time,max_read_time]);							
 					} else {
 						y.domain([min_hits,max_hits]);					
 					}
+					*/
+					
+					date_keys = d3.keys(lineData);
+					hit_totals = new Array();
+					
+					// fill data for missing dates
+					date_keys.forEach(function(populated_date){
+						y_hits = 0;
+						ReadiedLineData.forEach(function(d){
+							found = false;
+							d.values.forEach(function(e){
+								if((e.x.getTime()) == parseInt(populated_date)) { 
+									found = true;
+									y_hits+=e.y;
+								}
+							});
+							
+							if(found == false) {
+								d.values.push({x:new Date(parseInt(populated_date)),y:0});
+								d.values.sort(function(a,b){
+									return b.x-a.x;
+								});
+							}
+						});
+						hit_totals.push(y_hits);
+					});
 
+					//console.log(ReadiedLineData.map(function(d){ return d.values}));
+					
+					y.domain([0,d3.max(hit_totals)]);
+					
+					stack(ReadiedLineData);
+					
 					y_axis_text = type == "read_time" ? "Read Time (sec.)":"Hits";
 					
 					svg.append("g")
@@ -738,7 +874,66 @@
 					  .attr("dy", ".71em")
 					  .style("text-anchor", "end")
 					  .text(y_axis_text);
+					
 
+					var article = svg.selectAll(".article")
+						.data(ReadiedLineData)
+						.enter().append("g")
+						.attr("class","article");
+						
+					article.append("path")
+						.attr("d",function(d) {return stack_area(d.values); })
+						.attr("id",function(d){ return d.article_id})
+						.attr("class", "article")
+						.style("opacity",0.6)
+						.style("cursor","pointer")
+						.style("fill","lightGray")
+						.style("stroke","black")
+						.style("z-index",100)
+						.on("mouseenter",function(d){
+							$(".title_text").hide();
+							this.style.fill = "steelblue";
+							d3.select("#t_"+this.id).style("text-decoration","underline");
+							if(article_details != 1) {
+								$("#article_popup").show();
+								article_title_left = d3.event.pageX > 450 ? d3.event.pageX-350:d3.event.pageX;
+								$("#article_popup").css({"left":article_title_left+"px","top":(d3.event.pageY-55)+"px"});
+								$("#article_popup").html(d.article_title);
+							}
+							if(article_details == 1) {
+								article_details_top = d3.event.pageY > 450 ? d3.event.pageY-450: d3.event.pageY+1;
+								$("#article_title").html(d.article_title);
+								$("#article_excerpt").html(d.article_excerpt.substring(0,300)+"...");
+								$("#article_image").attr("src",d.article_pic_url);
+								$("#article_details").css({left:(d3.event.pageX)+"px",top:(article_details_top)+"px"});
+								$("#article_details").show();
+							}
+						})
+						.on("mouseleave",function(d){
+							$(".title_text").show();
+							if(article_details != 1) {
+								$("#article_popup").hide();
+							}
+							$("#article_details").hide();this.style.fill = "lightGray";
+							d3.select("#t_"+this.id).style("text-decoration","none");
+						})
+						.on("click",function(d) { makeStatesBars(getArticleStates(d.article_id),d.article_title,d.url); 
+							//window.open(d.values[0].url); 
+						});
+					
+					  article.append("text")
+						  .attr("class","title_text")
+						  .attr("id",function(d){ return "t_" + d.article_id})
+						  .datum(function(d) { return {article_title: d.article_title, value: d.values[d.values.length - 1]}; })
+						  .attr("transform", function(d) { return "translate(" + x(d.value.x) + "," + y(d.value.y0 + d.value.y / 2) + ")"; })
+						  .attr("x", 150)
+						  .attr("dy", ".35em")
+						  .style("opacity","1")
+						  .style("font-size","12px")
+						  .style("z-index","10")
+						  .text(function(d) { return d.article_title; });
+						
+					/**
 					var article = svg.selectAll(".article")
 						.data(ReadiedLineData)
 						.enter().append("g")
@@ -751,15 +946,15 @@
 							this.style.fill = "steelblue";
 							if(article_details == 1) {
 								article_details_top = d3.event.pageY > 450 ? d3.event.pageY-450: d3.event.pageY+1;
-								$("#article_title").html(d.values[0].article_title);
-								$("#article_excerpt").html(d.values[0].article_excerpt.substring(0,300)+"...");
-								$("#article_image").attr("src",d.values[0].article_pic_url);
+								$("#article_title").html(d.article_title);
+								$("#article_excerpt").html(d.article_excerpt.substring(0,300)+"...");
+								$("#article_image").attr("src",d.article_pic_url);
 								$("#article_details").css({left:(d3.event.pageX)+"px",top:(article_details_top)+"px"});
 								$("#article_details").show();
 							}
 						})
 						.on("mouseleave",function(){$("#article_details").hide();this.style.fill = "lightGray";})
-						.on("click",function(d) { makeStatesBars(getArticleStates(d.article_id),d.values[0].article_title,d.values[0].url); 
+						.on("click",function(d) { makeStatesBars(getArticleStates(d.article_id),d.article_title,d.url); 
 							//window.open(d.values[0].url); 
 						});
 					
@@ -778,8 +973,7 @@
 						this.style.strokeWidth = "1px"; 
 					  })
 					  .style("stroke", function(d) { return "black" });
-		
-
+					*/
 					console.log(ReadiedLineData);
 					console.log(lineData);
 				}
@@ -817,9 +1011,24 @@
 						$("#articles_days_label").html("1 day");
 					},
 					slide: function(e,t) {
-						// clause to be correct grammatically with the usage of day (singular) vs. days (plural)
-						t.value>1?$("#articles_days_label").html(t.value + " days"):$("#articles_days_label").html(t.value + " day");
-						// set the time range according to the values set in the slider
+						if(t.values[0] == 1) {
+							// clause to be correct grammatically with the usage of day (singular) vs. days (plural)
+							t.value>1?$("#articles_days_label").html("Last " + t.value + " days"):$("#articles_days_label").html("Last " + t.value + " day");
+							// set the time range according to the values set in the slider
+						} else {
+							today = new Date();
+							endDate = (today.getTime()/1000) - ((t.values[0]-1) * (24 * 60 * 60));
+							endDate = new Date(endDate * 1000);
+							endDate = endDate.getMonth() + "-" + endDate.getDate() + "-" + endDate.getFullYear();
+							begDate = (today.getTime()/1000) - ((t.values[1]-1) * (24 * 60 * 60));
+							begDate = new Date(begDate * 1000);
+							begDate = begDate.getMonth() + "-" + begDate.getDate() + "-" + begDate.getFullYear();
+							if(begDate != endDate) {
+								$("#articles_days_label").html("Between " + begDate + " and " + endDate);
+							} else {
+								$("#articles_days_label").html("On " + begDate);
+							}
+						}
 						viz.setArticlesTimeRange(t.values[0],t.values[1]);
 					}
 				});
@@ -829,7 +1038,7 @@
 					max: 31,
 					create: function() {
 						// sets the label to a default of "1 day"
-						$("#categories_days_label").html("1 day");
+						$("#categories_days_label").html("Last 1 day");
 					},
 					change: function(e,t) {
 						// clause to be correct grammatically with the usage of day (singular) vs. days (plural)
