@@ -28,4 +28,7 @@
 \contentsline {subsubsection}{\numberline {6.3.2}Seeding mock data}{47}
 \contentsline {section}{\numberline {7}Implementation - retrieving captured metrics}{50}
 \contentsline {section}{\numberline {8}Implementation - visualization}{53}
-\contentsline {section}{\numberline {9}Glossary}{53}
+\contentsline {subsection}{\numberline {8.1}The controls box}{53}
+\contentsline {subsection}{\numberline {8.2}Stacked area chart}{58}
+\contentsline {subsection}{\numberline {8.3}Geographic bar charts}{64}
+\contentsline {section}{\numberline {9}Glossary}{68}

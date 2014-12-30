@@ -69,7 +69,7 @@ My final step is to build a central interactive visualization that shows near re
 
 \includegraphics[scale=0.6]{img/overall_chart}
 
-\noindent\textbf{Diagram 1 -- A general overview of the proposed system. In this diagram, the user visits a news site; from within, the user loads an interactive and navigable web visualization (the above is an impression). The visualization conveys visual encodings of the articles, which link back to the articles themselves.}
+\noindent\textbf{Figure 1 -- A general overview of the proposed system. In this Figure, the user visits a news site; from within, the user loads an interactive and navigable web visualization (the above is an impression). The visualization conveys visual encodings of the articles, which link back to the articles themselves.}
 
 \vfill
 
@@ -111,16 +111,16 @@ The resulting visualization will be a separate html page that is invoked through
 The final product will be geared towards the conventional news site structure, where categories are enumerated (e.g. sports, health, science, politics, etc.), and where articles are listed under their pertinent categories. The below sketches illustrate part of the user experience of the final visualization.\\
 
 \noindent\includegraphics[scale=0.2]{img/cnn_example}
-\noindent\textbf{Diagram 2 -- On a news site like CNN, for example, there would reside a link to the near real-time visualization.}
+\noindent\textbf{Figure 2 -- On a news site like CNN, for example, there would reside a link to the near real-time visualization.}
 
 \noindent\includegraphics[scale=0.2]{img/cnn_categories}
-\noindent\textbf{Diagram 3 -- A potential way of visualizing the near real-time traffic. Here, the articles are encoded by lines. Each line's length signifies how much traffic a select article has. Hovering over said line/article invokes a details-on-demand window - showing the title, a picture snapshot, and perhaps some content from the article's body.}
+\noindent\textbf{Figure 3 -- A potential way of visualizing the near real-time traffic. Here, the articles are encoded by lines. Each line's length signifies how much traffic a select article has. Hovering over said line/article invokes a details-on-demand window - showing the title, a picture snapshot, and perhaps some content from the article's body.}
 
 \noindent\includegraphics[scale=0.2]{img/overall_viz}
-\noindent\textbf{Diagram 4 -- A conception of what the final artifact will look like. On the right resides the controls that allow the user to filter by time interval (daily, monthly, etc.), category (sports, business, politics, etc.), and the output criterion to measure (number of visits, average read time per article, facebook likes, etc.). The stream graph supports hover (details on demand) and click (to navigate to select article). Upon hovering over said article, the map should highlight the geographic origins of the visitors.}
+\noindent\textbf{Figure 4 -- A conception of what the final artifact will look like. On the right resides the controls that allow the user to filter by time interval (daily, monthly, etc.), category (sports, business, politics, etc.), and the output criterion to measure (number of visits, average read time per article, facebook likes, etc.). The stream graph supports hover (details on demand) and click (to navigate to select article). Upon hovering over said article, the map should highlight the geographic origins of the visitors.}
 
 \noindent\includegraphics[scale=0.3]{img/table}
-\noindent\textbf{Diagram 5 -- An alternative to the choropleth map in Diagram 4.} \\
+\noindent\textbf{Figure 5 -- An alternative to the choropleth map in Figure 4.} \\
 
 My approach towards building the final product will entail the following, in chronological order:
 \begin{enumerate}
@@ -145,22 +145,22 @@ Here are a few systems that I found which deal with visualizing web metrics: \\
 
 \noindent\textbf{Flow (http://www.webresourcesdepot.com/beautiful-free-website-traffic-visualization-application-flow/)} \\
 \noindent\includegraphics[scale=0.45]{img/flow}
-\noindent\textbf{Diagram 6 -- Shows a line graph that measures the number of hits on the y axis, and date on the x axis for select categories on a given website.} \\
+\noindent\textbf{Figure 6 -- Shows a line graph that measures the number of hits on the y axis, and date on the x axis for select categories on a given website.} \\
 
 While this can be useful in providing some feedback to the news site's administrators, it does not provide detailed insight to the articles in a given news site. The below screenshot demonstrates another visualization part of Flow. \\
 \noindent\includegraphics[scale=1]{img/flow1}
-\noindent\textbf{Diagram 7 -- A visualization showing near real-time hits in sections of a given website.} \\
+\noindent\textbf{Figure 7 -- A visualization showing near real-time hits in sections of a given website.} \\
 
 \noindent\textbf{Google Analytics} \\
 \noindent\includegraphics[scale=0.45]{img/google_analytics}
-\noindent\textbf{Diagram 8 -- shows the Real-Time metrics pane in Google Analytics.} \\
+\noindent\textbf{Figure 8 -- shows the Real-Time metrics pane in Google Analytics.} \\
 
 As one can see, Google Analytics comes in handy in aggregating data and conveying statistical data to the end user. The end user here would navigate here with the intention of running an analysis, like: From what parts of the world is most of this website's traffic coming from? What links are being most visited?
 While this would be a great tool for management, it is unlikely that the end users will wake up to their coffee looking at this, and then navigating to the actual news website. \\
 
 \noindent\textbf{Adobe Analytics} \\
 \noindent\includegraphics[scale=0.6]{img/adobe_analytics}
-\noindent\textbf{Diagram 9 -- Snapshot of the Adobe Analytics landing page, which enumerates the services that Adobe Analytics encompasses.} \\
+\noindent\textbf{Figure 9 -- Snapshot of the Adobe Analytics landing page, which enumerates the services that Adobe Analytics encompasses.} \\
 
 Adobe Analytics covers a slew of reporting capabilities:
 
@@ -1262,6 +1262,101 @@ print $article_countries;
 \noindent I anticipate the \textbf{vizLib} folder to also carry all code pertinent to the visualization which I will build in the final stage. 
 
 \section{Implementation - visualization}
+
+For the visualization, I enabled the following tasks for the users:
+\begin{itemize}
+\item To compare articles' hits and reader attention spans for any period within the last month, given a select category
+\item To preview each article's thumbnail, title, and excerpt
+\item To contrast the geographic distribution of hits and attention of up to 2 articles
+\item To navigate to the full article counterpart on the subject news website
+\end{itemize}
+
+\subsection{The controls box}
+
+Typically, controls take up space in the limited real estate area available in any web browser. I decided to have the controls be draggable and minimizeable so they don't negatively impact the user experience. 
+
+\noindent\includegraphics[scale=0.9]{img/viz_3}
+
+\noindent The controls box first partially loads when no category is selected. The "X" hides it; when this is done, the top left gray rectangle with the two white dots is then contoured by a black border - to indicate state change.
+
+Upon loading the visualization, an AJAX call is made to the server which fetches all the of the news categories into this dropdown box. Once a category is selected, a call is made to the server, which results in all of the data for the selected category to be fetched from the database using the server-side script. The user is notified (via the red colored "Loading..." indicator) of when the data is being loaded:
+
+\noindent\includegraphics[scale=0.9]{img/viz_4}
+
+And, once the data is loaded, the status label turns green and reads "Loaded":
+
+\noindent\includegraphics[scale=0.9]{img/viz_5}
+
+\noindent Below are the descriptions for each component of the controls area:
+
+\begin{itemize}
+\item \textbf{Category - } sets the category whose articles the user chooses to see
+\item \textbf{Status - } shows the data transfer status of the selected news category
+\item \textbf{Show Article Details on Hover - } determines whether a preview of the article will pop up upon hovering over an article in the stacked area chart. 
+\item \textbf{Show Article titles - } toggles the visibility of the article titles in the bottom portion of the screen
+\item \textbf{Type - } the user gets to select between viewing the number of hits or amount of time spent (in seconds) on the Y axis of the stacked area chart
+\item \textbf{Time slider - } This is a dual time slider control in that the user can use it to select one slice (i.e. day) in time or can alternatively select a time range to view the data in 
+\end{itemize}
+
+\noindent I made the controls box transparent in case the user wanted to keep it afloat the visualization:
+
+\noindent\includegraphics[scale=0.9]{img/viz_6}
+
+
+
+\subsection{Stacked area chart}
+
+Here, the idea was to create a visual product that would allow the user to view all the articles' popularity over time, given a certain news category. I knew that I wanted time to go on the horizontal Y axis, and (hits or read time) to go on the Y axis. That said, I first started with a simple line graph, where each line represented an article was colored differently from the other lines. There were 2 downsides which led me to abandon the line graph: 
+\begin{itemize}
+\item The lines intersected into a spaghetti mash-up, making it very difficult to spot any significant patterns
+\item When a category (e.g. Business) contained more than say 10 articles, I had to use 10 different colors to encode the articles. The issue here was that at a certain point, colors became very similar making it almost impossible to visually query the article all the way through a selected time period 
+\end{itemize}
+
+\noindent Enter the stacked area chart. The stacked area chart maintains a view on the patterns without compromising legibility and supports the following tasks: 
+\begin{itemize}
+\item To compare articles' hits and reader attention spans for any period within the last month, given a select category
+\item To preview each article's thumbnail, title, and excerpt
+\end{itemize}
+
+\noindent The X axis is laid out using D3 and represents a time aggregation that occurs on an hourly basis. 
+
+\noindent\includegraphics[scale=0.9]{img/viz_1}
+
+The articles are stacked vertically, each respectively matching its title in the below white space area, which is headed by the selected category. The readying of the data for the stack is done using the D3 area layout, and the visual representation is implemented by using the SVG <path>. The paths by default all contain a fill of light gray. 
+
+Hovering over any article in the stack chart causes both the article's area and corresponding title to turn to steel blue. In reverse, hovering over an article title in the bottom area causes the corresponding article's area in the stack chart to have a fill color of steel blue. 
+It is important to note that the user has the option to see a preview of the selected article when checking "Show Article Details On Hover" in the controls box:
+
+\noindent\includegraphics[scale=0.9]{img/viz_2}
+
+This results in an overlay to pop over the selected article that includes the article's thumbnail, title, and a 500-character excerpt of the body of the article. 
+
+The user is given the option to contrast the pattern of up 2 articles over time, by left clicking on the select article area. This results in one article being filled with a purple color and the other with a green color. I picked the colors from colorbrewer2.org and ensured they were colorblind safe.
+
+\noindent\includegraphics[scale=0.9]{img/viz_7}
+
+\noindent Once the two articles are selected, their corresponding geographic distributions are shown in the right area of the browser. This is covered in the next section. 
+
+\subsection{Geographic bar charts}
+
+In the last section, two articles were clicked on in the stacked area chart. In addition to their being highlighted in their corresponding colors, a right side pane populates each article's title in its color, along with a table below it. The table contains the geographic origin (e.g. state/country), the total number of hits, and the attention span (i.e. read time in seconds).
+
+\noindent\includegraphics[scale=0.5]{img/viz_8}
+
+\noindent Whenever a first article is selected, the second article is compared along the same geographic areas for uniformity. That is, only the geographic areas that were included in the first article will be displayed for the second article. Clicking the top right "X" will remove the article from the pane, and will render the graph area counterpart back to light gray. 
+The hits values and attention span values are encoded as horizontal bars in dark gray and light gray, respectively. The total hits bar spans relative to the highest hits value for that article - meaning, the bar that takes up the biggest width is the max value that was registered for that article. As for the attention span, it follows a similar scale but is derived from the measured number of seconds spent on the selected article, divided by the expected number of seconds that should have been spent on the article. The expected number of seconds was discussed earlier, and is a measure that takes into account the average adult human reading speed and the number of words contained within the article. \\
+
+\noindent We now take a closer look at the geographic bars.
+
+\noindent\includegraphics[scale=0.8]{img/viz_9} \\
+
+\noindent Note that automatically, the entries are sorted by the name of the geographic origin, in ascending order. Clicking on the "STATE" header will toggle back and forth the sorting order of the geographic origin name. Similarly, toggling the "TOTAL HITS" and "ATTENTION SPAN" headers will sort the data in ascending/descending order. When the data is sorted, it is sorted according to the same criterion for both articles. Hovering over a row will cause that row to be highlighted in yellow, and to be contoured in a dashed line solid border. Hovering over any bar will in addition pop up a steel blue overlay which displays - using white text - the number of hits or read time in seconds.  
+
+The geographic bar charts support the following tasks:
+\begin{itemize}
+\item To contrast the geographic distribution of hits and attention of up to 2 articles
+\item To navigate to the full article counterpart on the subject news website
+\end{itemize}
 
 \vfill
 
