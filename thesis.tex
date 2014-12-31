@@ -55,60 +55,66 @@
 
 \section{Abstract}
 
-Current prominent web traffic analytics systems such as Google Analytics convey traffic per website, given certain filtering criteria. Though, such systems are typically geared to system administrators who use the data to identify patterns and possibly assist management in strategy making. For news sites, this may mean analyzing the traffic on a news article, where most of the readers came from, etc. The end users, however, will at best see metrics such as social likes and shares. But, what if we could provide the end users a near real-time metrics map of the entire news site they are visiting? What if they could navigate more efficiently, as opposed to having to follow the common front page layout dictated by the news editors? This system is what I plan to build - a web-based, interactive visualization that conveys the near real-time metrics of a select news site.
+Current prominent web traffic analytics systems such as Google Analytics report traffic per website, given certain filtering criteria. Such systems are typically geared to system administrators who use the data to identify patterns and possibly assist management in strategy making. For news sites, this may mean analyzing the traffic on a news article and where most of the readers came from. The end users, however, will at best see metrics such as social likes and shares. But, what if we could provide the end users a near real-time metrics map of the entire news site they are visiting? What if they could navigate based on traffic patterns, as opposed to having to follow the common front page layout dictated by the news editors? This system is what I plan to build - a web-based, interactive visualization that shows the near real-time metrics of a select news site.
 First off, I plan to build a server-side library that can be included into any website or web application. This library would hook into a relational database and would efficiently capture the hits (possibly inclusive of IP addresses, geo locations, etc.) against the given news site.
 My second step involves building the "business logic" of the data and information that I want to capture. This includes algorithms that produce the refined data and metrics to be ultimately communicated to the end user.
 My final step is to build a central interactive visualization that shows near real-time user web traffic in each of the registered articles of the given news site. In the proposed scenario, the user will:
 \begin{itemize}
 \item See an overview map of the news site's articles.
 \item Filter traffic based on available data, such as the user's geographic location.
-\item Possibly see the average read time of a select article. The overall goal is to have a more personal browsing experience in the midst of all the "guided" text and hyperlinks.
+\item See the average read time of a select article. The overall goal is to have a more personal browsing experience in the midst of all the "guided" text and hyperlinks.
 \item Navigate to the article of interest by clicking on its visual representation.
 \item Obtain details on demand for a given news article by hovering over its visual representation.
 \end{itemize}
 
 \includegraphics[scale=0.6]{img/overall_chart}
 
-\noindent\textbf{Figure 1 -- A general overview of the proposed system. In this Figure, the user visits a news site; from within, the user loads an interactive and navigable web visualization (the above is an impression). The visualization conveys visual encodings of the articles, which link back to the articles themselves.}
+\noindent\textbf{Figure 1 -- The user visits a news site and loads an interactive web visualization which visualizes web traffic and attention span across the visitors' origin geographic areas. The visualization also includes previews of the articles and a way to link back to the articles' pages.}
 
 \vfill
 
 \section{Thesis Project Description}
-On the server side scripting end, I will build php classes that will be included in the top of the news site's file(s). The code will register every visiting IP address. A hit/visit can be potentially defined as a unique IP address hitting the news site near real-time, thereby countering against bots and maximizing the accuracy of the readings. Another way of defining a hit would be to utilize HTML5's LocalStorage. In this scenario, the server-side PHP script would issue a unique token per client browser. The active tokens would then be managed in a database to keep track of connecting clients. An alternative method to register hits is to utilize HTML5's WebSocket on the client side, matched with a socket server on the server side.
+The system that I built hooks into a Wordpress news website, captures web metrics, and visualizes these metrics in an interactive web-based visualization. The visualization is targeted towards both webmasters and end readers. 
 
-I will build the relational database using normalization techniques and principles. I plan to also apply indexes where applicable.
+On the server side scripting end, I built PHP classes that were included in the top of the news site's file(s). The code registered every visiting IP address. A hit/visit was defined as a unique IP address hitting the news site in near real-time, thereby countering against bots and maximizing the accuracy of the readings. For example, if someone programmed a script that automatically refreshed the articles every few seconds to inflate the hits readings, that attempt would be ineffective. This is due to a mechanism that I created which allows the administrator to set a threshold, in seconds, as to when the next visit should be counted as a new hit. For example, if this variable was set to 60 seconds, and the script refreshed the article page as many times as possible within 60 seconds, then all the page refreshes would be collectively counted as 1 hit. 
 
-\noindent{Here are the technologies that I plan to use:}
+I built the relational database using normalization techniques and principles.
+
+\noindent{Here are the technologies that I used:}
 \begin{itemize}
 \item MySQL relational database
 \item PHP for server-side scripting
 \item HTML 5, CSS3, and JavaScript for client-side design and implementation
-\item Third party client-side libraries to ameliorate the final design and to facilitate the visual implementation. I am specifically considering D3.js
+\item D3.js to facilitate in the visualization of the data
+\item jQuery to shorthand the lengthy Javascript functions
 \end{itemize}
 
-I plan to capture near real-time web traffic - for this project, this means the last 12 hours of user activity. To facilitate the visualization creation process, I plan to use the D3.js (Data-Driven Documents) Javascript library. On the markup and structural side, I may use <canvas>, <svg>, or just plain HTML. The domain at hand will be that of \textbf{news media online}. As for the resultant visualization, the design will be tailored to enable one primary and one secondary task:
+For this project, I captured data as far back as a month. To facilitate the visualization creation process, I used the D3.js (Data-Driven Documents) Javascript library. On the markup and structural side, I used HTML and SVG. The domain at hand is that of \textbf{online news media}. As for the interactive visualization, the design enabled 4 tasks:
 \begin{itemize}
-\item Primary task - To Navigate a news website based on its traffic metrics
-\item Secondary task - To analyze web traffic metrics in near real-time
+\item To compare articles' hits and reader attention spans for any period within the last month, given a select category
+\item To preview each article's thumbnail, title, and excerpt
+\item To contrast the geographic distribution of hits and attention of up to 2 articles
+\item To navigate to the full article counterpart on the subject news website
 \end{itemize}
 
-The resulting visualization will be a separate html page that is invoked through the website through a clickable button. This page will span across the width and height of the browser.
 
-\noindent{In terms of interactivity, the said visualization should include the following:}
+\noindent{In terms of interactivity, the visualization enabled the following:}
 \begin{itemize}
 \item Hovering over article elements in order to see previews of the articles (main image, text description, and some of the body's text)
-\item Clicking on an article's visual encoding should direct the user to the actual article page, in a separate browser tab
-\item A pane that enables the user to filter the data, and zoom (if needed)
+\item Clicking on an article's visual encoding to display a table that shows the geographic distribution of the number of hits and attention span for that article
+\item A controls box that allows the user to select a desired news category, to filter by date range, and to toggle some context-related settings 
 \end{itemize}
 
-\noindent{As for web traffic data being captured, here is a list of what I plan to attain, in order ascending difficulty:}
+\noindent{As for web traffic data being captured, here is a list of what I captured}
 \begin{itemize}
-\item Visitor hits to a given article
+\item Visitor hits to a given article. Each hit is defined by a unique timestamp and IP address
 \item Geographical origin of the visitors to a given article
-\item Average read time of a given article.
+\item Amount of time spent reading the article (for any given hit)
+
+
 \end{itemize}
 
-The final product will be geared towards the conventional news site structure, where categories are enumerated (e.g. sports, health, science, politics, etc.), and where articles are listed under their pertinent categories. The below sketches illustrate part of the user experience of the final visualization.\\
+The final product was geared towards the conventional news site structure, where categories are enumerated (e.g. sports, health, science, politics, etc.), and where articles are listed under their pertinent categories. The below illustrate the initial sketches that were used to shape the final product.\\
 
 \noindent\includegraphics[scale=0.2]{img/cnn_example}
 \noindent\textbf{Figure 2 -- On a news site like CNN, for example, there would reside a link to the near real-time visualization.}
@@ -117,18 +123,18 @@ The final product will be geared towards the conventional news site structure, w
 \noindent\textbf{Figure 3 -- A potential way of visualizing the near real-time traffic. Here, the articles are encoded by lines. Each line's length signifies how much traffic a select article has. Hovering over said line/article invokes a details-on-demand window - showing the title, a picture snapshot, and perhaps some content from the article's body.}
 
 \noindent\includegraphics[scale=0.2]{img/overall_viz}
-\noindent\textbf{Figure 4 -- A conception of what the final artifact will look like. On the right resides the controls that allow the user to filter by time interval (daily, monthly, etc.), category (sports, business, politics, etc.), and the output criterion to measure (number of visits, average read time per article, facebook likes, etc.). The stream graph supports hover (details on demand) and click (to navigate to select article). Upon hovering over said article, the map should highlight the geographic origins of the visitors.}
+\noindent\textbf{Figure 4 -- A conception of what the final artifact was to look like. On the right side reside the controls that allow the user to filter by time interval (daily, monthly, etc.), category (sports, business, politics, etc.), and the output criterion to measure (number of visits, average read time per article, facebook likes, etc.). The stacked area chart supports hover (details on demand) and click (to navigate to select article). Upon hovering over said article, the map was to highlight the geographic origins of the visitors.}
 
 \noindent\includegraphics[scale=0.3]{img/table}
 \noindent\textbf{Figure 5 -- An alternative to the choropleth map in Figure 4.} \\
 
-My approach towards building the final product will entail the following, in chronological order:
+I built the system in the following chronological order:
 \begin{enumerate}
-\item Abstract the web traffic data that needs to be captured and develop the business model. In other words, I will have to define what data will be useful and how to algorithmically capture it
-\item Build a relational database in MySQL around the results from 1)
-\item Develop a server-side framework with PHP that would capture and retrieve the collected data
-\item Research and experiment with different potential visualizations that could best fit 2)
-\item Develop and implement the client-side visualization using D3. I anticipate capturing the data from the server side in JSON format
+\item Abstracted the web traffic data that needs to be captured and develop the business model. In other words, I first defined what data was useful and how to develop the algorithms to capture it
+\item Built a relational database in MySQL around the results from 1)
+\item Developed a server-side framework with PHP that captured and retrieved the collected data
+\item Researched and experimented with different visualizations that could best fit 2)
+\item Developed and implemented the client-side visualization using D3. I captured the data from the server side in JSON format
 \end{enumerate}
 
 \vfill
