@@ -24,16 +24,29 @@
 			
 			#line_graph {
 				background-color:white;
-				height:600px;
-				width:840px;
+				height:500px;
+				width:620px;
 				float:left;
 			}
 			
-			#bar_area {
-				width:20%;
+			#articles_titles {
+				width:620px;
+				float:left;
+				height:300px;
+				overflow-y:auto;
+				visibility:none;
+				margin-top:15px;
+				margin-left:6%;
+			}
+			
+			#bar_area,#bar_area_other {
+				width:48%;
 				background-color:white;
 				float:left;
-				margin-left:100px;
+			}
+			
+			#bar_area_other {
+				margin-left:20px;
 			}
 		
 			#graph_area {
@@ -65,9 +78,9 @@
 			#controls_area {
 				background-color:lightGray;
 				width:20%;
-				height:240px;
-				left:40px;
-				top:70%;
+				height:270px;
+				right:20%;
+				top:60%;
 				position:absolute;
 				padding:10px;
 				cursor:move;
@@ -81,6 +94,7 @@
 			
 			#article_details {
 				position:absolute;
+				float:left;
 				width:300px;
 				height:450px;
 				background-color:lightBlue;
@@ -127,9 +141,10 @@
 			
 			th {
 				color:steelBlue;
+				cursor:default;
 			}
 
-			th:hover {
+			th:hover:nth-child(1),th:hover:nth-child(2) {
 				font-weight:bold;
 				color:blue;
 			}
@@ -156,6 +171,33 @@
 				top:-28px;
 				box-shadow: 5px 0px 2px gray;
 				cursor:pointer;
+				display:none;
+			}
+			
+			#x {
+				position:absolute;
+				right:0px;
+				background-color:lightGray;
+				top:-25px;
+				cursor:pointer;
+				width:40px;
+				height:21px;
+				box-shadow: 5px 0px 0px gray;
+				padding:5px;
+				text-align:center;
+				font-weight:bold;
+				-webkit-border-top-left-radius: 20px;
+				-webkit-border-top-right-radius: 20px;
+				-moz-border-radius-topleft: 20px;
+				-moz-border-radius-topright: 20px;
+				border-top-left-radius: 20px;
+				border-top-right-radius: 20px;
+				font-family:calibri;
+				font-size:20px;
+			}
+			
+			#x:hover {
+				color:red;
 			}
 			
 			#articles_days_label {
@@ -189,6 +231,85 @@
 				color:white;
 				display:none;
 			}
+			
+			#controls_switch {
+				position:fixed;
+				top:20px;
+				left:0px;
+				width:10px;
+				height:44px;
+				cursor:pointer;
+				background-color:lightGray;
+				color:white;
+				font-weight:bold;
+				text-align:center;
+				padding:3px;
+			}
+			
+			#controls_switch:hover {
+				background-color:gray;
+			}
+			
+			#article_title_previews {
+				display:none;
+			}
+			
+			ul {
+				list-style-type:square;
+			}
+			
+			#category_title {
+				float:left;
+				margin-left:6%;
+				height:0px;
+				margin-top:50px;
+			}
+			
+			table svg {
+				height:10px;
+				width:100px;
+			}
+			
+			table {
+				border-spacing:4px;
+				font-size:11px;
+			}
+			
+			#left_side {
+				width:45%;
+				float:left;
+				margin-left:1%;
+			}
+			
+			#right_side {
+				width:47%;
+				float:right;
+			}
+			
+			h4 {
+				height:40px;
+				
+			}
+			
+			.article_x {
+				top: -20px;
+				font-family: calibri;
+				cursor: pointer;
+				width: 100%;
+				text-align: right;
+				opacity: 0.3;
+				padding-right:5px;
+				margin-bottom:5px;
+				border-bottom:1px solid gray;
+			}			
+		
+			.article_x:hover {
+				color:red;
+			}
+			
+			circle:hover {
+				fill:steelBlue;
+			}
 		</style>
 	</head>
 	<body>
@@ -207,6 +328,7 @@
 			<div id="categories_controls">
 				CATEGORIES
 			</div>
+			<div id="x">X</div>
 			<br />
 			<div class="articles_controls">
 				<div id="category_pick">
@@ -216,6 +338,9 @@
 				Status: <span id="status"></span><br /><br />
 				<div id="details_on_hover">
 					Show Article Details on Hover <input type="checkbox" id="article_details_checkbox" /><br /><br />
+				</div>
+				<div id="article_title_previews">
+					Show Article titles <input type="checkbox" id="article_titles_checkbox" checked /><br /><br />
 				</div>
 				<div id="articles_conditional_controls">
 					Type
@@ -241,11 +366,23 @@
 			</div>
 		</div>
 		<div id="articles_viz_area">
-			<div id="line_graph">
+			<div id="left_side">
+				<div id="line_graph">
 
+				</div>	
+				<h2 id="category_title"></h2>
+				<ul id="articles_titles">
+					
+				</ul>
+	
 			</div>
-			<div id="bar_area">
+			<div id="right_side">
+				<div id="bar_area" data-loaded=0 data-color="#af8dc3">
 
+				</div>
+				<div id="bar_area_other" data-loaded=0 data-color="#7fbf7b">
+				
+				</div>			
 			</div>
 		</div>
 		
@@ -257,6 +394,7 @@
 		
 		<div id="bar_popup"></div>
 		<div id="article_popup"></div>
+		<div id="controls_switch">. <br />. <br />.</div>
 		<script>
 			// create the vizLib prototype
 			var VizLib = function() {
@@ -298,18 +436,27 @@
 				var categories_measure_type = "hits";
 				// flag to denote whether to show the article details on hover
 				var article_details = 0;
+				// flag to denote whether to preview the article titles
+				var articles_titles = 1;
 				// flag to denote whether the categories data was loaded
 				var categories_data_loaded = 0;
+				// denotes the category color based on d3's scale function
+				this.color_scale = d3.scale.category20b();
+				// keeps track of the geographic areas being compared
+				var areas_used = new Set();									
 				// pointer to current object
 				viz_object = this;
 				
 				// private function to populate the categories dropdown box
 				var populateCategoriesDropdown = function() {
+					categories = [];
 					// populate the categories dropdown box based on the Categories array
 					$("#categories").append("<option id=9999>[SELECT CATEGORY]</option>");
 					$.each(Categories,function(index,el){
 						$("#categories").append("<option id=" + el.id + ">" + el.name + "</option>");
+						categories.push(el.name);
 					});
+					viz_object.color_scale.domain(categories);
 				};
 				
 				// private function to bind event handlers to the different categories in the dropdown
@@ -317,7 +464,7 @@
 					$("#categories").change(function(){
 						// when changing categories, get all the pertinent articles data for the selected category
 						$("#categories option:selected").each(function(index,el){
-							getHitsData(el.id);
+							getHitsData(el.id,el.innerHTML);
 							$("#9999").remove();
 							$(".articles_controls #status").css({"color":"red","font-weight":"bold"}).html("Loading...");
 						});
@@ -343,7 +490,7 @@
 								
 				// given a category id, gets all the pertinent articles and their needed metadata in json
 				// by default, this function asks for 31 days worth of data, so as to not stress the server with big requests
-				var getHitsData = function(category_id) {
+				var getHitsData = function(category_id,category_title) {
 					$.ajax({
 						url:"getArticlesMetrics.php",
 						data:{category_id:category_id,start_time:MIN_START_TIME,end_time:MAX_END_TIME}
@@ -356,6 +503,9 @@
 						viz_object.setArticlesTimeRange(slider_start,slider_end);
 						$(".articles_controls #status").css({"color":"green","font-weight":"bold"}).html("Loaded");
 						$("#articles_conditional_controls").show();
+						$("#article_title_previews").show();
+						$("#category_title").css("color",viz_object.color_scale(category_title));
+						$("#category_title").html(category_title);
 					});
 				}
 				
@@ -373,7 +523,7 @@
 						// categories data has been loaded
 						categories_data_loaded = 1;
 						CategoriesMetrics = JSON.parse(data);
-						console.log(CategoriesMetrics);
+						//console.log(CategoriesMetrics);
 						$("#categories_conditional_controls").show();
 						$(".categories_controls #status").css({"color":"green","font-weight":"bold"}).html("Loaded");
 						makeCategoriesBarChart(CategoriesMetrics,categories_measure_type);
@@ -383,8 +533,8 @@
 				// populate date stamps for the days that are included in the filtered range
 				var populateDayStamps = function(end_point,days_spread) {
 					DayStamps = new Array();
-					if(days_spread == 0) days_spread=1;
-					for (i= days_spread>=0?days_spread:(days_spread*24);i>=0;i--) {
+					//if(days_spread == 0) days_spread=1;
+					for (i= days_spread>=0?days_spread+1:(days_spread*24);i>=0;i--) {
 						DayStamps.push(end_point);
 						end_point-= days_spread>=0 ? (24 * 60 * 60) : (60 * 60);
 					}
@@ -477,7 +627,7 @@
 						url:"getArticleStatesMetrics.php",
 						data:{article_id:article_id}
 					}).done(function(data){
-						console.log(data);
+						//console.log(data);
 						makeStatesBars(JSON.parse(data));
 					});
 				}
@@ -492,11 +642,15 @@
 								region = RefinedArticlesHitsCopy[daystamp][hit].region;
 								if(statesHits.hasOwnProperty(region)) {
 									hits = statesHits[region].hits + 1;
+									read_hits = parseInt(RefinedArticlesHitsCopy[daystamp][hit].read_time) > 1 ? (statesHits[region].read_hits + 1):statesHits[region].read_hits;
+									statesHits[region].read_times.push(RefinedArticlesHitsCopy[daystamp][hit].read_time);
+									read_times = statesHits[region].read_times;
 									read_time = parseInt(RefinedArticlesHitsCopy[daystamp][hit].read_time) + statesHits[region].read_time;
 									expected_read_time = parseInt(RefinedArticlesHitsCopy[daystamp][hit].expected_read_time);
-									statesHits[region] = {hits:hits,read_time:read_time,expected_read_time:parseInt(RefinedArticlesHitsCopy[daystamp][hit].expected_read_time),name:region};
+									statesHits[region] = {hits:hits,read_hits:read_hits,read_times:read_times,read_time:read_time,expected_read_time:parseInt(RefinedArticlesHitsCopy[daystamp][hit].expected_read_time),name:region};
 								} else {
-									statesHits[region] = {hits:1,read_time:parseInt(RefinedArticlesHitsCopy[daystamp][hit].read_time),expected_read_time:parseInt(RefinedArticlesHitsCopy[daystamp][hit].expected_read_time),name:region};
+									read_hits = parseInt(RefinedArticlesHitsCopy[daystamp][hit].read_time) > 1 ? 1:0;
+									statesHits[region] = {hits:1,read_times:[RefinedArticlesHitsCopy[daystamp][hit].read_time],read_hits:read_hits,read_time:parseInt(RefinedArticlesHitsCopy[daystamp][hit].read_time),expected_read_time:parseInt(RefinedArticlesHitsCopy[daystamp][hit].expected_read_time),name:region};
 								}
 							}
 						}
@@ -507,13 +661,8 @@
 				// sets the start and end times that define the date range for articles 
 				this.setArticlesTimeRange = function(days,days1) {
 					days_spread=(days1-days);
-					if(days_spread == 0) {
-						endTime = MAX_END_TIME;
-						startTime = endTime - (24 * 60 * 60);
-					} else {
-						endTime = MAX_END_TIME - ((days-1) * (24 * 60 * 60));
-						startTime = endTime - (days_spread * (24 * 60 * 60));					
-					}
+					endTime = MAX_END_TIME - ((days-1) * (24 * 60 * 60));
+					startTime = endTime - (days_spread * (24 * 60 * 60));					
 
 					populateDayStamps(endTime,days_spread);
 					hourfyDayStamps();
@@ -544,39 +693,93 @@
 				};
 
 				// creates the bar graph based on states metrics
-				var makeStatesBars = function(barData,passed_article_title,passed_article_url) {
-					$("#bar_area").html("");
+				var makeStatesBars = function(barData,passed_article_title,passed_article_url,passed_article_id) {
+					if(typeof $("[data-loaded=0]")[0]=== "undefined" || $("[data-id=" + passed_article_id + "]").length==1) return;
+					var target_area_id = $("[data-loaded=0]")[0].id;
+					target_area = d3.select("#"+target_area_id);
+					$("#" + target_area_id).attr("data-id",passed_article_id);
+					$("#"+passed_article_id).css("fill",$("#"+target_area_id).attr("data-color"));
+					$("#"+passed_article_id).attr("data-selected","1");
+					
 					ArticleStates = new Array();
 					for(datum in barData) {
 						ArticleStates.push(barData[datum]);
 					}
 					
-					console.log(ArticleStates);
+					if($("[data-loaded=0]").length == 2) {
+						ArticleStates.forEach(function(d){ areas_used.add(d.name)});
+					}
 					
 					max_state_hits = d3.max(ArticleStates,function(d){return d.hits});
 					
-					article_title = d3.select("#bar_area").append("h3");
-					article_title.append("a").attr("href",passed_article_url).attr("target","_blank").html(passed_article_title);
+					article_title = target_area.append("h4");
+					article_title.append("div").attr("class","article_x").html("X").on("click",function(){
+						$("#" + target_area_id).attr("data-id",0);
+						$("#"+passed_article_id).attr("data-selected","0");
+						$("#"+passed_article_id).css("fill","lightGray");
+						$("#"+target_area_id).html("");
+						$("#"+target_area_id).attr("data-loaded",0);
+						areas_used = new Set();
+						$("[data-loaded=1] tbody").children().each(function(i,d){ areas_used.add(d.childNodes[0].innerHTML);});
+					});
+					article_title.append("a").attr("href",passed_article_url).attr("target","_blank").html(passed_article_title).style("color",$("#"+target_area_id).attr("data-color"));
 					
-					states_table = d3.select("#bar_area").append("table").style("border-collapse","collapse");
+					states_table = target_area.append("table").style("border-collapse","collapse");
 					
 					table_head = states_table.append("thead");
 					
 					header_row = states_table.append("tr");
 				
 					table_head.append("th").text("STATE").style("text-align","left").attr("data-sorted",0).style("cursor","n-resize");
-					table_head.append("th").text("TOTAL HITS").attr("data-sorted",0).style("cursor","n-resize");
-					table_head.append("th").text("ATTENTION SPAN").attr("data-sorted",0).style("cursor","n-resize");
+					table_head.append("th").text("TOTAL HITS").attr("data-sorted",0).style("text-align","left").style("cursor","n-resize");
+					table_head.append("th").text("ATTENTION SPAN").attr("data-sorted",0).style("text-align","left");
 					
-					table_body = states_table.append("tbody");
+					table_body = states_table.append("tbody").attr("id","geo_"+target_area_id);
+
+					var UniqueArticleStates = [];
+					
+					ArticleStates.forEach(function(d,i){
+						if(areas_used.has(d.name)) {
+							UniqueArticleStates.push(d);
+						} 
+					});
+				
+					areas_used.forEach(function(d){
+						found = false;
+						UniqueArticleStates.forEach(function(e){
+							if(d == e.name) found = true;
+						});
+						
+						if(found == false) {  
+							UniqueArticleStates.push({name:d,expected_read_time:0,hits:0,read_hits:0,read_time:0});
+						}
+					});
+				
+					var data_to_use = $("[data-loaded=0]").length == 2 ? ArticleStates:UniqueArticleStates;
 					
 					states_row = table_body.selectAll("tr")
-								.data(ArticleStates)
+								.data(data_to_use)
 								.enter().append("tr");
-								
+		
+					d3.selectAll("tbody tr")
+								.style("cursor","pointer")
+								.on("mouseenter",function(){
+									$("tr")[this.rowIndex+1].style.backgroundColor = "#FFFAB8";
+									$("tr")[this.rowIndex+1].style.border = "1px dashed gray";
+									$("tr")[this.rowIndex+1+data_to_use.length+1].style.backgroundColor = "#FFFAB8";
+									$("tr")[this.rowIndex+1+data_to_use.length+1].style.border = "1px dashed gray";
+									
+								})
+							   .on("mouseleave",function() { 
+									$("tr")[this.rowIndex+1].style.backgroundColor = "white";
+									$("tr")[this.rowIndex+1].style.border = "none";
+									$("tr")[this.rowIndex+1+data_to_use.length+1].style.backgroundColor = "white";
+									$("tr")[this.rowIndex+1+data_to_use.length+1].style.border = "none";
+							   });
+		
 					states_row.append("td")
 							  .text(function(d){return d.name});
-					
+
 					states_row.append("td").append("svg")
 							  .style("height",10)
 							  .style("width",function(d){return (d.hits/max_state_hits) * 100})
@@ -593,37 +796,75 @@
 								$("#bar_popup").hide();
 							  });
 							  
-					
+					/**
 					states_row.append("td").append("svg")
 							  .style("height",10)
-							  .style("width",function(d){
-								average_read_time = (d.read_time/d.hits) <= d.expected_read_time ? (d.read_time/d.hits): d.expected_read_time;
-								return (average_read_time/d.expected_read_time) * 100;
+							  .style("width",function(d){								
+								average_read_time = (d.read_time/d.read_hits) <= d.expected_read_time ? (d.read_time/d.read_hits): d.expected_read_time;
+								cell_width = d.read_hits > 0 ? (average_read_time/d.expected_read_time) * 100 : 0;
+								return cell_width;
 							  })
 							  .append("rect")
 							  .attr("width",function(d){
-								average_read_time = (d.read_time/d.hits) <= d.expected_read_time ? (d.read_time/d.hits): d.expected_read_time;
-								return (average_read_time/d.expected_read_time) * 100;
+								average_read_time = (d.read_time/d.read_hits) <= d.expected_read_time ? (d.read_time/d.read_hits): d.expected_read_time;
+								rect_width = d.read_hits > 0 ? (average_read_time/d.expected_read_time) * 100 : 0;
+								return rect_width;
 							  })
 							  .attr("height",10)
 							  .style("fill","darkGray")
 							  .on("mouseenter",function(d) {
 								$("#bar_popup").show();
-								$("#bar_popup").html(parseInt(d.read_time/d.hits) + " seconds");
+								$("#bar_popup").html(parseInt(d.read_time/d.read_hits) + " seconds");
 								$("#bar_popup").css({"top":(d3.event.pageY-30)+"px","left":(d3.event.pageX-100)+"px"});
 							  })
 							  .on("mouseleave",function(d) {
 								$("#bar_popup").hide();
-							  });
+							  }); */
 
-					d3.selectAll("tbody tr").sort(function(a,b){
+					read_times_cells = states_row.append("td").append("svg").append("g")
+								.style("height",10)
+								.style("width","100px")
+								.attr("id",function(d){return d.name.replace(" ","_")+"_"+passed_article_id})
+
+					try {
+						data_to_use.forEach(function(d){
+							read_times_cells[0].forEach(function(e){
+								if(d.name.replace(" ","_")+"_"+passed_article_id == e.id) {
+									d.read_times.forEach(function(f){
+										d3.select("#"+e.id).append("circle")
+											.on("mouseenter",function() {
+												$("#bar_popup").show();
+												$("#bar_popup").html(parseInt(f) + " seconds");
+												$("#bar_popup").css({"top":(d3.event.pageY-30)+"px","left":(d3.event.pageX-100)+"px"});
+											})
+											.on("mouseleave",function() {
+												$("#bar_popup").hide();
+											})
+											.attr("r",3)
+											.style("opacity",0.4)
+											.attr("fill","lightGray")
+											.attr("stroke","gray")
+											.attr("cy",5)
+											.attr("cx",function(g){
+												return parseFloat(f/d.expected_read_time) * 100;
+											})
+									});
+								}
+							});
+						});
+					} catch(err) {
+					
+					}
+					
+					table_body.selectAll("tr").sort(function(a,b){
 						return d3.ascending(a.name,b.name);
 					});
 					
-					d3.selectAll("thead th").on("click",function(){
+					d3.selectAll("#"+target_area_id+" thead th").on("click",function(){
 						if(this.textContent == "STATE") {
+							/**
 							column = this;
-							d3.selectAll("tbody tr").sort(function(a,b){
+							d3.selectAll("#"+target_area_id+" tbody tr").sort(function(a,b){
 								if(parseInt($(column).attr("data-sorted")) == 0) {
 									return d3.descending(a.name,b.name);
 								} else {
@@ -631,40 +872,100 @@
 								}
 							});						
 							$(this).attr("data-sorted",$(this).attr("data-sorted") == 0 ? 1:0); 
+							*/
+							
+							column = this;							
+							d3.selectAll("#bar_area tbody tr").sort(function(a,b){
+								if(parseInt($(column).attr("data-sorted")) == 0) {
+									return d3.descending(a.name,b.name);
+								} else {
+									return d3.ascending(a.name,b.name);
+								}
+							});
+							d3.selectAll("#bar_area_other tbody tr").sort(function(a,b){
+								if(parseInt($(column).attr("data-sorted")) == 0) {
+									return d3.descending(a.name,b.name);
+								} else {
+									return d3.ascending(a.name,b.name);
+								}
+							});
+							$("#bar_area th:nth-child(1)").attr("data-sorted",$("#bar_area th:nth-child(1)").attr("data-sorted") == 0 ? 1:0);
+							$("#bar_area_other th:nth-child(1)").attr("data-sorted",$("#bar_area_other th:nth-child(1)").attr("data-sorted") == 0 ? 1:0);
 						}
 						
 						if(this.textContent == "TOTAL HITS") { 
+							/**
 							column = this;
-							d3.selectAll("tbody tr").sort(function(a,b){
+							d3.selectAll("#"+target_area_id+" tbody tr").sort(function(a,b){
 								if(parseInt($(column).attr("data-sorted")) == 0) {
 									return parseInt(b.hits)-parseInt(a.hits);
 								} else {
 									return parseInt(a.hits)-parseInt(b.hits);
 								}
 							});		
-							$(this).attr("data-sorted",$(this).attr("data-sorted") == 0 ? 1:0); 
-						}
-						
-						if(this.textContent == "ATTENTION SPAN") { 
-							column = this;
-							d3.selectAll("tbody tr").sort(function(a,b){
+							$(this).attr("data-sorted",$(this).attr("data-sorted") == 0 ? 1:0);
+							*/
+							
+							column = this;							
+							d3.selectAll("#bar_area tbody tr").sort(function(a,b){
 								if(parseInt($(column).attr("data-sorted")) == 0) {
-									return parseInt(b.read_time/b.hits)-parseInt(a.read_time/a.hits);
+									return parseInt(b.hits)-parseInt(a.hits);
 								} else {
-									return parseInt(a.read_time/a.hits)-parseInt(b.read_time/b.hits);
+									return parseInt(a.hits)-parseInt(b.hits);
 								}
-							});		
-							$(this).attr("data-sorted",$(this).attr("data-sorted") == 0 ? 1:0); 
+							});
+							d3.selectAll("#bar_area_other tbody tr").sort(function(a,b){
+								if(parseInt($(column).attr("data-sorted")) == 0) {
+									return parseInt(b.hits)-parseInt(a.hits);
+								} else {
+									return parseInt(a.hits)-parseInt(b.hits);
+								}
+							});
+							$("#bar_area th:nth-child(2)").attr("data-sorted",$("#bar_area th:nth-child(2)").attr("data-sorted") == 0 ? 1:0);
+							$("#bar_area_other th:nth-child(2)").attr("data-sorted",$("#bar_area_other th:nth-child(2)").attr("data-sorted") == 0 ? 1:0);
+							
 						}
+							/**
+							if(this.textContent == "ATTENTION SPAN") {
+							column = this;
+							d3.selectAll("#bar_area tbody tr").sort(function(a,b){
+								width_b = parseFloat(b.read_time/b.read_hits/b.expected_read_time);
+								width_b = isFinite(width_b) ? width_b : 0;
+								width_a = parseFloat(a.read_time/a.read_hits/a.expected_read_time);
+								width_a = isFinite(width_a) ? width_a : 0;
+								if(parseInt($(column).attr("data-sorted")) == 0) {
+									return width_b-width_a;
+								} else {
+									return width_a-width_b;
+								}
+							});
+
+							d3.selectAll("#bar_area_other tbody tr").sort(function(a,b){
+								width_b = parseFloat(b.read_time/b.read_hits/b.expected_read_time);
+								width_b = isFinite(width_b) ? width_b : 0;
+								width_a = parseFloat(a.read_time/a.read_hits/a.expected_read_time);
+								width_a = isFinite(width_a) ? width_a : 0;
+								if(parseInt($(column).attr("data-sorted")) == 0) {
+									return width_b-width_a;
+								} else {
+									return width_a-width_b;
+								}
+							});
+							$("#bar_area th:nth-child(3)").attr("data-sorted",$("#bar_area th:nth-child(3)").attr("data-sorted") == 0 ? 1:0);
+							$("#bar_area_other th:nth-child(3)").attr("data-sorted",$("#bar_area_other th:nth-child(3)").attr("data-sorted") == 0 ? 1:0);
+						}
+						*/
 					});
+					
+					target_area.attr("data-loaded",1);
 				}
 				
 				// creates the categories bar chart 
 				var makeCategoriesBarChart = function(barData,type) {
 					// define margins
 					var margin = {top: 20, right: 20, bottom: 20, left: 50},
-						width = 840 - margin.left - margin.right,
-						height = 600 - margin.top - margin.bottom;
+						width = 620 - margin.left - margin.right,
+						height = 500 - margin.top - margin.bottom;
 					
 					var y = d3.scale.linear()
 						.range([height,0]);
@@ -683,8 +984,8 @@
 						}
 					}
 					
-					console.log("max hits " + max_hits);
-					console.log("max read time " + max_read_time);
+					//console.log("max hits " + max_hits);
+					//console.log("max read time " + max_read_time);
 					
 					if(type == "read_time") {
 						y.domain([min_read_time,max_read_time]);							
@@ -696,8 +997,8 @@
 				// creates the line graph
 				var makeLineGraph = function(lineData,type) {
 					var margin = {top: 20, right: 20, bottom: 20, left: 50},
-						width = 840 - margin.left - margin.right,
-						height = 600 - margin.top - margin.bottom;
+						width = 620 - margin.left - margin.right,
+						height = 500 - margin.top - margin.bottom;
 					
 					var parseDate = d3.time.format("%Y%m%d").parse;
 					
@@ -708,11 +1009,9 @@
 					
 					var y = d3.scale.linear()
 						.range([height,0]);
-							
-					var color = d3.scale.category20c();
 					
 					var xAxis = d3.svg.axis()
-						.scale(x)
+						.scale(x).ticks(5)
 						.orient("bottom");
 					
 					var yAxis = d3.svg.axis()
@@ -731,7 +1030,7 @@
 						});
 
 					var area_function = d3.svg.area()
-						.interpolate("basis")
+						.interpolate("linear")
 						.x(function(d) { return x(d.x); })
 						.y0(height)
 						.y1(function(d) { 
@@ -785,7 +1084,7 @@
 								}
 							} else {
 									i = ReadiedLineData.push({article_id:d.article_id,values:new Array()});
-									ReadiedLineData[data_index].url = d.url;
+									ReadiedLineData[i-1].url = d.url;
 									ReadiedLineData[i-1].article_title = d.title;
 									ReadiedLineData[i-1].article_excerpt = d.sample_text;
 									ReadiedLineData[i-1].article_pic_url = d.pic;
@@ -800,7 +1099,7 @@
 					}	
 		
 					x.domain(d3.extent(viz_object.getDayStamps()));
-					color.domain(ReadiedLineData.map(function(d){return d.article_id}));
+					//viz_object.color_scale.domain(ReadiedLineData.map(function(d){return d.article_id}));
 					
 					max_hits = 0;
 					min_hits = 0;
@@ -853,7 +1152,7 @@
 						hit_totals.push(y_hits);
 					});
 
-					//console.log(ReadiedLineData.map(function(d){ return d.values}));
+					////console.log(ReadiedLineData.map(function(d){ return d.values}));
 					
 					y.domain([0,d3.max(hit_totals)]);
 					
@@ -880,20 +1179,93 @@
 						.data(ReadiedLineData)
 						.enter().append("g")
 						.attr("class","article");
+
+					var titles_area = d3.select("#articles_titles");
+
+					var label_top = 30;
+					var label_left = 50;
+					var other_top = 10;
+				
+					d3.selectAll(".article_label").remove();
+				
+					var article_label = titles_area.selectAll(".article_label")
+						.data(ReadiedLineData.reverse())
+						.enter().append("li")
+						.attr("class","article_label")
+						.attr("id",function(d){ return "t_" + d.article_id})
+						.style("top",function(){ return (label_top+=20)+"px";})
+						.style("color","black")
+						.style("cursor","pointer")
+						.text(function(d){ return d.article_title})
+						.on("mouseenter",function(){
+							area_id = $(this).attr("id").replace("t_","");
+							if($("#"+area_id).attr("data-selected") == "0") {  
+								this.style.fill = "steelblue";
+								$("#"+area_id).css("fill","steelBlue");
+							}
+							$(this).css({"color":"steelBlue","font-weight":"bold"});
+						})
+						.on("mouseleave",function(){
+							$(this).css({"color":"black","font-weight":"normal"});
+							if($("#"+area_id).attr("data-selected") == "0") {
+								$("#"+area_id).css("fill","lightGray");
+							}
+						})
+						.on("click",function(d){
+							makeStatesBars(getArticleStates(+area_id),d.article_title,d.url,d.article_id);
+						});
 						
+						/**
+						article_label.append("div")
+						.attr("id",function(d){ return "l_" + d.article_id})
+						.style("position","absolute")
+						.style("width","1px")
+						.style("border-right","1px dashed gray")
+						.style("top",function(d){ return (other_top+=20)+"px" })
+						.style("left",function() { return label_left })
+						.datum(function(d) { return {article_id:d.article_id,value:d.values[d.values.length-1],values:d.values}; })
+						.style("height",function(d){ 
+							y0_max = d3.max(d.values,function(z){ return z.y0});
+							y_max = d3.max(d.values,function(z){ return z.y});
+							return (y(y0_max+(y_max/2))+400) + "px"
+						})
+						.append("div")
+						.attr("id",function(d){return "h_" + d.article_id})
+						.style("top",function(d){
+							y0_max = d3.max(d.values,function(z){ return z.y0});
+							y_max = d3.max(d.values,function(z){ return z.y});
+							return (y(y0_max+(y_max/2))+400) + "px"
+						})
+						.style("left","-15px")
+						.style("width","30px")
+						.style("position","absolute")
+						.style("height","1px")
+						.style("border-bottom","1px solid gray");
+						*/
+					
 					article.append("path")
 						.attr("d",function(d) {return stack_area(d.values); })
 						.attr("id",function(d){ return d.article_id})
 						.attr("class", "article")
+						.attr("data-selected",function(d){
+							return $("[data-id=" + d.article_id + "]").length == 1 ? "1":"0";
+						})
 						.style("opacity",0.6)
 						.style("cursor","pointer")
-						.style("fill","lightGray")
+						.style("fill",function(d){
+							if($("[data-id=" + d.article_id + "]").length == 1) {
+								return $("[data-id=" + d.article_id + "]").attr("data-color");
+							} else {
+								return "lightGray";
+							}
+						})
 						.style("stroke","black")
 						.style("z-index",100)
 						.on("mouseenter",function(d){
-							$(".title_text").hide();
-							this.style.fill = "steelblue";
-							d3.select("#t_"+this.id).style("text-decoration","underline");
+							if($(this).attr("data-selected") == "0") {  
+								this.style.fill = "steelblue";
+								d3.select("#t_"+this.id).style("color","steelBlue").style("font-weight","bold");
+							}
 							if(article_details != 1) {
 								$("#article_popup").show();
 								article_title_left = d3.event.pageX > 450 ? d3.event.pageX-350:d3.event.pageX;
@@ -901,7 +1273,7 @@
 								$("#article_popup").html(d.article_title);
 							}
 							if(article_details == 1) {
-								article_details_top = d3.event.pageY > 450 ? d3.event.pageY-450: d3.event.pageY+1;
+								article_details_top = d3.event.pageY+1;
 								$("#article_title").html(d.article_title);
 								$("#article_excerpt").html(d.article_excerpt.substring(0,300)+"...");
 								$("#article_image").attr("src",d.article_pic_url);
@@ -910,28 +1282,34 @@
 							}
 						})
 						.on("mouseleave",function(d){
+							d3.select("#t_"+this.id).style("color","black").style("font-weight","normal");
 							$(".title_text").show();
 							if(article_details != 1) {
 								$("#article_popup").hide();
 							}
-							$("#article_details").hide();this.style.fill = "lightGray";
+							if($(this).attr("data-selected") == "0") {  
+								this.style.fill = "lightGray";
+							}
+							$("#article_details").hide();
 							d3.select("#t_"+this.id).style("text-decoration","none");
 						})
-						.on("click",function(d) { makeStatesBars(getArticleStates(d.article_id),d.article_title,d.url); 
+						.on("click",function(d) { makeStatesBars(getArticleStates(d.article_id),d.article_title,d.url,d.article_id); 
 							//window.open(d.values[0].url); 
 						});
 					
+					/**
 					  article.append("text")
 						  .attr("class","title_text")
 						  .attr("id",function(d){ return "t_" + d.article_id})
 						  .datum(function(d) { return {article_title: d.article_title, value: d.values[d.values.length - 1]}; })
 						  .attr("transform", function(d) { return "translate(" + x(d.value.x) + "," + y(d.value.y0 + d.value.y / 2) + ")"; })
-						  .attr("x", 150)
+						  .attr("x", 300)
 						  .attr("dy", ".35em")
 						  .style("opacity","1")
 						  .style("font-size","12px")
 						  .style("z-index","10")
 						  .text(function(d) { return d.article_title; });
+					*/
 						
 					/**
 					var article = svg.selectAll(".article")
@@ -974,8 +1352,8 @@
 					  })
 					  .style("stroke", function(d) { return "black" });
 					*/
-					console.log(ReadiedLineData);
-					console.log(lineData);
+					//console.log(ReadiedLineData);
+					//console.log(lineData);
 				}
 				
 				// gets the article categories, loads them in their corresponding dropdown box, and binds the category options to certain event handlers
@@ -989,6 +1367,14 @@
 						$("#article_details_checkbox").on("change",function(){
 							article_details = this.checked ? 1:0;
 						});
+						$("#article_titles_checkbox").on("change",function(){
+							articles_titles = this.checked ? 1:0;
+							if(articles_titles == 1) {
+								$(".article_label").show();
+							} else {
+								$(".article_label").hide();
+							}
+						});
 					 });
 				};
 
@@ -1001,6 +1387,12 @@
 			viz.setArticlesCategories();
 			
 			$(function() {
+				$("#controls_switch").click(function(){
+					$("#controls_area").toggle(); 
+					$("#controls_area").css("display") == "none" ? $("#controls_switch").css("border","1px solid black"):$("#controls_switch").css("border","none");
+				});
+				$("#x").click(function(){ $("#controls_area").hide();$("#controls_switch").css("border","1px solid black"); });
+			
 				// populates the days slider, with a min value of 1 day and a max value of 31 days. 
 				$( "#articles_days_slider" ).slider({
 					min: 1,
@@ -1008,12 +1400,12 @@
 					range: true,
 					create: function() {
 						// sets the label to a default of "1 day"
-						$("#articles_days_label").html("1 day");
+						$("#articles_days_label").html("Last 1 day");
 					},
 					slide: function(e,t) {
 						if(t.values[0] == 1) {
 							// clause to be correct grammatically with the usage of day (singular) vs. days (plural)
-							t.value>1?$("#articles_days_label").html("Last " + t.value + " days"):$("#articles_days_label").html("Last " + t.value + " day");
+							t.values[1]>1?$("#articles_days_label").html("Last " + t.values[1] + " days"):$("#articles_days_label").html("Last 1 day");
 							// set the time range according to the values set in the slider
 						} else {
 							today = new Date();
