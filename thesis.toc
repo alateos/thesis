@@ -31,4 +31,4 @@
 \contentsline {subsection}{\numberline {8.1}The controls box}{53}
 \contentsline {subsection}{\numberline {8.2}Stacked area chart}{58}
 \contentsline {subsection}{\numberline {8.3}Geographic bar charts}{64}
-\contentsline {section}{\numberline {9}Glossary}{68}
+\contentsline {section}{\numberline {9}Glossary}{67}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.30)  31 DEC 2014 00:53
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.6)  5 JAN 2015 17:16
 entering extended mode
 **thesis.tex
 (C:\thesis\thesis.tex
@@ -30,7 +30,7 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cite\cite.sty"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 373.
 Package: cite 2010/09/10  v 5.3
@@ -67,13 +67,12 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\setspace\setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.sty
 \lst@mode=\count88
 \lst@gtempboxa=\box26
 \lst@token=\toks15
@@ -87,18 +86,17 @@ Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 \lst@lineno=\count93
 \lst@maxwidth=\dimen108
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
 File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
 \c@lstnumber=\count94
 \lst@skipnumbers=\count95
 \lst@framebox=\box27
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
 File: listings.cfg 2014/03/04 1.5c listings configuration
 ))
 Package: listings 2014/03/04 1.5c (Carsten Heinz)
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\mathpazo.sty"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\mathpazo.sty"
 Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
 \symupright=\mathgroup4
 )
@@ -127,7 +125,7 @@ LaTeX Font Info:    Try loading font information for T1+ppl on input line 10.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\t1ppl.fd"
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+(C:\Users\akibrahim\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count96
 \scratchdimen=\dimen109
@@ -149,8 +147,10 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 19.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] (C:\thesis\thesis.toc
+{C:/Users/akibrahim/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+(C:\thesis\thesis.toc
 LaTeX Font Info:    Try loading font information for OT1+ppl on input line 4.
+
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ppl.fd"
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
@@ -858,29 +858,24 @@ Overfull \hbox (17.87004pt too wide) in paragraph at lines 1342--1343
  []
 
 [62] [63 <C:/thesis/img/viz_7.png>]
-<img/viz_8.png, id=243, 925.20656pt x 691.83469pt>
+<img/viz_8.png, id=243, 895.09406pt x 640.64343pt>
 File: img/viz_8.png Graphic file (type png)
  <use img/viz_8.png>
 Package pdftex.def Info: img/viz_8.png used on input line 1350.
-(pdftex.def)             Requested size: 462.60214pt x 345.91649pt.
+(pdftex.def)             Requested size: 447.54593pt x 320.32092pt.
 
-Overfull \hbox (72.60214pt too wide) in paragraph at lines 1350--1351
+Overfull \hbox (57.54593pt too wide) in paragraph at lines 1350--1351
 [] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1352--1354
-
- []
-
 [64 <C:/thesis/img/viz_8.png>]
-<img/viz_9.png, id=247, 566.115pt x 623.32875pt>
+<img/viz_9.png, id=247, 571.38469pt x 396.7322pt>
 File: img/viz_9.png Graphic file (type png)
  <use img/viz_9.png>
 Package pdftex.def Info: img/viz_9.png used on input line 1357.
-(pdftex.def)             Requested size: 452.89261pt x 498.66368pt.
+(pdftex.def)             Requested size: 457.10837pt x 317.38617pt.
 
-Overfull \hbox (62.89261pt too wide) in paragraph at lines 1357--1358
+Overfull \hbox (67.10837pt too wide) in paragraph at lines 1357--1358
 [] 
  []
 
@@ -889,13 +884,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 1357--1358
 
  []
 
-[65] [66 <C:/thesis/img/viz_9.png>] [67]
+[65 <C:/thesis/img/viz_9.png>] [66]
 Overfull \hbox (7.85423pt too wide) in paragraph at lines 1380--1381
 []\T1/ppl/b/n/12 LAMP\T1/ppl/m/n/12 : A web de-vel-op-ment en-vi-ron-ment com-p
 rised of a Linux server,
  []
 
-[68]
+[67]
 Overfull \hbox (7.56728pt too wide) in paragraph at lines 1385--1386
 []\T1/ppl/b/n/12 SVG\T1/ppl/m/n/12 : An XML-based vec-tor im-age for-mat for tw
 o-dimensional graph-
@@ -913,10 +908,10 @@ Underfull \hbox (badness 1789) in paragraph at lines 1399--1400
 12 “A re-view of
  []
 
-[69] [70] (C:\thesis\thesis.aux) ) 
+[68] [69] (C:\thesis\thesis.aux) ) 
 Here is how much of TeX's memory you used:
  3067 strings out of 493921
- 42737 string characters out of 3144876
+ 42929 string characters out of 3144865
  128996 words of memory out of 3000000
  6297 multiletter control sequences out of 15000+200000
  36935 words of font info for 84 fonts, out of 3000000 for 9000
@@ -930,9 +925,9 @@ nts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts
 a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplbi8a.pfb><
 C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Progr
 am Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on thesis.pdf (71 pages, 4642603 bytes).
+Output written on thesis.pdf (70 pages, 4752283 bytes).
 PDF statistics:
- 293 PDF objects out of 1000 (max. 8388607)
+ 290 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  156 words of extra memory for PDF output out of 10000 (max. 10000000)
 
