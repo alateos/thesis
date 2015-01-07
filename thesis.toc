@@ -3,40 +3,43 @@
 \contentsline {section}{\numberline {3}Prior Work}{12}
 \contentsline {subsection}{\numberline {3.1}Visualization}{12}
 \contentsline {subsection}{\numberline {3.2}Existing web metrics systems}{13}
-\contentsline {section}{\numberline {4}Work Plan}{19}
-\contentsline {subsection}{\numberline {4.1}Assumptions, Risks and Alternatives}{19}
-\contentsline {subsection}{\numberline {4.2}Preliminary Schedule}{19}
-\contentsline {section}{\numberline {5}Implementation - data capture}{21}
-\contentsline {subsection}{\numberline {5.1}Capturing Data}{21}
-\contentsline {subsubsection}{\numberline {5.1.1}IP Addresses}{21}
-\contentsline {subsubsection}{\numberline {5.1.2}Geographic origins}{22}
-\contentsline {subsubsection}{\numberline {5.1.3}Average Read Time}{24}
-\contentsline {subsection}{\numberline {5.2}Database Design}{26}
-\contentsline {subsubsection}{\numberline {5.2.1}Data Storage}{26}
-\contentsline {subsubsection}{\numberline {5.2.2}Database Tables}{27}
-\contentsline {subsubsection}{\numberline {5.2.3}MySQL Database}{28}
-\contentsline {subsection}{\numberline {5.3}PHP server-side code}{30}
-\contentsline {subsubsection}{\numberline {5.3.1}Configuration and database connection}{30}
-\contentsline {subsubsection}{\numberline {5.3.2}Server-side hit, article, and category capture}{31}
-\contentsline {subsection}{\numberline {5.4}Client-side read time capture with Javascript}{35}
-\contentsline {subsection}{\numberline {5.5}Tying it all together}{38}
-\contentsline {section}{\numberline {6}Implementation - hooking into Wordpress}{40}
-\contentsline {subsection}{\numberline {6.1}Creating the captureLib folder}{40}
-\contentsline {subsection}{\numberline {6.2}Creating a mock news website}{45}
-\contentsline {subsection}{\numberline {6.3}Testing}{46}
-\contentsline {subsubsection}{\numberline {6.3.1}Proof of concept}{46}
-\contentsline {subsubsection}{\numberline {6.3.2}Seeding mock data}{47}
-\contentsline {section}{\numberline {7}Implementation - retrieving captured metrics}{50}
-\contentsline {section}{\numberline {8}Implementation - visualization}{53}
-\contentsline {subsection}{\numberline {8.1}The controls box}{53}
-\contentsline {subsection}{\numberline {8.2}Stacked area chart}{58}
-\contentsline {subsection}{\numberline {8.3}Geographic bar charts}{64}
-\contentsline {section}{\numberline {9}Results}{66}
-\contentsline {subsection}{\numberline {9.1}Mock Website}{66}
-\contentsline {subsubsection}{\numberline {9.1.1}Capturing Data}{67}
-\contentsline {subsubsection}{\numberline {9.1.2}Retrieving Data}{67}
-\contentsline {subsubsection}{\numberline {9.1.3}The Interactive Visualization}{67}
-\contentsline {subsubsection}{\numberline {9.1.4}Performance}{68}
-\contentsline {subsection}{\numberline {9.2}Actual Website}{69}
-\contentsline {section}{\numberline {10}Future Work}{69}
-\contentsline {section}{\numberline {11}Glossary}{69}
+\contentsline {section}{\numberline {4}Implementation - data capture}{19}
+\contentsline {subsection}{\numberline {4.1}Capturing Data}{19}
+\contentsline {subsubsection}{\numberline {4.1.1}IP Addresses}{19}
+\contentsline {subsubsection}{\numberline {4.1.2}Geographic origins}{20}
+\contentsline {subsubsection}{\numberline {4.1.3}Average Read Time}{22}
+\contentsline {subsection}{\numberline {4.2}Database Design}{23}
+\contentsline {subsubsection}{\numberline {4.2.1}Data Storage}{23}
+\contentsline {subsubsection}{\numberline {4.2.2}Database Tables}{24}
+\contentsline {subsubsection}{\numberline {4.2.3}MySQL Database}{25}
+\contentsline {subsection}{\numberline {4.3}PHP server-side code}{27}
+\contentsline {subsubsection}{\numberline {4.3.1}Configuration and database connection}{27}
+\contentsline {subsubsection}{\numberline {4.3.2}Server-side hit, article, and category capture}{28}
+\contentsline {subsection}{\numberline {4.4}Client-side read time capture with Javascript}{29}
+\contentsline {subsection}{\numberline {4.5}Tying it all together}{30}
+\contentsline {section}{\numberline {5}Implementation - hooking into Wordpress}{32}
+\contentsline {subsection}{\numberline {5.1}Creating the captureLib folder}{32}
+\contentsline {subsection}{\numberline {5.2}Creating a mock news website}{33}
+\contentsline {subsection}{\numberline {5.3}Testing}{34}
+\contentsline {subsubsection}{\numberline {5.3.1}Proof of concept}{34}
+\contentsline {subsubsection}{\numberline {5.3.2}Seeding mock data}{35}
+\contentsline {section}{\numberline {6}Implementation - retrieving captured metrics}{38}
+\contentsline {section}{\numberline {7}Implementation - visualization}{38}
+\contentsline {subsection}{\numberline {7.1}The controls box}{38}
+\contentsline {subsection}{\numberline {7.2}Stacked area chart}{43}
+\contentsline {subsection}{\numberline {7.3}Geographic bar charts}{49}
+\contentsline {section}{\numberline {8}Results}{51}
+\contentsline {subsection}{\numberline {8.1}Mock Website}{51}
+\contentsline {subsubsection}{\numberline {8.1.1}Capturing Data}{51}
+\contentsline {subsubsection}{\numberline {8.1.2}Retrieving Data}{52}
+\contentsline {subsubsection}{\numberline {8.1.3}The Interactive Visualization}{52}
+\contentsline {subsubsection}{\numberline {8.1.4}Performance}{53}
+\contentsline {subsection}{\numberline {8.2}Actual Website}{54}
+\contentsline {subsubsection}{\numberline {8.2.1}Hooking the Custom Libraries}{55}
+\contentsline {subsubsection}{\numberline {8.2.2}Capturing Data}{55}
+\contentsline {subsubsection}{\numberline {8.2.3}Retrieving Data}{56}
+\contentsline {subsubsection}{\numberline {8.2.4}The Interactive Visualization}{56}
+\contentsline {subsubsection}{\numberline {8.2.5}Performance}{59}
+\contentsline {subsubsection}{\numberline {8.2.6}Conclusion}{59}
+\contentsline {section}{\numberline {9}Future Work}{60}
+\contentsline {section}{\numberline {10}Glossary}{60}

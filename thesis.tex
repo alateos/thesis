@@ -182,49 +182,7 @@ Once again, the intended audience is that of management and decision makers. The
 
 \null
 \vfill
-\section{Work Plan}
-\subsection{Assumptions, Risks and Alternatives}
-I will require a web host where I can test the web technologies as well as store my database. I currently am subscribed to a web host that provides me with a LAMP (Linux, Apache, MySQL, PHP) environment. This is where I plan to execute all my development and testing. The scripts technologies to be used are HTML 5, CSS3, PHP, MySQL, and JavaScript. The libraries I anticipate to use are D3 and possibly JQuery.
-I can foresee the following risks:
 
-\begin{itemize}
-\item The web traffic captured will not be 100\% accurate. Then again, no web analytics system out there is perfect as of this writing, given the stateless nature of http and how http traffic is passed and downloaded over the net. My goal here is to maximize accuracy, given my research and best judgment
-\item The visualization turns out to be slow due to the web browser rendering too much data at once. In this event, I will scale down the complexity of the visualization to match the current average machine's CPU power and web browser engine capabilities. Alternatively, I can utilize AJAX (where applicable) to render the required data on demand
-\end{itemize}
-
-\noindent{Basically, my strategy for mitigating any further risks will be to narrow the scope of the end product. In the lack thereof, I plan to fully capitalize on enhancing functionality.}
-
-\subsection{Preliminary Schedule}
-\begin{itemize}
-\item[] \textbf{Weeks 1-3} (Research what data needs to be captured): \\
-Research the metrics that need to be captured. What defines a website visit? What data will need to be collected?
-
-\item[] \textbf{Weeks 4-6} (Design a relational database to house desired data):): \\
-Here, I will define the relational schemas and will accordingly build a MySQL database that will contain all of my desired data. \\
-Deliverable --- Relational database to house all data pertinent to website traffic hits.
-
-\item[] \textbf{Weeks 7-10} (Code and implement a PHP implementation for data storing/retrieval): \\
-Here, I plan to build PHP classes and functions that will connect to the database to store the web traffic data. In addition, I will write the code that will query the database in order to extract and convey meaningful data. \\
-Deliverable --- Full server-side code base that collects and retrieves web traffic data.
-
-\item[] \textbf{Weeks 10-12} (Implement mock news site): \\
-Here, I plan to build a mini news site that contains several categories. Then, I will create several articles under each of the created categories. I am inclined to building this mock site in Wordpress, as it is commonplace and reflective of the archetype of your common CMS site.
-Deliverable --- A mini Wordpress mock site, mimicking the structure of a news website
-
-\item[] \textbf{Weeks 13-16} (Research and experiment with different visualizations): \\
-Before I commit to a visualization, I would like to make sure that it is the most fit for my domain at hand. Thus I will test my data inside a few viable options, before fully scoping my visualization. \\
-Deliverable --- An existing or custom designed visualization template to convey near real-time web traffic data.
-
-\item[] \textbf{Weeks 16-18} (Implement final visualization): \\
-Once I have selected my visualization of choice, I will code and implement it. \\
-Deliverable --- A fully implemented web visualization which interacts with the server-side database.
-
-\item[] \textbf{Weeks 18-20} (Test with users and apply final touches): \\
-I will attempt to reach a wide and diverse audience for feedback. I will incorporate the meaningful feedback into my refinement iteration. "Meaningful" here represents anything significant enough to affect the usability of the visualization.
-
-\end{itemize}
-
-\vfill
 
 \section{Implementation - data capture}
 \subsection{Capturing Data}
@@ -292,42 +250,7 @@ It will thus be a challenge to capture the needed IP address to look up geograph
 \item If X and Y are both available, it means that the user is sitting behind a proxy and that the needed IP address is that of Y. If X is available but Y is not, it means that Y is a private IP address, that of the device behind its router - and thus not behind a proxy server. In this case, X would hold the IP address of the origin.
 \end{enumerate} 
 
-The next step here is to find a service that would map a given IP address to its corresponding geo coordinates, and ideally to its country name. A quick Google search revealed a convenient REST API service that would output the responses in JSON. \textbf{Telize (www.telize.com)} is a REST API that allows one to get the visitor IP address and to query the location information for that IP address. The upside of this service is that at the moment it contains to no rate limits; thus, one could make an indefinite amount of calls to the Telize API. I was able to test the above clause 3 in PHP code with success. Regardless, of whether I was sitting behind a proxy server or not, the output showed the United States as the country of origin. Here is the code:
-\begin{lstlisting}[basicstyle=\scriptsize]
-
-date_default_timezone_set("America/New_York");
-
-$remote_addr = $_SERVER["REMOTE_ADDR"];
-$x_forwarded_for = $_SERVER["HTTP_X_FORWARDED_FOR"];
-
-$url1 = "http://www.telize.com/geoip/" . $remote_addr; 
-$url2 = "http://www.telize.com/geoip/" . $x_forwarded_for; 
-
-// Get the country for the ip behind the first
-// exposed remote address (from www.telize.com)
-$results1 = file_get_contents($url1);
-$results1 = json_decode($results1);
-$country1 = $results1->country;
-
-// Get the country for the ip behind the second
-// exposed remote address (from www.telize.com)
-$results2 = file_get_contents($url2);
-$results2 = json_decode($results2);
-$country2 = $results2->country;
-
-$final_country = "";
-
-if(strlen($country1) > 0 && strlen($country2) > 0) {
-	echo "User is most likely behind a proxy server.<br />"; 
-	$final_country = $country2;
-} else {
-	echo "User is not behind a proxy server.<br />";
-	$final_country = $country1;
-}
-
-echo "The user's country of origin is " . $final_country;
-
-\end{lstlisting}   
+The next step here is to find a service that would map a given IP address to its corresponding geo coordinates, and ideally to its country name. A quick Google search revealed a convenient REST API service that would output the responses in JSON. \textbf{Telize (www.telize.com)} is a REST API that allows one to get the visitor IP address and to query the location information for that IP address. The upside of this service is that at the moment it contains to no rate limits; thus, one could make an indefinite amount of calls to the Telize API. I was able to test the above clause 3 in PHP code with success. Regardless, of whether I was sitting behind a proxy server or not, the output showed the United States as the country of origin.
 
 \subsubsection{Average Read Time}
 
@@ -406,322 +329,22 @@ Note that both of these files are stored one directory above \textbf{public\_htm
 \subsubsection{Server-side hit, article, and category capture}
 Each table in my database is represented with a PHP class. Hence, the creation of the following 3 classes:
 \begin{enumerate}
-\item{\textbf{Hit.php:}} This class registers all of the metadata pertinent to a user visit. This data includes IP address, country, region, timezone, and time visited. Below is the code:
-\begin{lstlisting}[basicstyle=\tiny]
-/**
-	This class is responsible for registering the user visits into the database
-*/
-class Hit {
-	private $db = "";
-	
-	public function __construct($db) {
-		$this->db=$db;
-	}
-	
-	/**
-		Registers ip, country, region, timezone, time visited, and article id
-	*/
-	public function register($article_id) {
-		$data = $this->getHitData();
-		$country = $data[0];
-		$ip = $data[1];
-		$region = $data[2];
-		$timezone = $data[3];
-		$time_visited = $data[4];
-		
-		// get the last time this ip address visited the specified article
-		$last_visit_time = $this->getLastVisited($ip,$article_id);
-
-		// if the last time this ip visited is greater than our specified wait limit, then record the visit as a new hit
-		if(($time_visited - $last_visit_time) > WAIT_LIMIT) {
-			$sql = sprintf("insert into hit(ip,time_visited,article_id,timezone,country,region,read_time) values('%s','%d','%d','%s','%s','%s','%d')",$ip,$time_visited,$article_id,$timezone,$country,$region,$read_time);
-
-			$this->db->query($sql);	
-		}
-		
-		// return the id of the inserted record to the client page, so that it may be used to track read time
-		return $this->db->lastInsertID();
-	}
-	
-	/**
-		Returns the last visited time, in Unix timestamp
-	*/
-	private function getLastVisited($ip,$article_id) {
-		$sql = "select * from hit where article_id=$article_id and ip='$ip' order by time_visited desc limit 1";
-		foreach($this->db->query($sql) as $row) {
-			$last_visited = intval($row["time_visited"]);
-		}
-		return $last_visited;
-	}
-	
-	/**
-		Sets timezone
-	*/
-	private function setTimezone($timezone) {
-		date_default_timezone_set($timezone);
-	}
-	
-	/**
-		Returns a data array that includes the country of origin, region, ip address, and timezone of visitor.
-		The 3rd party API used to extract the data is http://www.telize.com
-	*/
-	private function getHitData() {
-		$remote_addr = $_SERVER["REMOTE_ADDR"];
-		$x_forwarded_for = $_SERVER["HTTP_X_FORWARDED_FOR"];
-		$data = array();
-		
-		$url1 = "http://www.telize.com/geoip/" . $remote_addr; 
-		$url2 = "http://www.telize.com/geoip/" . $x_forwarded_for; 
-
-		// get the country for the ip behind the first exposed remote address (from www.telize.com)
-		if($remote_addr) {
-			$results1 = file_get_contents($url1);
-			$results1 = json_decode($results1);
-			$country1 = $results1->country;
-			$region1 = $results1->region;
-			$timezone1 = $results1->timezone;
-			$ip = $remote_addr;
-		}
-		
-		// get the country for the ip behind the second exposed remote address (from www.telize.com)
-		if($x_forwarded_for) {
-			$results2 = file_get_contents($url2);
-			$results2 = json_decode($results2);
-			$country2 = $results2->country;
-			$region2 = $results2->region;
-			$timezone2 = $results2->timezone;
-			$ip = $x_forwarded_for;
-		}
-		
-		// determines the true country of origin, depending on whether the user is behind a proxy server or not
-		if(strlen($country1) > 0 && strlen($country2) > 0) {
-			$data[0] = $country2;
-			$data[1] = $x_forwarded_for;
-			$data[2] = $region2;
-			$data[3] = $timezone2;
-		} else {
-			$data[0] = $country1;
-			$data[1] = $remote_addr;
-			$data[2] = $region1;
-			$data[3] = $timezone1;
-		}
-
-		// set timezone
-		$this->setTimezone($data[3]);
-		
-		// get timestamp of visit
-		$date = new DateTime("NOW");
-		$timestamp = $date->format('U');
-		$data[4] = $timestamp;
-		
-		return $data;
-	}
-}
-\end{lstlisting}
+\item{\textbf{Hit.php:}} This class registers all of the metadata pertinent to a user visit. This data includes IP address, country, region, timezone, and time visited. 
 \vfill
-\item{\textbf{Article.php:}} This class captures all of the metadata pertinent to the article being visited. Such includes title, text excerpt, sample picture URL, and article URL. Below is the code:
-\begin{lstlisting}[basicstyle=\tiny]
-/**
-	This class is responsible for registering the metadata pertinent to an article
-*/
-class Article {
-	private $db = "";
-	
-	/**
-		assign database instance in constructor
-	*/
-	public function __construct($db,$metadata = Array()) {
-		$this->db=$db;
-		$this->register($metadata);
-	}
-	
-	/**
-		registers the article's title,category,url,sample text, and a sample image
-	*/
-	private function register($metadata) {
-		// get article id
-		$article_id = $metadata["article_id"];
-		
-		// insert the article metadata into the database
-		$category_id = $metadata["category_id"];
-		$article_url = $metadata["url"];
-		$title = $metadata["title"];
-		$sample_text = $metadata["sample_text"];
-		$sample_pic = $metadata["sample_pic"];
-		$sql = "insert into article(article_id,category_id,article_url,title,sample_text,sample_pic) values (:article_id,:category_id,:article_url,:title,:sample_text,:sample_pic)";
-		$sth = $this->db->prepare($sql);
-		$sth->bindParam(":article_id",$article_id,PDO::PARAM_INT);
-		$sth->bindParam(":category_id",$category_id,PDO::PARAM_INT);
-		$sth->bindParam(":article_url",$article_url,PDO::PARAM_STR);
-		$sth->bindParam(":title",$title,PDO::PARAM_STR);
-		$sth->bindParam(":sample_text",$sample_text,PDO::PARAM_STR);
-		$sth->bindParam(":sample_pic",$sample_pic,PDO::PARAM_STR);
-		$sth->execute();
-	}
-}
-\end{lstlisting} 
+\item{\textbf{Article.php:}} This class captures all of the metadata pertinent to the article being visited. Such includes title, text excerpt, sample picture URL, and article URL.
 \vfill
-\item{\textbf{Category.php:}} This class captures any metadata pertinent to the parent category of the visited article. At the moment, I am only capturing the name of the category. Below is the code:
-\begin{lstlisting}[basicstyle=\tiny]
-/**
-	This class is responsible for registering the metadata pertinent to a category
-*/
-class Category {
-	private $db = "";
-	
-	/**
-		assign database instance in constructor
-	*/
-	public function __construct($db,$metadata = Array()) {
-		$this->db=$db;
-		$this->register($metadata);
-	}
-	
-	/**
-		registers the category's name
-	*/
-	private function register($metadata) {
-		// get category id
-		$category_id = $metadata["category_id"];
-		// get category name
-		$category_name = $metadata["category_name"];
-		
-		// insert category into database
-		$sql = "insert into category(category_id,category_name) values(:category_id,:category_name)";
-		$sth = $this->db->prepare($sql);
-		$sth->bindParam(":category_id",$category_id,PDO::PARAM_INT);
-		$sth->bindParam(":category_name",$category_name,PDO::PARAM_STR);
-		$sth->execute();
-	}
-}
-\end{lstlisting}
+\item{\textbf{Category.php:}} This class captures any metadata pertinent to the parent category of the visited article. At the moment, I am only capturing the name of the category.
 \end{enumerate}
 \vfill
 
-In addition to the above, I have created a helper file that registers the read time of a given article. By default, the read time is registered as 0 seconds in the database. Once a hit is registered in the database, the id of the newly created hit is then passed to the DOM of the article page. There, the id is used via an AJAX call to store the calculated read time for the visited article in the database. This file is called \textbf{updateReadTime.php}. Below is the code:
-
-\begin{lstlisting}[basicstyle=\scriptsize]
-/**
-	This page is accessed via an AJAX call. It updates the read time given an article id.
-*/
-include("../../../lib/db_connect.php");
-$read_time = $_POST["read_time"];
-$hit_id = $_POST["hit_id"];
-
-// if a read time and hit id are provided then update the read time in the database
-if($read_time > 0 && $hit_id > 0) {
-	$stmt = $db->prepare("update hit set read_time=:read_time where id=:hit_id");
-	$stmt->bindParam(':read_time',$read_time);
-	$stmt->bindParam(':hit_id',$hit_id);
-	$stmt->execute();
-}
-\end{lstlisting} 
+In addition to the above, I have created a helper file that registers the read time of a given article. By default, the read time is registered as 0 seconds in the database. Once a hit is registered in the database, the id of the newly created hit is then passed to the DOM of the article page. There, the id is used via an AJAX call to store the calculated read time for the visited article in the database. This file is called \textbf{updateReadTime.php}.
 \vfill
 
 \subsection{Client-side read time capture with Javascript}
 As mentioned in the last section, the hit id is passed to the client page in order to keep a way to identify and update the read time for the visited article. Here, I calculate the number of words that are stored in the article. I do this by first getting all of the text found within common article tags - namely <span>, <div>, <article>, <p>, and <section>. I then sum the number of words found within all of the mentioned tags. I ensure that double counting is avoided by using the \textbf{innerText} property; this counts the elements inner text, but not any text that might be included in one of its children nodes. Next, I calculate the number of seconds the article is on average expected to take to read. Based on my earlier research, I will use the average figure of 200 words per minute. This figure is merely used in the event that a user leaves the page open indefinitely. Thus, if an article should take about 5 minutes to read, and the user takes (for whatever reason) 30 minutes to navigate away from or to close the article, then I simply register the 5 minutes. Although I may be compromising some accuracy here, it is much more advantageous than having instances greatly inflate the read time.
 
 Once the article page loads, and the expected read time calculations have been made, a timer is readied. The timer is triggered once a user moves the mouse or when the user scrolls the page. This minimizes storing metadata created by bots and to a high extent ensures that a human is sitting behind the screen. Upon navigating away from or closing the article, the read time is then submitted to \textbf{updateReadTime.php} and eventually recorded in the database. This part of the implementation relies on \textbf{window.onbeforeunload} or \textbf{window.onunload}, depending on the browser's user agent. At the time of this writing, this method only for Firefox and Chrome.
-
-Below is the code pertinent to capturing read time:
-\begin{lstlisting}[basicstyle=\scriptsize]
-// the average number of words per minute the user is expected to spend reading an article
-var AVERAGE_WPM = 200;
-// the maximum amount of time the user is expected to take to read the article
-var maxTimeToSpend = 0;
-
-/**
-	Gets the number of words from the article based on common tags used
-*/
-var getNumberOfWords = function() {
-	var total_words = 0;
-	var tags = ["span","div","article","p","section"];
-	
-	// Go through each one of the designated tags. 
-	// these are the common tags that contain
-	// article content. Then, get the number of 
-	// words under the pertinent tag.
-	tags.forEach(function(d) {
-		try {
-			if(Array.prototype.slice.call($(d),0).length > 1) { 
-				$.each($(d),function(index,value){
-					total_words+=$(value).text().split(' ').length;	
-				});
-			} else {
-				total_words+=$(d).text().split(' ').length;					
-			}
-		} catch(e) {
-
-		}	
-	});		
-	return total_words;
-}
-
-/**
-Creates a Timer prototype that will keep track of time
-*/
-var Timer = function() {
-	var seconds = 0;
-	var timerRef = null;
-	this.countTime = function() {
-		timerRef = setInterval(function(){ 
-			seconds+=1000;
-		},1000);
-	}
-	this.stopCount = function() {
-		clearInterval(timerRef);
-	}
-	this.getCount = function() {
-		return seconds;
-	}
-}
-
-/** 
-	Gets the time spent in front of the article.
-	If it is greater than the expected time, then use the expected time. Else, use the computed time.
-*/
-var getTimeSpent = function() {
-	timer.stopCount();
-	var words = getNumberOfWords();
-	var maxTimeToSpend = (words/AVERAGE_WPM)*60;
-	var calculableTime = timer.getCount()/1000;
-	if(parseInt(calculableTime) > parseInt(maxTimeToSpend)) {
-		return maxTimeToSpend;
-	} else {
-		return calculableTime;
-	}
-}
-
-/**
-	Sends the time spent on the article to the server
-*/
-var sendTime = function() {
-	$.ajax({
-	  url: "updateReadTime.php",
-	  type:"post",
-	  data: {hit_id:<?php echo $hit_id ?>,read_time:getTimeSpent()}
-	}).done(function() {
-
-	});
-}
-
-/**
-	initiate the timer and the bindings on load
-*/
-$( document ).ready(function() {
-	// create a new Timer object
-	timer = new Timer();
-	// begin counting
-	timer.countTime();
-	// have the time sent to the server once the window
-	// closes or if the user navigates to another page
-	if(!!window.chrome) {
-		window.onbeforeunload = sendTime;
-	} else {
-		window.onunload = sendTime;
-	}
-});
-\end{lstlisting}    
+ 
 \vfill
 
 \subsection{Tying it all together}
@@ -775,232 +398,8 @@ In the interest of portability, I have placed all of my code within a folder cal
 
 \item
 \end{lstlisting}
-\item \textbf{readTime.php} - this is the Javascript code that captures the read time. It is suffixed with .php (vs. .js) since it requires PHP code to output the hit id within the Javascript. I have made adjustments to this code to accommodate for users switching tabs while reading a certain article. When the article's window loses focus, the timer stops counting; it only resumes when the user gets back to the article window. This maximizes accuracy in the average read time readings. Here is the code:
-\begin{lstlisting}[basicstyle=\scriptsize]
-/**
-	This is the Javascript library that registers the read time of an article.
-	It is suffixed with a .php extension since the script requires the 
-	hit id to be provided by php script.
-*/
-
-// the average number of words per minute the user is expected to spend reading an article
-var AVERAGE_WPM = 200;
-// the maximum amount of time the user is expected to take to read the article
-var maxTimeToSpend = 0;
-// flag to denote if the user has moved the mouse. if yes, the value is 1
-var mouse_moved = 0;
-// flag to denote if the user has scrolled the page. if yes, then the value is greater than 0
-var page_scroll_counter = 0;
-// flag to denote whether current tab is active or not. if yes, the value is 1
-var current_tab_active = 0;
-
-/**
-	Gets the number of words from the article based on common tags used
-*/
-var getNumberOfWords = function() {
-	var total_words = 0;
-	var tags = ["span","div","article","p","section"];
-	
-	// Go through each one of the designated tags. 
-	// these are the common tags that contain
-	// article content. Then, get the number of 
-	// words under the pertinent tag.
-	tags.forEach(function(d,area) {
-		area = ".entry-content";
-		d = area + " " + d;
-		try {
-			if(Array.prototype.slice.call($(d),0).length > 1) { 
-				$.each($(d),function(index,value){
-					words_length = $(value).text().trim().split(' ').length;
-					if(words_length > 1) {
-						total_words+=words_length;		
-					}
-				});
-			} else {
-				words_length = $(d).text().trim().split(' ').length;
-				if(words_length > 1) {
-					total_words+=words_length;		
-				}
-			}
-		} catch(e) {
-
-		}	
-	});		
-	return total_words;
-}
-
-/**
-	Creates a Timer prototype that will keep track of time
-*/
-var Timer = function() {
-	// number of seconds counted
-	var seconds = 0;
-	// reference to the Timer object
-	var timerRef = null;
-	
-	/** increase the timed counter */
-	this.countTime = function() {
-		timerRef = setInterval(function(){ 
-			seconds+=1000;
-		},1000);
-	}
-	
-	/** stop the timed counter */
-	this.stopCount = function() {
-		clearInterval(timerRef);
-	}
-	
-	/** get the number of seconds that have elapsed */
-	this.getCount = function() {
-		return seconds;
-	}
-}
-
-/** 
-	Gets the time spent in front of the article.
-	If it is greater than the expected time, then use 
-	the expected time. Else, use the computed time.
-*/
-var getTimeSpent = function() {
-	// stop the timer
-	timer.stopCount();
-	// get total number of words in text
-	var words = getNumberOfWords();
-	// get the expected maximum time to read the text
-	var maxTimeToSpend = (words/AVERAGE_WPM)*60;
-	// get the number of seconds spent reading the text
-	var calculableTime = timer.getCount()/1000;
-	// if the expected number of seconds has been exceeded, then 
-	// return the expected number of seconds as the final measure.
-	// else, return the actual time spent reading the text
-	if(parseInt(calculableTime) > parseInt(maxTimeToSpend)) {
-		return maxTimeToSpend;
-	} else {
-		return calculableTime;
-	}
-}
-
-/**
-	Sends the time spent on the article to the server
-*/
-var sendTime = function() {
-	$.ajax({
-	  url: "updateReadTime.php",
-	  type:"post",
-	  data: {hit_id:<?php echo $hit_id ?>,read_time:getTimeSpent()}
-	}).done(function() {
-
-	});
-}
-
-/**
-	initiate the timer and the bindings on load
-*/
-$( document ).ready(function() {
-	// have the time sent to the server once the window
-	// closes or if the user navigates to another page
-	if(!!window.chrome) {
-		window.onbeforeunload = sendTime;
-	} else {
-		window.onunload = sendTime;
-	}
-	
-	$("body").on("mousemove",function(){
-		// if the user moves the mouse, start the timer. 
-		// Also, cancel the event binding to both 'mousemove' and 'scroll'
-		if(!mouse_moved) {
-			mouse_moved = true;
-			// create a new Timer object
-			timer = new Timer();
-			// begin counting
-			timer.countTime();
-		} else {
-			$("body").unbind("mousemove");
-			$(document).unbind("scroll");
-		}
-	});
-
-	$(document).on("scroll",function(){
-		// if the user starts scrolling the page, start the timer. 
-		// Also, cancel the event binding to both 'mousemove' and 'scroll'
-		if(page_scroll_counter == 1) {
-			$("body").unbind("mousemove");
-			$(document).unbind("scroll");				
-		} else {
-			// create a new Timer object
-			timer = new Timer();
-			// begin counting
-			timer.countTime();
-			page_scroll_counter++;
-		}
-	});
-	
-	// stop counting if user switches to another tab
-	$(window).on("blur",function() {
-		timer.stopCount();
-	});
-	
-	// resume counting if user switches back to current tab
-	$(window).on("focus",function() {
-		timer.countTime();
-	});
-});
-\end{lstlisting} 
-\item \textbf{wordpressHook.php} - as mentioned earlier, this is an abstraction into Wordpress's needed built-in functions. In order to hook to different CMSs, the code can be reused. All that would be needed to change is the implementation. Here is the code:
-\begin{lstlisting}[basicstyle=\scriptsize]
-/**
-	Class used to abstract the built-in and needed Wordpress functions
-*/
-class wordpressHook {
-	// the article id to be set by the contructor
-	private $article_id = "";
-
-	// set the article id in the constructor
-	public function __construct($article_id) {
-		$this->article_id = $article_id;
-	}
-	
-	// get the name of the category from Wordpress
-	public function getCategoryName() {
-		$category_name = get_the_category()[0]->cat_name;
-		return $category_name;
-	}
-	
-	// get the id of the category from Wordpress
-	public function getCategoryID() {
-		return 	get_cat_id($this->getCategoryName());
-	}
-	
-	// get the url of the article from Wordpress
-	public function getURL() {
-		return get_permalink($this->article_id);		
-	}
-	
-	// get the title of the article from Wordpress
-	public function getTitle() {
-		return get_the_title($this->article_id);		
-	}
-	
-	// get an excerpt from the read article from Wordpress. 
-	// The number of characters excerpted is based on the constant EXCERPT_CHARS
-	public function getSampleText() {
-		$sample_text = get_post($this->article_id,ARRAY_A);
-		$sample_text = strip_tags($sample_text["post_content"]);
-		$sample_text = substr($sample_text,0,EXCERPT_CHARS);
-		return $sample_text;
-	}
-	
-	// get the article's featured image URI from Wordpress
-	public function getSamplePic() {
-		$sample_pic = wp_get_attachment_image_src( get_post_thumbnail_id( $this->article_id ), 'single-post-thumbnail' );
-		$sample_pic = $sample_pic[0];
-		if(strlen($sample_pic) < 5) {
-			$sample_pic = "none";
-		}
-		return $sample_pic;
-	}
-}
-\end{lstlisting}
+\item \textbf{readTime.php} - this is the Javascript code that captures the read time. It is suffixed with .php (vs. .js) since it requires PHP code to output the hit id within the Javascript. I have made adjustments to this code to accommodate for users switching tabs while reading a certain article. When the article's window loses focus, the timer stops counting; it only resumes when the user gets back to the article window. This maximizes accuracy in the average read time readings.
+\item \textbf{wordpressHook.php} - as mentioned earlier, this is an abstraction into Wordpress's needed built-in functions. In order to hook to different CMSs, the code can be reused. All that would be needed to change is the implementation.
 \item \textbf{countries.php} - contains an array that has all country names. Used for database seeding.
 \end{enumerate}
 \subsection{Creating a mock news website}
@@ -1094,174 +493,10 @@ Note that I have hard coded a testing IP address so that I am the only person wh
 At this point, the database is populated with a good amount of data and we need a way to retrieve it. For this, I created a folder on the server side and called it "vizLib". Herein I have thus far created 3 PHP files that will output results in JSON:
 \begin{enumerate}
 \item{\textbf{getCategories.php} - outputs all the used article categories.}
-\begin{lstlisting}[basicstyle=\scriptsize]
-/**
-	Returns the category ids and names in JSON format
-*/
-
-// the DSN for the database
-define(DSN,'mysql:host=localhost;dbname=alaini5_news_viz');
-
-// the edit username for the database
-define(EDIT_USERNAME, "alaini5_newsread");
-
-// the edit password for the database
-define(EDIT_PASSWORD,"mbn@7600");
-
-// connect to database
-try {
-	// create a new PDO connection to the database
-	$db = new PDO(DSN,EDIT_USERNAME,EDIT_PASSWORD);
-} catch(PDOExecption $e) {
-	print "Error!: " . $e->getMessage() . "<br />";
-	die();
-}
-
-// get all categories
-$sql = "select * from category";
-
-// associative array to store categories
-$categories = array();
-
-// retrieve the id and name of each category and store it in the array
-foreach($db->query($sql) as $row) {
-	$categories[$row["category_id"]] = $row["category_name"];
-}
-
-// close database connection
-$db = null;
-
-// encode the array in json format
-$categories = json_encode($categories);
-
-print $categories;
-\end{lstlisting}
 
 \item{\textbf{getArticlesMetrics.php} - outputs all of the metrics for all the articles given a category ID, beginning visit time, and ending visit time.}
-\begin{lstlisting}[basicstyle=\scriptsize]
-/**
-	Returns the following metadata for all articles for 
-	a given time period from a given category in JSON:
-	- Time visited
-	- Article ID
-	- Article URL
-	- Article title
-	- Article sample text
-	- Article featured image URL
-	- Country of visitor
-	- Read time of article
-*/
-
-// the DSN for the database
-define(DSN,'mysql:host=localhost;dbname=alaini5_news_viz');
-
-// the edit username for the database
-define(EDIT_USERNAME, "alaini5_newsread");
-
-// the edit password for the database
-define(EDIT_PASSWORD,"mbn@7600");
-
-// connect to database
-try {
-	// create a new PDO connection to the database
-	$db = new PDO(DSN,EDIT_USERNAME,EDIT_PASSWORD);
-} catch(PDOExecption $e) {
-	print "Error!: " . $e->getMessage() . "<br />";
-	die();
-}
-
-// associate array to contain all the articles' metadata
-$articles = array();
-
-// get the category id from query string
-$category_id = $_GET["category_id"];
-
-// get the start visit time of the articles for this category in Unix time
-$start_time = $_GET["start_time"];
-
-// get the end visit time of the articles for this category in Unix time
-$end_time = $_GET["end_time"];
-
-// get all relevant metadata for the articles visited 
-// within our specified category and time period
-$sql = sprintf("select hit.id as 'hit_id',time_visited, hit.article_id, 
-		country, read_time, article.article_id, category_id, 
-		article_url, title, sample_text,sample_pic from article,hit 
-		where hit.article_id=article.article_id and 
-		category_id=%d and time_visited >= %d and time_visited <= %d",
-		$category_id,$start_time,$end_time); 
-
-// populate the $aritcle array with all the metadata
-foreach($db->query($sql) as $row) {
-	$articles[$row["hit_id"]]["article_id"] = $row["article_id"];
-	$articles[$row["hit_id"]]["url"] = $row["article_url"];
-	$articles[$row["hit_id"]]["title"] = $row["title"];
-	$articles[$row["hit_id"]]["sample_text"] = $row["sample_text"];
-	$articles[$row["hit_id"]]["pic"] = $row["sample_pic"];
-	$articles[$row["hit_id"]]["country"] = $row["country"];
-	$articles[$row["hit_id"]]["read_time"] = $row["read_time"];
-}
-
-// close database connection
-$db = null;
-
-// encode final results in JSON format
-$articles = json_encode($articles);
-
-print $articles;
-\end{lstlisting}
 
 \item{\textbf{getArticleCountriesMetrics.php} - outputs all of the country metrics for a given article ID.}
-\begin{lstlisting}[basicstyle=\scriptsize]
-/**
-	Returns the number of hits and what country they 
-	came from for a given article id in JSON format
-*/
-
-// the DSN for the database
-define(DSN,'mysql:host=localhost;dbname=alaini5_news_viz');
-
-// the edit username for the database
-define(EDIT_USERNAME, "alaini5_newsread");
-
-// the edit password for the database
-define(EDIT_PASSWORD,"mbn@7600");
-
-// connect to database
-try {
-	// create a new PDO connection to the database
-	$db = new PDO(DSN,EDIT_USERNAME,EDIT_PASSWORD);
-} catch(PDOExecption $e) {
-	print "Error!: " . $e->getMessage() . "<br />";
-	die();
-}
-
-// associative array to store the article hits 
-// and country of origin given an article
-$article_countries = array();
-
-// get the article id from query string
-$article_id = $_GET["article_id"];
-
-// get the sum of hits for a given article given their country of origin
-$sql = sprintf("select distinct country, count(hit.id) 
-	as 'hits' from hit where  hit.article_id=%d 
-	group by country",$article_id);
-
-// retrieve the number of hits and country name
-foreach($db->query($sql) as $row) {
-	$article_countries[$row["country"]]["hits"] = $row["hits"];
-	$article_countries[$row["country"]]["name"] = $row["country"];
-}
-
-// close database connection
-$db = null;
-
-// encode the array in json format
-$article_countries = json_encode($article_countries);
-
-print $article_countries;
-\end{lstlisting}
 
 \end{enumerate}
 
@@ -1364,7 +599,6 @@ The geographic bar charts support the following tasks:
 \item To navigate to the full article counterpart on the subject news website
 \end{itemize}
 
-\vfill
 
 \section{Results}
 
@@ -1372,43 +606,117 @@ The geographic bar charts support the following tasks:
 The working example that I have discussed so far is based on a mock website that I created using mock visit data.
 
 \subsubsection{Capturing Data}
-\begin{enumerate}
+\begin{itemize}
 \item For each hit, the following metadata was successfully captured: IP address, time visited, article ID, time zone, country of origin, and region of origin
 \item For each hit, the read time was captured as a random number between 10 and 180 seconds. When I switched the flag in my PHP code to denote the production environment, the read time was captured successfully when I navigated away from a news article. Most of my testing was done in Google Chrome version 39
 \item Each hit was captured according to the revisit threshold time (in seconds) that was specified in the PHP code
 \item Each category was captured from Wordpress via the PHP libraries I created
 \item Each article's metadata was captured from Wordpress via the PHP libraries I created
-\end{enumerate}
+\end{itemize}
 
 \subsubsection{Retrieving Data}
-\begin{enumerate}
+\begin{itemize}
 \item The categories were successfully retrieved in JSON via \textbf{getCategories.php}
 \item The hits data was retrieved successfully from the MySQL database using JSON via \textbf{getArticlesMetrics.php}. I initially reserved the geographic data for the articles to be serviced by \textbf{getArticleStatesMetrics.php}. However, I felt that in a production environment that many SQL calls to the database server would slow down the system and affect all users. In order to minimize the number of requests to the server, I had the server fetch all data for a given category for the last 31 days. The client-side Javascript code then parsed and re-organized the fetched data to be used by the interactive visualization
-\end{enumerate}
+\end{itemize}
 
 \subsubsection{The Interactive Visualization}
-\begin{enumerate}
+\begin{itemize}
+\item The final product included a stacked area chart, a list of article titles, and a right pane for geographic analysis of up to 2 articles
+\item The hits were first aggregated on a minute to minute basis. Though, this resulted in performance degradation. Adjusting the date range took a delay of about 2-3 seconds to reflect in the redraw of the stacked area chart. I then aggregated on an hourly basis, which ended up plotting Y values over 744 (31 days x 24 hours) X axis time values. This eliminated the delay in the stacked area chart redraw
 \item The stacked chart accurately reflected the number of hits and average read time over the selected time range
 \item Clicking one or more articles highlighted the article encode in the stacked area chart and displayed the total hits based on geography. It also showed the distribution of the recorded read times. For the mock site, the geography was limited to states within the United States
 \item The tables that contained the geographic origins were sortable by total hits and by state name - in ascending and descending order
 \item When "Show Article Details on Hover" was enabled, the pertinent article's thumbnail image, title, and body excerpt were successfully presented in an overlay
-\item Hovering over any row in the geographic hits and attention span table resulted in the row being highlighted in yellow for all articles that are being 
-\item Hovering over a bar representation of the total number of hits invoked a steel blue overlay showing the number of hits. Hovering over an attention span circle invoked a steel blue overlay showing the number of seconds that was spent on the article.  
-\end{enumerate} 
+\item Hovering over any row in the geographic hits and attention span table resulted in the row being highlighted in yellow for all articles that are being compared
+\item Hovering over a bar representation of the total number of hits invoked a steel blue overlay showing the number of hits
+\\
+\noindent\includegraphics[scale=0.8]{img/state_hit_hover} \\  
+
+\item Hovering over an attention span circle invoked a steel blue overlay showing the number of seconds that was spent on the article
+\noindent\includegraphics[scale=0.8]{img/state_circle_hover} \\  
+\end{itemize} 
 
 \subsubsection{Performance}
-\begin{enumerate}
-\item In the mock site, the last 31 days amounted to 4500 hits. The time it took for them to be loaded in the visualization was around 4 seconds, using a PC with an Intel i7 processor and 12 GB of RAM
+\begin{itemize}
+\item In the mock site, the last 31 days amounted to ~4500 hits per category. The time it took for them to be loaded in the visualization was around 4 seconds, using a PC with an Intel i7 processor and 12 GB of RAM
 \item When changing the date range, the stacked chart's redraw time was almost instantaneous. Again, using a PC with an Intel i7 processor and 12 GB of RAM
-\item When "Show Article Details on Hover" was enabled, there was a delay of about 500 ms for the image thumbnails to initially show. Once they were cached in the browser's memory, they appeared without delay. For images that were not cached, the delay was about 1 second per megabyte in picture size
-\end{enumerate}
+\item When "Show Article Details on Hover" was enabled, there was a delay of about 500 milliseconds for the image thumbnails to initially show. Once they were cached in the browser's memory, they appeared without delay. For images that were not cached, the delay was about 1 second per megabyte in picture size
+\end{itemize}
 
 
 \subsection{Actual Website}
+Being a web developer at a news organization, I was able to test the system against one of our mini sites - Afia Darfur (http://www.afiadarfur.com), since it was using Wordpress as the back-end platform. The site targets people in Sudan and keeps them up to date with news specific to Sudan. 
+
+\noindent\includegraphics[scale=0.4]{img/afiadarfur_main} \\
+
+\subsubsection{Hooking the Custom Libraries}
+Hooking into the live website involved the following steps:
+\begin{enumerate}
+\item Creating a database for the web metrics
+\item Placing the \textbf{captureLib/} folder in the root folder of the Wordpress theme
+\item Including the capture library in Wordpress's \textbf{single.php} 
+\item Including the \textbf{vizLib/} folder in the root directory of the website
+\item Placing \textbf{updateExpectedReadTime.php} and \textbf{updateReadTime.php} in the root directory of the website 
+\end{enumerate}
+
+\subsubsection{Capturing Data}
+\begin{itemize}
+\item For each hit, the following metadata was successfully captured: IP address, time visited, article ID, time zone, country of origin, and region of origin
+\item  The read time was captured successfully when I navigated away from a news article. Most of my testing was done in Google Chrome version 39
+\item Each hit was captured according to the revisit threshold time (in seconds) that was specified in the PHP code. For Afia Darfur, this was set to 20 seconds
+\item Each category was captured from Wordpress via the PHP libraries I created
+\item Each article's metadata was captured from Wordpress via the PHP libraries I created. In order to ensure that the Arabic text was captured, I had to change the collation of the database tables to utf8\_general\_ci
+\item The PHP library files responsible for capturing data had to be encoded in UTF-8
+\end{itemize}
+
+\subsubsection{Retrieving Data}
+\begin{itemize}
+\item The categories were successfully retrieved in JSON via \textbf{getCategories.php}. Again, the pertinent PHP files had to be encoded in UTF-8 to handle the Arabic characters
+\item The hits data was retrieved successfully from the MySQL database using JSON via \textbf{getArticlesMetrics.php}. I initially reserved the geographic data for the articles to be serviced by \textbf{getArticleStatesMetrics.php}. However, I felt that in a production environment that many SQL calls to the database server would slow down the system and affect all users. In order to minimize the number of requests to the server, I had the server fetch all data for a given category for the last 31 days. The client-side Javascript code then parsed and re-organized the fetched data to be used by the interactive visualization
+\end{itemize}
+
+\subsubsection{The Interactive Visualization}
+\begin{itemize}
+\item The final product included a stacked area chart, a list of article titles, and a right pane for geographic analysis of up to 2 articles
+\\
+\noindent\includegraphics[scale=0.5]{img/afiadarfur_main_viz} \\
+\item The hits were aggregated on an hourly basis resulting in Y values over 744 (31 days x 24 hours) X axis time values
+\item The stacked chart accurately reflected the number of hits and average read time over the selected time range
+\item Clicking one or more articles highlighted the article encode in the stacked area chart and displayed the total hits based on geography. It also showed the distribution of the recorded read times. Since the target audience of Afia Darfur is an international one, the geographic data was aggregated to countries - unlike in the mock site where granules of geography were represented as US states
+\item The tables that contained the geographic origins were sortable by total hits and by state name - in ascending and descending order
+\item When "Show Article Details on Hover" was enabled, the pertinent article's thumbnail image, title, and body excerpt were successfully presented in an overlay \\
+\noindent\includegraphics[scale=0.5]{img/afiadarfur_hover} \\
+\\
+\item Hovering over any row in the geographic hits and attention span table resulted in the row being highlighted in yellow for all articles that are being compared
+\item Hovering over a bar representation of the total number of hits invoked a steel blue overlay showing the number of hits 
+\\
+\noindent\includegraphics[scale=0.8]{img/country_hit_hover} \\  
+\item Hovering over an attention span circle invoked a steel blue overlay showing the number of seconds that was spent on the article
+\\
+\noindent\includegraphics[scale=0.8]{img/country_hit_hover} \\   
+\end{itemize} 
 
 
+\subsubsection{Performance}
+\begin{itemize}
+\item In the Afia Darfur website, the last 31 days amounted to ~10,000 hits and ~40,000 hits for the two main categories being used by the web editors. It took approximately 16 seconds to load the ~10,000 hits and 52 seconds to load the ~40,000 hits. 
+\item As for adjusting the stacked area graph's time range, there was a ~3-second delay for the ~10,000 hits and a ~10-second delay for the ~40,000 hits. This was done using a PC with an Intel i7 processor and 12 GB of RAM. Again, using a PC with an Intel i7 processor and 12 GB of RAM
+\item When "Show Article Details on Hover" was enabled, there was a delay between 50 to 300 milliseconds for the image thumbnails to initially show. Once they were cached in the browser's memory, they appeared without delay. For images that were not cached, the delay was about 1 second per megabyte in picture size
+\end{itemize}
+
+\subsubsection{Conclusion}
+The stacked area chart would have been more effective with less articles. Looking at 300+ articles simultaneously can be overwhelming. Thus, the web editors need to be directed to submit their articles under appropriate categories. The geographic distribution of hits and contrast between two articles was effective; the only downside was that the read times were not captured for all the hits. Aggregating on an hourly basis resulted in the most practical user experience, while maintaining a good temporal accuracy.  
 
 \section{Future Work}
+I would have liked to add capabilities to my existing visualization given more time:
+\begin{itemize}
+\item To create a stacked area chart for categories over time, similar to the existing one for articles
+\item To visualize each article's interest fluctuations as a relative measure from its publication date. In the current scenario, one is able to see which articles peak and plunge over time. However, it is difficult to contrast two or more articles' fluctuations since their inception date
+\item To allow for 4 articles to be simultaneously contrasted across their geographies. I can accomplish this by removing the attention span column and having it as a filter option to narrow the geographic tables
+\item To visualize per number of hits and attention spans per capita
+\item To capture social media metrics such as Facebook likes and  Twitter tweets, and incorporate them into the stacked area chart 
+\end{itemize}
 
 \section{Glossary}
 \begin{itemize}
