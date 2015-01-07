@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.6)  5 JAN 2015 17:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.6)  6 JAN 2015 19:17
 entering extended mode
 **thesis.tex
 (C:\thesis\thesis.tex
@@ -175,6 +175,7 @@ LaTeX Font Info:    Try loading font information for OT1+zplm on input line 4.
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 ) [1])
 \tf@toc=\write3
+ [2]
 LaTeX Font Info:    Try loading font information for OMS+ppl on input line 63.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsppl.fd"
@@ -182,7 +183,7 @@ File: omsppl.fd
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 63.
- [2]
+
 <img/overall_chart.png, id=13, 594.22pt x 475.7775pt>
 File: img/overall_chart.png Graphic file (type png)
 
@@ -885,30 +886,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 1357--1358
  []
 
 [65 <C:/thesis/img/viz_9.png>] [66]
-Overfull \hbox (7.85423pt too wide) in paragraph at lines 1380--1381
+Overfull \hbox (24.93008pt too wide) in paragraph at lines 1385--1386
+[]\T1/ppl/m/n/12 The cat-e-gories were suc-cess-fully re-trieved in JSON via \T
+1/ppl/b/n/12 get-Cat-e-gories.php 
+ []
+
+[67] [68]
+Overfull \hbox (7.85423pt too wide) in paragraph at lines 1424--1425
 []\T1/ppl/b/n/12 LAMP\T1/ppl/m/n/12 : A web de-vel-op-ment en-vi-ron-ment com-p
 rised of a Linux server,
  []
 
-[67]
-Overfull \hbox (7.56728pt too wide) in paragraph at lines 1385--1386
+[69]
+Overfull \hbox (7.56728pt too wide) in paragraph at lines 1429--1430
 []\T1/ppl/b/n/12 SVG\T1/ppl/m/n/12 : An XML-based vec-tor im-age for-mat for tw
 o-dimensional graph-
  []
 
 
-Overfull \hbox (13.03844pt too wide) in paragraph at lines 1385--1386
+Overfull \hbox (13.03844pt too wide) in paragraph at lines 1429--1430
 \T1/ppl/m/n/12 ics that has sup-port for in-ter-ac-tiv-ity and an-i-ma-tion (so
 urce: Wikipedia). 
  []
 
 
-Underfull \hbox (badness 1789) in paragraph at lines 1399--1400
+Underfull \hbox (badness 1789) in paragraph at lines 1443--1444
 []\T1/ppl/m/n/12 A. Cock-burn, A. Karl-son, and B. B. Bed-er-son, \T1/ppl/m/it/
 12 “A re-view of
  []
 
-[68] [69] (C:\thesis\thesis.aux) ) 
+[70] [71] (C:\thesis\thesis.aux) ) 
 Here is how much of TeX's memory you used:
  3067 strings out of 493921
  42929 string characters out of 3144865
@@ -925,9 +932,9 @@ nts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts
 a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplbi8a.pfb><
 C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Progr
 am Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on thesis.pdf (70 pages, 4752283 bytes).
+Output written on thesis.pdf (72 pages, 4756354 bytes).
 PDF statistics:
- 290 PDF objects out of 1000 (max. 8388607)
+ 296 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  156 words of extra memory for PDF output out of 10000 (max. 10000000)
 
