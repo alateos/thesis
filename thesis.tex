@@ -101,7 +101,7 @@ The final product is geared towards the conventional news site structure, where 
 \item CSS3 for styling the HTML and SVG elements
 \item JavaScript to manipulate the DOM (Document Object Model) and to load data from the server side
 \item D3.js (Data-Driven Documents) to facilitate the manipulation of the data in the visualization
-\item jQuery to shorthand some lengthy Javascript functions
+\item jQuery to shorthand some lengthy JavaScript functions
 \end{itemize}
 
 
@@ -120,19 +120,20 @@ The final product is geared towards the conventional news site structure, where 
 \subsection{Visualization}
 Prominent researchers in the field of visualization have concocted logical constructs and approaches to designing and implementing visualizations. From a presentation standpoint, there is much emphasis on presenting the end user just enough visual data for the user to achieve the intended task of the visualization - this is known as \textbf{expressiveness} \cite{schumann} - where the visualization shows information only relevant to the data set. Another popular concept on visual economics is the \textbf{data-to-ink ratio} \cite{tufte}. The goal is to have just enough ink presented to convey the data; additional ink that is not matched by data is a distraction. 
 
-Having an efficient visualization is not enough. It needs to be effective. This brings us to two concepts covered in depth by Tamara Munzner: \textbf{domain} and \textbf{task} (Munzner \cite{munzner}). She advocates that in the design phase, the builder needs to identify the domain that he/she is working with. A domain is a world of ideas and concepts that are abstracted under one umbrella. For example, human anatomy, software engineering, economics, and biology are all domains. A domain gives rise to concepts, definitions, and a pre-built library of shapes and colors by the convention of collective knowledge. Red in biology signifies blood whereas in the world of novels it may allude to romance. Thus the target domain will largely shape what colors and shapes the visualizer will have on a palette. \\
+Having an efficient visualization is not enough. It needs to be effective. This brings us to two concepts covered in depth by Tamara Munzner: \textbf{domain} and \textbf{task} (Munzner \cite{munzner}). She advocates that in the design phase, the builder needs to identify the domain that he/she is working with. A domain is a world of ideas and concepts that are abstracted under one umbrella. For example, human anatomy, software engineering, economics, and biology are all domains. A domain gives rise to concepts, definitions, and a pre-built library of shapes and colors by the convention of collective knowledge. Red in biology signifies blood whereas in the world of novels it may allude to romance. Thus the target domain largely determines what colors and shapes the visualizer will have on their palette. \\
 On the other hand, the task refers to the "what" of the visualization. What is/are the goal(s) of the visualization? Is it to explore, analyze, extrapolate, etc.? Clearly identifying the task(s) of the visualization at hand solidifies the direction in which the designer \textbf{encodes} the visual variables (Bertin). Encoding refers to the idea of representing a quantitative or qualitative concept visually. The visual variables include position, size, shape, value, color, orientation, grain, and texture. \\
 Thus for an effective visualization, the choice of encodes is dependent on the domain of the visualization, as as well as the tasks the visualization is trying to support. \\
-Studies have shown that position and length are the easiest visual variables to decode (Cleveland and McGill). My project deals with two main measures: Number of hits and read time (in seconds). To incorporate position, I can plot these two measures on a Cartesian graph with time on the X axis and the selected measure on the Y axis. If I plot each datum as a dot or cirle, I end up with a scatterplot. Though, my goal is show trends of popularity; which is why a line chart and area graph are better candidates. Comparing the total number of hits across different geographic locations involves encoding using length. Here, a bar chart suits the task. Lastly, visualizing the number of seconds for each observation given a geographic location over a specified time period is best accomplished using position; for this, I can use a dot chart.   
+Studies have shown that position and length are the easiest visual variables to decode (Cleveland and McGill). My project deals with two main measures: Number of hits and read time (in seconds). To incorporate position, I can plot these two measures on a Cartesian graph with time on the X axis and the selected measure on the Y axis. If I plot each datum as a dot or cirle, I end up with a scatterplot. Though, my goal is show trends of popularity; which is why a line chart and area graph are better candidates as they convey patterns of over time. Comparing the total number of hits across different geographic locations involves encoding using length. Here, a bar chart suits the task. Lastly, visualizing the number of seconds for each observation given a geographic location over a specified time period is best accomplished using position; for this, I can use a dot chart. \\
+For distinguishing categories in a line or graph chart, color is an effective visual variable. For this project, news categories are not simultaneously contrasted - articles are. Encoding each article with a different color may work well for up to 5 colors; however, studies show that surpassing this limit makes it difficult for humans to differentiate encodes of more than 7-9 colors (Healey). Thus a different visual variable will need to be applied to effect in the visitor distinguishing the articles from one another. Here, I can resort to the visual variable of position. A stacked area graph is an area graph that employs position by stacking different parts of the whole on top of one another over another dimension - usually time (Byron \& Wattenberg).  
 
 In the pre-Internet days, the implementation would have ended here. Though, with the advent of mass computerization and global connectivity, a new ability has been introduced - that of interactivity. Interactivity has been broken down into the following \cite{cockburn}: Overview+Detail, Zooming, Focus+Context, details-on-demand, and cue-based systems. The user is now able to manipulate the views of the data using input devices such as a mouse and keyboard. As with the other aspects of the visualization, efficiency and effectiveness need to be kept in mind when creating user interfaces.
 
 \subsection{Measuring Time}
 Time is an essential component to web analytics, as it gives context to what is being measured. Although graphing change over time was attempted in the early A.D.s, the first known contemporary time series graph was published by William Playfair \cite{playfair}. Playfair was the father of the line graph and bar graph. However, there is not a single model that accommodates all domains and tasks \cite{frank}. Thus, for the proposed visualization, time must be dealt with in the context of an online news domain.   
 
-It is important to note the difference between event data and interval data. Time events are occurrences that are represented as slices of time; for example, a plane landed at its destination is an event. Whereas, the process of a plane landing occurs over a time interval of say 20 minutes. In this project, an article hit is defined as an event, although an actual hit has a visit duration. That said, if I visualize time on an X axis it is inevitable that I will have units of times where no hits are available. The rendering of this time interval as a discrete event is ok so long as the measured interval is minute compared to the total time covered by the data (Graham). That is, a visitor reading an article for 2 minutes is a small amount compared to say an article's lifetime of 3 weeks. 
+Here, it is important to note the difference between event data and interval data. Time events are occurrences that are represented as slices of time; for example, a plane landed at its destination is an event. Whereas, the process of a plane landing occurs over a time interval of say 20 minutes. In this project, an article hit is defined as an event, although an actual hit has a visit duration. That said, if I visualize time on an X axis it is inevitable that I will have units of times where no hits are available. The rendering of this time interval as a discrete event is adequate so long as the measured interval is minute compared to the total time covered by the data (Graham). That is, a visitor reading an article for 2 minutes is a small amount compared to say an article's lifetime of 3 weeks. 
 
-In order to have a better understanding of the time intervals of news, I asked professionals around the news station that I work at for feedback. Based on this and my observations of our news website and other similar entities' websites, "news" refers to a recent occurrence, notably something that happened today. "Breaking News" typically refers to an event that happened within the current day and whose story under development. "Recent News" pertains to stories created within the last 1-3 days. As time approaches the coming year, decade, century, and millennium, news are then compiled and shown in representations such as "year/decade/century/millennium in review". My goal in this project is to represent the "recent news" category. Thus, the needed time granularities to be conveyed that support the task of the proposed visualization should be in days \cite{bettini}. Since I have interest in the general range of these units, I need to use a discrete time scale \cite{goralwalla} and thus need to capture the day, hour, and minute of each visit. The output variables connected to time should be the number of hits and the average read time spent on an article.
+In order to have a better understanding of the time intervals of news, I asked professionals around the news station that I work at for feedback. Based on this and my observations of our news website and other similar entities' websites, "news" refers to a recent occurrence, notably something that happened today. "Breaking News" typically refers to an event that happened within the current day and whose story under development. "Recent News" pertains to stories created within the last 1-3 days. As time approaches the coming year, decade, century, and millennium, news are then compiled and shown in representations such as "year/decade/century/millennium in review". My goal in this project is to represent the "recent news" category. Thus, the needed time granularities to be conveyed that support the task of the proposed visualization should be in days \cite{bettini}. At a minimum for drilling down to a day's worth of news, I need to use a discrete time scale \cite{goralwalla} and thus need to capture the day, hour, and minute of each visit. The output variables connected to time should be the number of hits and the average read time spent on an article.
 
 \subsection{Existing web metrics systems}
 What I built is novel in that there is no current navigable and exploratory tool that visualizes near real-time traffic on news sites. \\
@@ -341,7 +342,7 @@ Each table in my database is represented with a PHP class. Hence, the creation o
 In addition to the above, I have created a helper file that registers the read time of a given article. By default, the read time is registered as 1 second in the database. Once a hit is registered in the database, the id of the newly created hit is then passed to the DOM of the article page. There, the id is used via an AJAX call to store the calculated read time for the visited article in the database. This file is called \textbf{updateReadTime.php}.
 \vfill
 
-\subsection{Client-side read time capture with Javascript}
+\subsection{Client-side read time capture with JavaScript}
 As mentioned in the last section, the hit id is passed to the client page in order to keep a way to identify and update the read time for the visited article. Here, I calculate the number of words that are stored in the article. I do this by first getting all of the text found within common article tags - namely <span>, <div>, <article>, <p>, and <section>. I then sum the number of words found within all of the mentioned tags. I ensure that double counting is avoided by using the \textbf{innerText} property; this counts the elements inner text, but not any text that might be included in one of its children nodes. Next, I calculate the number of seconds the article is on average expected to take to read. Based on my earlier research, I will use the average figure of ~200 words per minute. This figure is used in the event that a user leaves the page open indefinitely. Thus, if an article should take about 5 minutes to read, and the user takes (for whatever reason) 30 minutes to navigate away from or to close the article, then I simply register the 5 minutes. Although I may be compromising some accuracy here, it is much more advantageous than having instances inflate the read time significantly.
 
 Once the article page loads, and the expected read time calculations have been made, a timer is readied. The timer is triggered once a user moves the mouse or when the user scrolls the page. This minimizes storing metadata created by bots and to a high extent ensures that a human is sitting behind the screen. Upon navigating away from or closing the article, the read time is then submitted to \textbf{updateReadTime.php} and eventually recorded in the database. This part of the implementation relies on \textbf{window.onbeforeunload} or \textbf{window.onunload}, depending on the browser's user agent. At the time of this writing, this method only for Firefox and Chrome.
@@ -372,7 +373,7 @@ This concludes the part of the system that implements the data capturing. The ne
 \vfill
 
 \section{Implementation - hooking into Wordpress}
-Wordpress calls its articles "posts". The template file for each post is called \textbf{single.php} and is found under the current theme that is being used. One can think of a theme as a set of pre-built PHP, HTML, CSS3, and Javascript templates that structurally and visually dictate how the website looks and behaves. Thus, in order to accomplish the task of capturing the data from a certain article, I needed to include my capture library inside \textbf{single.php}. However, since my library cannot directly communicate with Wordpress, I had to create a hook that abstracts some of Wordpress's built-in functions. Lastly, I needed to ensure that Wordpress is using jQuery version 2.1.1 or higher. As this is a Javascript library and that I need available as soon as the page loads, I needed to include it in \textbf{header.php} - which basically comprises the <head></head> portion of a given page. Below is a breakdown of how I hooked into Wordpress.
+Wordpress calls its articles "posts". The template file for each post is called \textbf{single.php} and is found under the current theme that is being used. One can think of a theme as a set of pre-built PHP, HTML, CSS3, and JavaScript templates that structurally and visually dictate how the website looks and behaves. Thus, in order to accomplish the task of capturing the data from a certain article, I needed to include my capture library inside \textbf{single.php}. However, since my library cannot directly communicate with Wordpress, I had to create a hook that abstracts some of Wordpress's built-in functions. Lastly, I needed to ensure that Wordpress is using jQuery version 2.1.1 or higher. As this is a JavaScript library and that I need available as soon as the page loads, I needed to include it in \textbf{header.php} - which basically comprises the <head></head> portion of a given page. Below is a breakdown of how I hooked into Wordpress.
 \subsection{Creating the captureLib folder}
 In the interest of portability, I have placed all of my code within a folder called \textbf{captureLib}. If a 3rd party wishes to uses this library in the future, all that would be needed is to simply include \textbf{captureLib} from within \textbf{single.php}. Here is a screenshot of the current directory structure of \textbf{captureLib}. \\
 
@@ -388,20 +389,20 @@ In the interest of portability, I have placed all of my code within a folder cal
 \item \textbf{db\_connect.php} - connects to the database where the hits are stored
 \end{enumerate}
 \item \textbf{Article.php, Hit.php, Category.php} - as mentioned previously, these are abstractions that communicate the data from and to the database
-\item \textbf{getReadTimeLibrary.php} - a line of code to include the read time Javascript code if a hit was registered
+\item \textbf{getReadTimeLibrary.php} - a line of code to include the read time JavaScript code if a hit was registered
 \begin{lstlisting}[basicstyle=\scriptsize]
 <?php 
 	/**
-		A terse way of including the Javascript library. The library 
+		A terse way of including the JavaScript library. The library 
 		itself is suffixed with .php instead of .js because there is 
-		a php variable defined in the actual Javascript library
+		a php variable defined in the actual JavaScript library
 	*/
 	if($hit_id) { include("readTime.php"); } 
 ?>
 
 \item
 \end{lstlisting}
-\item \textbf{readTime.php} - this is the Javascript code that captures the read time. It is suffixed with .php (vs. .js) since it requires PHP code to output the hit id within the Javascript. I have made adjustments to this code to accommodate for users switching tabs while reading a certain article. When the article's window loses focus, the timer stops counting; it only resumes when the user gets back to the article window. This maximizes accuracy in the average read time readings.
+\item \textbf{readTime.php} - this is the JavaScript code that captures the read time. It is suffixed with .php (vs. .js) since it requires PHP code to output the hit id within the JavaScript. I have made adjustments to this code to accommodate for users switching tabs while reading a certain article. When the article's window loses focus, the timer stops counting; it only resumes when the user gets back to the article window. This maximizes accuracy in the average read time readings.
 \item \textbf{wordpressHook.php} - as mentioned earlier, this is an abstraction into Wordpress's needed built-in functions. In order to hook to different CMSs, the code can be reused. All that would be needed to change is the implementation.
 \item \textbf{countries.php} - contains an array that has all country names. Used for database seeding.
 \end{enumerate}
@@ -469,7 +470,7 @@ if( $_SERVER['REMOTE_ADDR'] == $TESTING_IP) {
 }
 \end{lstlisting}
 Note that I have hard coded a testing IP address so that I am the only person who can run this for testing.
-\item{Created \textbf{fakeVisit.html} to run on the client side and to call \textbf{makeFakeHit.php} at a pre-specified time interval(using Javascript):}
+\item{Created \textbf{fakeVisit.html} to run on the client side and to call \textbf{makeFakeHit.php} at a pre-specified time interval(using JavaScript):}
 \begin{lstlisting}[basicstyle=\scriptsize]
 (function(){
 	// the amount of time to wait before revisiting the site (in seconds)
@@ -629,7 +630,7 @@ The working example that I have discussed so far is based on a mock website that
 \subsubsection{Retrieving Web Metrics}
 \begin{itemize}
 \item The categories were successfully retrieved in JSON via \textbf{getCategories.php}
-\item The hits data was retrieved successfully from the MySQL database using JSON via \textbf{getArticlesMetrics.php}. I initially reserved the geographic data for the articles to be serviced by \textbf{getArticleStatesMetrics.php}. However, I felt that in a production environment that many SQL calls to the database server would slow down the system and affect all users. In order to minimize the number of requests to the server, I had the server fetch all data for a given category for the last 31 days. The client-side Javascript code then parsed and re-organized the fetched data to be used by the interactive visualization
+\item The hits data was retrieved successfully from the MySQL database using JSON via \textbf{getArticlesMetrics.php}. I initially reserved the geographic data for the articles to be serviced by \textbf{getArticleStatesMetrics.php}. However, I felt that in a production environment that many SQL calls to the database server would slow down the system and affect all users. In order to minimize the number of requests to the server, I had the server fetch all data for a given category for the last 31 days. The client-side JavaScript code then parsed and re-organized the fetched data to be used by the interactive visualization
 \end{itemize}
 
 \subsubsection{The Interactive Visualization}
@@ -686,7 +687,7 @@ Hooking into the live website involved the following steps:
 \subsubsection{Retrieving Web Metrics}
 \begin{itemize}
 \item The categories were successfully retrieved in JSON via \textbf{getCategories.php}. The pertinent PHP files had to be encoded in UTF-8 to handle the Arabic characters
-\item The hits data was retrieved successfully from the MySQL database using JSON via \textbf{getArticlesMetrics.php}. I initially reserved the geographic data for the articles to be serviced by \textbf{getArticleStatesMetrics.php}. However, I felt that in a production environment that many SQL calls to the database server would slow down the system and affect all users. In order to minimize the number of requests to the server, I had the server fetch all data for a given category for the last 31 days. The client-side Javascript code then parsed and re-organized the fetched data to be used by the interactive visualization
+\item The hits data was retrieved successfully from the MySQL database using JSON via \textbf{getArticlesMetrics.php}. I initially reserved the geographic data for the articles to be serviced by \textbf{getArticleStatesMetrics.php}. However, I felt that in a production environment that many SQL calls to the database server would slow down the system and affect all users. In order to minimize the number of requests to the server, I had the server fetch all data for a given category for the last 31 days. The client-side JavaScript code then parsed and re-organized the fetched data to be used by the interactive visualization
 \end{itemize}
 
 \subsubsection{The Interactive Visualization}
@@ -718,8 +719,10 @@ Hooking into the live website involved the following steps:
 \item When "Show Article Details on Hover" was enabled, there was a delay between 50 to 300 milliseconds for the image thumbnails to initially show. Once they were cached in the browser's memory, they appeared without delay. For images that were not cached, the delay was about 1 second per megabyte in picture size
 \end{itemize}
 
-\subsubsection{Conclusion}
-The stacked area chart would have been more effective with less articles. Looking at 300+ articles simultaneously can be overwhelming. Thus, the web editors need to be directed to submit their articles under appropriate categories. The geographic distribution of hits and contrast between two articles was effective; the only downside was that the read times were not captured for all the hits. Aggregating on an hourly basis resulted in the most practical user experience, while maintaining a good temporal accuracy.  
+\section{Conclusion}
+When hooked into the Wordpress website Afiadarfur.com, the capture library that I built registered the hits as intended inside a relational database. It did not register read times for all articles due to factors such as older web browsers not supporting the \textbf{onunload()} method, and due to JavaScript plugins that may have conflicted with the capture library. The data retrieval library that I built successfully downloaded the results of the requested query via JSON. 
+
+As for the interactive visualization, the stacked area chart would have been more effective visualizing less articles at a time. Looking at 300+ articles simultaneously resulted in difficulty when it came to seeing the performance of the less popular articles. For Afiadarfur.com, the web editors needed to spread their articles under several categories - such as business, music, world, and entertainment - as prominent news sites do. Doing this say across 10 categories would have resulted in about 30 articles being represented at a time. Although this would have added clarity, the visualization could have been made even clearer by adding more filters - or, by narrowing the maximum time window into the hits data to about 1 week. Showing the geographic distribution of hits and contrast between two articles was effective. Aggregating the data on an hourly basis resulted in a low visual latency, while maintaining temporal accuracy. 
 
 \newpage
 
@@ -729,10 +732,12 @@ I would have liked to add the following capabilities to my existing visualizatio
 \item To create a stacked area chart for categories over time, similar to the existing one for articles
 \item To visualize each article's interest fluctuations as a relative measure from its publication date. In the current scenario, one is able to see which articles peak and plunge over time. However, it is difficult to contrast two or more articles' fluctuations since their inception date
 \item To allow for 4 articles to be simultaneously contrasted across their geographies. I can accomplish this by removing the attention span column and having it as a filter option to narrow the geographic tables
-\item To visualize per number of hits and attention spans per capita
+\item To visualize the number of hits and attention spans per capita
 \item To capture social media metrics such as Facebook likes and  Twitter tweets, and incorporate them into the stacked area chart 
+\item To cache the IP addresses of the visitors in order to minimize calls to the 3rd party API Telize.com
+\item To cache query results for each category so as to minimize the request load on the database server
+\item To each a hit by a token stored in HTML5's \textbf{LocalStorage} array. In this scenario, if two people visiting the same article are behind the same IP address, then they would be counted as 2 hits instead of 1. Here, if JavaScript is disabled, the measure would then fall back onto that of the IP address - which I did in this thesis 
 \end{itemize}
-
 \newpage
 
 \section{Glossary}
@@ -759,19 +764,19 @@ I would have liked to add the following capabilities to my existing visualizatio
 
 \begin{thebibliography}{1}
 
-  \bibitem{schumann} Schumann, H. and M¨uller, W. (2000). {\em Visualisierung – Grundlagen und allgemeine Methoden}. Springer, Berlin, Germany.
+  \bibitem{schumann} Schumann, H. and Muller, W. (2000). {\em Visualisierung - Grundlagen und allgemeine Methoden}. Springer, Berlin, Germany.
 
   \bibitem{tufte}  Edward R. Tufte, {\em Visual Display of Quantitative Information} (2001).
 
   \bibitem{munzner} Munzner, T. (2009), {\em A Nested Model for Visualization Design and Validation}.
 
-  \bibitem{cockburn} A. Cockburn, A. Karlson, and B. B. Bederson, {\em “A review of overview+detail, zooming, and focus+context interfaces,”} ACM Computing Surveys (CSUR), vol. 41, no. 1, pp. 1–31, 2008.
+  \bibitem{cockburn} A. Cockburn, A. Karlson, and B. B. Bederson, {\em "A review of overview+detail, zooming, and focus+context interfaces,"} ACM Computing Surveys (CSUR), vol. 41, no. 1, pp. 1-31, 2008.
   
   \bibitem{playfair} Playfair, W. and Corry, J. (1786). {\em The Commercial and Political Atlas: Representing, by Means of Stained Copper-Plate Charts, the Progress of the Commerce, Revenues, Expenditure and Debts of England during the Whole of the Eighteenth Century.} printed for J. Debrett; G. G. and J. Robinson; J. Sewell; the engraver, S. J. Neele; W. Creech and C. Elliot, Edinburgh; and L. White, London, UK.
   
-  \bibitem{frank} Frank, A. U. (1998). {\em Different Types of “Times” in GIS. In Egenhofer, M. J. and Golledge, R. G., editors, Spatial and Temporal Reasoning in Geographic Information Systems}, pages 40–62. Oxford University Press, New York, NY, USA.
+  \bibitem{frank} Frank, A. U. (1998). {\em Different Types of "Times" in GIS. In Egenhofer, M. J. and Golledge, R. G., editors, Spatial and Temporal Reasoning in Geographic Information Systems}, pages 40-62. Oxford University Press, New York, NY, USA.
   
-  \bibitem{goralwalla} Goralwalla, I. A., O¨ zsu, M. T., and Szafron, D. (1998). {\em An Object-Oriented Framework for Temporal Data Models. In Etzion, O. et al., editors, Temporal Databases: Research and Practice}, pages 1–35. Springer, Berlin, Germany.
+  \bibitem{goralwalla} Goralwalla, I. A., O¨ zsu, M. T., and Szafron, D. (1998). {\em An Object-Oriented Framework for Temporal Data Models. In Etzion, O. et al., editors, Temporal Databases: Research and Practice}, pages 1-35. Springer, Berlin, Germany.
   
   \bibitem{bettini} Bettini, C., Jajodia, S., and Wang, X. S. (2000). {\em Time Granularities in Databases, Data Mining, and Temporal Reasoning}. Springer, Secaucus, NJ, USA, 1st edition.
 
@@ -780,7 +785,10 @@ I would have liked to add the following capabilities to my existing visualizatio
   \bibitem{wills} Graham, W., (2012). {\em Visualizing time: designing graphical representations for statistical data}
 
   \bibitem{clevelandmcgill} William S. Cleveland, Robert McGill (1984). {\em Graphical perception: Theory, experimentation, and application to the development of graphical methods}
-    
+  
+  \bibitem{colinware} C.G. Healey (1996). {\em Choosing effective colours for data visualization}  
+  
+  \bibitem{byronwattenberg} Lee Byron \& Martin Wattenberg (2008) {\em Stacked graphs - Geometry \& Aesthetics}
   
   \end{thebibliography}
  
