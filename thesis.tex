@@ -141,7 +141,7 @@ Here are a few systems that I found which deal with visualizing web metrics: \\
 
 \noindent\textbf{Flow (http://www.webresourcesdepot.com/beautiful-free-website-traffic-visualization-application-flow/)} \\ \\
 \noindent\includegraphics[scale=0.45]{img/flow}
-\noindent\textbf{Figure 6 -- Shows a line graph that measures the number of hits on the y axis, and date on the x axis for select categories on a given website.} \\
+\noindent\textbf{Figure 6 -- A line graph that measures the number of hits on the y axis, and date on the x axis for select categories on a given website.} \\
 
 While this can be useful in providing some feedback to the news site's administrators, it does not provide detailed insight to the articles in a given news site. The below screenshot demonstrates another visualization part of Flow. \\
 
@@ -155,15 +155,14 @@ While this can be useful in providing some feedback to the news site's administr
 
 \noindent\textbf{Google Analytics} \\ \\
 \noindent\includegraphics[scale=0.4]{img/google_analytics} \\
-\noindent\textbf{Figure 8 -- shows the Real-Time metrics pane in Google Analytics.} \\
+\noindent\textbf{Figure 8 -- The Real-Time metrics pane in Google Analytics.} \\
 
-Google Analytics comes in handy in aggregating data and conveying statistical data to the end user. The end user here would navigate here with the intention of running an analysis, such as: From what parts of the world is most of this website's traffic coming from? What links are being most visited?
-While this is a great tool for management, it is unlikely that the end users will wake up to their coffee looking at this, and then navigating to the actual news website. \\
+Google Analytics comes in handy in aggregating data and conveying statistical data to the end user. The admin here would navigate with the intention of running an analysis, such as: From what parts of the world is most of this website's traffic coming from? What links are being most visited?
+While this is a great tool for management, it is unlikely that the news site visitors will wake up to their coffee looking at this, and then navigate to the actual news website. \\
 
 \newpage
 
 \noindent\textbf{Adobe Analytics} \\
-\noindent\includegraphics[scale=0.6]{img/adobe_analytics}
 
 
 Adobe Analytics covers a slew of reporting capabilities:
@@ -185,12 +184,11 @@ Once again, the intended audience is that of management and decision makers. Wha
 \section{Implementation - data capture}
 \subsection{Capturing Data}
 \subsubsection{IP Addresses}
-I captured the IP addresses of the visitors to the subject news site. In PHP, an associative array called \textbf{\$\_SERVER}  contains several variables that pertain to the HTTP connection between the client and the server. The variable that contains the IP address from which the user is viewing a select page is called \textbf{REMOTE\_ADDR}. In code, I registered the visiting IP address like so:
-\begin{lstlisting}
-$user_ip = $_SERVER["REMOTE_ADDR"];
-\end{lstlisting}
+An IP address is a number that uniquely identifies a device on a network. The IP address that I was interested in capturing is the public IP address of the visitor's ISP (Internet Service Provider) router. It is the means that I used to track a user and that does not require user authentication. The IP address can be static or dynamic. The former is set by the network administrator and remains in place unless it is changed manually. The latter is assigned by the network router, and is assigned for a temporary period called the DHCP lease time. After the period of the lease time has expired, the device is given a new IP address by the router. For this reason, I needed to ensure that this IP address did not renew so much as to violate the constraint set by the revisit threshold. For example, if the revisit threshold is set to 5 minutes, and someone's IP address changes every 1 minute, then the user behind the IP address can visit and article several times within the 5-minute period and cause the metrics system to register 5 different hits - each from a different IP address - when it should just register 1 hit.
 
-Here, I would like to shed light on the difference between static and dynamic IP addresses. The former is set by the network administrator and is fixed unless it is changed manually. The latter is assigned by the network router, and is assigned for a temporary period called the DHCP lease time. In order to find out the average DHCP lease time set by Internet Service Providers (ISPs), I asked a few network engineers and contacted 3 prominent ISPs (Internet Service Providers). Here are the results:
+There is a drawback using this method is that it categorizes all users behind an ISP router as the same one user. For example, if me and 3 people visited the same article in a period of 10 minutes, and if the revisit threshold was set to 10 minutes, then the code would count this as 1 hit. A more accurate way of counting each user would be to use a tracker on the client side, such as a cookie or HTML5's LocalStorage. However, one can completely evade the system by respectively clearing the cookies and by disabling JavaScript. Thus, a more accurate server-side counting method needs to be explored in the future. 
+
+In order to find out the average DHCP lease time set by routers, I resorted to a few network engineers and contacted 3 prominent ISPs (Internet Service Providers). Here are the results:
 \vspace{0.3in}
 
 \begin{tabular}{| c | c |}
@@ -204,9 +202,15 @@ Here, I would like to shed light on the difference between static and dynamic IP
 \end{tabular}
 \vspace{0.3in}
 
-The average DHCP lease time is between 3 and 7 days. In capturing hits, the threshold of the time limit where a new visit would be counted as a new one practically ranges from seconds to hours. For this reason, I can hold the distinction between static and dynamic IP addresses as constant - as the time revisit threshold is less than the average renew period of at least 1 day. This is important when defining a hit is mainly based on a visit from a unique IP address. The IP address is the only means to track a user and that does not require user authentication. 
+The average DHCP lease time turned out between 3 and 7 days. The question then became, when should the next article hit be counted as a new one? People can visit the same article several times a day. Thus this threshold is set so as not to over-count the visits in the event someone tries to inflate the hits numbers by constantly refreshing the visited article. From a practical standpoint, I see this limit set to a number between 5 minutes and 1 hour. For this reason, it is safe to treat static and dynamic IP addresses the same - as the time revisit threshold is less than the average renew period of at least 1 day. This is important when defining a hit is based on a visit from a unique IP address. 
 
-As for user integrity, one cannot fully ensure that a physical human is sitting behind an IP address when automated scripts may be hitting the IP address of a given news article. Though, my goal is to minimize the inaccuracy when a visitor reaches a news article. I countered this by registering the visiting IP address as soon as the user has moved his/her mouse, or, when he/she has scrolled at least once when viewing the article at hand. I first tested a stub for this successfully in \textbf{register\_ip.php}. Here, I have a page containing several blocks of repeated Lorem ipsum text. I used JavaScript to listen to the mousemove and scroll events. I used jQuery to shorthand the event bindings. Below is the code:
+In PHP, I captured the IP address of the visitor through the use of an associative array called \textbf{\$\_SERVER} that contains several variables pertaining to the HTTP connection between the client and the server. The variable that contains the IP address from which the user is viewing a select page is called \textbf{REMOTE\_ADDR}. In code, I registered the visiting IP address like so:
+\begin{lstlisting}
+$user_ip = $_SERVER["REMOTE_ADDR"];
+\end{lstlisting}
+
+
+As for user integrity, one cannot fully ensure that a physical human is sitting behind an IP address when automated scripts may be hitting the IP address of a given news article. Though, my goal was to minimize the inaccuracy when a visitor reached a news article. I countered this by registering the visiting IP address as soon as the user has moved his/her mouse, or, when he/she has scrolled at least once when viewing the article at hand. I tested this successfully in \textbf{register\_ip.php}. Here, I have a page containing several blocks of repeated Lorem ipsum text. I used JavaScript to listen to the mousemove and scroll events. I used jQuery to shorthand the event bindings. Below is the test code:
 \begin{lstlisting}[basicstyle=\scriptsize]
 mouse_moved = false;
 page_scroll_counter = 0;
@@ -233,8 +237,8 @@ $(document).on("scroll",function(){
 
 \newpage
 
-\subsubsection{Geographic origins}
-Another metrics that I captured was the user geographic distribution for a select news article. This required two steps:
+\subsubsection{Geographic locations}
+Another metrics that I captured was the user geographic location distribution for a select news article. This required two steps:
 \begin{enumerate}
 \item Capturing the IP address of the user. This was demonstrated in the previous section
 \item Obtaining the corresponding latitude and longitude coordinates associated with the user's IP address
@@ -250,15 +254,18 @@ Here is the methodology that used to capture the needed IP address for the geogr
 \item If X and Y are both available, it means that the user is sitting behind a proxy and that the needed IP address is that of Y. If X is available but Y is not, it means that Y is a private IP address, that of the device behind its router - and thus not behind a proxy server. In this case, X would hold the IP address of the origin.
 \end{enumerate} 
 
-The next step here is to find a service that would map a given IP address to its corresponding geo coordinates, and ideally to its country name. A quick Google search revealed a convenient REST API service that would output the responses in JSON. \textbf{Telize (www.telize.com)} is a REST API that allows one to get the visitor IP address and to query the location information for that IP address. The upside of this service is that at the moment it contains to no rate limits; thus, one could make an indefinite amount of calls to the Telize API. I was able to test the above clause 3 in PHP code with success. Regardless, of whether I was sitting behind a proxy server or not, the output showed the United States as the country of origin, which means that my code worked.
+The next step here was to find a service that would map a given IP address to its corresponding geo coordinates, and ideally to its country name. A quick Google search revealed a convenient REST API service that would output the responses in JSON. \textbf{Telize (www.telize.com)} is a REST API that allows one to get the visitor IP address and to query the location information for that IP address. Such information includes the country of origin, region of origin, and timezone of origin. The upside of this service is that at the moment it contains to no rate limits; thus, one could make an indefinite amount of calls to the Telize API.
+
+I tested the above code clause by visiting my test page from Alexandria, Virginia. When I did so without the use of a proxy server, the hit registered as coming from the United States. Then, when I set my Internet browser to use a proxy server in Brazil, the hit still registered as coming from the United States - a success.
 
 \subsubsection{Average Read Time}
 
-One metric that I was curious in attaining was how long the average user spends reading a certain news article. At the moment, a cousin measure called the bounce rate checks to see whether the user continues to browse other pages in the site, or whether the user 'bounces' off to other websites. I find this measure to not be indicative of the level of interest the reader has for a given news article. I plan to quantify the interest level by doing the following:
+Another metric that I was curious in attaining was how long the average user spent reading a certain news article. At the moment, a cousin measure called the bounce rate checks to see whether the user continues to browse other pages in the site, or whether the user 'bounces' off to other websites. Meaning, if I visited a certain website, I am tracked as to whether I visit several pages on that website or just bounce (leave) immediately. Leaving immediately results in a high bounce rate while visiting several pages on the visited site results in a low bounce rate. 
+Although this measure reflected the interest of the visitor has in the visited site overall, it did not indicate how much time and interest the visitor invested in reading a certain article. Therefore, I quantified the interest level by doing the following:
 \begin{enumerate}
-\item Research the average reading speed of adults that can read English
-\item Count the number of words in a given news article
-\item Based on the average read speed, calculate the time spent on the news article. If the page is kept open indefinitely by the reader, I will simply use the maximum expected read time for that article. While this not 100\% accurate, it will be highly reflective of the level of interest with the visited articles. 
+\item Researched the average reading speed of adults that can read English
+\item Counted the number of words in a given news article
+\item Based on the average read speed, calculated the time spent on the news article. If the page was kept open indefinitely by the reader, I simply used the maximum expected read time for that article. While this was not 100\% accurate, it was highly reflective of the level of interest with the visited articles. 
 \end{enumerate}     
 
 \noindent Based on an ophthalmology study that consisted of 50 native English-speaking individuals (average age 30.38$\pm$9.44 years; 16 university students, 18 academics, and 16 non-academics) -- the average reading speed came out to be 201.53$\pm$35.88 words per minute(wpm) for short sentences, and 215.01$\pm$30.37 wpm for long paragraphs\cite{radner}. For the scope of this project, I will use the average of 200 wpm to calculate the maximum average time spent on a news article.  
@@ -269,33 +276,33 @@ One metric that I was curious in attaining was how long the average user spends 
 \subsubsection{Data Storage}
 Based on the data that needed to be captured, the below fields were created:
 \begin{itemize}
-\item \textbf{Visitor IP address}: Stores the IP address of the visitor reading the news article. In order to avoid capturing page refreshes as new sessions, I will set a threshold of 10 minutes - whereby the server checks if the visitor has visited the article in the past 10 minutes
+\item \textbf{Visitor IP address}: Stores the IP address of the visitor reading the news article. In order to avoid capturing page refreshes as new sessions, I set a threshold of 10 minutes - whereby the server checks if the visitor has visited the article in the past 10 minutes
 \item \textbf{Time Visited}: Stores a timestamp (in GMT) of when the user visited 
-\item \textbf{Timezone}: Helpful in determining time differences from GMT
+\item \textbf{Timezone}: Stores the timezone of the visitor's geographic location. This is helpful in determining time differences from GMT
 \item \textbf{Country}: Stores the name of the country where the visitor is from
 \item \textbf{Region}: Stores the region pertinent to the area within the country where the visitor is from
-\item \textbf{Read Time}: Stores the time taken for the reader to have finished reading the article. This should be calculated in seconds
+\item \textbf{Read Time}: Stores the time taken for the reader to have finished reading the article. This was calculated in seconds
 \item \textbf{Expected Read Time}: Stores the maximum time it should have taken the reader to finish the words in the body of the article
 \item \textbf{Article ID}: Stores the unique identifier and is captured from the host's CMS. This way, future references could be made easily without having to go through mapping algorithms
 \item \textbf{Article Publish Date}: Stores the timestamp of when the article was published
 \item \textbf{Category ID}: Stores the unique identifier of the category, also as it appears in the corresponding CMS
 \item \textbf{Article URL}: Stores the article URL 
 \item \textbf{Article title}: Stores the title of the article as it appears in the CMS or on the news site
-\item \textbf{Sample text}: Stores an excerpt of the text from the body of article
+\item \textbf{Sample text}: Stores an excerpt of the text from the body of article. This was later used to preview articles in the interactive visualization 
 \item \textbf{Sample picture}: Stores a URL to the thumbnail picture of the article
 
 \end{itemize}
 
 \subsubsection{Database Tables}
 I adhered to the principles of relational database normalization in order to maximize efficiency and eliminate redundancy. For the scope of this project, all the data pertinent to a web hit was stored in a single table: \\ 
-{\large\textbf{hit (\underline{id},ip, time\_visited, \textit{article\_id}, timezone, country, region, read\_time)}} \\ \\
-The underline signifies the primary key. The primary key is the field(s) that are enough to determine the rest of the information for any row instance. In this case, the IP address, article ID, and time of visit jointly determine the timezone, country, region, and read time. However, since I need a way to track the user's visits to capture read time, I designated an auto-increment unique identifier called \textbf{id}. \textit{article\_id} is italicized since it is a foreign key -- that is, it represents a primary key in another table. The time visited is rounded to hour:minute. Therefore, seconds are not be accounted for in the visit's time stamp. The read time defaults to the maximum read time as calculated by the article's length. This assumes that the user stayed on the article page indefinitely. In the event that the user does leave the page, this value would then register the actual read time.
+{\large{hit (\underline{id},ip, time\_visited, \textit{article\_id}, timezone, country, region, read\_time)}} \\ \\
+The underline signifies the primary key. The primary key is a set of one or more fields that is enough to determine the rest of the information for any row instance. In this case, the IP address, article ID, and time of visit jointly determine the timezone, country, region, and read time. However, since I need a way to track the user's visits to capture read time, I designated an auto-increment unique identifier called \textbf{id}. \textit{article\_id} is italicized since it is a foreign key -- that is, it represents a primary key in another table. The time visited is rounded to hour:minute. Therefore, seconds are not be accounted for in the visit's time stamp. The read time defaults to the maximum read time as calculated by the article's length. This assumes that the user stayed on the article page indefinitely. In the event that the user does leave the page, this value would then register the actual read time.
 \\ \\
 The second table needed contained all the metadata pertinent to the visited article:\\
-{\large\textbf{article (\underline{article\_id}, publish\_date, category\_name, article\_url, title, sample\_text, sample\_pic, expected\_read\_time)}} \\ \\
+{\large{article (\underline{article\_id}, publish\_date, category\_name, article\_url, title, sample\_text, sample\_pic, expected\_read\_time)}} \\ \\
 
 The third table needed contained metadata pertinent to the category of the visited article:\\
-{\large\textbf{category (\underline{category\_id}, category\_name})}
+{\large{category (\underline{category\_id}, category\_name})}
 \\ \\
 
 It is important to note here that all of above data is communicated via the server side script which is included in the code of each loaded article. 
@@ -309,19 +316,30 @@ I created a database called \textbf{alaini\_news\_viz} on my web host. For this,
 \item \textbf{alaini5\_newsedit}: This account is mainly used to register the IP hits and read times communicated to the server
 \end{itemize}
 
-I created 3 tables in MySQL using phpMyAdmin, an open source PHP based GUI that facilitates interacting with the MySQL system:
+\newpage
+
+I created 3 tables in MySQL using phpMyAdmin, an open source PHP based GUI that facilitates interacting with the MySQL system. Below are the structural details of each table:
 \begin{enumerate}
 \item{\textbf{article}}\\ \\
-\includegraphics[scale=0.6]{img/article_table}
+\includegraphics[scale=0.8]{img/article_table}
+
+\vfill
+
 \item{\textbf{category}}\\ \\
-\includegraphics[scale=0.6]{img/category_table}
+\includegraphics[scale=0.8]{img/category_table}
+
+\vfill
+
 \item{\textbf{hit}}\\ \\
-\includegraphics[scale=0.6]{img/hit_table}
+\includegraphics[scale=0.8]{img/hit_table}
 \end{enumerate} 
 
+\newpage
+
 \subsection{PHP server-side code}
+Now that the database was created, I needed a way to retrieve the data from it. This involved creating configuration files, classes that abstracted the tables, and code that performed the queries and outputted the resulting data in JSON.
 \subsubsection{Configuration and database connection}
-Here, I created two files:
+First, I created two setup files:
 \begin{enumerate}
 \item{\textbf{constants.php:}} Holds all the constants that are defined across the application, inclusive of those for the database connection
 \item{\textbf{db\_connect.php:}} Performs the PDO database connection based on the given connection parameters
@@ -329,28 +347,25 @@ Here, I created two files:
 Note that both of these files are stored one directory above \textbf{public\_html/} for security reasons. This folder is called \textbf{lib/}. Thus, the two files are not accessible directly to the public and accordingly need to be included in other PHP files.
 
 \subsubsection{Server-side hit, article, and category capture}
-Each table in my database is represented with a PHP class. Hence, the creation of the following 3 classes:
+Each table in my database was represented by a PHP class. Hence, the creation of the following 3 classes:
 \begin{enumerate}
 \item{\textbf{Hit.php:}} This class registers all of the metadata pertinent to a user visit. This data includes IP address, country, region, timezone, and time visited. 
-\vfill
 \item{\textbf{Article.php:}} This class captures all of the metadata pertinent to the article being visited. Such includes title, text excerpt, thumbnail URL, and article URL.
-\vfill
 \item{\textbf{Category.php:}} This class captures any metadata pertinent to the parent category of the visited article. At the moment, I am only capturing the name of the category.
 \end{enumerate}
-\vfill
 
 In addition to the above, I have created a helper file that registers the read time of a given article. By default, the read time is registered as 1 second in the database. Once a hit is registered in the database, the id of the newly created hit is then passed to the DOM of the article page. There, the id is used via an AJAX call to store the calculated read time for the visited article in the database. This file is called \textbf{updateReadTime.php}.
 \vfill
 
 \subsection{Client-side read time capture with JavaScript}
-As mentioned in the last section, the hit id is passed to the client page in order to keep a way to identify and update the read time for the visited article. Here, I calculate the number of words that are stored in the article. I do this by first getting all of the text found within common article tags - namely <span>, <div>, <article>, <p>, and <section>. I then sum the number of words found within all of the mentioned tags. I ensure that double counting is avoided by using the \textbf{innerText} property; this counts the elements inner text, but not any text that might be included in one of its children nodes. Next, I calculate the number of seconds the article is on average expected to take to read. Based on my earlier research, I will use the average figure of ~200 words per minute. This figure is used in the event that a user leaves the page open indefinitely. Thus, if an article should take about 5 minutes to read, and the user takes (for whatever reason) 30 minutes to navigate away from or to close the article, then I simply register the 5 minutes. Although I may be compromising some accuracy here, it is much more advantageous than having instances inflate the read time significantly.
+As mentioned in the last section, the hit id is passed to the client page in order to keep a way to identify and update the read time for the visited article. Here, I calculated the number of words that are stored in the article. I did this by first getting all of the text found within common article tags - namely <span>, <div>, <article>, <p>, and <section>. I then summed the number of words found within all of the mentioned tags. I ensured that double counting was avoided by using the \textbf{innerText} property; this counted the elements' inner text, but not any text that might have been included in one of its children nodes. Next, I calculated the number of seconds the article was on average expected to take to read. This was based on the human reading speed of 200 words per minute. This figure was used in the event that a user had left the page open indefinitely. Thus, if an article was expected to take about 5 minutes to read, and the user took (for whatever reason) 30 minutes to navigate away from or to close the article, then I registered the 5 minutes. Although I may have compromised some accuracy here, it remained much more advantageous than having unrealistically high number that inflated the read time significantly.
 
-Once the article page loads, and the expected read time calculations have been made, a timer is readied. The timer is triggered once a user moves the mouse or when the user scrolls the page. This minimizes storing metadata created by bots and to a high extent ensures that a human is sitting behind the screen. Upon navigating away from or closing the article, the read time is then submitted to \textbf{updateReadTime.php} and eventually recorded in the database. This part of the implementation relies on \textbf{window.onbeforeunload} or \textbf{window.onunload}, depending on the browser's user agent. At the time of this writing, this method only for Firefox and Chrome.
+Once the article page loaded, and the expected read time calculations were made, a timer was readied. The timer was triggered once a user moved the mouse or when the user scrolled the page. This minimized storing metadata created by automated scripts and to a high extent ensured that a human was sitting behind the screen. Upon navigating away from or closing the article, the read time was then submitted to \textbf{updateReadTime.php} and eventually recorded in the database. This part of the implementation relied on \textbf{window.onbeforeunload} or \textbf{window.onunload}, depending on the browser's user agent. At the time of this writing, this method was tested successfully with Google Chrome 39.0.2171.99 m, Mozilla Firefox 34.0.5, Safari 5.1.7, and Internet Explorer 10.
  
 \vfill
 
 \subsection{Tying it all together}
-Now that both the back end and front end code has been implemented, I was able to move on to testing this system. I created a miniature lorem ipsum page which acts as an article being visited. \\
+Now that both the back end and front end code has been implemented, I was able to move on to testing this system. I created a miniature lorem ipsum page which acts as an article being visited: \\
 
 \noindent\includegraphics[scale=1]{img/visit1}
 
@@ -718,6 +733,8 @@ Hooking into the live website involved the following steps:
 \item As for adjusting the stacked area graph's time range, there was a ~3-second delay for the ~10,000 hits and a ~10-second delay for the ~40,000 hits. This was done using a PC with an Intel i7 processor and 12 GB of RAM. Again, using a PC with an Intel i7 processor and 12 GB of RAM
 \item When "Show Article Details on Hover" was enabled, there was a delay between 50 to 300 milliseconds for the image thumbnails to initially show. Once they were cached in the browser's memory, they appeared without delay. For images that were not cached, the delay was about 1 second per megabyte in picture size
 \end{itemize}
+
+\newpage
 
 \section{Conclusion}
 When hooked into the Wordpress website Afiadarfur.com, the capture library that I built registered the hits as intended inside a relational database. It did not register read times for all articles due to factors such as older web browsers not supporting the \textbf{onunload()} method, and due to JavaScript plugins that may have conflicted with the capture library. The data retrieval library that I built successfully downloaded the results of the requested query via JSON. 
