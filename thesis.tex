@@ -50,12 +50,12 @@ Current prominent web traffic analytics systems such as Google Analytics report 
 \vfill
 
 \section{Thesis Project Description}
-In 2015, the web of online media can be divided into 2 categories: News websites that contain facts about world events and social media sites that cover the ongoing conversations around world events. In the pre social media days, the news information flow was one-directional - with hardly any feedback from the site visitors. However, in the social media age, visitors now share articles in their online social properties such as Facebook and Twitter. Yet, what appears on the front page of one's favorite news site is not necessarily reflective of what he/she wants to see; it is set by the web news editorial team and can be influenced by the station's political or business agenda. My goal in this thesis was to create a different way of seeing the news, using an interactive web visualization. The product is geared to visitors that are curious in knowing how long an article was popular for and how interested the readers were when they read that article. At the same time, these measures could be visually compared with those of other articles for a relative analysis of popularity and level of interest. 
+In 2015, the web of online media can be divided into 2 categories: News websites that contain facts about world events and social media sites that cover the ongoing conversations around these events. In the pre social media days, the news information flow was one-directional - with hardly any feedback from the site visitors. However, in the social media age, visitors now share articles in their online social properties such as Facebook and Twitter. Yet, what appears on the front page of one's favorite news site is not necessarily reflective of what he/she wants to see; it is set by the web news editorial team and can be influenced by the news station's political or business agenda. My goal in this thesis was to create a different way of seeing the news, using an interactive web visualization. The product is geared to visitors that are curious in knowing how long an article was popular for and how interested the readers were when they read that article. At the same time, these measures could be visually compared between 2 articles for a relative analysis of popularity and reader level of interest. 
 
-Different news stations use different web content management systems (WCMS). The system that I built hooks into a ubiquitous and open source WCMS - Wordpress. It then captures web metrics, and visualizes these metrics inside an interactive web-based visualization. The visualization is targeted towards site visitors but can also be used by web admins. There are 3 main pieces of data I was interested in: The number of hits to a an article, the amount of time spent reading an article, and the geographic location of the visitor. 
+Different news stations use different web content management systems (WCMS). The system that I built hooks into a ubiquitous and open source WCMS - Wordpress. It then captures web metrics, and visualizes these metrics inside an interactive web-based visualization. The visualization is targeted towards site visitors but can also be used by web admins. There are 3 main pieces of data I took interest in capturing: The number of hits to a an article, the amount of time spent reading an article, and the geographic location of the visitor. 
 
-In the first stage, I created a database to house the web metrics that I wanted to capture. I then created a server-side library that can be included into any website or web application. This library hooks into my database and efficiently captures the hits' metadata against the given news site. Such metadata includes time of article visit, region of visitor, and timezone of visitor.  
-I then built the "business logic" of the data and information that I wanted to capture. This includes algorithms that produce the refined data and metrics to be ultimately communicated to the end user.
+In the first stage, I created a database to house the web metrics that I wanted to capture. I then created a server-side library that can be included into any website or web application. This library hooked into my database and efficiently captured the hits' metadata against the given news site. Such metadata includes time of article visit, region of visitor, and timezone of visitor.  
+I then built the "business logic" of the data and information that I wanted to capture. This includes algorithms that produced the refined data and metrics to be ultimately communicated to the end user.
 This amounted to the final step of creating an interactive visualization that shows near real-time user web traffic in each of the registered articles of the connected news site.
 
 \newpage
@@ -87,8 +87,9 @@ The final product is geared towards the conventional news site structure, where 
 
 \noindent\includegraphics[scale=0.4]{img/in_action} \\
 
+\begin{singlespace}
 \noindent\textbf{Figure 1 -- The user previews a music article in the interactive visualization while having selected 2 articles for hits and attention span comparison.}
-
+\end{singlespace}
 
 \newpage
 
@@ -118,22 +119,26 @@ The final product is geared towards the conventional news site structure, where 
 
 \section{Prior Work}
 \subsection{Visualization}
-Prominent researchers in the field of visualization have concocted logical constructs and approaches to designing and implementing visualizations. From a presentation standpoint, there is much emphasis on presenting the end user just enough visual data for the user to achieve the intended task of the visualization - this is known as \textbf{expressiveness} \cite{schumann} - where the visualization shows information only relevant to the data set. Another popular concept on visual economics is the \textbf{data-to-ink ratio} \cite{tufte}. The goal is to have just enough ink presented to convey the data; additional ink that is not matched by data is a distraction. 
+Prominent researchers in the field of visualization have concocted logical constructs and approaches to designing and implementing quality visualizations. From a presentation standpoint, there is much emphasis on presenting the end user just enough visual data for the user to achieve the intended task of the visualization - this is known as \textbf{expressiveness} \cite{schumann} - where the visualization shows information only relevant to the data set. Another popular concept on visual economics is the \textbf{data-to-ink ratio} \cite{tufte}. The goal is to have just enough ink presented to convey the data; additional ink that is not matched by data is a distraction. 
 
 Having an efficient visualization is not enough. It needs to be effective. This brings us to two concepts covered in depth by Tamara Munzner: \textbf{domain} and \textbf{task} (Munzner \cite{munzner}). She advocates that in the design phase, the builder needs to identify the domain that he/she is working with. A domain is a world of ideas and concepts that are abstracted under one umbrella. For example, human anatomy, software engineering, economics, and biology are all domains. A domain gives rise to concepts, definitions, and a pre-built library of shapes and colors by the convention of collective knowledge. Red in biology signifies blood whereas in the world of novels it may allude to romance. Thus the target domain largely determines what colors and shapes the visualizer will have on their palette. \\
 On the other hand, the task refers to the "what" of the visualization. What is/are the goal(s) of the visualization? Is it to explore, analyze, extrapolate, etc.? Clearly identifying the task(s) of the visualization at hand solidifies the direction in which the designer \textbf{encodes} the visual variables (Bertin). Encoding refers to the idea of representing a quantitative or qualitative concept visually. The visual variables include position, size, shape, value, color, orientation, grain, and texture. \\
-Thus for an effective visualization, the choice of encodes is dependent on the domain of the visualization, as as well as the tasks the visualization is trying to support. \\
-Studies have shown that position and length are the easiest visual variables to decode (Cleveland and McGill). My project deals with two main measures: Number of hits and read time (in seconds). To incorporate position, I can plot these two measures on a Cartesian graph with time on the X axis and the selected measure on the Y axis. If I plot each datum as a dot or cirle, I end up with a scatterplot. Though, my goal is show trends of popularity; which is why a line chart and area graph are better candidates as they convey patterns of over time. Comparing the total number of hits across different geographic locations involves encoding using length. Here, a bar chart suits the task. Lastly, visualizing the number of seconds for each observation given a geographic location over a specified time period is best accomplished using position; for this, I can use a dot chart. \\
-For distinguishing categories in a line or graph chart, color is an effective visual variable. For this project, news categories are not simultaneously contrasted - articles are. Encoding each article with a different color may work well for up to 5 colors; however, studies show that surpassing this limit makes it difficult for humans to differentiate encodes of more than 7-9 colors (Healey). Thus a different visual variable will need to be applied to effect in the visitor distinguishing the articles from one another. Here, I can resort to the visual variable of position. A stacked area graph is an area graph that employs position by stacking different parts of the whole on top of one another over another dimension - usually time (Byron \& Wattenberg).  
+Thus for an effective visualization, the choice of encodes is dependent on the domain of the visualization, as well as the tasks the visualization aims to support. \\
+Studies have shown that position and length are the easiest and fastest visual variables to decode (Cleveland and McGill). My project deals with two main measures: Number of hits and read time (in seconds). To incorporate position, I can plot these two measures on a Cartesian graph with time on the X axis and the selected measure on the Y axis. If I plot each datum as a dot or cirle, I end up with a scatterplot. A scatterplot is essentially a plot of data - usually in the form or dots or circles - on a cartesian coordinates system. Though, my goal is show trends of popularity. When we think of trends we usually have a mental map of a connected sequence over time - which is why a line chart and area graph are better candidates as they convey patterns of over time, rather than scattered concentrations of data. \\
+\noindent As for comparing the total number of hits across different geographic locations, we need to use another variable - length. Here, a horizontal bar chart suits the task, so as to keep the geographic locations legible (Wiley). Lastly, visualizing the number of seconds for each observation given a geographic location over a specified time period is best accomplished using position; for this, I can use a dot chart. A dot chart is essentially a one-dimensional scatterplot. \\
+For distinguishing categories in a line or graph chart, color is an effective visual variable. For this project, news categories are not simultaneously contrasted - but articles are. Encoding each article with a different color may work well for up to 5 colors; however, studies show that surpassing this limit makes it difficult for humans to differentiate encodes of more than 7-9 colors (Healey). Thus a different visual variable will need to be applied to effect in the visitor distinguishing the articles from one another. Here, I can resort to the visual variable of position. A stacked area graph is an area graph that employs position by stacking different parts of the whole on top of one another over another dimension - usually time (Byron \& Wattenberg).  
 
-In the pre-Internet days, the implementation would have ended here. Though, with the advent of mass computerization and global connectivity, a new ability has been introduced - that of interactivity. Interactivity has been broken down into the following \cite{cockburn}: Overview+Detail, Zooming, Focus+Context, details-on-demand, and cue-based systems. The user is now able to manipulate the views of the data using input devices such as a mouse and keyboard. As with the other aspects of the visualization, efficiency and effectiveness need to be kept in mind when creating user interfaces.
+In the pre-Internet days, the implementation would have ended here. Though, with the advent of mass computerization and global connectivity, a new ability has been introduced - that of interactivity. Interactivity has been broken down into the following \cite{cockburn}: Overview+Detail, Zooming, Focus+Context, details-on-demand, and cue-based systems. The user is now able to manipulate the views of the data using input devices such as a mouse and keyboard. Here, I could support narrowing the selected time range by zooming, and retrieving the articles' previews through details-on-demand. 
+
 
 \subsection{Measuring Time}
 Time is an essential component to web analytics, as it gives context to what is being measured. Although graphing change over time was attempted in the early A.D.s, the first known contemporary time series graph was published by William Playfair \cite{playfair}. Playfair was the father of the line graph and bar graph. However, there is not a single model that accommodates all domains and tasks \cite{frank}. Thus, for the proposed visualization, time must be dealt with in the context of an online news domain.   
 
-Here, it is important to note the difference between event data and interval data. Time events are occurrences that are represented as slices of time; for example, a plane landed at its destination is an event. Whereas, the process of a plane landing occurs over a time interval of say 20 minutes. In this project, an article hit is defined as an event, although an actual hit has a visit duration. That said, if I visualize time on an X axis it is inevitable that I will have units of times where no hits are available. The rendering of this time interval as a discrete event is adequate so long as the measured interval is minute compared to the total time covered by the data (Graham). That is, a visitor reading an article for 2 minutes is a small amount compared to say an article's lifetime of 3 weeks. 
+Here, it is important to note the difference between event data and interval data. Time events are occurrences that are represented as slices of time; for example, a plane landed at its destination is an event. Whereas, the process of a plane landing occurs over a time interval of say 20 minutes. In this project, an article hit is defined as an event, although an actual hit has a visit duration. That said, if I visualize time on an X axis it is inevitable that I will have units of time where no hits are available. The rendering of this time interval as a discrete event is adequate so long as the measured interval is minute compared to the total time covered by the data (Graham). That is, a visitor reading an article for 2 minutes is a small amount compared to say an article's lifetime of 3 weeks. Thus, plotting the observation as it being a slice of time is adequate.  
 
 In order to have a better understanding of the time intervals of news, I asked professionals around the news station that I work at for feedback. Based on this and my observations of our news website and other similar entities' websites, "news" refers to a recent occurrence, notably something that happened today. "Breaking News" typically refers to an event that happened within the current day and whose story under development. "Recent News" pertains to stories created within the last 1-3 days. As time approaches the coming year, decade, century, and millennium, news are then compiled and shown in representations such as "year/decade/century/millennium in review". My goal in this project is to represent the "recent news" category. Thus, the needed time granularities to be conveyed that support the task of the proposed visualization should be in days \cite{bettini}. At a minimum for drilling down to a day's worth of news, I need to use a discrete time scale \cite{goralwalla} and thus need to capture the day, hour, and minute of each visit. The output variables connected to time should be the number of hits and the average read time spent on an article.
+
+\newpage
 
 \subsection{Existing web metrics systems}
 What I built is novel in that there is no current navigable and exploratory tool that visualizes near real-time traffic on news sites. \\
@@ -184,11 +189,10 @@ Once again, the intended audience is that of management and decision makers. Wha
 \section{Implementation - data capture}
 \subsection{Capturing Data}
 \subsubsection{IP Addresses}
-An IP address is a number that uniquely identifies a device on a network. The IP address that I was interested in capturing is the public IP address of the visitor's ISP (Internet Service Provider) router. It is the means that I used to track a user and that does not require user authentication. The IP address can be static or dynamic. The former is set by the network administrator and remains in place unless it is changed manually. The latter is assigned by the network router, and is assigned for a temporary period called the DHCP lease time. After the period of the lease time has expired, the device is given a new IP address by the router. For this reason, I needed to ensure that this IP address did not renew so much as to violate the constraint set by the revisit threshold. For example, if the revisit threshold is set to 5 minutes, and someone's IP address changes every 1 minute, then the user behind the IP address can visit and article several times within the 5-minute period and cause the metrics system to register 5 different hits - each from a different IP address - when it should just register 1 hit.
+An IP address is a number that uniquely identifies a device on a network. The IP address that I was interested in capturing is the public IP address of the visitor's ISP (Internet Service Provider) router. It is the means that I used to track a user and that does not require user authentication. The IP address can be static or dynamic. The former is set by the network administrator and remains in place unless it is changed manually. The latter is assigned by the network router, and is assigned for a temporary period called the DHCP lease time. After the period of the lease time has expired, the device is given a new IP address by the router. For this reason, I needed to ensure that this IP address did not renew so much as to violate the constraint set by the revisit threshold. For example, if the revisit threshold is set to 5 minutes, and someone's IP address changes every 1 minute, then the user behind the IP address can visit and article several times within the 5-minute period and cause the metrics system to register 5 different hits - each from a different IP address - when it should just register 1 hit.\\
+\noindent There is a drawback using this method in that it categorizes all users behind an ISP router as the same one user. For example, if me and 3 people visited the same article in a period of 10 minutes, and if the revisit threshold was set to 10 minutes, then the code would count this as 1 hit. A more accurate way of counting each user would be to use a tracker on the client side, such as a cookie or HTML5's LocalStorage. However, one can completely evade the system by respectively clearing the cookies and by disabling JavaScript. Thus, a more accurate server-side counting method needs to be explored in the future. 
 
-There is a drawback using this method is that it categorizes all users behind an ISP router as the same one user. For example, if me and 3 people visited the same article in a period of 10 minutes, and if the revisit threshold was set to 10 minutes, then the code would count this as 1 hit. A more accurate way of counting each user would be to use a tracker on the client side, such as a cookie or HTML5's LocalStorage. However, one can completely evade the system by respectively clearing the cookies and by disabling JavaScript. Thus, a more accurate server-side counting method needs to be explored in the future. 
-
-In order to find out the average DHCP lease time set by routers, I resorted to a few network engineers and contacted 3 prominent ISPs (Internet Service Providers). Here are the results:
+In order to obtain the average DHCP lease time set by routers, I resorted to a few network engineers and contacted 3 prominent ISPs (Internet Service Providers). Here are the results:
 \vspace{0.3in}
 
 \begin{tabular}{| c | c |}
@@ -202,9 +206,9 @@ In order to find out the average DHCP lease time set by routers, I resorted to a
 \end{tabular}
 \vspace{0.3in}
 
-The average DHCP lease time turned out between 3 and 7 days. The question then became, when should the next article hit be counted as a new one? People can visit the same article several times a day. Thus this threshold is set so as not to over-count the visits in the event someone tries to inflate the hits numbers by constantly refreshing the visited article. From a practical standpoint, I see this limit set to a number between 5 minutes and 1 hour. For this reason, it is safe to treat static and dynamic IP addresses the same - as the time revisit threshold is less than the average renew period of at least 1 day. This is important when defining a hit is based on a visit from a unique IP address. 
+The average DHCP lease time turned out between 3 and 7 days. The question then became, when should the next article hit be counted as a new one? People can visit the same article several times a day. Thus this threshold is set so as not to over-count the visits in the event someone tries to inflate the hits numbers by constantly refreshing the visited article. From a practical standpoint, I see this limit set to a number between 5 minutes and 1 hour. For this reason, it is safe to treat static and dynamic IP addresses the same - as the time revisit threshold is less than the average renew period of at least 1 day. This is important as I have defined a hit as a page view that is coming from a unique IP address. 
 
-In PHP, I captured the IP address of the visitor through the use of an associative array called \textbf{\$\_SERVER} that contains several variables pertaining to the HTTP connection between the client and the server. The variable that contains the IP address from which the user is viewing a select page is called \textbf{REMOTE\_ADDR}. In code, I registered the visiting IP address like so:
+Capturing the hits required server-side scripting. In did this in PHP by storing the IP address of the visitor through the use of an associative array called \textbf{\$\_SERVER} that contains several variables pertaining to the HTTP connection between the client and the server. The variable that contains the IP address from which the user is viewing a select page is called \textbf{REMOTE\_ADDR}. In code, I registered the visiting IP address like so:
 \begin{lstlisting}
 $user_ip = $_SERVER["REMOTE_ADDR"];
 \end{lstlisting}
@@ -246,29 +250,31 @@ Another metrics that I captured was the user geographic location distribution fo
 
 Here, it is important to note that many users may be sitting behind HTTP proxy servers. HTTP proxy servers are physical computers/servers that act as proxy points for the client computers. For example, if someone in Russia used a proxy server in the US to visit my news article, the requesting IP address that will be captured will be that of the US - making it appear that the user that visited the article actually came from the US. In PHP, in addition to \textbf{\$\_SERVER["REMOTE\_ADDR"]}, there is another variable called \textbf{\$\_SERVER["HTTP\_X\_FORWARDED\_FOR"]}. While the former gets the IP address of the direct requester, the latter gets the originating IP that is making the request. So for example, if I were to be sitting behind an IP proxy server which had an address of 111.111.111.111, then \$\_SERVER["REMOTE\_ADDR"] would carry that value. \\
 \$\_SERVER["HTTP\_X\_FORWARDED\_FOR"] would then contain the value of my router's outside IP address - which is what I am looking to map geographically.   
-\\ If on the other hand the user was browsing the Internet without the use of a proxy server, then \$\_SERVER["REMOTE\_ADDR"] would carry the value of the user's router's IP address - reflective of the user's geography. 
-Here is the methodology that used to capture the needed IP address for the geographic lookup:
+\\ If on the other hand the user was browsing the Internet without the use of a proxy server, then \$\_SERVER["REMOTE\_ADDR"] would carry the value of the user's router's IP address - reflective of the user's geography; and, \$\_SERVER["HTTP\_X\_FORWARDED\_FOR"] would carry no value. \\ \\
+\noindent Here is the methodology that used to capture the needed IP address for the geographic lookup:
 \begin{enumerate}
 \item Get the value of \$\_SERVER["REMOTE\_ADDR"] and look up its value with a geolocation API. Call this \textbf{X}
 \item Get the value of \$\_SERVER["HTTP\_X\_FORWARDED\_FOR"] and look up its value with a geolocation API. Call this value \textbf{Y}
 \item If X and Y are both available, it means that the user is sitting behind a proxy and that the needed IP address is that of Y. If X is available but Y is not, it means that Y is a private IP address, that of the device behind its router - and thus not behind a proxy server. In this case, X would hold the IP address of the origin.
 \end{enumerate} 
 
-The next step here was to find a service that would map a given IP address to its corresponding geo coordinates, and ideally to its country name. A quick Google search revealed a convenient REST API service that would output the responses in JSON. \textbf{Telize (www.telize.com)} is a REST API that allows one to get the visitor IP address and to query the location information for that IP address. Such information includes the country of origin, region of origin, and timezone of origin. The upside of this service is that at the moment it contains to no rate limits; thus, one could make an indefinite amount of calls to the Telize API.
+The next step here was to find a service that would map a given IP address to its corresponding geo coordinates, and ideally to the originating region's name. A quick Google search revealed a convenient REST API service that outputs the responses in JSON. \textbf{Telize (www.telize.com)} is a REST API that allows one to get the visitor IP address and to query the location information for that IP address. Such information includes the country of origin, region of origin, and timezone of origin. The upside of this service is that at the moment it contains to no rate limits; thus, one could make an indefinite amount of calls to the Telize API.
 
-I tested the above code clause by visiting my test page from Alexandria, Virginia. When I did so without the use of a proxy server, the hit registered as coming from the United States. Then, when I set my Internet browser to use a proxy server in Brazil, the hit still registered as coming from the United States - a success.
+I tested the above code clause by visiting my test page from Alexandria, Virginia. When I did so without the use of a proxy server, the hit registered as coming from the United States. Then, when I set my Internet browser to use a proxy server in Brazil, the hit still registered as coming from the United States - as intended.
 
 \subsubsection{Average Read Time}
 
-Another metric that I was curious in attaining was how long the average user spent reading a certain news article. At the moment, a cousin measure called the bounce rate checks to see whether the user continues to browse other pages in the site, or whether the user 'bounces' off to other websites. Meaning, if I visited a certain website, I am tracked as to whether I visit several pages on that website or just bounce (leave) immediately. Leaving immediately results in a high bounce rate while visiting several pages on the visited site results in a low bounce rate. 
+Another metric that I was curious in attaining was how long the average user spent reading a certain news article. At the moment, a cousin measure called the bounce rate checks to see whether the user continues to browse other pages in the site, or whether the user 'bounces' off to other websites. Meaning, if I visited a certain website, I am tracked as to whether I visit several pages on that website or just bounce (leave) immediately. Leaving immediately results in a high bounce rate while visiting several pages on the visited site before leaving to another site results in a low bounce rate. 
 Although this measure reflected the interest of the visitor has in the visited site overall, it did not indicate how much time and interest the visitor invested in reading a certain article. Therefore, I quantified the interest level by doing the following:
 \begin{enumerate}
 \item Researched the average reading speed of adults that can read English
 \item Counted the number of words in a given news article
-\item Based on the average read speed, calculated the time spent on the news article. If the page was kept open indefinitely by the reader, I simply used the maximum expected read time for that article. While this was not 100\% accurate, it was highly reflective of the level of interest with the visited articles. 
+\item Calculated the expected read time of the news article based on the average reading speed
+\item Calculated the actual time the visitor spent on a news article. If the article page was kept open indefinitely by the visitor, I simply used the expected read time as the actual read time for that article. While this was not 100\% accurate, it was highly reflective of the level of interest with the visited articles.
+\item  
 \end{enumerate}     
 
-\noindent Based on an ophthalmology study that consisted of 50 native English-speaking individuals (average age 30.38$\pm$9.44 years; 16 university students, 18 academics, and 16 non-academics) -- the average reading speed came out to be 201.53$\pm$35.88 words per minute(wpm) for short sentences, and 215.01$\pm$30.37 wpm for long paragraphs\cite{radner}. For the scope of this project, I will use the average of 200 wpm to calculate the maximum average time spent on a news article.  
+\noindent Based on an ophthalmology study that consisted of 50 native English-speaking individuals (average age 30.38$\pm$9.44 years; 16 university students, 18 academics, and 16 non-academics) -- the average reading speed came out to be 201.53$\pm$35.88 words per minute(wpm) for short sentences, and 215.01$\pm$30.37 wpm for long paragraphs\cite{radner}. For the scope of this project, I used the average of 200 wpm to calculate the maximum average time spent on a news article.  
 
 \vfill
 
@@ -296,19 +302,19 @@ Based on the data that needed to be captured, the below fields were created:
 \subsubsection{Database Tables}
 I adhered to the principles of relational database normalization in order to maximize efficiency and eliminate redundancy. For the scope of this project, all the data pertinent to a web hit was stored in a single table: \\ 
 {\large{hit (\underline{id},ip, time\_visited, \textit{article\_id}, timezone, country, region, read\_time)}} \\ \\
-The underline signifies the primary key. The primary key is a set of one or more fields that is enough to determine the rest of the information for any row instance. In this case, the IP address, article ID, and time of visit jointly determine the timezone, country, region, and read time. However, since I need a way to track the user's visits to capture read time, I designated an auto-increment unique identifier called \textbf{id}. \textit{article\_id} is italicized since it is a foreign key -- that is, it represents a primary key in another table. The time visited is rounded to hour:minute. Therefore, seconds are not be accounted for in the visit's time stamp. The read time defaults to the maximum read time as calculated by the article's length. This assumes that the user stayed on the article page indefinitely. In the event that the user does leave the page, this value would then register the actual read time.
+The underline signifies the primary key. The primary key is a set of one or more fields that is enough to determine the rest of the information for any row instance. In this case, the IP address, article ID, and time of visit jointly determine the timezone, country, region, and read time. However, since I need a way to track the user's visits to capture read time, I designated an auto-increment unique identifier called \textbf{id}. \textit{article\_id} is italicized since it is a foreign key -- that is, it represents a primary key in another table. The time visited is rounded to hour:minute. Therefore, seconds are not be accounted for in the visit's time stamp. The read time defaults to the maximum read time as calculated by the article's word length. This assumes that the user stayed on the article page indefinitely. In the event that the user does leave the page, this value would then register the actual read time.
 \\ \\
 The second table needed contained all the metadata pertinent to the visited article:\\
-{\large{article (\underline{article\_id}, publish\_date, category\_name, article\_url, title, sample\_text, sample\_pic, expected\_read\_time)}} \\ \\
+{\large{article (\underline{article\_id}, publish\_date, category\_name, article\_url, title, sample\_text, sample\_pic, expected\_read\_time)}} \\ 
 
-The third table needed contained metadata pertinent to the category of the visited article:\\
+\noindent The third table needed contained metadata pertinent to the category of the visited article:\\
 {\large{category (\underline{category\_id}, category\_name})}
-\\ \\
+\\ 
 
 It is important to note here that all of above data is communicated via the server side script which is included in the code of each loaded article. 
 
 \subsubsection{MySQL Database}
-For this project, I used MySQL since I have good experience with it and for its being open source. MySQL is a relational database management system. Relational databases are those that adhere to relational database design, which relies on the fundamentals of relational algebra and relational calculus. The main tenet of relational design is to maximize efficiency and eliminate any redundancy in the data being stored.
+For this project, I used MySQL since I have good experience with it and for its being open source. MySQL is a relational database management system. Relational databases are those that adhere to relational database design, which relies on the fundamentals of relational algebra and relational calculus. The main tenet of relational design is to maximize efficiency and eliminate any redundancy in the data being stored (Codd).
 
 I created a database called \textbf{alaini\_news\_viz} on my web host. For this, I created two users:\\
 \begin{itemize}
@@ -337,7 +343,7 @@ I created 3 tables in MySQL using phpMyAdmin, an open source PHP based GUI that 
 \newpage
 
 \subsection{PHP server-side code}
-Now that the database was created, I needed a way to retrieve the data from it. This involved creating configuration files, classes that abstracted the tables, and code that performed the queries and outputted the resulting data in JSON.
+Now that I created the database, I needed a way to retrieve the data from it. This involved creating configuration files, classes that abstracted the database tables, and code that performed the queries and outputted the resulting data in JSON.
 \subsubsection{Configuration and database connection}
 First, I created two setup files:
 \begin{enumerate}
@@ -358,7 +364,7 @@ In addition to the above, I have created a helper file that registers the read t
 \vfill
 
 \subsection{Client-side read time capture with JavaScript}
-As mentioned in the last section, the hit id is passed to the client page in order to keep a way to identify and update the read time for the visited article. Here, I calculated the number of words that are stored in the article. I did this by first getting all of the text found within common article tags - namely <span>, <div>, <article>, <p>, and <section>. I then summed the number of words found within all of the mentioned tags. I ensured that double counting was avoided by using the \textbf{innerText} property; this counted the elements' inner text, but not any text that might have been included in one of its children nodes. Next, I calculated the number of seconds the article was on average expected to take to read. This was based on the human reading speed of 200 words per minute. This figure was used in the event that a user had left the page open indefinitely. Thus, if an article was expected to take about 5 minutes to read, and the user took (for whatever reason) 30 minutes to navigate away from or to close the article, then I registered the 5 minutes. Although I may have compromised some accuracy here, it remained much more advantageous than having unrealistically high number that inflated the read time significantly.
+As mentioned in the last section, the hit id is passed to the client page in order to keep a way to identify and update the read time for the visited article. Here, I calculated the number of words that are stored in the article. I did this by first getting all of the text found within common article tags - namely <span>, <div>, <article>, <p>, and <section>. I then summed the number of words found within all of the mentioned tags. I ensured that double counting was avoided by using the \textbf{innerText} property; this counted the elements' inner text, but not any text that might have been included in one of its children nodes. Next, I calculated the number of seconds the article was on average expected to take to read. This was based on the human reading speed of 200 words per minute figure that I obtained earlier. This figure was used in the event that a user had left the page open indefinitely. Thus, if an article was expected to take about 5 minutes to read, and the user took (for whatever reason) 30 minutes to navigate away from or to close the article, then I registered the 5 minutes. Although I may have compromised some accuracy here, it remained much more advantageous than having unrealistically high number that inflated the read time significantly.
 
 Once the article page loaded, and the expected read time calculations were made, a timer was readied. The timer was triggered once a user moved the mouse or when the user scrolled the page. This minimized storing metadata created by automated scripts and to a high extent ensured that a human was sitting behind the screen. Upon navigating away from or closing the article, the read time was then submitted to \textbf{updateReadTime.php} and eventually recorded in the database. This part of the implementation relied on \textbf{window.onbeforeunload} or \textbf{window.onunload}, depending on the browser's user agent. At the time of this writing, this method was tested successfully with Google Chrome 39.0.2171.99 m, Mozilla Firefox 34.0.5, Safari 5.1.7, and Internet Explorer 10.
  
@@ -373,28 +379,30 @@ Now that both the back end and front end code has been implemented, I was able t
 
 \noindent\includegraphics[scale=0.6]{img/visit2}
 
-\noindent\ My ip address, time of visit, article id (at this point a fake one), timezone, country, region, and read time were all stored in the \textbf{hit} table.\\ \\
+\noindent\ My ip address, time of visit, article id (at this point a fake one), timezone, country, region, and read time were all stored in the \textbf{hit} table.\\
 
-\noindent\includegraphics[scale=0.5]{img/visit3}
 
-\noindent\ The article id, category id, article URL, article title, article sample text, and the URL to the article's main pic - were all stored in table \textbf{article}. \\ \\
+\noindent\ The article id, category id, article URL, article title, article sample text, and the URL to the article's main pic - were all stored in table \textbf{article}:
 
-\noindent\includegraphics[scale=0.7]{img/visit4}
+\noindent\includegraphics[scale=0.5]{img/visit3} \\
 
-\noindent\ Lastly, the category id and name were both stored in the \textbf{category} table. \\
+\noindent\ Lastly, the category id and name were both stored in the \textbf{category} table.
+
+\noindent\includegraphics[scale=0.7]{img/visit4} \\
+
 
 This concludes the part of the system that implements the data capturing. The next step was to connect this library to a working website. For the scope of this thesis, I implemented the hook to specifically tie into a widely used Content Management System - Wordpress. 
 
-\vfill
+\newpage
 
 \section{Implementation - hooking into Wordpress}
-Wordpress calls its articles "posts". The template file for each post is called \textbf{single.php} and is found under the current theme that is being used. One can think of a theme as a set of pre-built PHP, HTML, CSS3, and JavaScript templates that structurally and visually dictate how the website looks and behaves. Thus, in order to accomplish the task of capturing the data from a certain article, I needed to include my capture library inside \textbf{single.php}. However, since my library cannot directly communicate with Wordpress, I had to create a hook that abstracts some of Wordpress's built-in functions. Lastly, I needed to ensure that Wordpress is using jQuery version 2.1.1 or higher. As this is a JavaScript library and that I need available as soon as the page loads, I needed to include it in \textbf{header.php} - which basically comprises the <head></head> portion of a given page. Below is a breakdown of how I hooked into Wordpress.
+Wordpress calls all of its granular posted items as "posts". For a news website, each article is a post. There is a template file for each post called \textbf{single.php}. This file determines how the article is displayed and what content will be outputted to the visitor. It can be found under the current theme that is being used. A theme in Wordpress is a set of pre-built PHP, HTML, CSS3, and JavaScript templates that structurally and visually dictate how the website looks and behaves. Thus, in order to accomplish the task of capturing the data from a certain article, I needed to include my capture library inside \textbf{single.php}. However, since my library cannot directly communicate with Wordpress, I had to create a hook that abstracts some of Wordpress's built-in functions. Lastly, I needed to ensure that Wordpress was using jQuery version 2.1.1 or higher. jQuery is a JavaScript library that shorthands many of the functions needed to interact with the web article's HTML document. Since I needed this library to load before the article page fully loaded, I included jQuery in \textbf{header.php} - which in Wordpress comprises the <head></head> portion of all pages in a given website. 
+
+\newpage 
+
 \subsection{Creating the captureLib folder}
-In the interest of portability, I have placed all of my code within a folder called \textbf{captureLib}. If a 3rd party wishes to uses this library in the future, all that would be needed is to simply include \textbf{captureLib} from within \textbf{single.php}. Here is a screenshot of the current directory structure of \textbf{captureLib}. \\
+In the interest of portability, I have placed all of my code within a folder called \textbf{captureLib}. If a 3rd party wishes to uses this library in the future, all that would be needed is to simply include \textbf{captureLib} from within \textbf{single.php}. \\
 
-\noindent\includegraphics[scale=0.8]{img/capturelib}    
-
-\newpage
 
 \noindent Below is a breakdown of the current directory structure of the code that captures hits and read times.
 \begin{enumerate}
@@ -403,26 +411,17 @@ In the interest of portability, I have placed all of my code within a folder cal
 \item \textbf{constants.php} - contains all the server-side constants that will be used to capture the hits
 \item \textbf{db\_connect.php} - connects to the database where the hits are stored
 \end{enumerate}
-\item \textbf{Article.php, Hit.php, Category.php} - as mentioned previously, these are abstractions that communicate the data from and to the database
+\item \textbf{Article.php, Hit.php, Category.php} - as mentioned previously, these are abstractions of the database tables that communicate the data from and to the database
 \item \textbf{getReadTimeLibrary.php} - a line of code to include the read time JavaScript code if a hit was registered
-\begin{lstlisting}[basicstyle=\scriptsize]
-<?php 
-	/**
-		A terse way of including the JavaScript library. The library 
-		itself is suffixed with .php instead of .js because there is 
-		a php variable defined in the actual JavaScript library
-	*/
-	if($hit_id) { include("readTime.php"); } 
-?>
-
-\item
-\end{lstlisting}
-\item \textbf{readTime.php} - this is the JavaScript code that captures the read time. It is suffixed with .php (vs. .js) since it requires PHP code to output the hit id within the JavaScript. I have made adjustments to this code to accommodate for users switching tabs while reading a certain article. When the article's window loses focus, the timer stops counting; it only resumes when the user gets back to the article window. This maximizes accuracy in the average read time readings.
-\item \textbf{wordpressHook.php} - as mentioned earlier, this is an abstraction into Wordpress's needed built-in functions. In order to hook to different CMSs, the code can be reused. All that would be needed to change is the implementation.
+\item \textbf{readTime.php} - this is the JavaScript code that captures the read time. It is terminated with .php (vs. .js) since it requires PHP code to output the hit id inside the JavaScript file. I have made adjustments to this code to accommodate for users switching tabs while reading a certain article. When the article's window loses focus, the timer stops counting; it only resumes when the user gets back to the article window. This maximizes accuracy in the average read time readings.
+\item \textbf{wordpressHook.php} - as mentioned earlier, this is an abstraction into Wordpress's needed built-in functions. In order to hook to different CMSs, the code can be modified and reused. 
 \item \textbf{countries.php} - contains an array that has all country names. Used for database seeding.
 \end{enumerate}
+
+\newpage
+
 \subsection{Creating a mock news website}
-In order to test the library, I created a mock news site in Wordpress. In this setup, I built the following categories: Business, Entertainment, Music, Science, Sports, Tech, and World. I tasked a friend to populate mock articles with content that is fitting to the parent category. I created the Wordpress install under my personal web hosting account. The URL to it is http://www.alainibrahim.com/fakenewssite. In the interest of time, I used the default theme that came out of the box. \\
+In order to test the capture library, I created a mock news site in Wordpress. In this setup, I built the following categories: Business, Entertainment, Music, Science, Sports, Tech, and World. I tasked a friend to populate mock articles with content that is fitting to the parent category. I created the Wordpress install under my personal web hosting account. The URL to it is http://www.alainibrahim.com/fakenewssite. In the interest of time, I used the default theme that came out of the box. \\
 
 \noindent\includegraphics[scale=0.4]{img/fakenewssite_main} 
 
@@ -430,16 +429,16 @@ In order to test the library, I created a mock news site in Wordpress. In this s
 
 \subsection{Testing}
 \subsubsection{Proof of concept}
-Below is the result of my having visited 3 different articles, each for a different amount of time:
+Below is the result of my having visited 4 different articles, each for a different amount of time:
 
 \noindent\includegraphics[scale=1]{img/results_categories} \\
-\noindent In the \textbf{category} table, the categories metadata of the different articles that I visited were stored in the database. Note that if say I visit an article of the same category again, the category will not be double stored. 
+\noindent In the \textbf{category} table above, the categories metadata of the different articles that I visited were stored in the database. For this project, I only stored the category's id and name, as they appear in the Wordpress database tables. Note that if I visit an article of the same category again, the category will not be double stored. \\ \\
 
 \noindent\includegraphics[scale=0.6]{img/results_articles}
-\noindent In the \textbf{article} table, the articles' metadata was stored. The sample text is excerpted by PHP with a default setting of 500 characters. \\ \\ 
+\noindent In the \textbf{article} table, the articles' metadata was stored. The sample text is excerpted by PHP with a default setting of 500 characters. This text is later used for previewing articles. \\ \\ 
 
 \noindent\includegraphics[scale=1]{img/results_hits} \\
-\noindent The read times appear to have registered successfully in the \textbf{hit} table. \\
+\noindent As shown above, the read times appear to have registered successfully in the \textbf{hit} table. 
 
 \subsubsection{Seeding mock data}
 After testing the capture of data successfully, I needed a way to mimic traffic on a real news website. In addition, I needed to make it appear as if each mock article visit came from a random country of origin. Below are the steps I took to accomplish this:
@@ -466,7 +465,7 @@ if(!PRODUCTION_ENV) {
 	$region = $states[array_rand($states)];
 }
 ...
-\end{lstlisting}
+\end{lstlisting} 
 \item{Created \textbf{makeFakeHit.php} to invoke a visit to a random article on my fake news site:}
 \begin{lstlisting}[basicstyle=\scriptsize]
 /**
@@ -484,7 +483,7 @@ if( $_SERVER['REMOTE_ADDR'] == $TESTING_IP) {
 	file_get_contents("http://alainibrahim.com/fakenewssite/?p=" . $article_id);
 }
 \end{lstlisting}
-Note that I have hard coded a testing IP address so that I am the only person who can run this for testing.
+Note that I have hard coded a testing IP address so that I am the only person who can run this for testing. \\
 \item{Created \textbf{fakeVisit.html} to run on the client side and to call \textbf{makeFakeHit.php} at a pre-specified time interval(using JavaScript):}
 \begin{lstlisting}[basicstyle=\scriptsize]
 (function(){
@@ -508,7 +507,7 @@ Note that I have hard coded a testing IP address so that I am the only person wh
 
 \noindent Note that for each hit, the data that is generated by the seeding process is \textbf{article\_id}, \textbf{region}, and \textbf{read\_time}. The other values were left as is because for the scope of this project, they will not be factored into the final visualization. 
 
-\vfill
+\newpage
 
 \section{Implementation - retrieving captured metrics}
 At this point, the database was populated with a good amount of data and I needed a way to retrieve it. For this, I created a folder on the server side and called it "vizLib". In this directory I created 3 PHP files that will output results in JSON:
@@ -545,13 +544,15 @@ Typically, controls take up space in the limited real estate area available in a
 
 \noindent The controls box first partially loads when no category is selected. The "X" hides it; when this is done, the top left gray rectangle with the two white dots is then contoured by a black border - to indicate that it is hidden.
 
-Upon loading the visualization, an AJAX call is made to the server which fetches all the of the news categories into this dropdown box. Once a category is selected, a call is made to the server, which results in all of the data for the selected category to be fetched from the database using the server-side script. The user is notified (via the red colored "Loading..." indicator) of when the data is being loaded:
+Upon loading the visualization, an AJAX call is made to the server which fetches all the of the news categories into this dropdown box. Once a category is selected, a call is made to the server, which results in all of the data for the selected category to be fetched from the database using the server-side script.\\ \\ The user is notified (via the red colored "Loading..." indicator) of when the data is being loaded:
 
-\noindent\includegraphics[scale=0.8]{img/viz_4}
+\noindent\includegraphics[scale=0.6]{img/viz_4}
 
 And, once the data is loaded, the status label turns green and reads "Loaded":
 
-\noindent\includegraphics[scale=0.8]{img/viz_5}
+\noindent\includegraphics[scale=0.6]{img/viz_5}
+
+\newpage
 
 \noindent Below are the descriptions for each component of the controls area:
 
@@ -572,7 +573,7 @@ And, once the data is loaded, the status label turns green and reads "Loaded":
 
 
 
-\subsection{Stacked area chart}
+\subsection{The Stacked Area Chart}
 
 Here, the goal was to create a visual product that would allow the user to view all the articles' popularity over time, given a certain news category. I knew that I wanted time to go on the horizontal X axis, and (hits or read time) to go on the Y axis. That said, I first started with a simple line graph, where each line represented an article that was colored differently from the other lines. There were 2 downsides which led me to abandon the line graph: 
 \begin{itemize}
@@ -586,9 +587,9 @@ Here, the goal was to create a visual product that would allow the user to view 
 \item To preview an article's thumbnail, title, and excerpt
 \end{itemize}
 
-\noindent The X axis is laid out using D3 and represents a time aggregation that occurs on an hourly basis. 
+\noindent The X axis is laid out using D3 and represents time aggregated on an hourly basis: 
 
-\noindent\includegraphics[scale=0.9]{img/viz_1}
+\noindent\includegraphics[scale=0.8]{img/viz_1}
 
 The articles are stacked vertically, each respectively matching its title in the below white space area, which is headed by the selected category. The readying of the data for the stack is done using the D3 area layout, and the visual representation is implemented by using the SVG <path>. The paths by default all contain a fill of light gray. 
 
@@ -605,9 +606,11 @@ The user is given the option to contrast the pattern of up 2 articles over time,
 
 \noindent Once the two articles are selected, their corresponding geographic distributions are shown in the right area of the browser. This is covered in the next section. 
 
+\newpage
+
 \subsection{Geographic bar charts}
 
-In the previous section, two articles are clicked on in the stacked area chart. In addition to their being highlighted in the stacked area chart, a right side pane populates each article's title in its color, along with a table below it. The table contains the geographic origin (e.g. state/country), the total number of hits, and the attention span distribution (i.e. read time in seconds).
+In the previous section, two articles are clicked on in the stacked area chart. In addition to their being highlighted in the stacked area chart, a right side pane populates each article's title in its color, along with a table below it. The table contains the geographic origin (e.g. state/country), the total number of hits, and the attention span distribution (i.e. read time in seconds).\\
 
 \noindent\includegraphics[scale=0.5]{img/viz_8} \\
 
@@ -618,7 +621,7 @@ The hits values are encoded as horizontal bars in dark gray. The attention span 
 
 \noindent\includegraphics[scale=0.8]{img/viz_9} \\
 
-\noindent We now examine the geographic area in more detail. Note that automatically, the entries are sorted by the name of the geographic origin, in ascending order. Clicking on the "STATE" header will toggle back and forth the sorting order of the geographic origin name. Similarly, toggling the "TOTAL HITS" header will sort the data in ascending/descending order. When the data is sorted, it is sorted according to the same criterion for both articles. Hovering over a row will cause that row to be highlighted in yellow, and to be contoured in a dashed line solid border. Hovering over any bar will in addition pop up a steel blue overlay which displays - using white text - the number of hits or read time in seconds.  
+\noindent We now examine the geographic area in more detail. Note that automatically, the entries are sorted by the name of the geographic origin, in ascending order. Clicking on the "STATE" header toggles back and forth the sorting order of the geographic origin name. Similarly, toggling the "TOTAL HITS" header sorts the data in ascending/descending order. When the data is sorted, it is sorted according to the same criterion for both articles. Hovering over a row will cause that row to be highlighted in yellow, and to be contoured in a dashed line solid border. Hovering over any bar will in addition pop up a steel blue overlay which displays - using white text - the number of hits or read time in seconds.  
 
 The geographic bar charts support the following tasks:
 \begin{itemize}
@@ -651,7 +654,7 @@ The working example that I have discussed so far is based on a mock website that
 \subsubsection{The Interactive Visualization}
 \begin{itemize}
 \item The final product included a stacked area chart, a list of article titles, and a right pane for geographic analysis of up to 2 articles
-\item The hits were first aggregated on a minute to minute basis. Though, this resulted in performance degradation. Adjusting the date range took a delay of about 2-3 seconds to reflect in the redraw of the stacked area chart. I then aggregated on an hourly basis, which ended up plotting Y values over 744 (31 days x 24 hours) X axis time values. This eliminated the delay in the stacked area chart redraw
+\item The hits were first aggregated on a minute to minute basis. This resulted in performance degradation. Adjusting the date range took a delay of about 2-3 seconds to reflect in the redraw of the stacked area chart. I then aggregated on an hourly basis, which ended up plotting Y values over 744 (31 days x 24 hours) X axis time values. This eliminated the delay in the stacked area chart redraw
 \item The stacked chart accurately reflected the number of hits and average read time over the selected time range
 \item Clicking one or more articles highlighted the article area in the stacked area chart and displayed the total hits based on geography. It also showed the distribution of the recorded read times. For the mock site, the geography was limited to states within the United States
 \item The tables that contained the geographic origins were sortable by total hits and by state name - in ascending and descending order
@@ -705,7 +708,7 @@ Hooking into the live website involved the following steps:
 \item The hits data was retrieved successfully from the MySQL database using JSON via \textbf{getArticlesMetrics.php}. I initially reserved the geographic data for the articles to be serviced by \textbf{getArticleStatesMetrics.php}. However, I felt that in a production environment that many SQL calls to the database server would slow down the system and affect all users. In order to minimize the number of requests to the server, I had the server fetch all data for a given category for the last 31 days. The client-side JavaScript code then parsed and re-organized the fetched data to be used by the interactive visualization
 \end{itemize}
 
-\subsubsection{The Interactive Visualization}
+\subsubsection{Visualization The Web Metrics}
 \begin{itemize}
 \item The final product included a stacked area chart, a list of article titles, and a right pane for geographic analysis of up to 2 articles
 \\ \\
@@ -737,9 +740,17 @@ Hooking into the live website involved the following steps:
 \newpage
 
 \section{Conclusion}
-When hooked into the Wordpress website Afiadarfur.com, the capture library that I built registered the hits as intended inside a relational database. It did not register read times for all articles due to factors such as older web browsers not supporting the \textbf{onunload()} method, and due to JavaScript plugins that may have conflicted with the capture library. The data retrieval library that I built successfully downloaded the results of the requested query via JSON. 
+The research of prior work resulted in the implementation of a capture and visualize PHP code library, as well as a MySQL relational database to house the web traffic metrics. This library was built to hook into any Wordpress-based website - especially news websites. It was assumed that target news website contained articles that belonged to one or more categories.  \\    
 
-As for the interactive visualization, the stacked area chart would have been more effective visualizing less articles at a time. Looking at 300+ articles simultaneously resulted in difficulty when it came to seeing the performance of the less popular articles. For Afiadarfur.com, the web editors needed to spread their articles under several categories - such as business, music, world, and entertainment - as prominent news sites do. Doing this say across 10 categories would have resulted in about 30 articles being represented at a time. Although this would have added clarity, the visualization could have been made even clearer by adding more filters - or, by narrowing the maximum time window into the hits data to about 1 week. Showing the geographic distribution of hits and contrast between two articles was effective. Aggregating the data on an hourly basis resulted in a low visual latency, while maintaining temporal accuracy. 
+In order to test the implemented library, I built a mock news website in Wordpress. I then built a script that mimicked random visits to the mock articles every 20 seconds. Since I could not mimic an actual visit where the user scrolls the article and where the read time is captured upon the user navigating away, I seeded a random time between 10 seconds and 2 minutes for each visit. When I hooked my library into the mock website, the web metrics were captured as intended. 
+In the final step, I implemented the interactive web-based visualization using JavaScript. The visualization supported the tasks it was designed to enable. 
+
+Next was the step of testing with a live Wordpress-based website. I hooked the capture and visualize library to Afiadarfur.com, a website geared to presenting new from Sudan. The capture code registered the hits as inside the MySQL database. Not all read times were registered for the article visits due to factors such as older web browsers not supporting the \textbf{onunload()} method, and due to JavaScript plugins that may have conflicted with the capture library. Though, the the read times that were successfully captured were accurate. 
+ 
+As for the interactive visualization for Afiadarfur.com, the stacked area chart showed around 300 stacked areas which resulted in a considerable latency between changing the date range values in the filter controls box and in seeing the visual update of the chart. This was the result of the web editors categorizing most of their articles under 2 main categories, each which had a high concentration of articles. Thus, for the stacked area chart to work efficiently, editors needed to spread their articles under several categories such as business, music, world, and entertainment. Doing this say across several categories would have greatly reduced the latency. Another implementation measure that could have decreased latency would have been to add more filters - or, to narrow the maximum time window into the hits data to about 1 week. 
+Showing the geographic distribution of hits and read times between two articles was successful. Aggregating the data on an hourly basis resulted in a low visual latency, while maintaining temporal accuracy. 
+
+Overall, the resultant interactive visualization conveyed patterns of articles' popularity and levels of interest for each article - all while allowing the visitor to read the news and navigate to the full article.
 
 \newpage
 
@@ -807,7 +818,12 @@ I would have liked to add the following capabilities to my existing visualizatio
   
   \bibitem{byronwattenberg} Lee Byron \& Martin Wattenberg (2008) {\em Stacked graphs - Geometry \& Aesthetics}
   
+  \bibitem{wiley} Swires-Hennesy, Ed (2014). {\em How To Communicate Your Message Effectively}
+
+ \bibitem{codd} E.F. Codd (1970) {\em A Relational Model of Data for Large Shared Data Banks, Comm. ACM 13 (6), June 1970, pp. 377-387}  
+  
   \end{thebibliography}
  
+
 
 \end{document}
