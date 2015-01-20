@@ -24,23 +24,23 @@
 \contentsline {subsection}{\numberline {5.3}Testing}{43}
 \contentsline {subsubsection}{\numberline {5.3.1}Proof of concept}{43}
 \contentsline {subsubsection}{\numberline {5.3.2}Seeding mock data}{44}
-\contentsline {section}{\numberline {6}Implementation - retrieving captured metrics}{48}
-\contentsline {section}{\numberline {7}Implementation - visualization}{49}
-\contentsline {subsection}{\numberline {7.1}The controls box}{49}
-\contentsline {subsection}{\numberline {7.2}The Stacked Area Chart}{54}
-\contentsline {subsection}{\numberline {7.3}Geographic bar charts}{60}
-\contentsline {section}{\numberline {8}Results}{64}
-\contentsline {subsection}{\numberline {8.1}Mock Website}{64}
-\contentsline {subsubsection}{\numberline {8.1.1}Capturing Web Metrics}{64}
-\contentsline {subsubsection}{\numberline {8.1.2}Retrieving Web Metrics}{65}
-\contentsline {subsubsection}{\numberline {8.1.3}The Interactive Visualization}{65}
-\contentsline {subsubsection}{\numberline {8.1.4}Performance}{67}
-\contentsline {subsection}{\numberline {8.2}Actual Website}{68}
-\contentsline {subsubsection}{\numberline {8.2.1}Hooking the Custom Libraries into Afia Darfur}{69}
-\contentsline {subsubsection}{\numberline {8.2.2}Capturing Web Metrics}{69}
-\contentsline {subsubsection}{\numberline {8.2.3}Retrieving Web Metrics}{70}
-\contentsline {subsubsection}{\numberline {8.2.4}Visualization The Web Metrics}{71}
-\contentsline {subsubsection}{\numberline {8.2.5}Performance}{73}
-\contentsline {section}{\numberline {9}Conclusion}{75}
-\contentsline {section}{\numberline {10}Future Work}{77}
-\contentsline {section}{\numberline {11}Glossary}{79}
+\contentsline {section}{\numberline {6}Implementation - retrieving captured metrics}{47}
+\contentsline {section}{\numberline {7}Implementation - visualization}{48}
+\contentsline {subsection}{\numberline {7.1}The controls box}{48}
+\contentsline {subsection}{\numberline {7.2}The Stacked Area Chart}{53}
+\contentsline {subsection}{\numberline {7.3}Geographic bar charts}{59}
+\contentsline {section}{\numberline {8}Results}{63}
+\contentsline {subsection}{\numberline {8.1}Mock Website}{63}
+\contentsline {subsubsection}{\numberline {8.1.1}Capturing Web Metrics}{63}
+\contentsline {subsubsection}{\numberline {8.1.2}Retrieving Web Metrics}{64}
+\contentsline {subsubsection}{\numberline {8.1.3}The Interactive Visualization}{64}
+\contentsline {subsubsection}{\numberline {8.1.4}Performance}{66}
+\contentsline {subsection}{\numberline {8.2}Actual Website}{67}
+\contentsline {subsubsection}{\numberline {8.2.1}Hooking the Custom Libraries into Afia Darfur}{68}
+\contentsline {subsubsection}{\numberline {8.2.2}Capturing Web Metrics}{68}
+\contentsline {subsubsection}{\numberline {8.2.3}Retrieving Web Metrics}{69}
+\contentsline {subsubsection}{\numberline {8.2.4}Visualization The Web Metrics}{70}
+\contentsline {subsubsection}{\numberline {8.2.5}Performance}{72}
+\contentsline {section}{\numberline {9}Conclusion}{74}
+\contentsline {section}{\numberline {10}Future Work}{76}
+\contentsline {section}{\numberline {11}Glossary}{78}
