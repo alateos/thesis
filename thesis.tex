@@ -42,7 +42,7 @@
 
 \section{Abstract}
 
-Current prominent web traffic analytics systems such as Google Analytics report traffic per website, given certain filtering criteria. Such systems are typically geared to system administrators who use the data to identify patterns and possibly assist management in strategy making. For news sites, this may mean analyzing the traffic on a news article and where most of the readers came from. The end users, however, will at best see metrics such as social likes and shares within the visited article. But, what if we could provide the end users a near real-time metrics map of the entire news site they are visiting? What if they could navigate based on traffic patterns, as opposed to having to follow the common front page layout specified by the news editors? This is what I built - a system that hooks into a Wordpress-based news website, captures the visitors' web metrics, and conveys the near real-time traffic through an interactive web-based visualization.
+Current prominent web traffic analytics systems such as Google Analytics log, report and visualize traffic and other data about websites. They also allow their users to filter the views of this traffic through graphical controls. Such systems are typically geared to system administrators who use the data to identify patterns and possibly assist management in strategy making. For news sites, this may mean analyzing the traffic on a news article and where most of the readers came from. The end users, however, will at best see metrics such as Facebook likes, number of shares and tweets, and a "top-read" list in a corner of the visited article's page. But, what if we could provide the end users a near real-time map of the entire news site they are visiting? What if they could navigate based on traffic patterns, as opposed to having to follow the common front page layout specified by the news editors? This is what I built - a system that hooks into a news website, captures metrics about access frequency, times and locations, and conveys the near real-time traffic through an interactive web-based visualization.
 \newpage
 
 \begin{singlespace}
@@ -52,49 +52,51 @@ Current prominent web traffic analytics systems such as Google Analytics report 
 \vfill
 
 \section{Thesis Project Description}
-In 2015, the web of online media can be divided into 2 categories: News websites that contain facts about world events and social media sites that cover the ongoing conversations around these events. Before social media became ubiquitous, the news information flow was one-directional - with hardly any feedback from the site visitors. Now, visitors share articles on their online social properties such as Facebook and Twitter. Yet, what appears on the front page of one's favorite news site is set by the web news editorial team and can be influenced by the news station's political or business agenda. 
+In 2015, the web of online media can be divided into two categories: News websites that contain stories about world events and social media sites that contain conversations centered on these events. Before social media became ubiquitous, the news information flow was one-directional ---  with hardly any feedback from the site visitors. Now, visitors share articles on their online social pages such as Facebook and Twitter. Yet, what appears on the front page of one's favorite news site is set by the web news editorial team and can be influenced by the news station's editorial or business agenda. 
 
-My goal in this thesis is to create a different way of seeing the news, using an interactive web visualization. The product is geared to site visitors that are curious in knowing how long an article was popular for and how interested the readers were when they read that article. At the same time, these measures can be visually compared between 2 articles for a relative analysis of popularity and reader level of interest. 
+My goal in this thesis is to create a different way of seeing the news, using an interactive web visualization. The product is geared to site visitors that are curious in knowing how long an article was popular for and how interested the readers were when they read that article. At the same time, these measures can be visually compared between two articles for a relative analysis of popularity and reader level of interest. 
 
-Different news stations use different web content management systems (WCMS). The system that I built hooks into a very common and open source WCMS - Wordpress. It then captures web metrics, and visualizes these metrics inside an interactive web-based visualization. The visualization targets site visitors but can be equally used by web admins. There are 3 main pieces of data I took interest in capturing: The number of hits to a an article, the amount of time spent reading an article, and the geographic location of the visitor. 
+Different news stations use different web content management systems (WCMS). The system that I built hooks into a very common and open source WCMS --- Wordpress. It then captures web metrics, and visualizes these metrics inside an interactive web-based visualization. The visualization targets site visitors but can be equally used by web admins. There are three main pieces of data I took interest in capturing: The number of hits pf an article, the amount of time spent reading an article, and the geographic location of the visitor. 
 
-In the first stage, I created a database to house the web metrics that I wanted to capture. I then created a server-side library that can be included into any Wordpress-based website. This library hooked into my database and captured the hits' metadata against the given news site. Such metadata includes time of article visit, region of visitor, and timezone of visitor.  
+In the first stage, I created a database to house the web metrics that I wanted to capture. I then created a server-side library that can be included into any Wordpress-based website. This library hooks into my database and captures the hits' metadata against the given news site. Such metadata includes time of article visit, region of visitor, and timezone of visitor.  
 I then built the "business logic" of the data and information that I wanted to capture. This includes algorithms that produced the refined data and metrics to be ultimately communicated to the end user.
 This amounted to the final step of creating an interactive visualization that shows near real-time user web traffic in each of the registered articles of the connected news site.
 
 The domain that I targeted is \textbf{online news media}. I captured the below data, as far back as 31 days:
 \begin{itemize}
 \item The number of visitor hits to a given article. Each hit is defined by a unique timestamp and IP address
-\item The visitor's geographic location
-\item The amount of time a visitor spent reading the article for a given hit
+\item The visitors' geographic location
+\item The amount of time visitors spent reading the article for a given hit
 \end{itemize}
 
 \newpage
 
-\noindent The interactive visualization enabled 4 tasks:
+\noindent The interactive visualization enables 4 tasks:
 \begin{enumerate}
-\item \textbf{To compare articles' hits and reader attention spans for any period within the last month, given a select category}
-\item \textbf{To preview each article's thumbnail, title, and excerpt}
-\item \textbf{To contrast the geographic distribution of hits and attention of up to 2 articles}
-\item \textbf{To navigate to the full article counterpart on the subject news website}
+\item \textbf{To compare articles' hits and reader attention spans for any period within the last month, given a select category.}
+\item \textbf{To preview each article's thumbnail, title, and excerpt.}
+\item \textbf{To compare the geographic distribution of hits and attention of up to two articles.}
+\item \textbf{To navigate to the full article on the news website.}
 \end{enumerate}
 
-\noindent{As for interactivity, the visualization enabled the following:}
+\noindent{As for interactivity, the visualization enables the following:}
 \begin{itemize}
-\item Hovering over article elements to preview the thumbnail, title, and excerpt of the body content
-\item Clicking on an article element to display a table that shows the geographic distribution of the number of hits and attention span for that article
-\item Filtering the data via a controls box. The controls box allows the user to select a desired news category, to filter by date range, and to toggle context-related settings 
+\item Hovering over article elements to preview the thumbnail, title, and excerpt of the body content.
+\item Clicking on an article representation to display a table that shows the geographic distribution of the number of hits and attention span for that article.
+\item Filtering the data via a controls box. The controls box allows the user to select a desired news category, to filter by date range, and to toggle context-related settings. 
 \end{itemize}
 
-The final product was geared towards the conventional news site structure, where categories are enumerated (e.g. sports, health, science, politics, etc.), and where articles are listed under their pertinent categories. \\
+The final product is geared towards the conventional news site structure, where categories are assigned to categories (e.g. sports, health, science, politics, etc.). \\
 
 \noindent\includegraphics[scale=0.4]{img/in_action} \\
 
 \begin{singlespace}
-\noindent\textbf{Figure 1 -- The user previews a music article in the interactive visualization while having selected 2 articles for hits and attention span comparison.}
+\noindent\textbf{Figure 1 -- The user previews a music article in the interactive visualization while having selected two articles for hits and attention span comparison.}
 \end{singlespace}
 
 \newpage
+
+\iffalse
 
 \noindent{Here are the technologies that I used in building my system:}
 \begin{itemize}
@@ -108,6 +110,7 @@ The final product was geared towards the conventional news site structure, where
 \item jQuery to shorthand some lengthy JavaScript functions
 \end{itemize}
 
+\fi
 
 %I built the system in the following chronological order:
 %\begin{enumerate}
@@ -122,23 +125,23 @@ The final product was geared towards the conventional news site structure, where
 
 \section{Prior Work}
 \subsection{Visualization}
-Prominent researchers in the field of visualization have concocted logical constructs and approaches to designing and implementing quality visualizations. From a presentation standpoint, there is much emphasis on showing the end user just enough visual data for the user to achieve the intended task of the visualization - this is known as \textbf{expressiveness} (Schumann \& Muller, 2000) - where the visualization shows information only relevant to the data set. Another popular concept in visual economics is the \textbf{data-to-ink ratio} (Tufte, 2001). The goal is to have just enough ink presented to convey the data; additional ink that is not matched by data is a distraction. 
+Prominent researchers in the field of visualization have concocted logical constructs and approaches to designing and implementing quality visualizations. From a presentation standpoint, there is much emphasis on showing the end user just enough visual data for the user to achieve the intended goals of the visualization --- this is known as \textbf{expressiveness} (Schumann \& Muller, 2000). Another popular concept in visualizing efficiently is the \textbf{data-to-ink ratio} (Tufte, 2001). The idea is to have just enough ink presented to convey the data; additional ink that is not matched by data is a distraction. 
 
-Having an efficient visualization is not enough. It needs to be effective. This brings us to two concepts covered in depth by Tamara Munzner: \textbf{domain} and \textbf{task} (Munzner, 2009). She advocates that in the design phase, the builder needs to identify the domain that he/she is working with. A domain is a world of ideas and concepts that are abstracted under one umbrella. For example, human anatomy, software engineering, economics, and biology are all domains. A domain gives rise to concepts, definitions, and a pre-built library of shapes and colors by the convention of collective knowledge. Red in biology signifies blood whereas in the world of novels it may allude to romance. Thus the target domain largely determines what colors and shapes the visual designers will have on their palette. \\
-On the other hand, the task refers to the "what" of the visualization. What is/are the goal(s) of the visualization? Is it to explore, analyze, extrapolate, etc.? Clearly identifying the task(s) of the visualization at hand solidifies the direction in which the designer \textbf{encodes} the visual variables (Carpendale, 2003). Encoding refers to the idea of representing a quantitative or qualitative concept visually. The visual variables include position, size, shape, value, color, orientation, grain, and texture. For an effective visualization, the choice of encodes is dependent on the domain of the visualization, as well as the tasks the visualization aims to support. \\
-Studies have shown that position and length are the easiest and fastest visual variables to decode (Cleveland \& McGill, 1984). My project deals with two main measures: Number of hits and read time (in seconds). To incorporate position, I can plot these two measures on a Cartesian graph with time on the X axis and the selected measure on the Y axis. If I plot each datum as a dot or cirle, I end up with a scatterplot. A scatterplot is essentially a plot of data - usually in the form or dots or circles - on a cartesian coordinates system. Though, my goal is show trends of popularity. When we think of trends we usually have a mental map of a connected sequence over time - which is why a line chart and area chart are better candidates as they convey patterns of over time, rather than scattered concentrations of data. \\
-\noindent As for comparing the total number of hits across different geographic locations, we need to use another variable - length. Bar charts are great candidates for conveying magnitude and for contrasting magnitudes across different categories. Usually, bar charts are oriented vertically or horizontally. For our purpose, a horizontal bar chart suits the task, as it keeps the labels of the geographic origins from visually overlapping (Swires-Hennesy, 2014). Lastly, visualizing the number of seconds for each observation given a geographic location over a specified time period is best accomplished through the usage of position; for this, I can employ a dot chart. A dot chart is essentially a one-dimensional scatterplot. \\
-For distinguishing categories in a line or graph chart, color is an effective visual variable. For this project, news categories are not simultaneously contrasted - but articles are. Encoding each article with a different color may work well for up to 5 colors; however, studies show that surpassing this limit makes it difficult for humans to differentiate encodes of more than 7-9 colors (Healey, 1996). Thus a different visual variable will need to be applied to effect in the visitor distinguishing the articles from one another. Here, I can resort to the visual variable of position. A stacked area graph is an area graph that employs position by stacking different parts of the whole on top of one another against another dimension - usually time (Byron \& Wattenberg, 2008).  
+Having an efficient visualization is not enough. It needs to be effective. This brings us to two concepts covered in depth by Tamara Munzner: \textbf{domain} and \textbf{task} (Munzner, 2009). She advocates that in the design phase, the builder needs to identify the domain that he/she is working with. A domain is a world of ideas and concepts that are abstracted under one umbrella. For example, human anatomy, software engineering, economics, and biology are all domains. A domain gives rise to concepts, definitions, and a pre-built library of shapes and colors by the convention of collective knowledge. \\
+On the other hand, the task refers to the "what" of the visualization. What is/are the goal(s) of the visualization? Is it to explore, analyze, extrapolate, etc.? Clearly identifying the task(s) of the visualization at hand solidifies the direction in which the designer uses the visual variables to encode data (Carpendale, 2003). Encoding refers to the idea of representing a quantitative or qualitative data point visually. The visual variables include position, size, shape, value, color, orientation, grain, and texture. For an effective visualization, the choice of encoding is dependent on the domain of the visualization, as well as the tasks the visualization aims to support. \\
+Studies have shown that position and length are the easiest and fastest visual variables to decode (Cleveland \& McGill, 1984). My project deals with two main measures: Number of hits and read time (in seconds). To incorporate position, I can plot these two measures on a Cartesian graph with time on the X axis and the selected measure on the Y axis. If I plot each datum as a dot or circle, I end up with a scatterplot. Though, my goal is show trends of popularity. When we think of trends we usually have a mental map of a connected sequence over time --- which is why a line chart and area chart are better candidates as they convey patterns of over time, rather than scattered concentrations of data. \\
+\noindent As for comparing the total number of hits across different geographic locations, we need to use another variable --- length. Bar charts are great candidates for conveying magnitude and for contrasting magnitudes across different categories, as they utilize both position and length. Usually, bar charts are oriented vertically or horizontally. For our purpose, a horizontal bar chart suits the task as it is more suitable for rendering many labels (Swires-Hennesy, 2014). Lastly, visualizing the number of seconds for each observation given a geographic location over a specified time period is best accomplished through the usage of position; for this, I can employ a dot chart which is a one-dimensional scatterplot. \\
+For distinguishing categories in a line or graph chart, color is an effective visual variable. For this project, news categories are not compared to each other, but articles are. Encoding each article with a different color may work well for up to five colors; however, studies show that surpassing this limit makes it difficult for humans to differentiate encodes of more than seven to nine colors (Healey, 1996). Thus a different visual variable will need to be used to distinguish the articles from one another. Here, I can resort to the visual variable of position. A stacked area graph is an area graph that employs position by stacking different parts of the whole on top of one another against another dimension --- usually time (Byron \& Wattenberg, 2008).  
 
-In the pre-Internet days, the implementation would have ended here. Though, with the advent of mass computerization and global connectivity, a new ability has been introduced - that of interactivity. Interactivity helps enable multiple views of the same data, using the same visualization. In visualization, interactivity has been broken down into the following: Overview+Detail, Zooming, Focus+Context, details-on-demand, and cue-based systems (Cockburn, Karlson, \& Bederson, 2008). The user is now able to manipulate the views of the data using input devices such as a mouse and keyboard. Here, I could support narrowing the selected time range by zooming, and retrieving the articles' previews through details-on-demand. 
+Computer based visualizations allow data to be processed in real-time and thus enable user interactivity. Interactivity helps enable multiple views of the same data, using the same visualization. Researchers have broken down interactivity into several categories. For this project, I am interested in incorporating the following: Overview+Detail and Zooming (Cockburn, Karlson, \& Bederson, 2008) --- and, sorting, filtering, and details-on-demand (Shneiderman, 1996). 
 
 
 \subsection{Measuring Time}
-Time is an essential component to web analytics, as it gives context to what is being measured. Although graphing change over time was attempted in the early A.D.s, the first known contemporary time series graph was published by William Playfair (Playfair \& Corry, 1801). Playfair was the father of the line graph and bar graph. However, there is not a single model that accommodates all domains and tasks (Frank, 1998). Thus, for the proposed visualization, time must be dealt with in the context of an online news domain.   
+Time is an essential component to web analytics, as it gives context to what is being measured. Although graphing change over time was attempted in the early A.D.s, the prominent early examples of time-based visualizations were published by William Playfair (Playfair \& Corry, 1801). Playfair was the father of the line graph and bar graph. However, there is not a single model that accommodates all domains and tasks (Frank, 1998). Thus, for the proposed visualization, time must be dealt with in the context of an online news domain.   
 
-Here, it is important to note the difference between event data and interval data (Wills, 2011). Time events are occurrences that are represented as slices of time; for example, a plane landed at its destination is an event. Whereas, the process of a plane landing occurs over a time interval of say 20 minutes. In this project, an article hit is defined as an event. That said, if I visualize time on an X axis it is inevitable that I will have units of time where no hits are available. The rendering of this time interval as a discrete event is adequate so long as the measured interval is minute compared to the total time covered by the data (Graham). That is, a visitor reading an article for 2 minutes is a small amount compared to say an article's lifetime of 3 weeks. Thus, plotting the observation as it being a slice of time is adequate.  
+Here, it is important to note the difference between event data and interval data. Time events are occurrences that are represented as slices of time; for example, a plane landing at its destination is an event. Whereas, the process of a plane landing occurs over a time interval of say 20 minutes. In this project, an article hit is defined as an event. That said, if I visualize time on an X axis it is inevitable that I will have units of time where no hits are available. The rendering of this time interval as a discrete event is adequate so long as the measured interval is minute compared to the total time covered by the data (Wills, 2011). That is, a visitor reading an article for 2 minutes is a small amount compared to say an article's lifetime of 3 weeks. Thus, plotting the observation as it being a slice of time is adequate.  
 
-In order to have a better understanding of the time intervals of news, I asked professionals around the news station that I work at for feedback. Based on this and my observations of our news website and other similar entities' websites, "news" refers to a recent occurrence, notably something that happened today. "Breaking News" typically refers to an event that happened within the current day and whose story under development. "Recent News" pertains to stories created within the last 1-3 days. Most older news items are considered archives. \\
+In order to have a better understanding of the time intervals of news, I asked professionals around the news station that I work at for feedback. Based on this and my observations of our news website and other similar entities' websites, "news" refers to a recent occurrence, notably something that happened today. "Breaking News" typically refers to an event that happened within the current day and whose story is under development. "Recent News" pertains to stories created within the last 1-3 days. Most older news items are considered archives. \\
  My goal in this project is to represent the "recent news" category. Thus, the needed time granularities to be conveyed that support the task of the proposed visualization should be in days (Bettini, Jajodia, \& Wang, X. S., 2000). At a minimum for drilling down to a day's worth of news, I need to use a discrete time scale (Goralwalla, \"{O}zsu, \& Szafron, 1998) and thus need to capture the day, hour, and minute of each visit. The output variables connected to time should be the number of hits and the average read time spent on an article.
 
 \newpage
@@ -147,7 +150,7 @@ In order to have a better understanding of the time intervals of news, I asked p
 What I built is novel in that there is no current navigable and exploratory tool for site visitors, which visualizes near real-time traffic on news sites. \\
 Upon researching online, I came across a few systems that specialize in visualizing web metrics: \\
 
-\noindent\textbf{Flow (http://www.webresourcesdepot.com/beautiful-free-website-traffic-visualization-application-flow/)} \\ \\
+\noindent\textbf{Flow} \\ \\
 \noindent\includegraphics[scale=0.45]{img/flow}
 \begin{singlespace}
 \noindent\textbf{Figure 2 -- A line graph that measures the number of hits on the y axis, and date on the x axis for select categories on a given website.} \\
@@ -174,7 +177,14 @@ While this is a great tool for decision making, it is unlikely that the news sit
 
 \noindent\textbf{Adobe Analytics} \\
 
+\noindent\includegraphics[scale=0.5]{img/adobe} \\
+\noindent\textbf{Figure 5 -- Adobe Analytics dashboard} \\
 
+Adobe Analytics is a set of tools that cover real-time traffic as well as predictive data analysis based on historical data. It consists of 5 components: Marketing Reports and Analytics, Ad hoc Analysis, Data workbench, Predictive analysis, and Real-time web analytics. As with Flow and Google Analytics, it contains custom reports and visualizations that are accessed through a dashboard. \\
+
+\noindent Once again, the intended audience is that of management and decision makers. What I plan to create is something for the news site visitors.
+
+\iffalse
 Adobe Analytics covers a slew of reporting capabilities:
 
 \begin{itemize}
@@ -185,9 +195,9 @@ Adobe Analytics covers a slew of reporting capabilities:
 \item \textbf{Real-time web analytics.} Shows what is happening on the digital properties in real-time so that managers can take action where needed
 \end{itemize}
 
-Once again, the intended audience is that of management and decision makers. What I plan to create is something that the news consumers could see and use to make decisions on what to navigate to.
+\fi
 
-\null
+
 \vfill
 
 
@@ -845,6 +855,7 @@ Aesthetics. {\em EEE Transactions on Visualization and Computer Graphics Archive
 
   \bibitem{carpendale} Carpendale, M. S. T. (2003). {\em Considering visual variables as a basis for information visualisation}. Computer Science TR\# 2001-693, 16.   
   
+  \bibitem{schneidermann} Shneiderman, B. (1996, September). The eyes have it: A task by data type taxonomy for information visualizations. In {\em Visual Languages, 1996. Proceedings., IEEE Symposium on } (pp. 336-343). IEEE.
   \end{thebibliography}
  
 
