@@ -490,11 +490,12 @@ Here, the goal was to create a visual product that would allow the user to view 
 \item When a category (e.g. Business) contained more than 8 articles, I had to use 8 different colors to encode the articles. The issue here was that at a certain point, colors became very similar making it almost impossible to visually follow the article all the way through a selected time period 
 \end{itemize}
 
-\noindent I instead used the stacked area chart. The stacked area chart maintained a view on the patterns without compromising legibility and supported the following tasks: 
-\begin{itemize}
-\item To compare articles' hits and reader attention spans for any period within the last month, given a select category
-\item To preview an article's thumbnail, title, and excerpt
-\end{itemize}
+\noindent\includegraphics[scale=0.65]{img/lines} \\
+\noindent\textbf{Figure 6 -- Article web metrics shown in a line graph. Each color represents a different article.} \\ 
+
+\noindent I instead used the stacked area chart. The stacked area chart maintained a view on the patterns without compromising legibility. It mainly supported the task of comparing articles' hits and reader attention spans for any period within the last month, given a select category. It also supported the task of previewing an article's thumbnail, title, and excerpt.
+
+\newpage
 
 \noindent The X axis is laid out using D3 and represents time aggregated on an hourly basis: 
 
@@ -509,9 +510,9 @@ It is important to note that the user has the option to see a preview of the sel
 
 This results in an overlay to pop over the selected article that includes the article's thumbnail, title, and a 500-character excerpt of the body of the article. 
 
-The user is given the option to contrast the pattern of up 2 articles over time, by left clicking on the select article area. This results in one article being filled with a purple color and the other with a green color. I picked the colors from colorbrewer2.org and ensured they were colorblind safe.
+The user is given the option to contrast the pattern of up 2 articles over time, by left clicking on the select article area. This results in one article being filled with a purple color and the other with a green color. I picked the colors from colorbrewer2.org and ensured they were colorblind safe. \\
 
-\noindent\includegraphics[scale=0.8]{img/viz_7} \\
+\noindent\includegraphics[scale=0.65]{img/viz_7} \\
 
 \noindent Once the two articles are selected, their corresponding geographic distributions are shown in the right area of the browser. This is covered in the next section. 
 
@@ -650,7 +651,7 @@ Hooking into the live website involved the following steps:
 \noindent\textbf{Performance}
 \begin{itemize}
 \item In the Afia Darfur website, the last 31 days amounted to ~10,000 hits and ~40,000 hits for the two main categories being used by the web editors. It took approximately 16 seconds to load the ~10,000 hits and 52 seconds to load the ~40,000 hits. 
-\item As for adjusting the stacked area graph's time range, there was a ~3-second delay for the ~10,000 hits and a ~10-second delay for the ~40,000 hits. This was done using a PC with an Intel i7 processor and 12 GB of RAM. 
+\item As for adjusting the stacked area graph's time range, there was approximately a 3-second delay for the ~10,000 hits and a approximately a 10-second delay for the ~40,000 hits. This was done using a PC with an Intel i7 processor and 12 GB of RAM. 
 \item When "Show Article Details on Hover" was enabled, there was a delay between 50 to 300 milliseconds for the image thumbnails to initially show. Once they were cached in the browser's memory, they appeared without delay. For images that were not cached, the delay was about 1 second per megabyte in picture size
 \end{itemize}
 
@@ -675,12 +676,9 @@ Overall, the resultant interactive visualization successfully conveyed patterns 
 Given more time, I wish to add more capabilities to my existing visualization. I would like to add a stacked chart for the parent categories which can help the visitor identify significant peaks in traffic. For example, a peak in the science category could allude to a breakthrough or discovery. \\
 As for articles, I would like to visualize how each article performed relative to other articles, based on the publication date. Another relative measure I would like to incorporate is hits per capita. In addition, I would like to increase the ability to simultaneously compare up to four articles. \\
 Lastly, I would like to include social media measures in the existing stacked graph --- such as Facebook likes and Twitter tweets.
-
-On the web metrics capture end, I would like to implement a cache for the IP addresses of the visitors and the geographic locations they map to. This would save redundant API calls to Telize.com. 
-
-For retrieval of captured data, I would like to implement a cache for the past 31 days of articles' data given a certain category. This would greatly minimize the request load on the database server.
-
-Lastly, I would like to capture each a hit via a token stored in HTML5's \textbf{LocalStorage} array. In this scenario, if two people visiting the same article are behind the same IP address, then they would be counted as two separate hits. Here, if the user decided to disable JavaScript, I could then fall back onto the method I implemented in this thesis --- which is identifying each hit as coming from a unique IP address.
+\\On the web metrics capture end, I would like to implement a cache for the IP addresses of the visitors and the geographic locations they map to. This would save redundant API calls to Telize.com. 
+\\For retrieval of captured data, I would like to implement a cache for the past 31 days of articles' data given a certain category. This would greatly minimize the request load on the database server.
+\\Lastly, I would like to capture each a hit via a token stored in HTML5's \textbf{LocalStorage} array. In this scenario, if two people visiting the same article are behind the same IP address, then they would be counted as two separate hits. Here, if the user decided to disable JavaScript, I could then fall back onto the method I implemented in this thesis --- which is identifying each hit as coming from a unique IP address.
 
 \newpage
 
