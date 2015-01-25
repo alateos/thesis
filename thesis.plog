@@ -1,0 +1,49 @@
+Chikrii Softlab pseudoTeX 3.0 report.
+http://www.chikrii.com, mailto: support@chikrii.com
+
+thesis.tex (Ln 4) Warning: Can't find pseudoTeX definition for class/package (setspace)
+thesis.tex (Ln 5) Warning: Can't find pseudoTeX definition for class/package (indentfirst)
+thesis.tex (Ln 6) Warning: Can't find pseudoTeX definition for class/package (listings)
+thesis.tex (Ln 7) Warning: Can't find pseudoTeX definition for class/package (mathpazo)
+thesis.tex (Ln 8) Warning: Can't find pseudoTeX definition for class/package (fontenc)
+thesis.tex (Ln 9) Syntax Error: Undefined control sequence (\linespread)
+thesis.tex (Ln 17) Error: Environment (doublespace) undefined
+thesis.tex (Ln 52) Error: Environment (singlespace) undefined
+thesis.tex (Ln 103) Error: Environment (singlespace) undefined
+thesis.tex (Ln 190) Error: Environment (singlespace) undefined
+thesis.tex (Ln 458) Error: Environment (lstlisting) undefined
+thesis.tex (Ln 462) Syntax Error: Missing $ inserted
+thesis.tex (Ln 462) Warning: Misplaced subscript
+thesis.tex (Ln 464) Syntax Error: Missing $ inserted
+thesis.tex (Ln 466) Error: Environment (lstlisting) undefined
+thesis.tex (Ln 469) Syntax Error: Missing $ inserted
+thesis.tex (Ln 469) Warning: Misplaced subscript
+thesis.tex (Ln 471) Warning: Missing } inserted
+thesis.tex (Ln 471) Syntax Error: Missing $ inserted
+thesis.tex (Ln 471) Warning: Misplaced subscript
+thesis.tex (Ln 472) Syntax Error: Missing $ inserted
+thesis.tex (Ln 475) Syntax Error: Missing $ inserted
+thesis.tex (Ln 475) Warning: Misplaced subscript
+thesis.tex (Ln 476) Syntax Error: Extra }, or forgotten \endgroup
+thesis.tex (Ln 480) Error: Environment (lstlisting) undefined
+thesis.tex (Ln 487) Syntax Error: Missing $ inserted
+thesis.tex (Ln 490) Syntax Error: Missing $ inserted
+thesis.tex (Ln 492) Warning: Misplaced subscript
+thesis.tex (Ln 492) Syntax Error: Missing $ inserted
+thesis.tex (Ln 492) Warning: Misplaced subscript
+thesis.tex (Ln 493) Warning: Missing } inserted
+thesis.tex (Ln 493) Syntax Error: Missing $ inserted
+thesis.tex (Ln 493) Warning: Misplaced subscript
+thesis.tex (Ln 494) Syntax Error: Extra }, or forgotten $
+thesis.tex (Ln 498) Error: Environment (lstlisting) undefined
+thesis.tex (Ln 501) Syntax Error: Missing $ inserted
+thesis.tex (Ln 501) Warning: Misplaced subscript
+thesis.tex (Ln 502) Syntax Error: Missing $ inserted
+thesis.tex (Ln 506) Syntax Error: Extra }, or forgotten $
+thesis.tex (Ln 507) Syntax Error: Missing $ inserted
+thesis.tex (Ln 509) Syntax Error: Missing $ inserted
+thesis.tex (Ln 509) Warning: Misplaced subscript
+thesis.tex (Ln 510) Syntax Error: Extra }, or forgotten $
+thesis.tex (Ln 512) Warning: Missing $ inserted
+thesis.tex (Ln 512) Warning: Missing } inserted
+thesis.tex (Ln 512) Warning: Missing } inserted
