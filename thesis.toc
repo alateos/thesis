@@ -26,7 +26,7 @@
 \contentsline {subsubsection}{\numberline {4.4.3}Geographic bar charts}{50}
 \contentsline {subsection}{\numberline {4.5}Results}{54}
 \contentsline {subsubsection}{\numberline {4.5.1}Mock Website}{54}
-\contentsline {subsubsection}{\numberline {4.5.2}Live website}{58}
-\contentsline {section}{\numberline {5}Conclusion}{65}
-\contentsline {section}{\numberline {6}Future Work}{67}
-\contentsline {section}{\numberline {7}Glossary}{68}
+\contentsline {subsubsection}{\numberline {4.5.2}Live website}{57}
+\contentsline {section}{\numberline {5}Conclusion}{63}
+\contentsline {section}{\numberline {6}Future Work}{65}
+\contentsline {section}{\numberline {7}Glossary}{67}

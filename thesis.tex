@@ -530,60 +530,33 @@ The hits values are encoded as horizontal bars in dark gray. The attention span 
 
 \noindent\includegraphics[scale=0.8]{img/viz_9} \\
 
-\noindent We now examine the geographic area in more detail. Note that automatically, the entries are sorted by the name of the geographic origin, in ascending order. Clicking on the \textbf{STATE} header toggles back and forth the sorting order of the geographic origin name. Similarly, toggling the textbf{TOTAL HITS} header sorts the data by number of hits in ascending/descending order. When the data is sorted, it is sorted according to the same criterion for both articles. Hovering over a row will cause that row to be highlighted in yellow, and to be contoured in a dashed line solid border. Hovering over any bar will in addition pop up a steel blue overlay which displays --- using white text --- the number of hits or read time in seconds.  
+\noindent We now examine the geographic area in more detail. Note that automatically, the entries are sorted by the name of the geographic origin, in ascending order. Clicking on the \textbf{STATE} header toggles back and forth the sorting order of the geographic origin name. Similarly, toggling the \textbf{TOTAL HITS} header sorts the data by number of hits in ascending/descending order. When the data is sorted, it is sorted according to the same criterion for both articles. 
 
-\noindent The geographic bar charts support two tasks. The first is to contrast the geographic distribution of hits and attention of up to two articles. The second is to navigate to the full article on the news website. 
+\newpage
+
+\noindent Hovering over a row causes that row to be highlighted in yellow, and to be contoured in a dashed line solid border. Hovering over any hits bar inside a row pops up a steel blue overlay which displays the number of hits:
+\\ \\
+\noindent\includegraphics[scale=0.8]{img/state_hit_hover} \\  
+
+\noindent Similarly, hovering over a circle inside a row pops up a steel blue overlay which displays the read time in seconds:
+\\ \\
+\noindent\includegraphics[scale=0.8]{img/state_circle_hover} \\ 
+
 
 \newpage
 
 \subsection{Results}
 
 \subsubsection{Mock Website}
-The working example that I have discussed so far is based on a mock website that I created using mock visit data. \\
+The working example that I have discussed so far is based on a mock website that I created using fake visit data. The automated visitor script ran on a daily basis for three months. For each hit, the read time was captured as a random number between ten and 180 seconds. When I switched the flag in my PHP code to denote the production environment, the read time was captured as the actual time I spent on the news article. Most of my testing was done in Google Chrome version 39.  
 
-\noindent\textbf{Capturing Web Metrics}
-\begin{itemize}
-\item For each hit, the following metadata was successfully captured: IP address, time visited, article ID, time zone, country of origin, and region of origin.
-\item For each hit, the read time was captured as a random number between ten and 180 seconds. When I switched the flag in my PHP code to denote the production environment, the read time was captured successfully when I navigated away from a news article. Most of my testing was done in Google Chrome version 39.
-\item Each hit was captured according to the revisit threshold time (in seconds) that was specified in the PHP code.
-\item Each category was captured from Wordpress via the PHP libraries I created.
-\item Each article's metadata was captured from Wordpress via the PHP libraries I created.
-\end{itemize}
+I initially reserved the geographic data for the articles to be serviced by \textbf{getArticleStatesMetrics.php}. However, this resulted in more calls to the database server. I felt that in a production environment this would slow down the system and affect all users. Thus, in order to minimize the number of requests to the server, the hits data was retrieved via \textbf{getArticlesMetrics.php}. This fetched all data for a given news category --- including the geographic origins of the hits --- for the last 31 days. The client-side JavaScript code then parsed and re-organized the fetched data to be used by the interactive visualization.
 
-\newpage
+The final product included a stacked area chart, a list of article titles below, and a right pane for geographic analysis of up to two articles. The hits were first aggregated on a minute to minute basis. This resulted in performance degradation. Adjusting the date range had a latency of about two to three seconds to reflect in the redraw of the stacked area chart. I then aggregated the hits on an hourly basis, which ended up plotting Y values over 744 (31 days x 24 hours) X axis time values. This eliminated the latency in the stacked area chart redraw. 
+ 
+The stacked chart accurately reflected the number of hits and average read time over the selected time range. Clicking one or more articles highlighted the article area in the stacked area chart and displayed the total hits based on geography. It also showed the distribution of the recorded read times. For the mock site, the geography was limited to states within the United States. The tables that contained the geographic origins were sortable by total hits and by state name --- in ascending and descending order. When \textbf{Show Article Details on Hover} was enabled, the pertinent article's thumbnail image, title, and body excerpt were successfully presented in an overlay. Hovering over any row in the geographic hits and attention span table resulted in the row being highlighted in yellow for all articles that are being compared. Hovering over a bar representation of the total number of hits invoked a steel blue overlay showing the number of hits. Lastly, hovering over an attention span circle invoked a steel blue overlay showing the number of seconds that was spent on the article.
 
-\noindent\textbf{Retrieving Web Metrics} 
-\begin{itemize}
-\item The categories were successfully retrieved in JSON via \textbf{getCategories.php}.
-\item The hits data was retrieved successfully from the MySQL database using JSON via \textbf{getArticlesMetrics.php}. I initially reserved the geographic data for the articles to be serviced by \textbf{getArticleStatesMetrics.php}. However, I felt that in a production environment that many SQL calls to the database server would slow down the system and affect all users. In order to minimize the number of requests to the server, I had the server fetch all data for a given category for the last 31 days. The client-side JavaScript code then parsed and re-organized the fetched data to be used by the interactive visualization.
-\end{itemize}
-
-\vspace{0.2in}
-
-\noindent\textbf{Visualization} 
-\begin{itemize}
-\item The final product included a stacked area chart, a list of article titles below, and a right pane for geographic analysis of up to two articles.
-\item The hits were first aggregated on a minute to minute basis. This resulted in performance degradation. Adjusting the date range took a delay of about two to three seconds to reflect in the redraw of the stacked area chart. I then aggregated on an hourly basis, which ended up plotting Y values over 744 (31 days x 24 hours) X axis time values. This eliminated the latency in the stacked area chart redraw.
-\item The stacked chart accurately reflected the number of hits and average read time over the selected time range.
-\item Clicking one or more articles highlighted the article area in the stacked area chart and displayed the total hits based on geography. It also showed the distribution of the recorded read times. For the mock site, the geography was limited to states within the United States.
-\item The tables that contained the geographic origins were sortable by total hits and by state name --- in ascending and descending order.
-\item When \textbf{Show Article Details on Hover} was enabled, the pertinent article's thumbnail image, title, and body excerpt were successfully presented in an overlay.
-\item Hovering over any row in the geographic hits and attention span table resulted in the row being highlighted in yellow for all articles that are being compared.
-\item Hovering over a bar representation of the total number of hits invoked a steel blue overlay showing the number of hits.
-\\ \\
-\noindent\includegraphics[scale=0.8]{img/state_hit_hover} \\  
-
-\item Hovering over an attention span circle invoked a steel blue overlay showing the number of seconds that was spent on the article.
-\\ \\
-\noindent\includegraphics[scale=0.8]{img/state_circle_hover} \\  
-\end{itemize} 
-
-\noindent\textbf{Performance}
-\begin{itemize}
-\item In the mock site, the last 31 days amounted to ~4500 hits per category. The time it took for them to be loaded in the visualization was around four seconds, using a PC with an Intel i7 processor and 12 GB of RAM.
-\item When changing the date range, the stacked chart's redraw time was almost instantaneous.
-\item When \textbf{Show Article Details on Hover} was enabled, there was a delay of about 500 milliseconds for the image thumbnails to initially show. Once they were cached in the browser's memory, they appeared without delay. For images that were not cached, the delay was about one second per megabyte in picture size.
-\end{itemize}
+In the mock site, the last 31 days amounted to ~4500 hits per category. The time it took for them to be loaded in the visualization was around four seconds, using a PC with an Intel i7 processor and 12 GB of RAM. When changing the date range, the stacked chart's redraw time was almost instantaneous. When \textbf{Show Article Details on Hover} was enabled, there was a delay of about 500 milliseconds for the image thumbnails to initially show. Once they were cached in the browser's memory, they appeared without delay. For images that were not cached, the delay was about one second per megabyte in picture size.
 
 \newpage
 
@@ -594,70 +567,36 @@ Being a web developer at a news organization, I was able to test the system agai
 
 \newpage
 
-\noindent\textbf{Hooking Into the Live Site} \\ 
-
-\noindent Hooking into \textbf{afiadarfur.com} involved the following steps:
-\begin{enumerate}
-\item Creating a database for the web metrics.
-\item Placing the \textbf{captureLib/} folder in the root folder of the Wordpress theme.
-\item Including the \textbf{captureLib} library in Wordpress's \textbf{single.php}. 
-\item Including the \textbf{vizLib/} folder in the root directory of the website.
-\item Placing \textbf{updateExpectedReadTime.php} and \textbf{updateReadTime.php} in the root directory of the website. 
-\end{enumerate}
-
-\vspace{0.2in}
-
-\noindent\textbf{Capturing Web Metrics} 
-\begin{itemize}
-\item For each hit, the following metadata was successfully captured: IP address, time visited, article ID, time zone, country of origin, and region of origin.
-\item  The read time was captured successfully when I navigated away from a news article. Most of my testing was done in Google Chrome version 39.
-\item Each hit was captured according to the revisit threshold time (in seconds) that was specified in the PHP code. For Afia Darfur, this was set to 20 seconds.
-\item Each category was captured from Wordpress via the PHP libraries I created.
-\item Each article's metadata was captured from Wordpress via the PHP libraries I created. In order to ensure that the Arabic text was captured, I had to change the collation of the database tables to utf8\_general\_ci.
-\item The PHP library files responsible for capturing data had to be encoded in UTF-8.
-\end{itemize}
-
-\vspace{0.2in}
-
-\noindent\textbf{Retrieving Web Metrics}
-\begin{itemize}
-\item The categories were successfully retrieved in JSON via \textbf{getCategories.php}. The pertinent PHP files had to be encoded in UTF-8 to handle the Arabic characters.
-\item The hits data was retrieved successfully from the MySQL database using JSON via \textbf{getArticlesMetrics.php}. I initially reserved the geographic data for the articles to be serviced by \textbf{getArticleStatesMetrics.php}. However, I felt that in a production environment that many SQL calls to the database server would slow down the system and affect all users. In order to minimize the number of requests to the server, I had the server fetch all data for a given category for the last 31 days. The client-side JavaScript code then parsed and re-organized the fetched data to be used by the interactive visualization.
-\end{itemize}
-
-\vspace{0.2in}
-
-\noindent\textbf{Visualization} 
-\begin{itemize}
-\item The final product included a stacked area chart, a list of article titles, and a right pane for geographic analysis of up to two articles.
-\\ \\
-\noindent\includegraphics[scale=0.5]{img/afiadarfur_main_viz} \\
-\item The hits were aggregated on an hourly basis resulting in Y values over 744 (31 days x 24 hours) X axis time values.
-\item The stacked chart accurately reflected the number of hits and average read time over the selected time range.
-\item Clicking one or more articles highlighted the article representation in the stacked area chart and displayed the total hits based on geography. It also showed the distribution of the recorded read times. Since the target audience of Afia Darfur is an international one, the geographic data was aggregated to countries --- unlike in the mock site where units of geography were represented as the region and hence the  US states.
-\item The tables that contained the geographic origins were sortable by total hits and by state name, in ascending and descending order.
-\item When "Show Article Details on Hover" was enabled, the pertinent article's thumbnail image, title, and body excerpt were successfully presented in an overlay. \\ \\
-\noindent\includegraphics[scale=0.5]{img/afiadarfur_hover}
+When I first hooked my code into \textbf{afiadarfur.com}, I experienced issues with both the capture and visualization ends of the system. The language was Arabic and thus used a different character set, which caused some code statements to break. In order to overcome this, I changed the collation (i.e. character set) of the database tables to \textbf{utf8\_general\_ci}. The PHP library files responsible for capturing data also needed to be encoded in UTF-8. Once fixed, the capture library started to work. One month later, I had enough data to identify patterns: \\ \\
+\noindent\includegraphics[scale=0.5]{img/afiadarfur_main_viz}
 
 \newpage
 
-\item Hovering over any row in the geographic hits and attention span table resulted in the row being highlighted in yellow for all articles that are being compared.
-\item Hovering over a bar representation of the total number of hits invoked a steel blue overlay showing the number of hits. 
-\\ \\
-\noindent\includegraphics[scale=0.8]{img/country_hit_hover} \\  
-\item Hovering over an attention span circle invoked a steel blue overlay showing the number of seconds that was spent on the article.
-\\ \\
-\noindent\includegraphics[scale=0.8]{img/country_circle_hover} \\   
-\end{itemize} 
+The resultant visualization had the same appearance as that pertaining to the mock news site. The interactive capabilities were identical. The main difference was the type of locale being displayed in the geographic distribution tables. In the mock site, the geographic locale of interest was the \textbf{US state}. Since the main audience for Afia Darfur is internationally spread, I designated the locale of interest as \textbf{country}. When enabled through the controls box, the article previews were successfully triggered: \\ \\  
+\noindent\includegraphics[scale=0.5]{img/afiadarfur_hover} \\
 
-\vspace{0.2in}
+\newpage
 
-\noindent\textbf{Performance}
+When I examined the visualization in closer detail, I came across three notable observations:
+
 \begin{itemize}
-\item In the Afia Darfur website, the last 31 days amounted to ~10,000 hits and ~40,000 hits for the two main categories being used by the web editors. It took approximately 16 seconds to load the ~10,000 hits and 52 seconds to load the ~40,000 hits. 
-\item As for adjusting the stacked area graph's time range, there was approximately a three-second delay for the ~10,000 hits and approximately a ten-second delay for the ~40,000 hits. This was done using a PC with an Intel i7 processor and 12 GB of RAM. 
-\item When "Show Article Details on Hover" was enabled, there was a delay between 50 to 300 milliseconds for the image thumbnails to initially show. Once they were cached in the browser's memory, they appeared without delay. For images that were not cached, the delay was about one second per megabyte in picture size.
+\item There was a particular article in the "main news" category which had a considerably higher number of hits when compared to those of other articles. The title of the article translates to "UNAMID implement development projects in Darfur". On average, it dwarfed the other articles by constantly showing around 300 hits. It is highlighted below, in purple: \\ \\
+\noindent\includegraphics[scale=0.8]{img/obz1}
+
+\newpage
+
+\item For the "leading news" category, there seems to be an abnormal spike of hits for around the period of January 4, 2015: \\ \\
+\noindent\includegraphics[scale=0.6]{img/obz2}
+
+\item Most hits came from Germany and the US. Somehow, Sudan was not even included in the mix: \\ \\
+\noindent\includegraphics[scale=0.7]{img/obz3}
+ 
 \end{itemize}
+
+\newpage
+
+In the Afia Darfur website, the last 31 days amounted to ~10,000 hits and ~40,000 hits for the two main categories being used by the web editors. It took approximately 16 seconds to load the ~10,000 hits and 52 seconds to load the ~40,000 hits. As for adjusting the stacked area graph's time range, there was approximately a three-second delay for the ~10,000 hits and approximately a ten-second delay for the ~40,000 hits. This was done using a PC with an Intel i7 processor and 12 GB of RAM. When \textbf{Show Article Details on Hover was enabled}, there was a delay between 50 to 300 milliseconds for the image thumbnails to initially show. Once they were cached in the browser's memory, they appeared without delay. For images that were not cached, the delay was about one second per megabyte in picture size.
+
 
 \newpage
 
@@ -678,11 +617,11 @@ Overall, the resultant interactive visualization successfully conveyed patterns 
 
 \section{Future Work}
 Given more time, I wish to add more capabilities to my existing visualization. I would like to add a stacked area chart for the parent categories which can help the visitor identify significant peaks in traffic. For example, a peak in the science category could allude to a breakthrough or discovery. \\
-As for articles, I would like to visualize how each article performed relative to other articles, based on the publication date. Another relative measure I would like to incorporate is hits per capita. In addition, I would like to increase the ability to simultaneously compare up to four articles. \\
-Lastly, I would like to include social media measures in the existing stacked graph --- such as Facebook likes and Twitter tweets.
+As for articles, I would like to visualize how each article performed relative to other articles, based on the publication date. Another relative measure I would like to incorporate is hits per capita, which would result in a more weighted geographic hits distribution. In addition, I would like to increase the ability to simultaneously compare up to four articles. \\
+Lastly, I would like to include social media measures in the existing stacked graph --- such as Facebook likes and Twitter tweets. This would help visitors identify patterns in social sharing.
 \\On the web metrics capture end, I would like to implement a cache for the IP addresses of the visitors and the geographic locations they map to. This would save redundant API calls to the third party REST API  \textbf{telize.com}. 
 \\For retrieval of captured data, I would like to implement a cache for the past 31 days of articles' data given a certain category. This would greatly minimize the request load on the database server.
-\\Lastly, I would like to capture each a hit via a token stored in HTML5's \textbf{LocalStorage} array. In this scenario, if two people visiting the same article are behind the same IP address, they would then be counted as two separate hits. Here, if the visitor decided to disable JavaScript, I could then fall back onto the method I implemented in this thesis --- which is identifying each hit as coming from a unique IP address.
+\\Lastly, I would like to capture each a hit via a token stored in HTML5's \textbf{LocalStorage} array. This would result in a more accurate hit reading. In this scenario, if two people visiting the same article are behind the same IP address, they would then be counted as two separate hits --- versus what is now counted as one hit. Here, if the visitor decided to disable JavaScript, I could then fall back onto the method I implemented in this thesis --- which is identifying each hit as coming from a unique IP address.
 
 \newpage
 
