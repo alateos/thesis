@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.6)  28 JAN 2015 12:23
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.6)  28 JAN 2015 15:42
 entering extended mode
 **thesis.tex
 (C:\thesis\thesis.tex
@@ -161,7 +161,7 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <17.28> not available
 
 {C:/Users/akibrahim/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
@@ -193,70 +193,70 @@ File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 ))
 \tf@toc=\write3
  [5] [6]
-Overfull \hbox (3.68935pt too wide) in paragraph at lines 89--90
+Overfull \hbox (3.68935pt too wide) in paragraph at lines 88--89
 []\T1/ppl/m/n/12 News sta-tions use dif-fer-ent web con-tent man-age-ment sys-t
 ems (WCMS).
  []
 
 [1]
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 97.
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 96.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsppl.fd"
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 97.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 96.
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
 
 <img/in_action.png, id=30, 959.08313pt x 667.74469pt>
 File: img/in_action.png Graphic file (type png)
  <use img/in_action.png>
-Package pdftex.def Info: img/in_action.png used on input line 121.
+Package pdftex.def Info: img/in_action.png used on input line 120.
 (pdftex.def)             Requested size: 383.62645pt x 267.09314pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
 
  []
 
 [3] [4 <C:/thesis/img/in_action.png>]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 157.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 156.
  [5] [6]
-Overfull \hbox (3.24637pt too wide) in paragraph at lines 168--169
+Overfull \hbox (3.24637pt too wide) in paragraph at lines 167--168
 \T1/ppl/m/n/12 and thus en-able user in-ter-ac-tiv-ity. In-ter-ac-tiv-ity helps
  en-able mul-ti-ple views
  []
 
 [7] [8] [9]
-Overfull \hbox (5.82361pt too wide) in paragraph at lines 182--184
+Overfull \hbox (5.82361pt too wide) in paragraph at lines 181--183
 []\T1/ppl/m/n/12 What I built is novel in that there is no cur-rent nav-i-ga-bl
 e and ex-ploratory
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--184
+Underfull \hbox (badness 10000) in paragraph at lines 181--183
 
  []
 
 <img/flow.png, id=53, 962.09438pt x 662.475pt>
 File: img/flow.png Graphic file (type png)
  <use img/flow.png>
-Package pdftex.def Info: img/flow.png used on input line 186.
+Package pdftex.def Info: img/flow.png used on input line 185.
 (pdftex.def)             Requested size: 432.93846pt x 298.111pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--187
+Underfull \hbox (badness 10000) in paragraph at lines 184--186
 
  []
 
 
-Overfull \hbox (42.93846pt too wide) in paragraph at lines 185--187
+Overfull \hbox (42.93846pt too wide) in paragraph at lines 184--186
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--189
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
 
  []
 
@@ -264,10 +264,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 188--189
 <img/flow1.png, id=57, 398.99063pt x 481.04718pt>
 File: img/flow1.png Graphic file (type png)
  <use img/flow1.png>
-Package pdftex.def Info: img/flow1.png used on input line 196.
+Package pdftex.def Info: img/flow1.png used on input line 195.
 (pdftex.def)             Requested size: 279.29153pt x 336.73073pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--198
+Underfull \hbox (badness 10000) in paragraph at lines 195--197
 
  []
 
@@ -276,91 +276,91 @@ Underfull \hbox (badness 10000) in paragraph at lines 196--198
 File: img/google_analytics.png Graphic file (type png)
 
 <use img/google_analytics.png>
-Package pdftex.def Info: img/google_analytics.png used on input line 203.
+Package pdftex.def Info: img/google_analytics.png used on input line 202.
 (pdftex.def)             Requested size: 370.3772pt x 278.23457pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--205
+Underfull \hbox (badness 10000) in paragraph at lines 201--204
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--205
+Underfull \hbox (badness 10000) in paragraph at lines 201--204
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--208
+Underfull \hbox (badness 10000) in paragraph at lines 205--207
 
  []
 
 [12 <C:/thesis/img/google_analytics.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
 
  []
 
 <img/adobe.jpg, id=65, 959.83594pt x 679.78969pt>
 File: img/adobe.jpg Graphic file (type jpg)
  <use img/adobe.jpg>
-Package pdftex.def Info: img/adobe.jpg used on input line 215.
+Package pdftex.def Info: img/adobe.jpg used on input line 214.
 (pdftex.def)             Requested size: 383.92758pt x 271.91106pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--217
+Underfull \hbox (badness 10000) in paragraph at lines 214--216
 
  []
 
 
-Overfull \hbox (3.67986pt too wide) in paragraph at lines 238--239
+Overfull \hbox (3.67986pt too wide) in paragraph at lines 237--238
 \T1/ppl/m/n/12 re-quired a third party API. Cap-tur-ing the hits was achieved t
 hrough server-
  []
 
 [13 <C:/thesis/img/adobe.jpg>] [14] [15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 257--260
+Underfull \hbox (badness 10000) in paragraph at lines 256--259
 
  []
 
 [17] [18] [19] [20]
-Overfull \hbox (2.57477pt too wide) in paragraph at lines 291--292
+Overfull \hbox (2.57477pt too wide) in paragraph at lines 290--291
 []\T1/ppl/b/n/12 Article ID\T1/ppl/m/n/12 : stores the unique iden-ti-fier and 
 is cap-tured from the host's
  []
 
 [21] [22]
 LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <12> not available
-(Font)              Font shape `T1/ppl/b/it' tried instead on input line 305.
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 304.
  [23]
-Underfull \hbox (badness 10000) in paragraph at lines 316--317
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
 
  []
 
 [24]
-Overfull \hbox (1.48006pt too wide) in paragraph at lines 324--325
+Overfull \hbox (1.48006pt too wide) in paragraph at lines 323--324
 []\T1/ppl/m/n/12 Retrieving the web met-rics in-volved cre-at-ing con-fig-u-ra-
 tion files, classes
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--325
+Underfull \hbox (badness 10000) in paragraph at lines 323--324
 
  []
 
 [25] [26] [27]
-Underfull \hbox (badness 10000) in paragraph at lines 345--346
+Underfull \hbox (badness 10000) in paragraph at lines 344--345
 
  []
 
 <img/visit1.png, id=118, 261.97874pt x 144.54pt>
 File: img/visit1.png Graphic file (type png)
  <use img/visit1.png>
-Package pdftex.def Info: img/visit1.png used on input line 347.
+Package pdftex.def Info: img/visit1.png used on input line 346.
 (pdftex.def)             Requested size: 261.9781pt x 144.53963pt.
  [28 <C:/thesis/img/visit1.png>] [29]
-Underfull \hbox (badness 10000) in paragraph at lines 362--363
+Underfull \hbox (badness 10000) in paragraph at lines 361--362
 
  []
 
 [30] [31]
-Underfull \hbox (badness 10000) in paragraph at lines 382--383
+Underfull \hbox (badness 10000) in paragraph at lines 381--382
 
  []
 
@@ -368,86 +368,86 @@ Underfull \hbox (badness 10000) in paragraph at lines 382--383
 File: img/fakenewssite_main.png Graphic file (type png)
 
 <use img/fakenewssite_main.png>
-Package pdftex.def Info: img/fakenewssite_main.png used on input line 384.
+Package pdftex.def Info: img/fakenewssite_main.png used on input line 383.
 (pdftex.def)             Requested size: 378.2063pt x 281.848pt.
  [32 <C:/thesis/img/fakenewssite_main.png>]
 [33]
-Overfull \hbox (28.17865pt too wide) in paragraph at lines 408--409
+Overfull \hbox (28.17865pt too wide) in paragraph at lines 407--408
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 421.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 420.
 
-Overfull \hbox (42.5788pt too wide) in paragraph at lines 433--434
+Overfull \hbox (42.5788pt too wide) in paragraph at lines 432--433
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 436--437
+Underfull \hbox (badness 10000) in paragraph at lines 435--436
 
  []
 
 [34]
-Overfull \hbox (8.97845pt too wide) in paragraph at lines 440--441
+Overfull \hbox (8.97845pt too wide) in paragraph at lines 439--440
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (104.97943pt too wide) in paragraph at lines 449--450
+Overfull \hbox (104.97943pt too wide) in paragraph at lines 448--449
 [][][][][][][][][][][][][][][][][][][] 
  []
 
 [35] [36]
-Underfull \hbox (badness 10000) in paragraph at lines 489--491
+Underfull \hbox (badness 10000) in paragraph at lines 488--490
 
  []
 
 [37] <img/viz_5.png, id=153, 310.91156pt x 280.04625pt>
 File: img/viz_5.png Graphic file (type png)
  <use img/viz_5.png>
-Package pdftex.def Info: img/viz_5.png used on input line 492.
+Package pdftex.def Info: img/viz_5.png used on input line 491.
 (pdftex.def)             Requested size: 310.91078pt x 280.04555pt.
 
 [38 <C:/thesis/img/viz_5.png>] [39]
-Underfull \hbox (badness 10000) in paragraph at lines 509--510
+Underfull \hbox (badness 10000) in paragraph at lines 508--509
 
  []
 
 <img/viz_6.png, id=160, 459.21562pt x 587.19376pt>
 File: img/viz_6.png Graphic file (type png)
  <use img/viz_6.png>
-Package pdftex.def Info: img/viz_6.png used on input line 511.
+Package pdftex.def Info: img/viz_6.png used on input line 510.
 (pdftex.def)             Requested size: 367.37299pt x 469.75565pt.
  [40 <C:/thesis/img/viz_6.png>] <img/lines.png, id=164, 613.54219pt x 464.4853p
 t>
 File: img/lines.png Graphic file (type png)
 
 <use img/lines.png>
-Package pdftex.def Info: img/lines.png used on input line 523.
+Package pdftex.def Info: img/lines.png used on input line 522.
 (pdftex.def)             Requested size: 398.7977pt x 301.91187pt.
 
-Overfull \hbox (8.7977pt too wide) in paragraph at lines 523--525
+Overfull \hbox (8.7977pt too wide) in paragraph at lines 522--524
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--525
+Underfull \hbox (badness 10000) in paragraph at lines 522--524
 
  []
 
 [41] [42 <C:/thesis/img/lines.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 530--531
+Underfull \hbox (badness 10000) in paragraph at lines 529--530
 
  []
 
 <img/viz_1.png, id=171, 548.80031pt x 593.21625pt>
 File: img/viz_1.png Graphic file (type png)
  <use img/viz_1.png>
-Package pdftex.def Info: img/viz_1.png used on input line 532.
+Package pdftex.def Info: img/viz_1.png used on input line 531.
 (pdftex.def)             Requested size: 439.04083pt x 474.57364pt.
 
-Overfull \hbox (49.04083pt too wide) in paragraph at lines 532--533
+Overfull \hbox (49.04083pt too wide) in paragraph at lines 531--532
 [] 
  []
 
@@ -455,15 +455,15 @@ Overfull \hbox (49.04083pt too wide) in paragraph at lines 532--533
 <img/viz_2.png, id=176, 478.78876pt x 584.1825pt>
 File: img/viz_2.png Graphic file (type png)
  <use img/viz_2.png>
-Package pdftex.def Info: img/viz_2.png used on input line 539.
+Package pdftex.def Info: img/viz_2.png used on input line 538.
 (pdftex.def)             Requested size: 335.14984pt x 408.92496pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 539--540
+Underfull \hbox (badness 10000) in paragraph at lines 538--539
 
  []
 
 [44]
-Underfull \hbox (badness 10000) in paragraph at lines 541--542
+Underfull \hbox (badness 10000) in paragraph at lines 540--541
 
  []
 
@@ -471,30 +471,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 541--542
 <img/viz_7.png, id=183, 453.19313pt x 584.1825pt>
 File: img/viz_7.png Graphic file (type png)
  <use img/viz_7.png>
-Package pdftex.def Info: img/viz_7.png used on input line 543.
+Package pdftex.def Info: img/viz_7.png used on input line 542.
 (pdftex.def)             Requested size: 294.57204pt x 379.71411pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 543--544
+Underfull \hbox (badness 10000) in paragraph at lines 542--543
 
  []
 
 [46 <C:/thesis/img/viz_7.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 551--552
+Underfull \hbox (badness 10000) in paragraph at lines 550--551
 
  []
 
 <img/viz_8.png, id=187, 895.09406pt x 640.64343pt>
 File: img/viz_8.png Graphic file (type png)
  <use img/viz_8.png>
-Package pdftex.def Info: img/viz_8.png used on input line 553.
+Package pdftex.def Info: img/viz_8.png used on input line 552.
 (pdftex.def)             Requested size: 447.54593pt x 320.32092pt.
 
-Overfull \hbox (57.54593pt too wide) in paragraph at lines 553--554
+Overfull \hbox (57.54593pt too wide) in paragraph at lines 552--553
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 553--554
+Underfull \hbox (badness 10000) in paragraph at lines 552--553
 
  []
 
@@ -502,15 +502,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 553--554
 <img/viz_9.png, id=191, 571.38469pt x 396.7322pt>
 File: img/viz_9.png Graphic file (type png)
  <use img/viz_9.png>
-Package pdftex.def Info: img/viz_9.png used on input line 560.
+Package pdftex.def Info: img/viz_9.png used on input line 559.
 (pdftex.def)             Requested size: 457.10837pt x 317.38617pt.
 
-Overfull \hbox (67.10837pt too wide) in paragraph at lines 560--561
+Overfull \hbox (67.10837pt too wide) in paragraph at lines 559--560
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 560--561
+Underfull \hbox (badness 10000) in paragraph at lines 559--560
 
  []
 
@@ -519,15 +519,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 560--561
 File: img/state_hit_hover.png Graphic file (type png)
 
 <use img/state_hit_hover.png>
-Package pdftex.def Info: img/state_hit_hover.png used on input line 568.
+Package pdftex.def Info: img/state_hit_hover.png used on input line 567.
 (pdftex.def)             Requested size: 234.27556pt x 69.25882pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--569
+Underfull \hbox (badness 10000) in paragraph at lines 565--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--569
+Underfull \hbox (badness 10000) in paragraph at lines 565--568
 
  []
 
@@ -535,27 +535,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 566--569
 File: img/state_circle_hover.png Graphic file (type png)
 
 <use img/state_circle_hover.png>
-Package pdftex.def Info: img/state_circle_hover.png used on input line 572.
+Package pdftex.def Info: img/state_circle_hover.png used on input line 571.
 (pdftex.def)             Requested size: 253.54759pt x 74.6791pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--573
+Underfull \hbox (badness 10000) in paragraph at lines 569--572
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--573
+Underfull \hbox (badness 10000) in paragraph at lines 569--572
 
  []
 
 [50 <C:/thesis/img/state_hit_hover.png> <C:/thesis/img/state_circle_hover.png>]
 [51] [52] [53]
-Overfull \hbox (18.41635pt too wide) in paragraph at lines 593--594
+Overfull \hbox (18.41635pt too wide) in paragraph at lines 592--593
 \T1/ppl/m/n/12 tem against one of our mini sites --- Afia Dar-fur (http://www.a
 fiadarfur.com),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 593--594
+Underfull \hbox (badness 10000) in paragraph at lines 592--593
 
  []
 
@@ -563,10 +563,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 593--594
 File: img/afiadarfur_main.png Graphic file (type png)
 
 <use img/afiadarfur_main.png>
-Package pdftex.def Info: img/afiadarfur_main.png used on input line 595.
+Package pdftex.def Info: img/afiadarfur_main.png used on input line 594.
 (pdftex.def)             Requested size: 378.50742pt x 320.0902pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 595--596
+Underfull \hbox (badness 10000) in paragraph at lines 594--595
 
  []
 
@@ -575,15 +575,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 595--596
 File: img/afiadarfur_main_viz.png Graphic file (type png)
 
 <use img/afiadarfur_main_viz.png>
-Package pdftex.def Info: img/afiadarfur_main_viz.png used on input line 600.
+Package pdftex.def Info: img/afiadarfur_main_viz.png used on input line 599.
 (pdftex.def)             Requested size: 455.82686pt x 283.43321pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--601
+Underfull \hbox (badness 10000) in paragraph at lines 598--600
 
  []
 
 
-Overfull \hbox (65.82686pt too wide) in paragraph at lines 599--601
+Overfull \hbox (65.82686pt too wide) in paragraph at lines 598--600
 [] 
  []
 
@@ -592,15 +592,15 @@ Overfull \hbox (65.82686pt too wide) in paragraph at lines 599--601
 File: img/afiadarfur_hover.png Graphic file (type png)
 
 <use img/afiadarfur_hover.png>
-Package pdftex.def Info: img/afiadarfur_hover.png used on input line 605.
+Package pdftex.def Info: img/afiadarfur_hover.png used on input line 604.
 (pdftex.def)             Requested size: 307.14674pt x 256.70842pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 604--606
+Underfull \hbox (badness 10000) in paragraph at lines 603--605
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 604--606
+Underfull \hbox (badness 10000) in paragraph at lines 603--605
 
  []
 
@@ -608,15 +608,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 604--606
 <img/obz1.png, id=226, 468.24937pt x 379.4175pt>
 File: img/obz1.png Graphic file (type png)
  <use img/obz1.png>
-Package pdftex.def Info: img/obz1.png used on input line 615.
+Package pdftex.def Info: img/obz1.png used on input line 614.
 (pdftex.def)             Requested size: 374.59999pt x 303.53441pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 614--616
+Underfull \hbox (badness 10000) in paragraph at lines 613--615
 
  []
 
 
-Overfull \hbox (13.97469pt too wide) in paragraph at lines 614--616
+Overfull \hbox (13.97469pt too wide) in paragraph at lines 613--615
 [] 
  []
 
@@ -624,158 +624,158 @@ Overfull \hbox (13.97469pt too wide) in paragraph at lines 614--616
 File: img/obz2.png Graphic file (type png)
 
 <use img/obz2.png>
-Package pdftex.def Info: img/obz2.png used on input line 620.
+Package pdftex.def Info: img/obz2.png used on input line 619.
 (pdftex.def)             Requested size: 267.40106pt x 224.4904pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 619--621
+Underfull \hbox (badness 10000) in paragraph at lines 618--620
 
  []
 
 <img/obz3.png, id=231, 447.17062pt x 258.9675pt>
 File: img/obz3.png Graphic file (type png)
  <use img/obz3.png>
-Package pdftex.def Info: img/obz3.png used on input line 623.
+Package pdftex.def Info: img/obz3.png used on input line 622.
 (pdftex.def)             Requested size: 313.01729pt x 181.27599pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 622--624
+Underfull \hbox (badness 10000) in paragraph at lines 621--623
 
  []
 
 [58 <C:/thesis/img/obz2.png> <C:/thesis/img/obz3.png>] [59]
-Underfull \hbox (badness 10000) in paragraph at lines 635--636
+Underfull \hbox (badness 10000) in paragraph at lines 634--635
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 637--639
+Underfull \hbox (badness 10000) in paragraph at lines 636--638
 
  []
 
 [60] [61]
-Overfull \hbox (1.735pt too wide) in paragraph at lines 650--656
+Overfull \hbox (1.735pt too wide) in paragraph at lines 649--655
 \T1/ppl/m/n/12 Lastly, I would like to in-clude so-cial me-dia mea-sures in the
  ex-ist-ing stacked
  []
 
 [62] [63] [64]
-Overfull \hbox (7.85423pt too wide) in paragraph at lines 670--671
+Overfull \hbox (7.85423pt too wide) in paragraph at lines 669--670
 []\T1/ppl/b/n/12 LAMP\T1/ppl/m/n/12 : A web de-vel-op-ment en-vi-ron-ment com-p
 rised of a Linux server,
  []
 
 
-Overfull \hbox (7.56728pt too wide) in paragraph at lines 675--676
+Overfull \hbox (7.56728pt too wide) in paragraph at lines 674--675
 []\T1/ppl/b/n/12 SVG\T1/ppl/m/n/12 : An XML-based vec-tor im-age for-mat for tw
 o-dimensional graph-
  []
 
 
-Overfull \hbox (13.03844pt too wide) in paragraph at lines 675--676
+Overfull \hbox (13.03844pt too wide) in paragraph at lines 674--675
 \T1/ppl/m/n/12 ics that has sup-port for in-ter-ac-tiv-ity and an-i-ma-tion (so
 urce: Wikipedia). 
  []
 
 [65]
-Underfull \hbox (badness 10000) in paragraph at lines 683--684
+Underfull \hbox (badness 10000) in paragraph at lines 682--683
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 685--686
+Underfull \hbox (badness 10000) in paragraph at lines 684--685
 
  []
 
 
-Overfull \hbox (34.35179pt too wide) in paragraph at lines 687--688
+Overfull \hbox (34.35179pt too wide) in paragraph at lines 686--687
 \T1/ppl/m/n/12 https://www.cs.ubc.ca/labs/imager/tr/2009/NestedModel/NestedMode
 l.pdf 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 687--688
+Underfull \hbox (badness 10000) in paragraph at lines 686--687
 
  []
 
 
-Overfull \hbox (32.55139pt too wide) in paragraph at lines 689--690
+Overfull \hbox (32.55139pt too wide) in paragraph at lines 688--689
 \T1/ppl/m/n/12 A. Cock-burn, A. Karl-son, A.K., & Bed-er-son B.B.(2008). \T1/pp
 l/m/it/12 A re-view of overview+detail,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 689--690
+Underfull \hbox (badness 10000) in paragraph at lines 688--689
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 691--695
+Underfull \hbox (badness 10000) in paragraph at lines 690--694
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 696--699
+Underfull \hbox (badness 10000) in paragraph at lines 695--698
 
  []
 
 [66]
-Underfull \hbox (badness 10000) in paragraph at lines 700--702
+Underfull \hbox (badness 10000) in paragraph at lines 699--701
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--705
+Underfull \hbox (badness 10000) in paragraph at lines 702--704
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 706--709
+Underfull \hbox (badness 10000) in paragraph at lines 705--708
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 710--712
+Underfull \hbox (badness 10000) in paragraph at lines 709--711
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 713--715
+Underfull \hbox (badness 10000) in paragraph at lines 712--714
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 716--717
+Underfull \hbox (badness 10000) in paragraph at lines 715--716
 
  []
 
 [67]
-Underfull \hbox (badness 10000) in paragraph at lines 718--720
+Underfull \hbox (badness 10000) in paragraph at lines 717--719
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 721--722
+Underfull \hbox (badness 10000) in paragraph at lines 720--721
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 723--725
+Underfull \hbox (badness 10000) in paragraph at lines 722--724
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 726--727
+Underfull \hbox (badness 10000) in paragraph at lines 725--726
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 728--729
+Underfull \hbox (badness 10000) in paragraph at lines 727--728
 
  []
 
 [68] (C:\thesis\thesis.aux) )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 309 ({)
+### simple group (level 1) entered at line 308 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
  3098 strings out of 493921
@@ -792,7 +792,7 @@ C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Progr
 am Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplbi8a.pfb><C:/Program File
 s (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on thesis.pdf (74 pages, 4217770 bytes).
+Output written on thesis.pdf (74 pages, 4217788 bytes).
 PDF statistics:
  291 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
