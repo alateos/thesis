@@ -6,16 +6,24 @@
 \usepackage{listings}
 \usepackage{mathpazo}
 \usepackage[T1]{fontenc}
+\usepackage{alphalph}
+\usepackage{afterpage}
+
+
 \linespread{1.6}
+
 \begin{document}
+
 
 %Title page
 
-\begin{titlepage}
+
+\pagenumbering{roman}
+\thispagestyle{empty}
     \begin{center}
         
         \begin{doublespace}        
-        \textbf{\Large Navigating Articles of News Websites with a Web Metrics Visualization}
+        \textbf{\Large Navigating Articles of News Websites With a Web Metrics Visualization}
         \vfill
 
         \vspace{2in}
@@ -36,12 +44,19 @@
         \vfill
          
     \end{center}
-\end{titlepage}
+
+\vfill
+\newpage
+
+\newpage\null\thispagestyle{empty}\newpage
 
 %Abstract
+\begin{center}
+\Large\textbf{Abstract}
+\end{center}
 
-\section{Abstract}
 
+\thispagestyle{empty}
 Current prominent web traffic analytics systems such as Google Analytics log, report and visualize traffic and other data about websites. They also allow filtering the views of this traffic through graphical controls. These analytics systems are geared to website administrators who use the data to identify patterns and assist management in strategy making. For news websites, administrators analyze the traffic on a news article as well as the geographic locations of the article's online visitors. The visitors, however, will at best see metrics such as Facebook likes, number of shares and tweets, and a "top-read" list in a corner inside the visited article's page. In addition, the running list of articles on the home page is solely determined by the news web editors; thus, current news website visitors do not have a direct view on the short term trends of all published articles. In order to add this capability for the visitors, I built a system that hooks into a news website, captures metrics about access frequency, times and locations, and conveys the near real-time traffic through an interactive web-based visualization.
 \newpage
 
@@ -49,7 +64,9 @@ Current prominent web traffic analytics systems such as Google Analytics log, re
 \tableofcontents
 \end{singlespace}
 
-\vfill
+\newpage
+
+\pagenumbering{arabic}
 
 \section{Thesis Project Description}
 As of 2015, the online media web can be divided into two categories: news websites that contain stories about world events, and social media sites that contain conversations centered around these events. Before social media became ubiquitous, the news information flow was unidirectional, with hardly any feedback from the website visitors. Later, visitors started sharing links on their online social pages such as Facebook and Twitter, creating a secondary platform to promote news articles. Though, what appears on the home page of one's favorite news website is set by the web news editorial team and can be influenced by the news station's editorial or business agenda. For example, a breaking news story about the death of a famous actor can overshadow another breaking story about a medical discovery that helps cure diabetes. In reality, the latter story ends up having less exposure and can be missed by medicine enthusiasts.  
@@ -646,57 +663,56 @@ Lastly, I would like to include social media measures in the existing stacked gr
 \item[] \textbf{Web visualization}: A visual deliverable created using web technologies. More than often, it is dynamic in that it visually changes based on the data being fed to it. 
 \end{itemize}
 
-\vfill
+\newpage
 
-\begin{thebibliography}{1}
+\section{References}
 
-  \bibitem{schumann} Schumann, H. and Muller, W. (2000). {\em Visualisierung - Grundlagen und allgemeine Methoden}. Springer, Berlin, Germany.
+\noindent Schumann, H. and Muller, W. (2000). {\em Visualisierung - Grundlagen und allgemeine Methoden}. Springer, Berlin, Germany.\\
 
-  \bibitem{tufte}  Tufte, E.R. (2001). {\em The Visual Display of Quantitative Information} (2nd ed.) Cheshire, CT: Graphic Press.
+\noindent Tufte, E.R. (2001). {\em The Visual Display of Quantitative Information} (2nd ed.) Cheshire, CT: Graphic Press.\\
 
-  \bibitem{munzner} Munzner, T. (2009), {\em A Nested Model for Visualization Design and Validation}. Retrieved from \\ https://www.cs.ubc.ca/labs/imager/tr/2009/NestedModel/NestedModel.pdf
+\noindent Munzner, T. (2009), {\em A Nested Model for Visualization Design and Validation}. Retrieved from \\ https://www.cs.ubc.ca/labs/imager/tr/2009/NestedModel/NestedModel.pdf\\
 
-  \bibitem{cockburn} A. Cockburn, A. Karlson, A.K., \& Bederson B.B.(2008). {\em A review of overview+detail, zooming, and focus+context interfaces.} ACM Computing Surveys (CSUR), vol. 41, no. 1, pp. 1-31. New York, NY: Association for Computing Machinery, Inc.
+\noindent A. Cockburn, A. Karlson, A.K., \& Bederson B.B.(2008). {\em A review of overview+detail, zooming, and focus+context interfaces.} ACM Computing Surveys (CSUR), vol. 41, no. 1, pp. 1-31. New York, NY: Association for Computing Machinery, Inc.\\
   
-  \bibitem{playfair} Playfair,W. and Corry, J. (1801). {\em The Commercial and Political Atlas: Representing,
+\noindent Playfair,W. and Corry, J. (1801). {\em The Commercial and Political Atlas: Representing,
 by Means of Stained Copper-Plate Charts, the Progress of the Commerce,
 Revenues, Expenditure and Debts of England during the Whole of
-the Eighteenth Century} (3rd ed.). London, United Kingdom: Wallis.
+the Eighteenth Century} (3rd ed.). London, United Kingdom: Wallis.\\
   
-  \bibitem{frank} Frank, A. U. (1998). Different Types of "Times" in GIS. In Egenhofer, M. J.,
+\noindent Frank, A. U. (1998). Different Types of "Times" in GIS. In Egenhofer, M. J.,
 \& Golledge, R. G., (Eds.), {\em Spatial and Temporal Reasoning in Geographic
-Information Systems}, pp. 40-62. New York, NY: Oxford University Press.
+Information Systems}, pp. 40-62. New York, NY: Oxford University Press.\\
 
-  \bibitem{goralwalla} Goralwalla, I. A., \"{O}zsu, M. T., \& Szafron, D. (1998). An Object-
-Oriented Framework for Temporal Data Models. In Etzion, O., et al., (Eds.), {\em Temporal Databases: Research and Practice}, pp. 1-35. Berlin,Germany: Springer.
+\noindent Goralwalla, I. A., \"{O}zsu, M. T., \& Szafron, D. (1998). An Object-
+Oriented Framework for Temporal Data Models. In Etzion, O., et al., (Eds.), {\em Temporal Databases: Research and Practice}, pp. 1-35. Berlin,Germany: Springer.\\
   
-  \bibitem{bettini} Bettini, C., Jajodia, S., \& Wang, X. S. (2000). {\em Time Granularities in
-Databases, Data Mining, and Temporal Reasoning} (1st ed.). Secaucus, NJ: Springer.
+\noindent Bettini, C., Jajodia, S., \& Wang, X. S. (2000). {\em Time Granularities in
+Databases, Data Mining, and Temporal Reasoning} (1st ed.). Secaucus, NJ: Springer.\\
 
-  \bibitem{radner} Radner,W., Diendorfer, G., (2014). English sentence optotypes for measuring
+\noindent Radner,W., Diendorfer, G., (2014). English sentence optotypes for measuring
 reading acuity and speed - the English version of the Radner Reading Charts.
-{\em Charts Graefe's Archive for Clinical and Experimental Ophthalmology}, 252 (8), 1297-1303. Berlin; New York: Springer-Verlag.
+{\em Charts Graefe's Archive for Clinical and Experimental Ophthalmology}, 252 (8), 1297-1303. Berlin; New York: Springer-Verlag.\\
 
-  \bibitem{wills} Wills, G., (2011). {\em Visualizing time: Designing Graphical Representations
-for Statistical Data} (1st ed.). New York: Springer.
+\noindent Wills, G., (2011). {\em Visualizing time: Designing Graphical Representations
+for Statistical Data} (1st ed.). New York: Springer.\\
 
-  \bibitem{clevelandmcgill} Cleveland, \& W., McGill, R., (1984). Graphical perception: Theory,
-experimentation, and application to the development of graphical methods. {\em Journal of the American Statistical Association}, 79 (387), 351-354.
+\noindent Cleveland, \& W., McGill, R., (1984). Graphical perception: Theory,
+experimentation, and application to the development of graphical methods. {\em Journal of the American Statistical Association}, 79 (387), 351-354.\\
   
-  \bibitem{colinware} Healey, C.G., (1996). Choosing effective colours for data visualization. {\em Proceedings of the 7th conference on Visualization} '96, 263-270. Los Alamitos, CA: IEEE Computer Society Press. 
+\noindent Healey, C.G., (1996). Choosing effective colours for data visualization. {\em Proceedings of the 7th conference on Visualization} '96, 263-270. Los Alamitos, CA: IEEE Computer Society Press. \\
   
-  \bibitem{byronwattenberg} Byron, L., \& Wattenberg, M., (2008). Stacked Graphs - Geometry \&
-Aesthetics. {\em EEE Transactions on Visualization and Computer Graphics Archive}, 14 (6), 1245-1252. Piscataway, NJ: EEE Educational Activities Department.
+\noindent Byron, L., \& Wattenberg, M., (2008). Stacked Graphs - Geometry \&
+Aesthetics. {\em EEE Transactions on Visualization and Computer Graphics Archive}, 14 (6), 1245-1252. Piscataway, NJ: EEE Educational Activities Department.\\
 
-  \bibitem{swires} Swires-Hennesy, E., (2014). {\em Presenting Data: How to Communicate Your Message Effectively}. West Sussex, United Kingdom: John Wiley \& Sons Ltd.
+\noindent Swires-Hennesy, E., (2014). {\em Presenting Data: How to Communicate Your Message Effectively}. West Sussex, United Kingdom: John Wiley \& Sons Ltd.\\
   
-  \bibitem{codd} Codd, E.F. (1970). A Relational Model of Data for Large Shared Data Banks.
-{\em Communications of the ACM}, 13 (6), 377-387. New York, NY: Association for Computing Machinery, Inc. 
+\noindent Codd, E.F. (1970). A Relational Model of Data for Large Shared Data Banks.
+{\em Communications of the ACM}, 13 (6), 377-387. New York, NY: Association for Computing Machinery, Inc. \\
 
-  \bibitem{carpendale} Carpendale, M. S. T. (2003). {\em Considering visual variables as a basis for information visualisation}. Computer Science TR\# 2001-693, 16.   
+\noindent Carpendale, M. S. T. (2003). {\em Considering visual variables as a basis for information visualisation}. Computer Science TR\# 2001-693, 16. \\  
   
-  \bibitem{schneidermann} Shneiderman, B. (1996, September). The eyes have it: A task by data type taxonomy for information visualizations. In {\em Visual Languages, 1996. Proceedings., IEEE Symposium on } (pp. 336-343). IEEE.
-  \end{thebibliography}
+\noindent Shneiderman, B. (1996, September). The eyes have it: A task by data type taxonomy for information visualizations. In {\em Visual Languages, 1996. Proceedings., IEEE Symposium on } (pp. 336-343). IEEE.\\
  
 
 
